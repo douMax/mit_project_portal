@@ -31,3 +31,5 @@ exports.findOneById = async (req, res) => {
     res.status(500).send("Error retriving departments");
   }
 };
+
+//find one and update

@@ -7,7 +7,7 @@ const DepartmentSchema = new Schema(
       type: String,
       required: [true, "Department Name is required"],
     },
-    deparment_code: {
+    department_code: {
       type: String,
     },
   },
