@@ -11,3 +11,108 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html, body {
+  height: 100%;
+}
+
+.small-box{
+  padding: 35px;
+  background: gray;
+}
+
+.big-box{
+  width: 100%;
+  height: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  background-color: gray;
+  overflow-y: scroll;
+}
+
+.medium-box {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  /*background-image: url('./assets/MIT_Building.svg');
+  background-size: cover;
+  overflow-y: auto !important;*/
+}
+
+.project-list {
+  width: 500px;
+  height: 100%;
+  background-color: white;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}
+
+.project-detail {
+  width: 800px;
+  height: 100%;
+  background-color: white;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 50px;
+}
+
+.right {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.small-title {
+  font-family: 'Lato';
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.big-title {
+  font-family: 'Lato';
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.inner-text {
+  font-family: 'Lato';
+  font-size: 20px;
+  letter-spacing: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.small-text {
+  font-family: 'Lato';
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
