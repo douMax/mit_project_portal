@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const departmentRoutes = require("./backend/routes/department.route");
+// const projectRoutes = require("./backend/routes/project.route");
 app.use(departmentRoutes);
 
 app.get("/api", (req, res) => {
