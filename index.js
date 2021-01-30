@@ -19,6 +19,10 @@ app.use(bodyParser.json());
 const departmentRoutes = require("./backend/routes/department.route");
 app.use(departmentRoutes);
 
+const projectRoutes = require("./backend/routes/project.route");
+app.use(projectRoutes);
+
+
 app.get("/api", (req, res) => {
   res.send("Welcome to ProjectPortal API");
 });
