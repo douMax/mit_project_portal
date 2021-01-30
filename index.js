@@ -29,6 +29,9 @@ app.use(departmentRoutes);
 const topicRoutes = require("./backend/routes/topic.route");
 app.use(topicRoutes);
 
+const studentRoutes = require("./backend/routes/student.route");
+app.use(studentRoutes);
+
 app.get("/api", (req, res) => {
   res.send("Welcome to ProjectPortal API");
 });
