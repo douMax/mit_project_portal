@@ -20,6 +20,8 @@ const departmentRoutes = require("./backend/routes/department.route");
 app.use(departmentRoutes);
 const topicRoutes = require("./backend/routes/topic.route");
 app.use(topicRoutes);
+const staffRoutes = require("./backend/routes/staff.route");
+app.use(staffRoutes);
 
 app.get("/api", (req, res) => {
   res.send("Welcome to ProjectPortal API");
