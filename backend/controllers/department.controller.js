@@ -24,23 +24,87 @@ exports.findDepartments = async (req, res) => {
   try {
     // .find({}) { } is a filter
     let data = await Department.find({});
-    res.status(201).send(data);
+    res.status(200).send(data);
   } catch (error) {
     res.status(500).send("Error retriving departments");
   }
 };
 
-// find one by Id
+// find one by id
 exports.findOneById = async (req, res) => {
-  // retrive ID from the req
-  const id = req.params.id;
-  //
+  // params in the url(routes)
+  const { departmentId } = req.params;
+
   try {
-    let data = await Department.findOne({ id: id });
-    res.status(201).send(data);
-  } catch (error) {
-    res.status(500).send("Error retriving departments");
+    const department = await Department.findById(departmentId);
+
+    if (!department) {
+      return res.status(404).send({
+        message: `Department not found with id ${departmentId}`,
+      });
+    }
+    res.status(200).send(department);
+
+    // status code: start 2xx: 200 - successful get request. 201 post succesful
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: `Department not found with id ${departmentId}`,
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: `Internal server error.`,
+    });
   }
 };
 
-//find one and update
+// update - PUT request
+// find the record by id first and update it.
+exports.update = async (req, res) => {
+  const { departmentId } = req.params;
+
+  try {
+    const updatedDepartment = await Department.findByIdAndUpdate(
+      departmentId,
+      req.body,
+      {
+        new: true,
+      }
+    ); // req.body = { departmentName: sdfsdf  }
+
+    res.status(203).send(updatedDepartment);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: `Department not found with id ${departmentId}`,
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: `Internal server error.`,
+    });
+  }
+};
+
+// delete
+// find it first and delete.
+
+exports.delete = async (req, res) => {
+  const { departmentId } = req.params;
+
+  try {
+    const department = await Department.findByIdAndRemove(departmentId);
+    return res.status(200).send("Departement deleted");
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: `Department not found with id ${departmentId}`,
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: `Internal server error.`,
+    });
+  }
+};
