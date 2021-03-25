@@ -6,7 +6,7 @@ const ProfilePicUpload = () => {
   return(
     <div className="site-button-ghost-wrapper">
         <Upload action="../../../public" directory>
-          <Button type="dashed" ghost size="large" icon={<InboxOutlined />}>Click, or Drag and Drop to upload profile picture.</Button>
+          <Button ghost size="large" icon={<InboxOutlined />}>Click, or Drag and Drop to upload profile picture.</Button>
         </Upload>
     </div>
   );

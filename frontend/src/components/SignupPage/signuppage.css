@@ -1,10 +1,10 @@
 .site-button-ghost-wrapper {
     margin-left: 800px;
     position:absolute;
-    height: 90px;
+    height: 100px;
     width: 435px;
     padding: 26px 16px 16px;
-    background: rgb(90, 85, 85);
+    background: #ff4d5069 /*rgb(90, 85, 85);*/
 }
 
 .signup-page {
