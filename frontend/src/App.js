@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignupPage/";
 
-let isLogged = false;
+let isLogged = true;
 let isSignedUp = false;
 
 function App() {
