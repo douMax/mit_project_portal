@@ -12,4 +12,9 @@ router
   .get(departmentController.findDepartments)
   .post(departmentController.create);
 
+
+  // /api/departments/:id
+
+router.route("/api/departments/:id").get(departmentController.findOneById)
+
 module.exports = router;

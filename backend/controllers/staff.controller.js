@@ -1,5 +1,6 @@
 const Staff = require("../models/staff.model");
 
+exports.create = async (req, res) => {
   const newStaff = new Staff(req.body);
 
   try {

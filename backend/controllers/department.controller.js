@@ -25,7 +25,7 @@ exports.findOneById = async (req, res) => {
   const id = req.params.id;
   //
   try {
-    let data = await Department.findOne({ id: id });
+    let data = await Department.findById(id);
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving departments");
