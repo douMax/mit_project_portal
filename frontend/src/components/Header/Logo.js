@@ -1,7 +1,13 @@
 import React from "react";
+import './header.css';
 
 const Logo = props => {
-  return <h1>TPOPM - {props.count}</h1>;
+  return (
+  <nav>
+      <img src="mitlogo.svg" alt=""/>
+      <div className="nav-header">MIT Project Portal</div>
+  </nav>
+  );
 };
 
 export default Logo;

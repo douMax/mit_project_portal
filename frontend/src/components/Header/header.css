@@ -1,0 +1,16 @@
+nav{
+    display: flex;
+    justify-content: left;
+    background:white;
+    color: #ff4d4f;
+  }
+  
+.nav-header{
+    width: 40%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    list-style: none;
+    font-size: 24px;
+    margin-left: 10px;
+  }

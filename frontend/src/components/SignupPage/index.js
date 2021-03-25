@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StudentSignUp from './StudentSignUp';
 import StaffSignUp from './StaffSignUp';
 import ProfilePicUpload from './ProfilePicUpload';
+import Header from '../Header';
 
 import {
   Form,
@@ -29,7 +30,8 @@ const SignUp = () => {
       };
 
     return (
-    <div className="signup-page">
+    <div>
+      <Header />
         <Form
         labelCol={{
           span: 4,
@@ -39,7 +41,6 @@ const SignUp = () => {
         }}
         layout="horizontal"
         >
-
         {isStudent ? <div className="page-title">Student Sign Up</div> : <div className="page-title">Staff Sign Up</div>}  
         
         <Form.Item label="Title">

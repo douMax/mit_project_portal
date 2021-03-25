@@ -10,22 +10,7 @@ const Header = () => {
 
   return (
     <div>
-      <Logo count={count} />
-      <Menu menuNames={menuList} count={count} />
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        PLUS
-      </button>
-      <button
-        onClick={() => {
-          setCount(count - 1);
-        }}
-      >
-        MINUS
-      </button>
+      <Logo />
     </div>
   );
 };
