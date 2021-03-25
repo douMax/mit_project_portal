@@ -17,7 +17,7 @@ import {
   Switch,
 } from 'antd';
 
-let isStudent = false;
+let isStudent = true;
 
 const SignUp = () => {
 
