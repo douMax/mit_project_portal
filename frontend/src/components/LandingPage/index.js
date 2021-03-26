@@ -16,7 +16,6 @@ const LandingContainer = styled.div`
 const LandingPage = () => {
   return (
     <div>
-        <Header />
         <LandingContainer>
           <Space direction="vertical">
             <h1>MIT Project Portal</h1>

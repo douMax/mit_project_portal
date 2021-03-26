@@ -1,9 +1,9 @@
 .site-button-ghost-wrapper {
     margin-left: 800px;
     position:absolute;
-    height: 100px;
-    width: 435px;
-    padding: 26px 16px 16px;
+    height: 40px;
+    width: 400px;
+    /*padding: 26px 16px 16px;*/
     background: #ff4d5069 /*rgb(90, 85, 85);*/
 }
 

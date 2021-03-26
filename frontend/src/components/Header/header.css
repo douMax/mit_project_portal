@@ -21,8 +21,14 @@ nav{
     display: flex;
     justify-content: right;
     align-items: right;
-    list-style: none;
-    text-decoration: underline;
-    font-size: 18px;
-    margin-top: 10px;
+    margin-top: 15px;
+  }
+
+  .avatar-item {
+    margin-right: 24px;
+  }
+  
+  [class*='-col-rtl'] .avatar-item {
+    margin-right: 0;
+    margin-left: 24px;
   }
