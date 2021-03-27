@@ -33,3 +33,48 @@ exports.findOneById = async (req, res) => {
 };
 
 //find one and update
+// update - PUT request
+// find the record by id first and update it.
+exports.update = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const updatedTopic = await Topic.findByIdAndUpdate(id, req.body, {
+      new: true,
+    }); // req.body = { TopicName: sdfsdf  }
+
+    res.status(203).send(updatedTopic);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: `Topic not found with id ${id}`,
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: `Internal server error.`,
+    });
+  }
+};
+
+// delete
+// find it first and delete.
+
+exports.delete = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const topic = await Topic.findByIdAndRemove(id);
+    return res.status(200).send("Topic deleted");
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: `Topic not found with id ${id}`,
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: `Internal server error.`,
+    });
+  }
+};

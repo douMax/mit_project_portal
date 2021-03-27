@@ -12,9 +12,12 @@ router
   .get(departmentController.findDepartments)
   .post(departmentController.create);
 
+// /api/departments/:id
 
-  // /api/departments/:id
-
-router.route("/api/departments/:id").get(departmentController.findOneById)
-
+router
+  .route("/api/departments/:id")
+  .get(departmentController.findOneById)
+  .put(departmentController.update)
+  .delete(departmentController.delete);
+// /projects/:projectId
 module.exports = router;

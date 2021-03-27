@@ -13,3 +13,12 @@ router
   .post(staffController.create);
 
 module.exports = router;
+// /api/staff/:id
+
+router
+  .route("/api/staffs/:id")
+  .get(staffController.findOneById)
+  .put(staffController.update)
+  .delete(staffController.delete);
+// /projects/:projectId
+module.exports = router;
