@@ -33,10 +33,9 @@ exports.findDepartments = async (req, res) => {
 // find one by id
 exports.findOneById = async (req, res) => {
   // params in the url(routes)
-  const { departmentId } = req.params;
-
+  const id = req.params.id;
   try {
-    const department = await Department.findById(departmentId);
+    const department = await Department.findById(id);
 
     if (!department) {
       return res.status(404).send({
