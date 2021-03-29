@@ -13,3 +13,12 @@ router
   .post(topicController.create);
 
 module.exports = router;
+// /api/topic/:id
+
+router
+  .route("/api/topic/:id")
+  .get(topicController.findOneById)
+  .put(topicController.update)
+  .delete(topicController.delete);
+// /projects/:projectId
+module.exports = router;

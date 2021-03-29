@@ -11,6 +11,5 @@ router
   .get(departmentController.findOneById)
   .put(departmentController.update)
   .delete(departmentController.delete);
-// /projects/:projectId
 
 module.exports = router;
