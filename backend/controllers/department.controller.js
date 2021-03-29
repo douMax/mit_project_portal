@@ -33,31 +33,16 @@ exports.findDepartments = async (req, res) => {
 // find one by id
 exports.findOneById = async (req, res) => {
   // params in the url(routes)
-  const id = req.params.id;
+  const { departmentId } = req.params;
   try {
-    const department = await Department.findById(id);
-
-    if (!department) {
-      return res.status(404).send({
-        message: `Department not found with id ${departmentId}`,
-      });
-    }
-    res.status(200).send(department);
-
-    // status code: start 2xx: 200 - successful get request. 201 post succesful
-  } catch (err) {
-    if (err.kind === "ObjectId") {
-      return res.status(404).send({
-        message: `Department not found with id ${departmentId}`,
-      });
-    }
-    console.log(err);
-    return res.status(500).send({
-      message: `Internal server error.`,
-    });
+    let data = await Department.findById(departmentId);
+    res.status(201).send(data);
+  } catch (error) {
+    res.status(500).send("Error retriving departments");
   }
 };
 
+//find one and update
 // update - PUT request
 // find the record by id first and update it.
 exports.update = async (req, res) => {
@@ -76,7 +61,7 @@ exports.update = async (req, res) => {
   } catch (err) {
     if (err.kind === "ObjectId") {
       return res.status(404).send({
-        message: `Department not found with id ${departmentId}`,
+        message: `Department not found with id ${id}`,
       });
     }
     console.log(err);
@@ -98,7 +83,7 @@ exports.delete = async (req, res) => {
   } catch (err) {
     if (err.kind === "ObjectId") {
       return res.status(404).send({
-        message: `Department not found with id ${departmentId}`,
+        message: `Department not found with id ${id}`,
       });
     }
     console.log(err);

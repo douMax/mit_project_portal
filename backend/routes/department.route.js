@@ -6,13 +6,10 @@ router
   .get(departmentController.findDepartments)
   .post(departmentController.create);
 
-router.route("/api/departments/:id").get(departmentController.findOneById);
-
-// router
-//   .route("/api/departments/:departmentId")
-//   .get(departmentController.findOneById)
-//   .put(departmentController.update)
-//   .delete(departmentController.delete);
-// /projects/:projectId
+router
+  .route("/api/departments/:departmentId")
+  .get(departmentController.findOneById)
+  .put(departmentController.update)
+  .delete(departmentController.delete);
 
 module.exports = router;
