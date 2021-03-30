@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
 
 exports.findEnrolledStudents = async (req, res) => {
   try {
-    let data = await Student.find({is_enrolled_in_capstone_projects: true});
+    let data = await Student.find({ is_enrolled_in_capstone_projects: true });
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving student");
@@ -21,15 +21,52 @@ exports.findEnrolledStudents = async (req, res) => {
 };
 
 exports.findOnById = async (req, res) => {
- 
-  const id = req.params.id;
-  
+  const { studentid } = req.params;
+
   try {
-    let data = await Student.findOne({ id: id });
+    let data = await Student.findOne({ id: studentid });
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving student");
   }
 };
 
-//find one and update
+//update - PUT Request
+//find the record by id first and update it.
+
+exports.update = async (req, res) => {
+  const { studentid } = req.params;
+
+  try {
+    const updatedStudent = await Student.findByIdAndUpdate(
+      studentid,
+      req.body,
+      {
+        new: true,
+      }
+    );
+
+    res.status(203).send(updatedStudent);
+  } catch (error) {
+    res.status(500).send("Error retriving student");
+  }
+};
+
+exports.delete = async (req, res) => {
+  const { studentid } = req.params;
+
+  try {
+    const student = await Student.findByIdAndRemove(studentid);
+    return res.status(200).send("student deleted");
+  } catch (err) {
+    if (err.kind === "objectId") {
+      return res.status(404).send({
+        message: "student not found with id ${studentid}",
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: "Internal server error.",
+    });
+  }
+};
