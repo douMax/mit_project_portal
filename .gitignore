@@ -2,6 +2,7 @@
 
 # keys and secrets
 /config
+/backend/config
 
 # dependencies
 /node_modules

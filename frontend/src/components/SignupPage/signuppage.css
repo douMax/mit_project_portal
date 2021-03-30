@@ -1,0 +1,16 @@
+.site-button-ghost-wrapper {
+    margin-left: 800px;
+    position:absolute;
+    height: 40px;
+    width: 400px;
+    /*padding: 26px 16px 16px;*/
+    background: #ff4d5069 /*rgb(90, 85, 85);*/
+}
+
+.page-title {
+    margin-left: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
