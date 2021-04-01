@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import StudentSignUp from './StudentSignUp';
-import StaffSignUp from './StaffSignUp';
-import ProfilePicUpload from './ProfilePicUpload';
-import Header from '../Header';
+import React, { useState } from "react";
+import StudentSignUp from "./StudentSignUp";
+import StaffSignUp from "./StaffSignUp";
+import ProfilePicUpload from "./ProfilePicUpload";
+import Header from "../Header";
 
 import {
   Form,
@@ -16,23 +16,21 @@ import {
   InputNumber,
   TreeSelect,
   Switch,
-} from 'antd';
+} from "antd";
 
 let isStudent = false;
 
 const SignUp = () => {
+  const tailLayout = {
+    wrapperCol: {
+      offset: 10,
+      span: 16,
+    },
+  };
 
-    const tailLayout = {
-        wrapperCol: {
-          offset: 10,
-          span: 16
-        },
-      };
-
-    return (
+  return (
     <div>
-      <Header />
-        <Form
+      <Form
         labelCol={{
           span: 4,
         }}
@@ -40,18 +38,22 @@ const SignUp = () => {
           span: 9,
         }}
         layout="horizontal"
-        >
-        {isStudent ? <div className="page-title">Student Sign Up</div> : <div className="page-title">Staff Sign Up</div>}  
-        
+      >
+        {isStudent ? (
+          <div className="page-title">Student Sign Up</div>
+        ) : (
+          <div className="page-title">Staff Sign Up</div>
+        )}
+
         <Form.Item label="Title">
-            <Select>
-                <Select.Option value="Miss">Miss</Select.Option>
-                <Select.Option value="Mr">Mr</Select.Option>
-                <Select.Option value="Mrs">Mrs</Select.Option>
-                <Select.Option value="Dr">Dr</Select.Option>
-                <Select.Option value="Prof">Prof</Select.Option>
-                <Select.Option value="A.Prof">A.Prof</Select.Option>
-            </Select>
+          <Select>
+            <Select.Option value="Miss">Miss</Select.Option>
+            <Select.Option value="Mr">Mr</Select.Option>
+            <Select.Option value="Mrs">Mrs</Select.Option>
+            <Select.Option value="Dr">Dr</Select.Option>
+            <Select.Option value="Prof">Prof</Select.Option>
+            <Select.Option value="A.Prof">A.Prof</Select.Option>
+          </Select>
         </Form.Item>
         <Form.Item label="First Name">
           <Input />
@@ -74,18 +76,18 @@ const SignUp = () => {
         </Form.Item>
         {isStudent ? <StudentSignUp /> : <StaffSignUp />}
         <Form.Item {...tailLayout}>
-            <Space>
-                <Button danger htmlType="button">
-                    Cancel
-                </Button>
-                <Button type="danger" htmlType="submit">
-                    Submit
-                </Button>
-            </Space>
+          <Space>
+            <Button danger htmlType="button">
+              Cancel
+            </Button>
+            <Button type="danger" htmlType="submit">
+              Submit
+            </Button>
+          </Space>
         </Form.Item>
-        </Form>
+      </Form>
     </div>
-    );
+  );
 };
 
 export default SignUp;
