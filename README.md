@@ -1,6 +1,8 @@
 # MIT Project Portal
 
-## how to Get Started 1111
+This is the group repo of MIT project portal web project.
+
+## Get Started
 
 ### Backend code
 
