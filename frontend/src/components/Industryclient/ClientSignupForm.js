@@ -1,75 +1,45 @@
-import { Form, Input, Button, Checkbox } from "antd";
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
-
+import { Form, Input, Button, Space } from "antd";
 const ClientSignupForm = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
   return (
     <Form
-      {...layout}
-      name="basic"
-      initialValues={{
-        remember: true,
+      labelCol={{
+        span: 4,
       }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      wrapperCol={{
+        span: 9,
+      }}
+      layout="horizontal"
     >
-      <Form.Item
-        label="Name"
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: "Please input your username!",
-          },
-        ]}
-      >
+      <h3> Company Details </h3>
+      <Form.Item label="Company Name">
         <Input />
       </Form.Item>
-
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
-        ]}
-      >
-        <Input.Password />
+      <Form.Item label="Company Profile">
+        <Input />
       </Form.Item>
-
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
+      <Form.Item label="Website">
+        <Input />
       </Form.Item>
-
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+      <h3> Contact Details </h3>
+      <Form.Item label="First Name">
+        <Input />
+      </Form.Item>
+      <Form.Item label="Last Name">
+        <Input />
+      </Form.Item>
+      <Form.Item label="Work Email">
+        <Input />
+      </Form.Item>
+      <Form.Item label="Mobile Phone Number">
+        <Input />
+      </Form.Item>
+      <Form.Item label="Office Phone Number">
+        <Input />
+      </Form.Item>
+      <Form.Item label="Job Position">
+        <Input />
       </Form.Item>
     </Form>
   );
 };
-
 export default ClientSignupForm;
