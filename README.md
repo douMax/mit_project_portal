@@ -1,6 +1,6 @@
 # MIT Project Portal
 
-## Get Started
+## how to Get Started
 
 ### Backend code
 
