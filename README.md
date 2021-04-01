@@ -1,6 +1,6 @@
 # MIT Project Portal
 
-This is the group repo of MIT project portal web project.
+This is the group repo of MIT project portal.
 
 ## Get Started
 
