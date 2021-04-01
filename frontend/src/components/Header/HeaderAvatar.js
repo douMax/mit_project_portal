@@ -3,7 +3,7 @@ import { Avatar, Badge, Space } from "antd";
 
 const HeaderAvatar = () => {
   return (
-    <div className="nav-links">
+    <div>
       <span className="avatar-item">
         <Space>
           <Badge count={1}>
