@@ -193,10 +193,34 @@ const ProjectListDetails = ({
           <Card style={{ width: 620, height: 100, borderColor: "red" }}>
             {goals_objectives}
           </Card>
-          <Space style={{ paddingTop: 20, paddingLeft: 263 }}>
-            <Button>Print Project</Button>
-            <Button>Save Project</Button>
-            <Button type="danger">Express Interest</Button>
+          <Space style={{ paddingTop: 20, paddingLeft: 236 }}>
+            <Button
+              style={{
+                background: "#f0f0f0",
+                fontWeight: "bold",
+                borderColor: "black",
+              }}
+            >
+              Print Project
+            </Button>
+            <Button
+              style={{
+                background: "#f0f0f0",
+                fontWeight: "bold",
+                borderColor: "black",
+              }}
+            >
+              Save Project
+            </Button>
+            <Button
+              style={{
+                fontWeight: "bold",
+                borderColor: "red",
+              }}
+              type="danger"
+            >
+              Express Interest
+            </Button>
           </Space>
         </Card>
       </Content>
