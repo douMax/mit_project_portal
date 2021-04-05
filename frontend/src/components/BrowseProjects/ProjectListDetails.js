@@ -37,7 +37,7 @@ const ClientName = styled.nav`
   font-size: 14px;
 `;
 
-let isClicked = false;
+let projectId = "1";
 
 const ProjectListDetails = ({
   projId,
@@ -56,10 +56,15 @@ const ProjectListDetails = ({
   goals_objectives,
 }) => {
   const changeBorderRed = () => {
-    isClicked
-      ? (document.getElementById(projId).style.borderColor = "red")
-      : (document.getElementById(projId).style.borderColor = "white");
-    isClicked = !isClicked;
+    if (projectId === projId) {
+      document.getElementById(projectId).style.borderColor = "red";
+    }
+    if (projectId !== projId) {
+      console.log(projectId);
+      document.getElementById(projectId).style.borderColor = "white";
+      document.getElementById(projId).style.borderColor = "red";
+      projectId = projId;
+    }
   };
 
   return (
@@ -72,6 +77,7 @@ const ProjectListDetails = ({
           paddingBottom: "30px",
         }}
         width={660}
+        onClick={changeBorderRed}
       >
         <Card
           id={projId}
@@ -80,7 +86,6 @@ const ProjectListDetails = ({
             height: 180,
           }}
           hoverable="true"
-          onClick={changeBorderRed}
         >
           <Space>
             <Content style={{ width: 450 }}>
@@ -103,6 +108,7 @@ const ProjectListDetails = ({
               {client}
             </ClientName>
           </Space>
+          ,
         </Card>
       </Sider>
       {/*<Content
