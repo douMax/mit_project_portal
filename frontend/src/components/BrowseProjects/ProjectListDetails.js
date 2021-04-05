@@ -156,7 +156,7 @@ const ProjectListDetails = ({
         <Card
           id={"dets" + projId}
           hidden={true}
-          style={{ width: 670, height: 620, borderColor: "red" }}
+          style={{ width: 670, height: 580, borderColor: "red" }}
           type="inner"
         >
           <Space>
@@ -193,6 +193,11 @@ const ProjectListDetails = ({
           <Card style={{ width: 620, height: 100, borderColor: "red" }}>
             {goals_objectives}
           </Card>
+          <Space style={{ paddingTop: 20, paddingLeft: 263 }}>
+            <Button>Print Project</Button>
+            <Button>Save Project</Button>
+            <Button type="danger">Express Interest</Button>
+          </Space>
         </Card>
       </Content>
     </Layout>
