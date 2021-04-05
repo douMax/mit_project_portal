@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Layout, Card, Select, Button, Space } from "antd";
+import SearchNSort from "./SearchNSort";
 
 const { Content, Sider } = Layout;
 const { Option } = Select;
@@ -38,6 +39,8 @@ const ClientName = styled.nav`
 `;
 
 let projectId = "1";
+let detsId = "dets1";
+let newDetsId = "dets1";
 
 const ProjectListDetails = ({
   projId,
@@ -56,14 +59,20 @@ const ProjectListDetails = ({
   goals_objectives,
 }) => {
   const changeBorderRed = () => {
+    //let detsId = "dets" + projId;
     if (projectId === projId) {
       document.getElementById(projectId).style.borderColor = "red";
+      detsId = "dets" + projId;
+      document.getElementById(detsId).hidden = false;
     }
     if (projectId !== projId) {
-      console.log(projectId);
       document.getElementById(projectId).style.borderColor = "white";
+      document.getElementById(detsId).hidden = true;
+      newDetsId = "dets" + projId;
       document.getElementById(projId).style.borderColor = "red";
+      document.getElementById(newDetsId).hidden = false;
       projectId = projId;
+      detsId = newDetsId;
     }
   };
 
@@ -108,10 +117,9 @@ const ProjectListDetails = ({
               {client}
             </ClientName>
           </Space>
-          ,
         </Card>
       </Sider>
-      {/*<Content
+      <Content
         style={{
           background: "#f0f0f0",
           paddingLeft: "10px",
@@ -119,8 +127,14 @@ const ProjectListDetails = ({
         }}
         width={710}
       >
-        <Card style={{ width: 670, height: 150 }}></Card>
-      </Content>*/}
+        <Card
+          id={"dets" + projId}
+          hidden={true}
+          style={{ width: 670, height: 480 }}
+        >
+          {title}
+        </Card>
+      </Content>
     </Layout>
   );
 };
