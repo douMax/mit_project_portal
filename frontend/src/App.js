@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignupPage/";
+import ClientSignUp from "./components/Industryclient";
 import styled from "styled-components";
 
 let isLogged = true;
@@ -15,7 +16,7 @@ function App() {
   return (
     <AppContainer>
       {isLogged ? <Header /> : <LandingPage />}
-      {!isSignedUp ? <SignUp /> : <div>COntent</div>}
+      {!isSignedUp ? <ClientSignUp /> : <div>COntent</div>}
     </AppContainer>
   );
 }
