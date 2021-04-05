@@ -58,19 +58,29 @@ const ProjectListDetails = ({
   resources,
   goals_objectives,
 }) => {
+  let isClicked = false;
+
   const changeBorderRed = () => {
-    //let detsId = "dets" + projId;
     if (projectId === projId) {
       document.getElementById(projectId).style.borderColor = "red";
       detsId = "dets" + projId;
-      document.getElementById(detsId).hidden = false;
+      isClicked
+        ? (document.getElementById(detsId).hidden = true)
+        : (document.getElementById(detsId).hidden = false);
+      isClicked = !isClicked;
     }
     if (projectId !== projId) {
       document.getElementById(projectId).style.borderColor = "white";
       document.getElementById(detsId).hidden = true;
       newDetsId = "dets" + projId;
       document.getElementById(projId).style.borderColor = "red";
-      document.getElementById(newDetsId).hidden = false;
+      //document.getElementById(newDetsId).hidden = false;
+
+      isClicked
+        ? (document.getElementById(newDetsId).hidden = true)
+        : (document.getElementById(newDetsId).hidden = false);
+      isClicked = !isClicked;
+
       projectId = projId;
       detsId = newDetsId;
     }
@@ -94,6 +104,7 @@ const ProjectListDetails = ({
             width: 620,
             height: 180,
           }}
+          type="inner"
           hoverable="true"
         >
           <Space>
@@ -130,7 +141,7 @@ const ProjectListDetails = ({
         <Card
           id={"dets" + projId}
           hidden={true}
-          style={{ width: 670, height: 480 }}
+          style={{ width: 670, height: 430 }}
         >
           {title}
         </Card>

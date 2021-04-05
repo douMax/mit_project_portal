@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Layout } from "antd";
+import { Layout, Space } from "antd";
 
 import ProjectListDetails from "./ProjectListDetails";
 import SearchNSort from "./SearchNSort";
