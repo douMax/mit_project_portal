@@ -1,11 +1,13 @@
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignupPage/";
-import ClientSignUp from "./components/Industryclient";
+import BrowseProjects from "./components/BrowseProjects";
+
+
 import styled from "styled-components";
 
 let isLogged = true;
-let isSignedUp = false;
+let isSignedUp = true;
 
 // camal case
 const AppContainer = styled.div`
@@ -16,7 +18,8 @@ function App() {
   return (
     <AppContainer>
       {isLogged ? <Header /> : <LandingPage />}
-      {!isSignedUp ? <ClientSignUp /> : <div>COntent</div>}
+      {!isSignedUp ? <SignUp /> : <BrowseProjects />}
+
     </AppContainer>
   );
 }

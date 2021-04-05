@@ -1,14 +1,22 @@
 import React from "react";
-import { Button } from 'antd';
+import { Button } from "antd";
 
 const StudentNavLinks = () => {
   return (
-      <div className="nav-links" >
-       <Button danger type="link" size="large">Staff Dashboards</Button>
-       <Button danger type="link" size="large">Browse Projects</Button>
-       <Button danger type="link" size="large">Project Showcase</Button>
-       <Button danger size="large">+ New Project</Button>
-      </div>
+    <div className="nav-links">
+      <Button danger type="link" size="small">
+        Staff Dashboards
+      </Button>
+      <Button danger type="link" size="small">
+        Browse Projects
+      </Button>
+      <Button danger type="link" size="small">
+        Project Showcase
+      </Button>
+      <Button danger type="link" size="small">
+        +New Project
+      </Button>
+    </div>
   );
 };
 

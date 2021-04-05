@@ -3,7 +3,6 @@ import Logo from "./Logo";
 import StaffNavLinks from "./StaffNavLinks";
 import StudentNavLinks from "./StudentNavLinks";
 import HeaderAvatar from "./HeaderAvatar";
-import { Space } from "antd";
 import styled from "styled-components";
 
 const isStudent = false;
@@ -14,8 +13,8 @@ const HeaderContainer = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: ${props => (props.theme === "dark" ? "white" : "red")};
-  background-color: ${props => (props.theme === "dark" ? "black" : "white")};
+  color: ${(props) => (props.theme === "dark" ? "white" : "red")};
+  background-color: ${(props) => (props.theme === "dark" ? "black" : "white")};
 `;
 
 const Header = () => {
