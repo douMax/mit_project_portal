@@ -1,3 +1,4 @@
+const { findByIdAndUpdate } = require("../models/project.model");
 const Project = require("../models/project.model");
 
 exports.create = async (req, res) => {
@@ -32,4 +33,44 @@ exports.findOneById = async (req, res) => {
   }
 };
 
+exports.update= async (req,res)  => {
+const {projectsId}=req.params
+try {
+  const updatedproject= await Project.findByIdAndUpdate(projectsId,req.body,{
+    new:true,
+  })
+  res.status(203).send(updatedproject);
+} catch (err) {
+  if(err.kind === "ObjectId") {
+    return res.status(404).send ({
+      message: 'Project not found with Id ${projectId}',
+    });
+  }
+  console.log(err);
+  return res.status(500).send({
+    message:'Internal server error',
+  });
+
+
+  
+}
+};
+
+exports.delete = async(req,res) => {
+  const {projectsId} =req.params
+  try {
+    const project = await Project.findByIdAndRemove(projectsId)
+    return res.status(200).send("Project is deleted")
+  } catch (err) {
+    if(err.kind === "ObjectId") {
+      return res.status(404).send ({
+        message: 'Project not found with Id ${projectId}',
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message:'Internal server error',
+    });
+  }
+}
 //find one and update
