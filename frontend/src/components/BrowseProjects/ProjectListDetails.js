@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { Layout, Card, Select, Button, Space, Switch } from "antd";
 import SearchNSort from "./SearchNSort";
@@ -76,6 +76,7 @@ const ProjectListDetails = ({
       isClicked
         ? (document.getElementById(detsId).hidden = true)
         : (document.getElementById(detsId).hidden = false);
+      document.getElementById(newDetsId).scrollIntoView();
       isClicked = !isClicked;
     }
     if (projectId !== projId) {
@@ -88,6 +89,7 @@ const ProjectListDetails = ({
       isClicked
         ? (document.getElementById(newDetsId).hidden = true)
         : (document.getElementById(newDetsId).hidden = false);
+      document.getElementById(newDetsId).scrollIntoView();
       isClicked = !isClicked;
 
       projectId = projId;
