@@ -45,10 +45,10 @@ const CommonFields = () => {
       <Form.Item label="User Name">
         <Input />
       </Form.Item>
-      <ProfilePicUpload />
       <Form.Item label="MIT Email Address">
         <Input />
       </Form.Item>
+      <ProfilePicUpload />
       <Form.Item label="Personal Email Address">
         <Input />
       </Form.Item>
