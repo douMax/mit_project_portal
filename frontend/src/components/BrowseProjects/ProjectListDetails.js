@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Layout, Card, Select, Button, Space, Switch } from "antd";
 import SearchNSort from "./SearchNSort";
@@ -132,7 +132,6 @@ const ProjectListDetails = ({
                 <Switch
                   checkedChildren="Retract"
                   unCheckedChildren="Expand"
-                  defaultunChecked
                   onClick={changeBorderRed}
                 />
               </Space>
