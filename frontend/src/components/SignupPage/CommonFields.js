@@ -1,6 +1,5 @@
 import React from "react";
 import ProfilePicUpload from "./ProfilePicUpload";
-
 import {
   Form,
   Input,
@@ -14,7 +13,6 @@ import {
   TreeSelect,
   Switch,
 } from "antd";
-
 const CommonFields = () => {
   return (
     <Form
@@ -58,5 +56,4 @@ const CommonFields = () => {
     </Form>
   );
 };
-
 export default CommonFields;
