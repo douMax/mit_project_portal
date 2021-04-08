@@ -82,7 +82,7 @@ const BrowseProjects = () => {
   ]);
 
   return (
-    <Layout>
+    <Layout style={{ background: "#f0f0f0" }}>
       <PageTitle>Browse Projects</PageTitle>
       <SearchNSort />
       <Layout style={{ background: "#f0f0f0" }}>

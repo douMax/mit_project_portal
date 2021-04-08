@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { Layout, Card, Select, Button, Space } from "antd";
+import { Layout, Card, Select, Button, Space, Switch } from "antd";
 import SearchNSort from "./SearchNSort";
 
 const { Content, Sider } = Layout;
@@ -76,6 +76,7 @@ const ProjectListDetails = ({
       isClicked
         ? (document.getElementById(detsId).hidden = true)
         : (document.getElementById(detsId).hidden = false);
+      document.getElementById(newDetsId).scrollIntoView();
       isClicked = !isClicked;
     }
     if (projectId !== projId) {
@@ -88,6 +89,7 @@ const ProjectListDetails = ({
       isClicked
         ? (document.getElementById(newDetsId).hidden = true)
         : (document.getElementById(newDetsId).hidden = false);
+      document.getElementById(newDetsId).scrollIntoView();
       isClicked = !isClicked;
 
       projectId = projId;
@@ -129,13 +131,11 @@ const ProjectListDetails = ({
                 </Button>
                 <Button type="text">Group: {assigned_students}/5</Button>
                 <Button type="text">EOIs: {eoi}</Button>
-                <Button
-                  style={{ background: "turquoise", color: "white" }}
-                  danger
+                <Switch
+                  checkedChildren="Retract"
+                  unCheckedChildren="Expand"
                   onClick={changeBorderRed}
-                >
-                  <i className="fas fa-plus"></i>
-                </Button>
+                />
               </Space>
             </Content>
             <ClientName>
