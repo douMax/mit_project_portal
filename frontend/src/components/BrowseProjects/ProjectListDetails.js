@@ -7,30 +7,22 @@ const { Content, Sider } = Layout;
 const { Option } = Select;
 
 const TopicsHeader = styled.nav`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   color: #ff4d4f;
 `;
 
 const ProjectTitle = styled.nav`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: bold;
   padding-bottom: 5px;
 `;
 
 const ProjectDescription = styled.nav`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   padding-bottom: 10px;
 `;
 
 const ClientName = styled.nav`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -39,8 +31,6 @@ const ClientName = styled.nav`
 `;
 
 const BackgroundTitle = styled.nav`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-weight: bold;
   padding-bottom: 5px;

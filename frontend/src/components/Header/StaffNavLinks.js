@@ -1,21 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "antd";
+import ROUTES from "../../utils/routes";
 
 const StudentNavLinks = () => {
   return (
     <div className="nav-links">
-      <Button danger type="link" size="small">
-        Staff Dashboards
-      </Button>
-      <Button danger type="link" size="small">
-        Browse Projects
-      </Button>
-      <Button danger type="link" size="small">
-        Project Showcase
-      </Button>
-      <Button danger type="link" size="small">
-        +New Project
-      </Button>
+      <Link to="/">Staff Dashboards</Link>
+
+      <Link to={ROUTES.PROJECTS}>Browse Projects</Link>
+
+      <Link to="/">Project Showcase</Link>
+
+      <Link to={ROUTES.NEW_PROJECT}>+New Project</Link>
     </div>
   );
 };

@@ -2,6 +2,9 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
+import ClientSignUp from "./components/Industryclient";
+import { BrowserRouter, Route } from "react-router-dom";
+import ROUTES from "./utils/routes";
 
 import styled from "styled-components";
 
@@ -15,10 +18,14 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer>
-      {isLogged ? <Header /> : <LandingPage />}
-      {!isSignedUp ? <SignUp /> : <BrowseProjects />}
-    </AppContainer>
+    <BrowserRouter>
+      <AppContainer>
+        {isLogged ? <Header /> : <LandingPage />}
+        <Route exact path={ROUTES.PROJECTS} component={BrowseProjects} />
+        <Route exact path={ROUTES.SIGN_UP} component={ClientSignUp} />
+        <Route exact path={ROUTES.LOG_IN} component={LandingPage} />
+      </AppContainer>
+    </BrowserRouter>
   );
 }
 
