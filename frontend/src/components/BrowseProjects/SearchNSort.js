@@ -10,7 +10,7 @@ const SearchNSort = () => {
   return (
     <Layout style={{ background: "#f0f0f0" }}>
       <Search
-        placeholder="input search text"
+        placeholder="Search Projects"
         style={{ width: 620, marginLeft: 30, background: "#f0f0f0" }}
       />
       <Space
