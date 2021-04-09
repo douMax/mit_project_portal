@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Select, Button, Col, Row } from "antd";
+import { Form, Radio, Button, Col, Row } from "antd";
 import CommonFields from "./CommonFields";
 import ProfilePicUploader from "./ProfilePicUploader";
 
@@ -16,9 +16,28 @@ const StudentSignUp = () => {
       layout="horizontal"
       onFinish={handleFinish}
     >
-      <Row gutter={24}>
+      <Row gutter={36}>
         <Col span={12}>
           <CommonFields />
+          <Form.Item label="Course Enrolment" name="courseEnrolment">
+            <Radio.Group
+              options={[
+                { label: "Yes", value: true },
+                { label: "No", value: false },
+              ]}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Capstone Projects Enrolment"
+            name="capstoneProjectsEnrolment"
+          >
+            <Radio.Group
+              options={[
+                { label: "Yes", value: true },
+                { label: "No", value: false },
+              ]}
+            />
+          </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item name="profilePic">

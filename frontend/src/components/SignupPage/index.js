@@ -15,10 +15,12 @@ const SignUpPage = props => {
       break;
     case USERTYPES.STUDENT:
       SignUpForm = StudentSignUp;
+      break;
     default:
       SignUpForm = StaffSignUp;
       break;
   }
+
   return (
     <div>
       <Title>

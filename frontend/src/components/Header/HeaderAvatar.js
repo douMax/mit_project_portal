@@ -1,15 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import ROUTES from "../../utils/routes";
 import { Avatar, Badge, Menu, Space, Dropdown } from "antd";
 
 const menu = (
   <Menu>
     <Menu.Item>
-      {" "}
-      <a href="/signup">Sign Up Page</a>
+      <Link to={ROUTES.DEV_SETTINGS}>Dev</Link>
     </Menu.Item>
     <Menu.Item>
-      {" "}
-      <a href="/login">Landing Page</a>
+      <Link to={ROUTES.LOG_IN}>Login</Link>
+    </Menu.Item>
+    <Menu.Item>
+      <Link to={ROUTES.SIGN_UP}>Signup</Link>
     </Menu.Item>
   </Menu>
 );
