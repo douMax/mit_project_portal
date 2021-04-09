@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Layout, Space } from "antd";
 
-import ProjectListDetails from "./ProjectListDetails";
+import ProjectListDetail from "./ProjectListDetail";
 import SearchNSort from "./SearchNSort";
 
 const PageTitle = styled.nav`
@@ -87,7 +87,7 @@ const BrowseProjects = () => {
       <SearchNSort />
       <Layout style={{ background: "#f0f0f0" }}>
         {projects.map((project) => (
-          <ProjectListDetails
+          <ProjectListDetail
             projId={project.projId}
             title={project.title}
             topic={project.topic}
