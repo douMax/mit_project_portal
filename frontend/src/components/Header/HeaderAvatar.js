@@ -12,6 +12,7 @@ const HeaderAvatar = () => {
             <Avatar
               onMouseOver={hoverOver}
               onMouseOut={hoverOut}
+              onClick={() => alert("hello")}
               src="offspring_logo.jpg"
             />
           </Badge>
