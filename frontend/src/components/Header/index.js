@@ -4,6 +4,7 @@ import StaffNavLinks from "./StaffNavLinks";
 import StudentNavLinks from "./StudentNavLinks";
 import HeaderAvatar from "./HeaderAvatar";
 import styled from "styled-components";
+import { USERTYPES } from "../../utils/APP_CONSTANTS";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -15,12 +16,22 @@ const HeaderContainer = styled.header`
   background-color: #fff;
 `;
 
-const Header = () => {
+const Header = props => {
+  let NavLinks;
+  switch (props.userType) {
+    case USERTYPES.STUDENT:
+      NavLinks = StudentNavLinks;
+      break;
+    case USERTYPES.STAFF:
+      NavLinks = StaffNavLinks;
+    default:
+      NavLinks = StaffNavLinks;
+  }
   return (
     <HeaderContainer>
       <Logo />
-      <StaffNavLinks />
-      <HeaderAvatar />
+      <NavLinks />
+      <HeaderAvatar username={props.username} />
     </HeaderContainer>
   );
 };

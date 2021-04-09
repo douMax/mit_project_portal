@@ -1,20 +1,34 @@
 import React, { useState } from "react";
 import StudentSignUp from "./StudentSignUp";
 import StaffSignUp from "./StaffSignUp";
-import CommonFields from "./CommonFields";
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 
 import { Typography } from "antd";
 
 const { Title, Paragraph } = Typography;
 
-const SignUpPage = () => {
+const SignUpPage = props => {
+  let SignUpForm;
+  switch (props.userType) {
+    case USERTYPES.STAFF:
+      SignUpForm = StaffSignUp;
+      break;
+    case USERTYPES.STUDENT:
+      SignUpForm = StudentSignUp;
+    default:
+      SignUpForm = StaffSignUp;
+      break;
+  }
   return (
     <div>
-      <Title>Complete {USERTYPES.STUDENT} Registration</Title>
+      <Title>
+        {props.userType.charAt(0).toUpperCase() + props.userType.slice(1)}{" "}
+        registration
+      </Title>
       <Paragraph>
-        Double check your informatio and complete the registration
+        Double check your information and complete the registration
       </Paragraph>
+      <SignUpForm />
     </div>
   );
 };
