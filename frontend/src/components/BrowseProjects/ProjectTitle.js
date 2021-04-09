@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const PROJECT_TITLE = styled.div`
+const TitleContainer = styled.div`
   font-size: 16px;
   font-weight: bold;
   padding-bottom: 5px;
 `;
 
-const ProjectTitle = (title) => {
-  return <PROJECT_TITLE>{title.title}</PROJECT_TITLE>;
+const ProjectTitle = title => {
+  return <TitleContainer>{title.title}</TitleContainer>;
 };
 
 export default ProjectTitle;
