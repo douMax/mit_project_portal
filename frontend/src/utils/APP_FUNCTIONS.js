@@ -1,5 +1,3 @@
-import React from "react";
-
 const hoverOver = (e) => {
   e.target.style.opacity = "0.3";
   e.target.style.cursor = "pointer";

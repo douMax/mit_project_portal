@@ -16,7 +16,7 @@ const PageTitle = styled.nav`
 `;
 
 const BrowseProjects = () => {
-  const [projects, setProjects] = useState([
+  const [projects] = useState([
     {
       projId: "1",
       title: "Automated Web Portal for Capstone Project",
@@ -88,6 +88,7 @@ const BrowseProjects = () => {
       <Layout style={{ background: "#f0f0f0" }}>
         {projects.map((project) => (
           <ProjectListDetail
+            key={project.projId}
             projId={project.projId}
             title={project.title}
             topic={project.topic}

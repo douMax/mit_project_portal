@@ -18,12 +18,31 @@ const HeaderContainer = styled.nav`
 `;
 
 const Header = () => {
+  const [notifs, setNotifs] = useState([
+    {
+      title: "Student added to project.",
+      description:
+        "Student 'Don Quixote' was added to project 'Data Scrapping La Mancha'.",
+      type: "success",
+      //type affects the icon which is displayed in the notification.
+      //type can be success, info, warning, error.
+    },
+    {
+      title: "New Project Prosal was submitted.",
+      description:
+        "Project 'Data Scrapping Fables' was added by Client 'La Fontaine' and requires approval.",
+      type: "info",
+      //type affects the icon which is displayed in the notification.
+      //type can be success, info, warning, error.
+    },
+  ]);
+
   return (
     <HeaderContainer theme="light">
       <Logo />
       {isStaff && <StaffNavLinks />}
       {isStudent && <StudentNavLinks />}
-      <HeaderAvatar />
+      <HeaderAvatar notifs={notifs} />
     </HeaderContainer>
   );
 };
