@@ -16,22 +16,34 @@ const HeaderContainer = styled.header`
   background-color: #fff;
 `;
 
-const Header = props => {
-  let NavLinks;
-  switch (props.userType) {
-    case USERTYPES.STUDENT:
-      NavLinks = StudentNavLinks;
-      break;
-    case USERTYPES.STAFF:
-      NavLinks = StaffNavLinks;
-    default:
-      NavLinks = StaffNavLinks;
-  }
+const Header = () => {
+  const [notifs] = useState([
+    {
+      id: "1",
+      title: "Student added to project.",
+      description:
+        "Student 'Don Quixote' was added to project 'Data Scrapping La Mancha'.",
+      type: "success",
+      //type affects the icon which is displayed in the notification.
+      //type can be success, info, warning, error.
+    },
+    {
+      id: "2",
+      title: "New Project Prosal was submitted.",
+      description:
+        "Project 'Data Scrapping Fables' was added by Client 'La Fontaine' and requires approval.",
+      type: "info",
+      //type affects the icon which is displayed in the notification.
+      //type can be success, info, warning, error.
+    },
+  ]);
+
   return (
     <HeaderContainer>
       <Logo />
-      <NavLinks />
-      <HeaderAvatar username={props.username} />
+      {isStaff && <StaffNavLinks />}
+      {isStudent && <StudentNavLinks />}
+      <HeaderAvatar notifs={notifs} />
     </HeaderContainer>
   );
 };

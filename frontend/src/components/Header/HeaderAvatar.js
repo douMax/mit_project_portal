@@ -1,29 +1,22 @@
-import React from "react";
-import { Avatar, Badge, Menu, Space, Dropdown } from "antd";
+import React, { useState } from "react";
+import { Avatar, Badge, Space, Button, Drawer } from "antd";
+import NotificationsDrawer from "./NotificationsDrawer";
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      {" "}
-      <a href="/signup">Sign Up Page</a>
-    </Menu.Item>
-    <Menu.Item>
-      {" "}
-      <a href="/login">Landing Page</a>
-    </Menu.Item>
-  </Menu>
-);
+const HeaderAvatar = notifs => {
+  //console.log(notifs.notifs.length);
 
-const HeaderAvatar = props => {
   return (
-    <Space>
-      <Dropdown overlay={menu}>
-        <Badge count={1}>
+    <div>
+      <span className="avatar-item">
+        <Space>
           <Avatar src="offspring_logo.jpg" />
-        </Badge>
-      </Dropdown>
-      {props.username}
-    </Space>
+          User Name
+          <Badge overflowCount={9} count={notifs.notifs.length}>
+            <NotificationsDrawer notifs={notifs.notifs} />
+          </Badge>
+        </Space>
+      </span>
+    </div>
   );
 };
 
