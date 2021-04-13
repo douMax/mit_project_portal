@@ -4,7 +4,6 @@ import StaffNavLinks from "./StaffNavLinks";
 import StudentNavLinks from "./StudentNavLinks";
 import HeaderAvatar from "./HeaderAvatar";
 import styled from "styled-components";
-/////
 
 const isStudent = false;
 const isStaff = true;
