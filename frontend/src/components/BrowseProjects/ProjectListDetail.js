@@ -64,7 +64,7 @@ const ProjectListDetail = ({ project }) => {
   };
 
   return (
-    <Layout key={projId}>
+    <Layout>
       <Sider
         style={{
           background: "#f0f0f0",
