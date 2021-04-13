@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Input, Select, Button, Col, Row, AutoComplete } from "antd";
+import { Form, Select, Button, Col, Row } from "antd";
 import CommonFields from "./CommonFields";
 import ProfilePicUploader from "./ProfilePicUploader";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";

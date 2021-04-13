@@ -1,32 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import ROUTES from "../../utils/routes";
-import { Avatar, Badge, Menu, Space, Dropdown } from "antd";
+import React, { useState } from "react";
+import { Avatar, Badge, Space, Button, Drawer } from "antd";
+import NotificationsDrawer from "./NotificationsDrawer";
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <Link to={ROUTES.DEV_SETTINGS}>Dev</Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to={ROUTES.LOG_IN}>Login</Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to={ROUTES.SIGN_UP}>Signup</Link>
-    </Menu.Item>
-  </Menu>
-);
+const HeaderAvatar = notifs => {
+  //console.log(notifs.notifs.length);
 
-const HeaderAvatar = props => {
   return (
-    <Space>
-      <Dropdown overlay={menu}>
-        <Badge count={1}>
+    <div>
+      <span className="avatar-item">
+        <Space>
           <Avatar src="offspring_logo.jpg" />
-        </Badge>
-      </Dropdown>
-      {props.username}
-    </Space>
+          User Name
+          <Badge overflowCount={9} count={notifs.notifs.length}>
+            <NotificationsDrawer notifs={notifs.notifs} />
+          </Badge>
+        </Space>
+      </span>
+    </div>
   );
 };
 

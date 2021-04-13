@@ -15,22 +15,24 @@ let projectId = "1";
 let detsId = "dets1";
 let newDetsId = "dets1";
 
-const ProjectListDetail = ({
-  projId,
-  title,
-  topic,
-  description,
-  status,
-  year,
-  trimester,
-  assigned_students,
-  eoi,
-  client,
-  logo,
-  background_rationale,
-  resources,
-  goals_objectives,
-}) => {
+const ProjectListDetail = ({ project }) => {
+  const {
+    projId,
+    title,
+    topic,
+    description,
+    status,
+    year,
+    trimester,
+    assigned_students,
+    eoi,
+    client,
+    logo,
+    background_rationale,
+    resources,
+    goals_objectives,
+  } = project;
+
   let isClicked = false;
 
   const changeBorderRed = () => {
@@ -62,7 +64,7 @@ const ProjectListDetail = ({
   };
 
   return (
-    <Layout key={projId}>
+    <Layout>
       <Sider
         style={{
           background: "#f0f0f0",
