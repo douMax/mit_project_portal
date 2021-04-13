@@ -41,8 +41,8 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
-      {isStaff && <StaffNavLinks />}
-      {isStudent && <StudentNavLinks />}
+      {USERTYPES.STAFF && <StaffNavLinks />}
+      {USERTYPES.STUDENT && <StudentNavLinks />}
       <HeaderAvatar notifs={notifs} />
     </HeaderContainer>
   );
