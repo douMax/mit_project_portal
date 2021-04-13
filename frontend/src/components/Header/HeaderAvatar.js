@@ -1,48 +1,19 @@
-import React from "react";
-import { Avatar, Badge, Space, notification, Button } from "antd";
-import { hoverOver } from "../../utils/APP_FUNCTIONS";
-import { hoverOut } from "../../utils/APP_FUNCTIONS";
+import React, { useState } from "react";
+import { Avatar, Badge, Space, Button, Drawer } from "antd";
+import NotificationsDrawer from "./NotificationsDrawer";
 
 const HeaderAvatar = (notifs) => {
-  const showNotifications = () => {
-    const key = `open${Date.now()}`;
-    const btn = (
-      <Button
-        type="primary"
-        danger
-        size="small"
-        onClick={() => notification.close(key)}
-      >
-        Delete Notification
-      </Button>
-    );
-
-    /**/
-    notifs.notifs.map((notif) =>
-      notification.open({
-        //type affects the icon which is displayed in the notification.
-        //type can be success, info, warning, error.
-        message: notif.title, //notif.title,
-        description: notif.description, //notif.description,
-        btn,
-        key,
-      })
-    );
-  };
+  //console.log(notifs.notifs.length);
 
   return (
     <div>
       <span className="avatar-item">
         <Space>
-          <Badge overflowCount={9} count={1}>
-            <Avatar
-              onMouseOver={hoverOver}
-              onMouseOut={hoverOut}
-              onClick={showNotifications}
-              src="offspring_logo.jpg"
-            />
-          </Badge>
+          <Avatar src="offspring_logo.jpg" />
           User Name
+          <Badge overflowCount={9} count={notifs.notifs.length}>
+            <NotificationsDrawer notifs={notifs.notifs} />
+          </Badge>
         </Space>
       </span>
     </div>

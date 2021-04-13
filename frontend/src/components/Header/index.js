@@ -18,8 +18,9 @@ const HeaderContainer = styled.nav`
 `;
 
 const Header = () => {
-  const [notifs, setNotifs] = useState([
+  const [notifs] = useState([
     {
+      id: "1",
       title: "Student added to project.",
       description:
         "Student 'Don Quixote' was added to project 'Data Scrapping La Mancha'.",
@@ -28,6 +29,7 @@ const Header = () => {
       //type can be success, info, warning, error.
     },
     {
+      id: "2",
       title: "New Project Prosal was submitted.",
       description:
         "Project 'Data Scrapping Fables' was added by Client 'La Fontaine' and requires approval.",
