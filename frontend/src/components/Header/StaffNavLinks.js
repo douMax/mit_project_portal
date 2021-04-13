@@ -1,23 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "antd";
+import ROUTES from "../../utils/routes";
 
-const StudentNavLinks = () => {
+import NavContainer from "./NavContainer";
+
+const StaffNavLinks = () => {
   return (
-    <div className="nav-links">
-      <Button danger type="link" size="small">
-        Staff Dashboards
-      </Button>
-      <Button danger type="link" size="small">
-        Browse Projects
-      </Button>
-      <Button danger type="link" size="small">
-        Project Showcase
-      </Button>
-      <Button danger type="link" size="small">
-        +New Project
-      </Button>
-    </div>
+    <NavContainer>
+      <Link to="/">Dashboard</Link>
+      <Link to={ROUTES.PROJECTS}>Browse Projects</Link>
+
+      <Link to={ROUTES.NEW_PROJECT}>
+        <Button type="danger">+ New Project</Button>
+      </Link>
+    </NavContainer>
   );
 };
 
-export default StudentNavLinks;
+export default StaffNavLinks;

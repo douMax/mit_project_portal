@@ -1,59 +1,32 @@
 import React from "react";
-import ProfilePicUpload from "./ProfilePicUpload";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Space,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-} from "antd";
+import { Form, Input, Select } from "antd";
+import { NAME_TITLES } from "../../utils/APP_CONSTANTS";
+
 const CommonFields = () => {
   return (
-    <Form
-      labelCol={{
-        span: 4,
-      }}
-      wrapperCol={{
-        span: 9,
-      }}
-      layout="horizontal"
-    >
-      <Form.Item label="Title">
-        <Select>
-          <Select.Option value="Miss">Miss</Select.Option>
-          <Select.Option value="Mr">Mr</Select.Option>
-          <Select.Option value="Mrs">Mrs</Select.Option>
-          <Select.Option value="Dr">Dr</Select.Option>
-          <Select.Option value="Prof">Prof</Select.Option>
-          <Select.Option value="A.Prof">A.Prof</Select.Option>
-        </Select>
+    <>
+      <Form.Item label="Title" name="nameTitle">
+        <Select options={NAME_TITLES}></Select>
       </Form.Item>
-      <Form.Item label="First Name">
+      <Form.Item label="First Name" name="firstName">
         <Input />
       </Form.Item>
-      <Form.Item label="Last Name">
+      <Form.Item label="Last Name" name="lastName">
         <Input />
       </Form.Item>
-      <Form.Item label="User Name">
+      <Form.Item label="User Name" name="username">
         <Input />
       </Form.Item>
-      <Form.Item label="MIT Email Address">
+      <Form.Item label="MIT Email Address" name="mitEmail">
         <Input />
       </Form.Item>
-      <ProfilePicUpload />
-      <Form.Item label="Personal Email Address">
+      <Form.Item label="Personal Email Address" name="personalEmail">
         <Input />
       </Form.Item>
-      <Form.Item label="Mobile Phone Number">
+      <Form.Item label="Mobile Phone Number" name="phoneNumber">
         <Input />
       </Form.Item>
-    </Form>
+    </>
   );
 };
 export default CommonFields;

@@ -1,44 +1,54 @@
 import React from "react";
 
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Space,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-} from "antd";
+import { Form, Radio, Button, Col, Row } from "antd";
+import CommonFields from "./CommonFields";
+import ProfilePicUploader from "./ProfilePicUploader";
 
 const StudentSignUp = () => {
+  const handleFinish = values => {
+    console.log(values);
+  };
+
   return (
     <Form
-      labelCol={{
-        span: 4,
-      }}
-      wrapperCol={{
-        span: 9,
-      }}
+      labelCol={{ span: 10 }}
+      wrapperCol={{ span: 14 }}
       layout="horizontal"
+      onFinish={handleFinish}
     >
-      <Form.Item label="MIT Student ID">
-        <Input />
-      </Form.Item>
-      <Form.Item label="Course Enrolment">
-        <Radio.Group>
-          <Radio value={1}>Yes</Radio>
-          <Radio value={2}>No</Radio>
-        </Radio.Group>
-      </Form.Item>
-      <Form.Item label="Capstone Projects Enrolment">
-        <Radio.Group>
-          <Radio value={3}>Yes</Radio>
-          <Radio value={4}>No</Radio>
-        </Radio.Group>
+      <Row gutter={36}>
+        <Col span={12}>
+          <CommonFields />
+          <Form.Item label="Course Enrolment" name="courseEnrolment">
+            <Radio.Group
+              options={[
+                { label: "Yes", value: true },
+                { label: "No", value: false },
+              ]}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Capstone Projects Enrolment"
+            name="capstoneProjectsEnrolment"
+          >
+            <Radio.Group
+              options={[
+                { label: "Yes", value: true },
+                { label: "No", value: false },
+              ]}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item name="profilePic">
+            <ProfilePicUploader />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Form.Item wrapperCol={{ offset: 5, span: 7 }}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
       </Form.Item>
     </Form>
   );

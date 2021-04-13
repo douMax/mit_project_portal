@@ -1,64 +1,38 @@
 import React, { useState } from "react";
 import StudentSignUp from "./StudentSignUp";
 import StaffSignUp from "./StaffSignUp";
-import CommonFields from "./CommonFields";
+import { USERTYPES } from "../../utils/APP_CONSTANTS";
 
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Space,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-} from "antd";
+import { Typography } from "antd";
 
-let isStudent = false;
+const { Title, Paragraph } = Typography;
 
-const SignUp = () => {
-  const tailLayout = {
-    wrapperCol: {
-      offset: 10,
-      span: 16,
-    },
-  };
+const SignUpPage = props => {
+  let SignUpForm;
+  switch (props.userType) {
+    case USERTYPES.STAFF:
+      SignUpForm = StaffSignUp;
+      break;
+    case USERTYPES.STUDENT:
+      SignUpForm = StudentSignUp;
+      break;
+    default:
+      SignUpForm = StaffSignUp;
+      break;
+  }
 
   return (
     <div>
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 9,
-        }}
-        layout="horizontal"
-      >
-        {isStudent ? (
-          <div className="page-title">Student Sign Up</div>
-        ) : (
-          <div className="page-title">Staff Sign Up</div>
-        )}
-
-        <CommonFields />
-        {isStudent ? <StudentSignUp /> : <StaffSignUp />}
-        <Form.Item {...tailLayout}>
-          <Space>
-            <Button danger htmlType="button">
-              Cancel
-            </Button>
-            <Button type="danger" htmlType="submit">
-              Submit
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+      <Title>
+        {props.userType.charAt(0).toUpperCase() + props.userType.slice(1)}{" "}
+        registration
+      </Title>
+      <Paragraph>
+        Double check your information and complete the registration
+      </Paragraph>
+      <SignUpForm />
     </div>
   );
 };
 
-export default SignUp;
+export default SignUpPage;
