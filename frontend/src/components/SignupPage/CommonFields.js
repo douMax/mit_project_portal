@@ -6,7 +6,7 @@ const CommonFields = () => {
   return (
     <>
       <Form.Item label="Title" name="nameTitle">
-        <Select options={NAME_TITLES}></Select>
+        <Select options={NAME_TITLES} />
       </Form.Item>
       <Form.Item label="First Name" name="firstName">
         <Input />

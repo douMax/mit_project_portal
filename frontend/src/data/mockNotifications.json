@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "title": "Student added to project.",
+    "description": "Student 'Don Quixote' was added to project 'Data Scrapping La Mancha'.",
+    "type": "success"
+  },
+  {
+    "id": "2",
+    "title": "New Project Prosal was submitted.",
+    "description": "Project 'Data Scrapping Fables' was added by Client 'La Fontaine' and requires approval.",
+    "type": "info"
+  }
+]

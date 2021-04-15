@@ -22,7 +22,7 @@ const StaffSignUp = () => {
         <Col span={12}>
           <CommonFields />
           <Form.Item label="Job Position" name="jobPosition">
-            <Select options={STAFF_JOB_POSITIONS}></Select>
+            <Select options={STAFF_JOB_POSITIONS} />
           </Form.Item>
           <Form.Item label="Interested Topics" name="interestedTopics">
             <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />

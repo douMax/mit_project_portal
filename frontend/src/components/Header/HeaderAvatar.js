@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Avatar, Badge, Space, Button, Drawer } from "antd";
 import NotificationsDrawer from "./NotificationsDrawer";
+import Routes from "../../utils/routes";
 
 const HeaderAvatar = notifs => {
   //console.log(notifs.notifs.length);
