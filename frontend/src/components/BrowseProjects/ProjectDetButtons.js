@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Space, Button } from "antd";
 
-import ROUTES from "../../utils/routes";
-
-const ProjectDetButtons = () => {
+const ProjectDetButtons = ({ project }) => {
   return (
     <Space style={{ paddingTop: 20 }}>
       <Button
@@ -25,7 +23,12 @@ const ProjectDetButtons = () => {
       >
         Save Project
       </Button>
-      <Link to={ROUTES.NEW_EOI}>
+      <Link
+        to={{
+          pathname: `/projects/${project.projId}/new-eoi`,
+          state: { test: "hello" },
+        }}
+      >
         <Button
           style={{
             fontWeight: "bold",
