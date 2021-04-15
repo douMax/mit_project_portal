@@ -16,7 +16,7 @@ const LimitDescription = styled.div`
 const eoi_limit = EOI_LIMIT.value;
 const eoi_left = eoi_limit - mockEOIs.length;
 
-const ProjectSummary = () => {
+const EOILeft = () => {
   return (
     <Form>
       <PageTitle>Expression Of Interest</PageTitle>
@@ -30,4 +30,4 @@ const ProjectSummary = () => {
   );
 };
 
-export default ProjectSummary;
+export default EOILeft;
