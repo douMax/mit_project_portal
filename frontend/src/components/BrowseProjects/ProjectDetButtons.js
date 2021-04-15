@@ -4,9 +4,9 @@ import { Space, Button } from "antd";
 
 import ROUTES from "../../utils/routes";
 
-const ProjectDetButtons = () => {
+const ProjectDetButtons = (project) => {
   return (
-    <Space style={{ paddingTop: 20, paddingLeft: 170 }}>
+    <Space style={{ paddingTop: 20 }}>
       <Button
         style={{
           background: "#f0f0f0",
@@ -32,6 +32,7 @@ const ProjectDetButtons = () => {
             borderColor: "red",
           }}
           type="danger"
+          onClick={() => console.log(project)}
         >
           Express Interest
         </Button>

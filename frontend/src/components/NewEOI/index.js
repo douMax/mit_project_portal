@@ -1,15 +1,18 @@
 import React from "react";
-import { Row, Col, Card } from "antd";
+import { Row, Col } from "antd";
 import EOILeft from "./EOILeft";
+import ProjectSummary from "./ProjectSummary";
+
+import mockEOIs from "../../data/mockEOIs.json";
 
 const NewEOI = () => {
   return (
     <Row>
       <Col span={12}>
-        <EOILeft />
+        <EOILeft eoilen={mockEOIs.length} />
       </Col>
       <Col span={12}>
-        <Card bodyStyle={{ height: 125 }}></Card>
+        <ProjectSummary />
       </Col>
     </Row>
   );

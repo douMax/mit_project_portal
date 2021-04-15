@@ -61,7 +61,7 @@ const ProjectDetail = ({ project }) => {
       <Card style={sectionCardStyle}>{resources}</Card>
       <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
       <Card style={sectionCardStyle}>{goals_objectives}</Card>
-      <ProjectDetButtons />
+      <ProjectDetButtons project={project} />
     </div>
   );
 };

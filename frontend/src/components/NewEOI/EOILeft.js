@@ -3,20 +3,20 @@ import styled from "styled-components";
 import { Form } from "antd";
 
 import { EOI_LIMIT } from "../../utils/APP_CONSTANTS";
-import mockEOIs from "../../data/mockEOIs.json";
 
 const PageTitle = styled.h1`
   font-size: 36px;
+  padding-top: -10px;
 `;
 
 const LimitDescription = styled.div`
   font-size: 18px;
 `;
 
-const eoi_limit = EOI_LIMIT.value;
-const eoi_left = eoi_limit - mockEOIs.length;
-
-const EOILeft = () => {
+const EOILeft = (eoilen) => {
+  const eoi_limit = EOI_LIMIT.value;
+  const eoi_left = eoi_limit - eoilen.eoilen;
+  //console.log(eoilen.eoilen);
   return (
     <Form>
       <PageTitle>Expression Of Interest</PageTitle>
