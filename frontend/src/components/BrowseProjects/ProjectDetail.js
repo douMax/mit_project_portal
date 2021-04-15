@@ -4,6 +4,7 @@ import TopicsHeader from "./TopicsHeader";
 import ProjectTitle from "./ProjectTitle";
 import ProjectStats from "./ProjectStats";
 import ClientInfo from "./ClientInfo";
+import ProjectDetButtons from "./ProjectDetButtons";
 import { Card, Row, Col } from "antd";
 import { COLORS } from "../../utils/APP_CONSTANTS";
 
@@ -58,6 +59,7 @@ const ProjectDetail = ({ project }) => {
       <Card style={sectionCardStyle}>{resources}</Card>
       <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
       <Card style={sectionCardStyle}>{goals_objectives}</Card>
+      <ProjectDetButtons />
     </div>
   );
 };

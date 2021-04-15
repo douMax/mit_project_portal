@@ -1,10 +1,12 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { Space, Button } from "antd";
+
+import ROUTES from "../../utils/routes";
 
 const ProjectDetButtons = () => {
   return (
-    <Space style={{ paddingTop: 20, paddingLeft: 236 }}>
+    <Space style={{ paddingTop: 20, paddingLeft: 170 }}>
       <Button
         style={{
           background: "#f0f0f0",
@@ -23,15 +25,17 @@ const ProjectDetButtons = () => {
       >
         Save Project
       </Button>
-      <Button
-        style={{
-          fontWeight: "bold",
-          borderColor: "red",
-        }}
-        type="danger"
-      >
-        Express Interest
-      </Button>
+      <Link to={ROUTES.NEW_EOI}>
+        <Button
+          style={{
+            fontWeight: "bold",
+            borderColor: "red",
+          }}
+          type="danger"
+        >
+          Express Interest
+        </Button>
+      </Link>
     </Space>
   );
 };
