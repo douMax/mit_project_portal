@@ -6,7 +6,6 @@ import { EOI_LIMIT } from "../../utils/APP_CONSTANTS";
 
 const PageTitle = styled.h1`
   font-size: 36px;
-  padding-top: -10px;
 `;
 
 const LimitDescription = styled.div`
