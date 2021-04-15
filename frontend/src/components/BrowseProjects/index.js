@@ -28,7 +28,7 @@ const LeftPanelWrapper = styled.div`
 
 const BrowseProjects = () => {
   const [selected, setSelected] = useState(null);
-  const handleShowDetail = project => {
+  const handleShowDetail = (project) => {
     setSelected(project);
   };
   return (
@@ -37,8 +37,9 @@ const BrowseProjects = () => {
         <LeftPanelWrapper>
           <PageTitle>Browse Projects</PageTitle>
           <SearchNSort />
-          {mockProjects.map(project => (
+          {mockProjects.map((project) => (
             <ProjectListDetail
+              key={project.projId}
               isSelected={project.projId === (selected && selected.projId)}
               project={project}
               handleShowDetail={() => {
