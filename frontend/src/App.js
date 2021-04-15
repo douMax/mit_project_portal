@@ -48,6 +48,7 @@ const ContentContainer = styled.div`
 
 function App() {
   const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
+
   const handleToggleSettings = e => {
     dispatch({
       type: "set_user_type",
@@ -75,7 +76,10 @@ function App() {
             <LandingPage />
           </Route>
           <Route exact path={ROUTES.DEV_SETTINGS}>
-            <DevSettings onToggleSettings={handleToggleSettings} />
+            <DevSettings
+              userType={state.userType}
+              onToggleSettings={handleToggleSettings}
+            />
           </Route>
         </Switch>
       </ContentContainer>
