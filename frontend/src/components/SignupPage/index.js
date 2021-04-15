@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import StudentSignUp from "./StudentSignUp";
 import StaffSignUp from "./StaffSignUp";
+import IndustryClientSignUp from "./IndustryClientSignUp";
+
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 
 import { Typography } from "antd";
@@ -9,12 +11,16 @@ const { Title, Paragraph } = Typography;
 
 const SignUpPage = props => {
   let SignUpForm;
+
   switch (props.userType) {
     case USERTYPES.STAFF:
       SignUpForm = StaffSignUp;
       break;
     case USERTYPES.STUDENT:
       SignUpForm = StudentSignUp;
+      break;
+    case USERTYPES.INDUSTRY_CLIENT:
+      SignUpForm = IndustryClientSignUp;
       break;
     default:
       SignUpForm = StaffSignUp;

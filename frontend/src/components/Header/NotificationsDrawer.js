@@ -15,7 +15,7 @@ const NOTIF_DESCRIPTION = styled.div`
   font-size: 14px;
 `;
 
-const NotificationsDrawer = (notifs) => {
+const NotificationsDrawer = notifs => {
   const [visible, setVisible] = useState(false);
 
   const showNotifs = () => {
@@ -43,7 +43,7 @@ const NotificationsDrawer = (notifs) => {
         visible={visible}
         width={500}
       >
-        {notifs.notifs.map((notif) => (
+        {notifs.notifs.map(notif => (
           <Card key={notif.id} style={{ marginBottom: 20 }}>
             <NOTIF_TITLE>{notif.title}</NOTIF_TITLE>
             <NOTIF_DESCRIPTION>{notif.description}</NOTIF_DESCRIPTION>
