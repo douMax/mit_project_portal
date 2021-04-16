@@ -5,8 +5,7 @@ import StudentNavLinks from "./StudentNavLinks";
 import HeaderAvatar from "./HeaderAvatar";
 import styled from "styled-components";
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
-
-import mockNotifications from "../../data/mockNotifications.json";
+import { NotificationProvider } from "../../contexts/NotificationContext";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -19,14 +18,14 @@ const HeaderContainer = styled.header`
 `;
 
 const Header = ({ userType }) => {
-  const [notifs] = useState(mockNotifications);
-
   return (
     <HeaderContainer>
       <Logo />
       {userType === USERTYPES.STAFF && <StaffNavLinks />}
       {userType === USERTYPES.STUDENT && <StudentNavLinks />}
-      <HeaderAvatar notifs={notifs} />
+      <NotificationProvider>
+        <HeaderAvatar />
+      </NotificationProvider>
     </HeaderContainer>
   );
 };
