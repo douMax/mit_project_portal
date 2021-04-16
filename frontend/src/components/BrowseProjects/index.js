@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Row, Col, Card, Empty } from "antd";
+import { Row, Col, Empty } from "antd";
 
 import ProjectListDetail from "./ProjectListDetail";
 import SearchNSort from "./SearchNSort";

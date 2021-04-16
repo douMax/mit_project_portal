@@ -9,10 +9,12 @@ const ClientInfoContainer = styled.div`
   font-size: 14px;
 `;
 
-const ClientInfo = props => {
+const ClientInfo = (props) => {
+  let clientName = props.clientName;
+  let alternative = "Logo of " + clientName;
   return (
     <ClientInfoContainer>
-      <img src={props.logo} alt={props.clientName} />
+      <img src={props.logo} alt={alternative} />
       {props.clientName}
     </ClientInfoContainer>
   );

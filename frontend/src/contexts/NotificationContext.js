@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, createContext } from "react";
 import mockNotifications from "../data/mockNotifications.json";
 
 export const NotificationContext = createContext();

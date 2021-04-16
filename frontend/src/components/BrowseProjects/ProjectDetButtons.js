@@ -26,7 +26,7 @@ const ProjectDetButtons = ({ project }) => {
       <Link
         to={{
           pathname: `/projects/${project.projId}/new-eoi`,
-          state: { test: "hello" },
+          state: project,
         }}
       >
         <Button

@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import { Form, Col, Row } from "antd";
+import { Col, Row } from "antd";
 
 import TopicsHeader from "../BrowseProjects/TopicsHeader";
 import ProjectTitle from "../BrowseProjects/ProjectTitle";
@@ -14,22 +13,33 @@ const sectionStyle = {
   paddingBottom: 20,
 };
 
-const ProjectSummary = () => {
+const ProjectSummary = ({ project }) => {
+  const {
+    topic,
+    title,
+    status,
+    year,
+    trimester,
+    assigned_students,
+    eoi,
+    client,
+    logo,
+  } = project;
   return (
     <Row style={sectionStyle}>
       <Col span={18}>
-        <TopicsHeader topic={"topic"} />
-        <ProjectTitle title={"title"} />
+        <TopicsHeader topic={topic} />
+        <ProjectTitle title={title} />
         <ProjectStats
-          status={"status"}
-          year={"year"}
-          trimester={"trimester"}
-          assigned_students={"assigned_students"}
-          eoi={"eoi"}
+          status={status}
+          year={year}
+          trimester={trimester}
+          assigned_students={assigned_students}
+          eoi={eoi}
         />
       </Col>
       <Col span={6}>
-        <ClientInfo clientName={"client"} logo={"logo"} />
+        <ClientInfo clientName={client} logo={logo} />
       </Col>
     </Row>
   );
