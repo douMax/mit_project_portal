@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.11.13"
+  },
+  "devDependencies": {
+    "cypress": "^7.1.0"
   }
 }

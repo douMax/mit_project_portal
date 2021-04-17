@@ -26,7 +26,7 @@ const Header = ({ userType }) => {
       <Logo />
       {userType === USERTYPES.STAFF && <StaffNavLinks />}
       {userType === USERTYPES.STUDENT && <StudentNavLinks />}
-      <HeaderAvatar notifs={notifs} />
+      <HeaderAvatar notifs={notifs} userType={userType} />
     </HeaderContainer>
   );
 };

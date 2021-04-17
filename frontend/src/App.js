@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
+import NewProject from "./components/NewProject";
 import DevSettings from "./DevSettings";
 
 // utils and constants
@@ -68,6 +69,9 @@ function App() {
         <Switch>
           <Route exact path={ROUTES.PROJECTS}>
             <BrowseProjects />
+          </Route>
+          <Route exact path={ROUTES.NEW_PROJECT}>
+            <NewProject />
           </Route>
           <Route exact path={ROUTES.SIGN_UP}>
             <SignUpPage userType={state.userType} />

@@ -16,13 +16,13 @@ const LandingContainer = styled.div`
 const LandingPage = () => {
   return (
     <div>
-        <LandingContainer>
-          <Space direction="vertical">
-            <h1>MIT Project Portal</h1>
-            <LoginTab />
-          </Space>
-          <Image height="70vh" src="mit.png" preview={false} />
-        </LandingContainer>
+      <LandingContainer>
+        <Space direction="vertical">
+          <h1>MIT Project Portal</h1>
+          <LoginTab />
+        </Space>
+        <Image height="70vh" src="mit.png" preview={false} />
+      </LandingContainer>
     </div>
   );
 };
