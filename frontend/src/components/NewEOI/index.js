@@ -10,7 +10,6 @@ import mockEOIs from "../../data/mockEOIs.json";
 const NewEOI = () => {
   const location = useLocation();
   const project = location.state;
-  //console.log(project);
   return (
     <Row onSubmit={() => console.log("jello")}>
       <Col span={12}>

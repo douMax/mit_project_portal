@@ -8,6 +8,7 @@ const { TextArea } = Input;
 const formStyle = {
   background: "white",
   marginTop: 5,
+  paddingTop: 5,
   paddingBottom: 10,
 };
 
