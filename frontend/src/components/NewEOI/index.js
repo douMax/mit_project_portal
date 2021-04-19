@@ -1,10 +1,9 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Row, Col, Button } from "antd";
+import { Row, Col } from "antd";
 import EOILeft from "./EOILeft";
 import ProjectSummary from "./ProjectSummary";
-import EOIDetailsLeft from "./EOIDetailsLeft";
-import EOIDetailsRight from "./EOIDetailsRight";
+import EOIDetails from "./EOIDetails";
 
 import mockEOIs from "../../data/mockEOIs.json";
 
@@ -13,7 +12,7 @@ const NewEOI = () => {
   const project = location.state;
   //console.log(project);
   return (
-    <Row>
+    <Row onSubmit={() => console.log("jello")}>
       <Col span={12}>
         <EOILeft eoilen={mockEOIs.length} />
       </Col>
@@ -22,17 +21,7 @@ const NewEOI = () => {
       </Col>
       <Row>
         <Col>
-          <EOIDetailsLeft />
-        </Col>
-        <Col>
-          <EOIDetailsRight />
-        </Col>
-      </Row>
-      <Row>
-        <Col style={{ paddingTop: 10 }}>
-          <Button type="primary" danger>
-            Submit EOI
-          </Button>
+          <EOIDetails />
         </Col>
       </Row>
     </Row>
