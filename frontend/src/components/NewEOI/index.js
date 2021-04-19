@@ -11,7 +11,7 @@ const NewEOI = () => {
   const location = useLocation();
   const project = location.state;
   return (
-    <Row onSubmit={() => console.log("jello")}>
+    <Row>
       <Col span={12}>
         <EOILeft eoilen={mockEOIs.length} />
       </Col>
