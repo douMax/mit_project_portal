@@ -1,13 +1,13 @@
 import React from "react";
 import { Radio } from "antd";
 
-const DevSettings = props => {
+const DevSettings = (props) => {
   console.log(props.userType);
   return (
     <div>
       <Radio.Group
         onChange={props.onToggleSettings}
-        defaultValue={props.userType || "staff"}
+        defaultValue={props.userType || "Staff"}
         buttonStyle="solid"
       >
         <Radio.Button value="student">Student</Radio.Button>
