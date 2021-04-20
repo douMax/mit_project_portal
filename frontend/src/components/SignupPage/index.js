@@ -9,7 +9,7 @@ import { Typography } from "antd";
 
 const { Title, Paragraph } = Typography;
 
-const SignUpPage = props => {
+const SignUpPage = (props) => {
   let SignUpForm;
 
   switch (props.userType) {

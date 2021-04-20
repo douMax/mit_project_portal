@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Space, Button, Drawer, Card } from "antd";
 import { NotificationFilled } from "@ant-design/icons";
 import styled from "styled-components";
 
+import { NotificationContext } from "../../contexts/NotificationContext";
 import { hoverOver } from "../../utils/APP_FUNCTIONS";
 import { hoverOut } from "../../utils/APP_FUNCTIONS";
 
@@ -15,12 +16,20 @@ const NOTIF_DESCRIPTION = styled.div`
   font-size: 14px;
 `;
 
-const NotificationsDrawer = notifs => {
+const NotificationsDrawer = () => {
+  const [notifs, setNotifs] = useContext(NotificationContext);
+
+  const delNotif = (ev) => {
+    //console.log(ev.currentTarget.id);
+    const id = ev.currentTarget.id;
+    setNotifs(notifs.filter((notif) => notif.id !== id));
+  };
+
   const [visible, setVisible] = useState(false);
 
   const showNotifs = () => {
     setVisible(true);
-    //console.log(notifs.notifs);
+    //console.log(notifs);
   };
 
   const closeNotifs = () => {
@@ -43,12 +52,18 @@ const NotificationsDrawer = notifs => {
         visible={visible}
         width={500}
       >
-        {notifs.notifs.map(notif => (
+        {notifs.map((notif) => (
           <Card key={notif.id} style={{ marginBottom: 20 }}>
             <NOTIF_TITLE>{notif.title}</NOTIF_TITLE>
             <NOTIF_DESCRIPTION>{notif.description}</NOTIF_DESCRIPTION>
             <Space style={{ marginTop: 10, marginLeft: 180 }}>
-              <Button danger type="primary" size="small">
+              <Button
+                danger
+                type="primary"
+                size="small"
+                onClick={delNotif}
+                id={notif.id}
+              >
                 Delete Notification
               </Button>
               <Button type="primary" size="small">

@@ -4,7 +4,15 @@ import ProfilePicUploader from "./ProfilePicUploader";
 
 const IndustryClientSignUp = () => {
   return (
-    <Form labelCol={{ span: 10 }} wrapperCol={{ span: 14 }} layout="horizontal">
+    <Form
+      labelCol={{
+        span: 4,
+      }}
+      wrapperCol={{
+        span: 9,
+      }}
+      layout="horizontal"
+    >
       <Row gutter={32}>
         <Col span={12}>
           <h3> Company Details </h3>

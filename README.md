@@ -2,6 +2,14 @@
 
 This is the group repo of MIT project portal.
 
+## How to use Git to syn with Github repo
+
+1. git add .
+2. git commit -m "any changes saved and committed"
+3. git pull upstream main
+4. git push origin main
+5. npm run start
+
 ## Get Started
 
 ### Backend code
