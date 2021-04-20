@@ -40,3 +40,5 @@ export const TEMP_TOPICS = [
   { label: "Wireless Network", value: "Wireless Network" },
   { label: "Data Visualisation", value: "Data Visualisation" },
 ];
+
+export const EOI_LIMIT = { value: 3 };

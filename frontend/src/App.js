@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
 import DevSettings from "./DevSettings";
+import NewEOI from "./components/NewEOI";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -68,6 +69,9 @@ function App() {
         <Switch>
           <Route exact path={ROUTES.PROJECTS}>
             <BrowseProjects />
+          </Route>
+          <Route exact path={ROUTES.NEW_EOI}>
+            <NewEOI />
           </Route>
           <Route exact path={ROUTES.SIGN_UP}>
             <SignUpPage userType={state.userType} />
