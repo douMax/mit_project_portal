@@ -1,21 +1,25 @@
 import React from "react";
 import { Form, Input, Col, Row, Button, Space } from "antd";
-import ProfilePicUploader from "./ProfilePicUploader";
+import ProfilePicuploader from "./ProfilePicUploader";
 
 const IndustryClientSignUp = () => {
+  const handleFinish = (values) => {
+    console.log(values);
+  };
   return (
     <Form
       labelCol={{
-        span: 4,
+        span: 10,
       }}
       wrapperCol={{
-        span: 9,
+        span: 14,
       }}
       layout="horizontal"
+      onfinish={handleFinish}
     >
-      <Row gutter={32}>
+      <Row gutter={64}>
         <Col span={12}>
-          <h3> Company Details </h3>
+          <h2>Company Details </h2>
           <Form.Item label="Company Name">
             <Input />
           </Form.Item>
@@ -25,7 +29,7 @@ const IndustryClientSignUp = () => {
           <Form.Item label="Website">
             <Input />
           </Form.Item>
-          <h3> Contact Details </h3>
+          <h2> Contact Details </h2>
           <Form.Item label="First Name">
             <Input />
           </Form.Item>
@@ -44,9 +48,23 @@ const IndustryClientSignUp = () => {
           <Form.Item label="Job Position">
             <Input />
           </Form.Item>
+          <Form.Item label=" " colon={false}>
+            <Button danger htmlType="Cancel">
+              <Space>Cancel</Space>
+            </Button>
+            <Button type="danger" htmlType="Submit">
+              Submit
+            </Button>
+          </Form.Item>
         </Col>
+
         <Col span={12}>
-          <ProfilePicUploader />
+          <Form.Item name="Upload">
+            <ProfilePicuploader />
+          </Form.Item>
+          <Button type danger>
+            + Add Project Proposals
+          </Button>
         </Col>
       </Row>
     </Form>
