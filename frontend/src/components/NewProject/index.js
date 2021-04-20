@@ -1,7 +1,6 @@
 import React from "react";
-import {Form, Select, Input, Row, Col, InputNumber, Button } from "antd";
-import ProjectOption from "./Option";
-import { Location_Preferred } from "../../utils/APP_CONSTANTS";
+import { Form, Select, Input, Row, Col, InputNumber, Button } from "antd";
+import { LOCATIONS } from "../../utils/APP_CONSTANTS";
 
 const NewProject = () => {
   return (
@@ -13,28 +12,27 @@ const NewProject = () => {
             <Input />
           </Form.Item>
           <Form.Item label="Background and Rational for Project:">
-            <Input />
+            <Input.TextArea />
           </Form.Item>
           <Form.Item label="Project Resources">
-            <Input />
+            <Input.TextArea />
           </Form.Item>
           <Form.Item label="Project Topics">
-            <Input />
+            <Input.TextArea />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item label="Project Goals and Objects:">
-            <Input />
+            <Input.TextArea />
           </Form.Item>
           <Form.Item label="Other related information:">
+            <Input.TextArea />
+          </Form.Item>
+          <Form.Item label="Is this projet open to everyone?">
             <Input />
           </Form.Item>
-
-         <Form.Item label="Is this an open project">
-             <ProjectOption />
-             <Form.Item />
           <Form.Item label="Preferred location">
-          <Select options ={Location_Preferred} />    
+            <Select options={LOCATIONS} />
           </Form.Item>
         </Col>
       </Row>
@@ -42,5 +40,4 @@ const NewProject = () => {
   );
 };
 
-
-export default NewProject
+export default NewProject;

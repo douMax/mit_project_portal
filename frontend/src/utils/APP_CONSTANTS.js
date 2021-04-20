@@ -42,3 +42,5 @@ export const TEMP_TOPICS = [
 ];
 
 export const EOI_LIMIT = { value: 3 };
+
+export const LOCATIONS = ["Any", "Melbourne Campus", "Sydney Campus"];
