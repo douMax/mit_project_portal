@@ -37,6 +37,12 @@ app.use(studentRoutes);
 const groupRoutes = require("./backend/routes/group.route");
 app.use(groupRoutes);
 
+const projectRoutes = require("./backend/routes/project.route");
+app.use(projectRoutes);
+
+const applicationRecordRoutes = require("./backend/routes/application_record.route");
+app.use(applicationRecordRoutes);
+
 app.get("/api", (req, res) => {
   res.send("Welcome to ProjectPortal API");
 });

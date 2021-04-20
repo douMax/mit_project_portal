@@ -12,4 +12,8 @@ router
   .put(groupController.update)
   .delete(groupController.delete);
 
+router
+  .route("/api/group/:groupId/supervisor")
+  .get(groupController.findSupervisor);
+
 module.exports = router;

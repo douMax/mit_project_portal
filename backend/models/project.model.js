@@ -29,7 +29,7 @@ const projectSchema = new Schema(
       type: Boolean,
     },
     topics: {
-      type: String,
+      type: [String],
     },
     is_internship: {
       type: Boolean,

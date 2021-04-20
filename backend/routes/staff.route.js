@@ -20,5 +20,7 @@ router
   .get(staffController.findOneById)
   .put(staffController.update)
   .delete(staffController.delete);
-// /projects/:projectId
+
+router.route("/api/staffs/:id/topics").get(staffController.findStaffTopics);
+
 module.exports = router;
