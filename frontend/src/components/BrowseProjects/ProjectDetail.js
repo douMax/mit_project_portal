@@ -38,7 +38,6 @@ const ProjectDetail = ({ project }) => {
   return (
     <Row>
       <Row gutter={16}>
-        {/**########################################### */}
         <Col span={18}>
           <TopicsHeader topic={topic} />
           <ProjectTitle title={title} />
@@ -53,7 +52,6 @@ const ProjectDetail = ({ project }) => {
         <Col span={6}>
           <ClientInfo clientName={client} logo={logo} />
         </Col>
-        {/**########################################### */}
       </Row>
       <SectionTitleWrapper>Background and Rationale</SectionTitleWrapper>
       <Card style={sectionCardStyle}>{background_rationale}</Card>
