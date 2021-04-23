@@ -43,6 +43,14 @@ app.use(projectRoutes);
 const applicationRecordRoutes = require("./backend/routes/application_record.route");
 app.use(applicationRecordRoutes);
 
+const clientRoutes = require("./backend/routes/client.route");
+const authRoutes = require("./backend/routes/auth.routes");
+app.use(clientRoutes);
+
+const authRoutes =require("./localhost/api/login");
+const authRoutes = require("./backend/routes/auth.routes");
+app.use(authRoutes);
+
 app.get("/api", (req, res) => {
   res.send("Welcome to ProjectPortal API");
 });
