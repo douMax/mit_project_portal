@@ -16,7 +16,7 @@ import NewEOI from "./components/NewEOI";
 import ROUTES from "./utils/routes";
 
 //Contexts
-import { UserContext } from "../src/contexts/UserContext";
+import { ProjectProvider } from "../src/contexts/ProjectContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -53,11 +53,6 @@ const ContentContainer = styled.div`
 
 function App() {
   const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
-  const [user] = useContext(UserContext);
-
-  //console.log(user[0].role);
-  const usertype = user.role;
-  const username = user.userName;
 
   const handleToggleSettings = (e) => {
     dispatch({
@@ -77,15 +72,17 @@ function App() {
       )}
       <ContentContainer>
         <Switch>
-          <Route exact path={ROUTES.PROJECTS}>
-            <BrowseProjects />
-          </Route>
-          <Route exact path={ROUTES.NEW_PROJECT}>
-            <NewProject />
-          </Route>
-          <Route exact path={ROUTES.NEW_EOI}>
-            <NewEOI />
-          </Route>
+          <ProjectProvider>
+            <Route exact path={ROUTES.PROJECTS}>
+              <BrowseProjects />
+            </Route>
+            <Route exact path={ROUTES.NEW_PROJECT}>
+              <NewProject />
+            </Route>
+            <Route exact path={ROUTES.NEW_EOI}>
+              <NewEOI />
+            </Route>
+          </ProjectProvider>
           <Route exact path={ROUTES.SIGN_UP}>
             <SignUpPage userType={state.userType} />
           </Route>
