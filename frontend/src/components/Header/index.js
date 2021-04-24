@@ -21,7 +21,6 @@ const HeaderContainer = styled.header`
 const Header = (/*{ userType, userName }*/) => {
   const [user] = useContext(UserContext);
   const userType = user.role;
-  //console.log(userName);
   return (
     <HeaderContainer>
       <Logo />

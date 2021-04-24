@@ -3,6 +3,7 @@ import { Radio } from "antd";
 
 const DevSettings = (props) => {
   //console.log(props.userType);
+  //console.log(user);
 
   return (
     <div>
