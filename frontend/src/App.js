@@ -1,5 +1,5 @@
 // framework related
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
@@ -14,6 +14,9 @@ import NewEOI from "./components/NewEOI";
 
 // utils and constants
 import ROUTES from "./utils/routes";
+
+//Contexts
+import { UserContext } from "../src/contexts/UserContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -50,8 +53,13 @@ const ContentContainer = styled.div`
 
 function App() {
   const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
+  const [user] = useContext(UserContext);
 
-  const handleToggleSettings = e => {
+  //console.log(user[0].role);
+  const usertype = user.role;
+  const username = user.userName;
+
+  const handleToggleSettings = (e) => {
     dispatch({
       type: "set_user_type",
       payload: {
@@ -64,7 +72,8 @@ function App() {
   return (
     <BrowserRouter>
       {isLogged && (
-        <Header userType={state.userType} username={state.username} />
+        /*<Header userType={state.userType} username={state.username} />*/
+        <Header />
       )}
       <ContentContainer>
         <Switch>
