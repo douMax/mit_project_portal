@@ -17,6 +17,7 @@ import ROUTES from "./utils/routes";
 
 //Contexts
 import { ProjectProvider } from "../src/contexts/ProjectContext";
+import { EOIProvider } from "../src/contexts/EOIContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -79,9 +80,11 @@ function App() {
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
             </Route>
-            <Route exact path={ROUTES.NEW_EOI}>
-              <NewEOI />
-            </Route>
+            <EOIProvider>
+              <Route exact path={ROUTES.NEW_EOI}>
+                <NewEOI />
+              </Route>
+            </EOIProvider>
           </ProjectProvider>
           <Route exact path={ROUTES.SIGN_UP}>
             <SignUpPage userType={state.userType} />

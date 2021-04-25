@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import { Row, Form, Input, Space, Button } from "antd";
 import { COLORS } from "../../utils/APP_CONSTANTS";
+
+import { EOIContext } from "../../contexts/EOIContext";
+import { UserContext } from "../../contexts/UserContext";
 
 const { TextArea } = Input;
 
@@ -40,9 +44,33 @@ const SectionDescription = styled.h1`
 `;
 
 const EOIDetails = () => {
+  const location = useLocation();
+  const project = location.state;
+  const [eois, setEOIs] = useContext(EOIContext);
+  const [user] = useContext(UserContext);
+  const newEOI = () => {
+    const id = (eois.length + 1).toString();
+    const projId = project.projId;
+    const userId = user.userId;
+    const eoi_sub_date = new Date();
+    const interest = document.getElementById("interest").value;
+    const achieve = document.getElementById("achieve").value;
+    const experience = document.getElementById("experience").value;
+    const neweoi = {
+      id: id,
+      projId: projId,
+      userId: userId,
+      eoi_sub_date: eoi_sub_date,
+      interest: interest,
+      achieve: achieve,
+      experience: experience,
+    };
+    setEOIs((prevEOIs) => [...prevEOIs, neweoi]);
+  };
   return (
     <Row>
       <Form style={formStyle}>
+        {console.log(eois)}
         <Space>
           <Form.Item style={formLeftStyle}>
             <SectionDescription>
@@ -50,6 +78,7 @@ const EOIDetails = () => {
               project.
             </SectionDescription>
             <TextArea
+              id="interest"
               style={textAreaStyle}
               minLength={300}
               maxLength={500}
@@ -62,6 +91,7 @@ const EOIDetails = () => {
               What do you hope to achieve with this project?
             </SectionDescription>
             <TextArea
+              id="achieve"
               style={textAreaStyle}
               maxLength={300}
               showCount
@@ -71,6 +101,7 @@ const EOIDetails = () => {
               Do you have any previous experience relevant to the project?
             </SectionDescription>
             <TextArea
+              id="experience"
               style={textAreaStyle}
               maxLength={300}
               showCount
@@ -78,7 +109,7 @@ const EOIDetails = () => {
             ></TextArea>
           </Form.Item>
         </Space>
-        <Button style={buttonStyle} type="primary" danger>
+        <Button style={buttonStyle} type="primary" danger onClick={newEOI}>
           Submit EOI
         </Button>
       </Form>
