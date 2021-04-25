@@ -7,6 +7,8 @@ import styled from "styled-components";
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { NotificationProvider } from "../../contexts/NotificationContext";
 
+import mockNotifications from "../../data/mockNotifications.json";
+
 const HeaderContainer = styled.header`
   width: 100%;
   height: 64px;
@@ -18,6 +20,8 @@ const HeaderContainer = styled.header`
 `;
 
 const Header = ({ userType }) => {
+  const [notifs] = useState(mockNotifications);
+
   return (
     <HeaderContainer>
       <Logo />

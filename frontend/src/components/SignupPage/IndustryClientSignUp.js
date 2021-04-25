@@ -6,6 +6,16 @@ const IndustryClientSignUp = () => {
   const handleFinish = (values) => {
     console.log(values);
   };
+
+  const handleCancel = () => {
+    console.log("Canceled");
+  };
+
+  const handleNewProjectClick = () => {
+    // click logic here
+    console.log("New project clicked");
+  };
+
   return (
     <Form
       labelCol={{
@@ -15,54 +25,56 @@ const IndustryClientSignUp = () => {
         span: 14,
       }}
       layout="horizontal"
-      onfinish={handleFinish}
+      onFinish={handleFinish}
     >
       <Row gutter={64}>
         <Col span={12}>
           <h2>Company Details </h2>
-          <Form.Item label="Company Name">
+          <Form.Item label="Company Name" name="companyName">
             <Input />
           </Form.Item>
-          <Form.Item label="Company Profile">
+          <Form.Item label="Company Profile" name="companyProfile">
             <Input />
           </Form.Item>
-          <Form.Item label="Website">
+          <Form.Item label="Website" name="Website">
             <Input />
           </Form.Item>
           <h2> Contact Details </h2>
-          <Form.Item label="First Name">
+          <Form.Item label="First Name" name="firstName">
             <Input />
           </Form.Item>
-          <Form.Item label="Last Name">
+          <Form.Item label="Last Name" name="lastName">
             <Input />
           </Form.Item>
-          <Form.Item label="Work Email">
+          <Form.Item label="Work Email" name="workEmail">
             <Input />
           </Form.Item>
-          <Form.Item label="Mobile Phone Number">
+          <Form.Item label="Mobile Phone Number" name="mobilePhoneNumber">
             <Input />
           </Form.Item>
-          <Form.Item label="Office Phone Number">
+          <Form.Item label="Office Phone Number" name="officePhoneNumber">
             <Input />
           </Form.Item>
-          <Form.Item label="Job Position">
+          <Form.Item label="Job Position" name="jobPosition">
             <Input />
           </Form.Item>
           <Form.Item label=" " colon={false}>
-            <Button danger htmlType="Cancel">
-              <Space>Cancel</Space>
-            </Button>
-            <Button type="danger" htmlType="Submit">
-              Submit
-            </Button>
+            <Space>
+              <Button danger onClick={handleCancel}>
+                Cancel
+              </Button>
+              <Button type="danger" htmlType="Submit">
+                Submit
+              </Button>
+            </Space>
           </Form.Item>
         </Col>
 
-        <Col span={12}>
+        <Col span={12} style={{ paddingTop: "40px" }}>
           <Form.Item name="Upload">
             <ProfilePicuploader />
           </Form.Item>
-          <Button type danger>
+          <Button type danger onClick={handleNewProjectClick}>
             + Add Project Proposals
           </Button>
         </Col>

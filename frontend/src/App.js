@@ -8,9 +8,8 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
-import NewProject from "./components/NewProject";
 import DevSettings from "./DevSettings";
-import NewEOI from "./components/NewEOI";
+import NewProject from "./components/NewProject";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -51,7 +50,7 @@ const ContentContainer = styled.div`
 function App() {
   const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
 
-  const handleToggleSettings = e => {
+  const handleToggleSettings = (e) => {
     dispatch({
       type: "set_user_type",
       payload: {
@@ -73,9 +72,6 @@ function App() {
           </Route>
           <Route exact path={ROUTES.NEW_PROJECT}>
             <NewProject />
-          </Route>
-          <Route exact path={ROUTES.NEW_EOI}>
-            <NewEOI />
           </Route>
           <Route exact path={ROUTES.SIGN_UP}>
             <SignUpPage userType={state.userType} />
