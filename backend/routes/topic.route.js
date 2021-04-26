@@ -17,6 +17,7 @@ module.exports = router;
 
 router
   .route("/api/topic/:id")
+
   .get(topicController.findOneById)
   .put(topicController.update)
   .delete(topicController.delete);

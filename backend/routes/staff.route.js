@@ -16,9 +16,11 @@ module.exports = router;
 // /api/staff/:id
 
 router
-  .route("/api/staffs/:id")
+  .route("/api/staff/:id")
   .get(staffController.findOneById)
   .put(staffController.update)
   .delete(staffController.delete);
+
+router.route("/api/staff/:id/topics").get(staffController.findStaffTopics);
 // /projects/:projectId
 module.exports = router;
