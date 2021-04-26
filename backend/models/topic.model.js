@@ -10,6 +10,9 @@ const TopicSchema = new Schema(
     topic_code: {
       type: String,
     },
+    is_a_coordination: {
+      type: Boolean,
+    },
   },
   {
     timestamps: true,
