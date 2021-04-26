@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import ROUTES from "../../utils/routes";
 
 import { NotificationContext } from "../../contexts/NotificationContext";
+import { UserContext } from "../../contexts/UserContext";
 
 const HeaderAvatar = () => {
   //console.log(notifs.notifs.length);
   const [notifs, setNotifs] = useContext(NotificationContext);
+  const [user] = useContext(UserContext);
+  const userName = user.userName;
 
   return (
     <div>
@@ -18,7 +21,7 @@ const HeaderAvatar = () => {
           <Link to={ROUTES.LOG_IN}>Login</Link>
           <Link to={ROUTES.DEV_SETTINGS}>Dev</Link>
           <Avatar src="offspring_logo.jpg" />
-          User Name
+          {userName}
           <Badge overflowCount={9} count={notifs.length}>
             <NotificationsDrawer />
           </Badge>

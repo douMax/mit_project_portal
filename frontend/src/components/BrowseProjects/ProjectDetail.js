@@ -20,7 +20,7 @@ const sectionCardStyle = {
   borderRadius: "5px",
 };
 
-const ProjectDetail = ({ project }) => {
+const ProjectDetail = ({ selectedproject }) => {
   const {
     background_rationale,
     resources,
@@ -34,7 +34,7 @@ const ProjectDetail = ({ project }) => {
     eoi,
     client,
     logo,
-  } = project;
+  } = selectedproject;
   return (
     <Row>
       <Row gutter={16}>
@@ -59,7 +59,7 @@ const ProjectDetail = ({ project }) => {
       <Card style={sectionCardStyle}>{resources}</Card>
       <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
       <Card style={sectionCardStyle}>{goals_objectives}</Card>
-      <ProjectDetButtons project={project} />
+      <ProjectDetButtons project={selectedproject} />
     </Row>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Row, Col, Empty } from "antd";
 
@@ -6,7 +6,9 @@ import ProjectListDetail from "./ProjectListDetail";
 import SearchNSort from "./SearchNSort";
 import ProjectDetail from "./ProjectDetail";
 
-import mockProjects from "../../data/mockProjects.json";
+//import mockProjects from "../../data/mockProjects.json";
+
+import { ProjectContext } from "../../contexts/ProjectContext";
 
 const PageTitle = styled.h1`
   font-size: 36px;
@@ -27,9 +29,10 @@ const LeftPanelWrapper = styled.div`
 `;
 
 const BrowseProjects = () => {
+  const [project, setProject] = useContext(ProjectContext);
   const [selected, setSelected] = useState(null);
-  const handleShowDetail = (project) => {
-    setSelected(project);
+  const handleShowDetail = (selectedproject) => {
+    setSelected(selectedproject);
   };
   return (
     <Row gutter={24}>
@@ -37,7 +40,7 @@ const BrowseProjects = () => {
         <LeftPanelWrapper>
           <PageTitle>Browse Projects</PageTitle>
           <SearchNSort />
-          {mockProjects.map((project) => (
+          {project.map((project) => (
             <ProjectListDetail
               key={project.projId}
               isSelected={project.projId === (selected && selected.projId)}
@@ -52,7 +55,7 @@ const BrowseProjects = () => {
       <Col span={12}>
         <RightPanelWrapper>
           {selected ? (
-            <ProjectDetail project={selected} />
+            <ProjectDetail selectedproject={selected} />
           ) : (
             <Empty description="No project selected" />
           )}

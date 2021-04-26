@@ -1,5 +1,5 @@
 // framework related
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
@@ -14,6 +14,10 @@ import NewEOI from "./components/NewEOI";
 
 // utils and constants
 import ROUTES from "./utils/routes";
+
+//Contexts
+import { ProjectProvider } from "../src/contexts/ProjectContext";
+import { EOIProvider } from "../src/contexts/EOIContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -51,7 +55,7 @@ const ContentContainer = styled.div`
 function App() {
   const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
 
-  const handleToggleSettings = e => {
+  const handleToggleSettings = (e) => {
     dispatch({
       type: "set_user_type",
       payload: {
@@ -64,19 +68,24 @@ function App() {
   return (
     <BrowserRouter>
       {isLogged && (
-        <Header userType={state.userType} username={state.username} />
+        /*<Header userType={state.userType} username={state.username} />*/
+        <Header />
       )}
       <ContentContainer>
         <Switch>
-          <Route exact path={ROUTES.PROJECTS}>
-            <BrowseProjects />
-          </Route>
-          <Route exact path={ROUTES.NEW_PROJECT}>
-            <NewProject />
-          </Route>
-          <Route exact path={ROUTES.NEW_EOI}>
-            <NewEOI />
-          </Route>
+          <ProjectProvider>
+            <Route exact path={ROUTES.PROJECTS}>
+              <BrowseProjects />
+            </Route>
+            <Route exact path={ROUTES.NEW_PROJECT}>
+              <NewProject />
+            </Route>
+            <EOIProvider>
+              <Route exact path={ROUTES.NEW_EOI}>
+                <NewEOI />
+              </Route>
+            </EOIProvider>
+          </ProjectProvider>
           <Route exact path={ROUTES.SIGN_UP}>
             <SignUpPage userType={state.userType} />
           </Route>
