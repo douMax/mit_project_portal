@@ -1,4 +1,5 @@
 import React, { useImperativeHandle } from "react";
+
 import {
   Form,
   Select,
@@ -10,7 +11,11 @@ import {
   Space,
 } from "antd";
 import { LOCATIONS } from "../../utils/APP_CONSTANTS";
+
 import ProjectOption from "./Option";
+
+import { TEMP_TOPICS } from "../../utils/APP_CONSTANTS";
+import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
 
 const NewProject = () => {
   const handleFinish = (values) => {
@@ -46,7 +51,7 @@ const NewProject = () => {
             <Input.TextArea />
           </Form.Item>
           <Form.Item label="Project Topics" name="projectTopics">
-            <Input.TextArea />
+            <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />
           </Form.Item>
         </Col>
         <Col span={12}>
@@ -61,10 +66,6 @@ const NewProject = () => {
           </Form.Item>
           <Form.Item label="Is this an open project?"></Form.Item>
           <Form.Item>
-            <Form.Item>
-              Add students' IDs (min1,max5)
-              <Input />
-            </Form.Item>
             <ProjectOption />
           </Form.Item>
           <Form.Item label="Preferred location">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Radio } from "antd";
+import { Radio, Input } from "antd";
 
 const ProjectOption = () => {
   const [value, setvalue] = useState("all");
@@ -11,8 +11,11 @@ const ProjectOption = () => {
 
   return (
     <Radio.Group onChange={handleChange} value={value}>
-      <Radio value={"all"}>Open to specific students</Radio>
-      <Radio value={"specific students"}>Open to all students</Radio>
+      <Radio value={"specificStudents"}>
+        Open to specific students Add students'IDs(Min1,Max5)
+      </Radio>
+      <Input />
+      <Radio value={"all"}>Open to all students</Radio>
     </Radio.Group>
   );
 };
