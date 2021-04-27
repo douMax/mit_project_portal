@@ -11,6 +11,7 @@ const { Title, Paragraph } = Typography;
 
 const SignUpPage = (props) => {
   let SignUpForm;
+  console.log(props);
 
   switch (props.userType) {
     case USERTYPES.STAFF:
