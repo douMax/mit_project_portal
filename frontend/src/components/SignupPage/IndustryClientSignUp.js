@@ -34,7 +34,7 @@ const IndustryClientSignUp = () => {
             <Input />
           </Form.Item>
           <Form.Item label="Company Profile" name="companyProfile">
-            <Input />
+            <Input.TextArea />
           </Form.Item>
           <Form.Item label="Website" name="Website">
             <Input />
