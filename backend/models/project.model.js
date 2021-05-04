@@ -29,13 +29,14 @@ const projectSchema = new Schema(
       type: Boolean,
     },
     topics: {
-      type: String,
+      type: [String],
     },
     is_internship: {
       type: Boolean,
     },
     client_id: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "Group",
     },
     staff_id: {
       type: String,

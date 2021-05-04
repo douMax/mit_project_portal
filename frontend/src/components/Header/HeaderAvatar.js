@@ -1,32 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Avatar, Badge, Space } from "antd";
+import NotificationsDrawer from "./NotificationsDrawer";
 import { Link } from "react-router-dom";
 import ROUTES from "../../utils/routes";
-import { Avatar, Badge, Menu, Space, Dropdown } from "antd";
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <Link to={ROUTES.DEV_SETTINGS}>Dev</Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to={ROUTES.LOG_IN}>Login</Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to={ROUTES.SIGN_UP}>Signup</Link>
-    </Menu.Item>
-  </Menu>
-);
+import { NotificationContext } from "../../contexts/NotificationContext";
+import { UserContext } from "../../contexts/UserContext";
 
-const HeaderAvatar = props => {
+const HeaderAvatar = () => {
+  //console.log(notifs.notifs.length);
+  const [notifs, setNotifs] = useContext(NotificationContext);
+  const [user] = useContext(UserContext);
+  const userName = user.userName;
+
   return (
-    <Space>
-      <Dropdown overlay={menu}>
-        <Badge count={1}>
+    <div>
+      <span className="avatar-item">
+        <Space>
+          <Link to={ROUTES.SIGN_UP}>Signup</Link>
+          <Link to={ROUTES.LOG_IN}>Login</Link>
+          <Link to={ROUTES.DEV_SETTINGS}>Dev</Link>
           <Avatar src="offspring_logo.jpg" />
-        </Badge>
-      </Dropdown>
-      {props.username}
-    </Space>
+          {userName}
+          <Badge overflowCount={9} count={notifs.length}>
+            <NotificationsDrawer />
+          </Badge>
+        </Space>
+      </span>
+    </div>
   );
 };
 

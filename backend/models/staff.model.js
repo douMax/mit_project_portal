@@ -17,6 +17,7 @@ const StaffSchema = new Schema(
       type: String,
       required: [true, "Staff position is required"],
     },
+    topics: [String],
   },
   {
     timestamps: true,

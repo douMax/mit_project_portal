@@ -1,10 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { Space, Button } from "antd";
 
-const ProjectDetButtons = () => {
+const ProjectDetButtons = ({ project }) => {
   return (
-    <Space style={{ paddingTop: 20, paddingLeft: 236 }}>
+    <Space style={{ paddingTop: 20 }}>
       <Button
         style={{
           background: "#f0f0f0",
@@ -23,15 +23,22 @@ const ProjectDetButtons = () => {
       >
         Save Project
       </Button>
-      <Button
-        style={{
-          fontWeight: "bold",
-          borderColor: "red",
+      <Link
+        to={{
+          pathname: `/projects/${project.projId}/new-eoi`,
+          state: project,
         }}
-        type="danger"
       >
-        Express Interest
-      </Button>
+        <Button
+          style={{
+            fontWeight: "bold",
+            borderColor: "red",
+          }}
+          type="danger"
+        >
+          Express Interest
+        </Button>
+      </Link>
     </Space>
   );
 };

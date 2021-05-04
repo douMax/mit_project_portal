@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const studentController = require("../controllers/student.controller");
-const { route, put } = require("./department.route");
 
 // HTTP methods are
 // Get- read

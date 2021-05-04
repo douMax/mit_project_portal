@@ -1,4 +1,4 @@
-const Student = require("../models/Student.model");
+const Student = require("../models/student.model");
 
 exports.create = async (req, res) => {
   const newStudent = new Student(req.body);
@@ -24,7 +24,7 @@ exports.findOnById = async (req, res) => {
   const { studentid } = req.params;
 
   try {
-    let data = await Student.findOne({ id: studentid });
+    let data = await Student.findById(studentid);
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving student");

@@ -4,7 +4,7 @@ import { Select, message } from "antd";
 const { Option } = Select;
 
 const MultipleSelectWithLimit = ({ value, onChange, max, options }) => {
-  const handleChange = value => {
+  const handleChange = (value) => {
     if (value.length > max) {
       value.pop();
       message.warning(`No more than ${max} items are allowed`);
@@ -21,8 +21,12 @@ const MultipleSelectWithLimit = ({ value, onChange, max, options }) => {
       onChange={handleChange}
     >
       {options &&
-        options.map(option => {
-          return <Option value={option.value}>{option.label}</Option>;
+        options.map((option) => {
+          return (
+            <Option key={option.value} value={option.value}>
+              {option.label}
+            </Option>
+          );
         })}
     </Select>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Input, Select, Button, Col, Row, AutoComplete } from "antd";
+import { Form, Select, Button, Col, Row } from "antd";
 import CommonFields from "./CommonFields";
 import ProfilePicUploader from "./ProfilePicUploader";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
@@ -22,7 +22,7 @@ const StaffSignUp = () => {
         <Col span={12}>
           <CommonFields />
           <Form.Item label="Job Position" name="jobPosition">
-            <Select options={STAFF_JOB_POSITIONS}></Select>
+            <Select options={STAFF_JOB_POSITIONS} />
           </Form.Item>
           <Form.Item label="Interested Topics" name="interestedTopics">
             <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />

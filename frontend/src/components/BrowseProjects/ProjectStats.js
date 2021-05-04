@@ -4,12 +4,12 @@ import { Button, Space, Switch } from "antd";
 
 //import changeBorderRed from "./ProjectListDetails";
 
-const ProjectStats = (projstats) => {
+const ProjectStats = projstats => {
   //console.log(projdets);
 
   return (
     <Space>
-      <Button style={{ background: "turquoise", color: "white" }}>
+      <Button type="text" style={{ background: "turquoise", color: "white" }}>
         {projstats.status}
       </Button>
       <Button type="text">

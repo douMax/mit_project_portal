@@ -1,5 +1,6 @@
-const Student = require("../models/student.model");
 const Group = require("../models/group.model");
+const Student = require("../models/student.model");
+const Staff = require("../models/staff.model");
 
 exports.create = async (req, res) => {
   const newGroup = new Group(req.body);
@@ -14,7 +15,7 @@ exports.create = async (req, res) => {
 
 exports.findGroups = async (req, res) => {
   try {
-    let data = await Group.find({ groupName });
+    let data = await Group.find();
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving groups");
@@ -23,19 +24,19 @@ exports.findGroups = async (req, res) => {
 
 exports.findById = async (req, res) => {
   // retrive ID from the req
-  const id = req.params.id;
+  const { groupId } = req.params;
+  console.log(groupId);
   //
   try {
-    const group = await Group.findOne({ id: id });
-    const students = await Student.find({ groupId: id });
+    const group = await Group.findById(groupId);
+    const students = await Student.find({ groupId: groupId });
     const data = {
       ...group._doc,
       students: students,
     };
-
     res.status(201).send(data);
   } catch (error) {
-    res.status(500).send("Error retriving groups");
+    res.status(500).send("Error retriving group");
   }
 };
 
@@ -63,6 +64,34 @@ exports.delete = async (req, res) => {
   try {
     const group = await Group.findByIdAndRemove(groupId);
     return res.status(200).send("group deleted");
+  } catch (err) {
+    if (err.kind === "objectId") {
+      return res.status(404).send({
+        message: "group not found with id ${groupId}",
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: "Internal server error.",
+    });
+  }
+};
+
+exports.findSupervisor = async (req, res) => {
+  const { groupId } = req.params;
+
+  try {
+    const group = await Group.findById(groupId);
+    const supervisorId = group.Supervisorid;
+
+    if (supervisorId) {
+      const supervisor = await Staff.findById(supervisorId);
+      return res.status(201).send(supervisor);
+    } else {
+      return res.status(404).send({
+        message: `Supervisor not found in this group ${group.Groupname}`,
+      });
+    }
   } catch (err) {
     if (err.kind === "objectId") {
       return res.status(404).send({

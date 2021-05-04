@@ -40,3 +40,11 @@ export const TEMP_TOPICS = [
   { label: "Wireless Network", value: "Wireless Network" },
   { label: "Data Visualisation", value: "Data Visualisation" },
 ];
+
+export const EOI_LIMIT = { value: 3 };
+
+export const LOCATIONS = [
+  { label: "Any", value: "Any" },
+  { label: "Melbourne Campus", value: "Melbourne Campus" },
+  { label: "Sydney Campus", value: "Sydney Campus" },
+];

@@ -2,6 +2,15 @@
 
 This is the group repo of MIT project portal.
 
+## How to use Git to syn with Github repo
+
+1. Make sure you are in the root folder `/mit_project_portal`
+2. git add .
+3. git commit -m "any changes saved and committed"
+4. git pull upstream main
+5. git push origin main
+6. npm run start
+
 ## Get Started
 
 ### Backend code
@@ -71,7 +80,7 @@ cd frontend
 npm install
 ```
 
-2. Start the development server
+3. Start the development server
 
 ```bash
 # in frontend directory
