@@ -1,3 +1,4 @@
+const Student = require("../models/student.model");
 const Group = require("../models/group.model");
 
 exports.create = async (req, res) => {
@@ -25,7 +26,13 @@ exports.findById = async (req, res) => {
   const id = req.params.id;
   //
   try {
-    let data = await Group.findOne({ id: id });
+    const group = await Group.findOne({ id: id });
+    const students = await Student.find({ groupId: id });
+    const data = {
+      ...group._doc,
+      students: students,
+    };
+
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving groups");
