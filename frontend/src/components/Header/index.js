@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Logo from "./Logo";
 import StaffNavLinks from "./StaffNavLinks";
 import StudentNavLinks from "./StudentNavLinks";
@@ -6,6 +6,7 @@ import HeaderAvatar from "./HeaderAvatar";
 import styled from "styled-components";
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { NotificationProvider } from "../../contexts/NotificationContext";
+import { UserContext } from "../../contexts/UserContext";
 
 import mockNotifications from "../../data/mockNotifications.json";
 
@@ -19,9 +20,9 @@ const HeaderContainer = styled.header`
   background-color: #fff;
 `;
 
-const Header = ({ userType }) => {
-  const [notifs] = useState(mockNotifications);
-
+const Header = ({ useType }) => {
+  const [user] = useContext(UserContext);
+  const userType = user.role;
   return (
     <HeaderContainer>
       <Logo />
