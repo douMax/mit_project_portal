@@ -16,9 +16,8 @@ import NewEOI from "./components/NewEOI";
 import ROUTES from "./utils/routes";
 
 //Contexts
-import { ProjectProvider } from "../src/contexts/ProjectContext";
-import { EOIProvider } from "../src/contexts/EOIContext";
-import { UserContext } from "../src/contexts/UserContext";
+import { ProjectProvider } from "./contexts/ProjectContext";
+import { EOIProvider } from "./contexts/EOIContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -30,19 +29,6 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
-  const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
-  const [user] = useContext(UserContext);
-
-  const handleToggleSettings = (e) => {
-    dispatch({
-      type: "set_user_type",
-      payload: {
-        userType: e.target.value,
-        username: e.target.value.toUpperCase(),
-      },
-    });
-  };
-
   return (
     <BrowserRouter>
       {isLogged && (
