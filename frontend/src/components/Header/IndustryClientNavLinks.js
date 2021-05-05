@@ -7,7 +7,7 @@ import NavContainer from "./NavContainer";
 const StudentNavLinks = () => {
   return (
     <NavContainer>
-      <Link to="/">Dashboard</Link>
+      <Link to={ROUTES.CLIENT_MY_PROJECTS}>My Projects</Link>
       <Link to={ROUTES.PROJECTS}>Browse Projects</Link>
       <Link to={ROUTES.NEW_PROJECT}>
         <Button type="danger">+ New Project</Button>

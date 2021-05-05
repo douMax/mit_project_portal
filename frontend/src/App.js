@@ -11,6 +11,7 @@ import BrowseProjects from "./components/BrowseProjects";
 import NewProject from "./components/NewProject";
 import DevSettings from "./DevSettings";
 import NewEOI from "./components/NewEOI";
+import MyProjects from "./components/MyProjects";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -52,6 +53,9 @@ function App() {
             </Route>
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
+            </Route>
+            <Route exact path={ROUTES.CLIENT_MY_PROJECTS}>
+              <MyProjects />
             </Route>
             <EOIProvider>
               <Route exact path={ROUTES.NEW_EOI}>
