@@ -16,4 +16,7 @@ router
   .route("/api/group/:groupId/supervisor")
   .get(groupController.findSupervisor);
 
+router.route("/api/group/:groupId/add");
+router.route("/api/group/:groupId/remove");
+
 module.exports = router;

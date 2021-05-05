@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Radio } from "antd";
+import { UserContext } from "./contexts/UserContext";
 
-const DevSettings = (props) => {
+const DevSettings = props => {
   //console.log(props.userType);
   //console.log(user);
+  const [user, setUser] = useContext(UserContext);
 
+  const handleRadioChange = e => {
+    const newUser = { ...user, role: e.target.value };
+    setUser(newUser);
+  };
   return (
     <div>
       <Radio.Group
-        onChange={props.onToggleSettings}
-        defaultValue={props.userType || "Staff"}
+        onChange={handleRadioChange}
+        defaultValue={user.role || "staff"}
         buttonStyle="solid"
       >
         <Radio.Button value="student">Student</Radio.Button>
