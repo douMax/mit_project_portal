@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 import ROUTES from "../../utils/routes";
-
 import NavContainer from "./NavContainer";
 
-const StaffNavLinks = () => {
+const StudentNavLinks = () => {
   return (
     <NavContainer>
       <Link to="/">Dashboard</Link>
@@ -17,4 +16,4 @@ const StaffNavLinks = () => {
   );
 };
 
-export default StaffNavLinks;
+export default StudentNavLinks;
