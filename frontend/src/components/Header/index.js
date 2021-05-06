@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import StaffNavLinks from "./StaffNavLinks";
 import StudentNavLinks from "./StudentNavLinks";
 import HeaderAvatar from "./HeaderAvatar";
+import IndustryClientNavLinks from "./IndustryClientNavLinks";
 import styled from "styled-components";
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { NotificationProvider } from "../../contexts/NotificationContext";
@@ -26,6 +27,7 @@ const Header = (/*{ userType, userName }*/) => {
       <Logo />
       {userType === USERTYPES.STAFF && <StaffNavLinks />}
       {userType === USERTYPES.STUDENT && <StudentNavLinks />}
+      {userType === USERTYPES.INDUSTRY_CLIENT && <IndustryClientNavLinks />}
       <NotificationProvider>
         <HeaderAvatar />
       </NotificationProvider>

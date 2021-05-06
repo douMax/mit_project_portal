@@ -4,7 +4,7 @@ import { Button, Space, Switch } from "antd";
 
 //import changeBorderRed from "./ProjectListDetails";
 
-const ProjectStats = projstats => {
+const ProjectStats = (projstats) => {
   //console.log(projdets);
 
   return (

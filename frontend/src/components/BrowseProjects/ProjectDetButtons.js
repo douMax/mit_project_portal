@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Space, Button } from "antd";
+import { UserContext } from "../../contexts/UserContext";
 
 const ProjectDetButtons = ({ project }) => {
+  const [user] = useContext(UserContext);
+  //console.log(user.role);
   return (
     <Space style={{ paddingTop: 20 }}>
       <Button
@@ -29,15 +32,17 @@ const ProjectDetButtons = ({ project }) => {
           state: project,
         }}
       >
-        <Button
-          style={{
-            fontWeight: "bold",
-            borderColor: "red",
-          }}
-          type="danger"
-        >
-          Express Interest
-        </Button>
+        {user.role !== "industry_client" && (
+          <Button
+            style={{
+              fontWeight: "bold",
+              borderColor: "red",
+            }}
+            type="danger"
+          >
+            Express Interest
+          </Button>
+        )}
       </Link>
     </Space>
   );
