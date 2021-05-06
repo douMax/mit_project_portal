@@ -9,11 +9,7 @@ const ProjectStats = (projstats) => {
 
   return (
     <Space>
-      <Button
-        type="text"
-        size="small"
-        style={{ background: "turquoise", color: "white" }}
-      >
+      <Button type="text" style={{ background: "turquoise", color: "white" }}>
         {projstats.status}
       </Button>
       <Button type="text">

@@ -6,7 +6,6 @@ import TopicsHeader from "../BrowseProjects/TopicsHeader";
 import ProjectTitle from "../BrowseProjects/ProjectTitle";
 import ProjectDescription from "../BrowseProjects/ProjectDescription";
 import ProjectStats from "../BrowseProjects/ProjectStats";
-import ClientInfo from "../BrowseProjects/ClientInfo";
 import ProjectDetail from "../BrowseProjects/ProjectDetail";
 
 const UserProjects = ({ proj }) => {
@@ -28,13 +27,11 @@ const UserProjects = ({ proj }) => {
     trimester,
     assigned_students,
     eoi,
-    client,
-    logo,
   } = proj;
   //console.log(proj);
   return (
     <Card
-      style={{ marginTop: "15px", border: "1px solid red" }}
+      style={{ marginTop: "15px" }}
       key={projId}
       type="inner"
       hoverable="true"
@@ -51,7 +48,14 @@ const UserProjects = ({ proj }) => {
             assigned_students={assigned_students}
             eoi={eoi}
           />
-          <Button size="small" type="primary" danger onClick={showDrawer}>
+        </Col>
+        <Col span={6}>
+          <Button
+            type="primary"
+            danger
+            onClick={showDrawer}
+            style={{ marginLeft: 50, marginTop: 105 }}
+          >
             View
           </Button>
           <Drawer
@@ -66,9 +70,6 @@ const UserProjects = ({ proj }) => {
           >
             <ProjectDetail selectedproject={proj} />
           </Drawer>
-        </Col>
-        <Col span={6}>
-          <ClientInfo clientName={client} logo={logo} />
         </Col>
       </Row>
     </Card>

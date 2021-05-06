@@ -1,15 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { Row, Col, Empty } from "antd";
+import { Row, Col } from "antd";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { UserContext } from "../../contexts/UserContext";
+import { ProposalContext } from "../../contexts/ProposalContext";
 
 import UserProjects from "./UserProjects";
 import UserProposals from "./UserProposals";
 
 const PageTitle = styled.h1`
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 const RightPanelWrapper = styled.div`
@@ -30,6 +32,8 @@ const MyProjects = () => {
   const [user] = useContext(UserContext);
   const [project, setProject] = useContext(ProjectContext);
 
+  const [proposal, setProposal] = useContext(ProposalContext);
+
   //Temporary code to retrieve client's projects from all projects.
   //After frontend is connected to backed, we can have an API call to GET all projects for particular user.
   const myprojects = [];
@@ -40,6 +44,16 @@ const MyProjects = () => {
     }
   });
   //console.log(myprojects);
+
+  const myproposals = [];
+  proposal.forEach((p) => {
+    if (p.client === user.userName) {
+      //console.log(p);
+      myproposals.push(p);
+    }
+  });
+  //console.log(myproposals);
+
   return (
     <Row gutter={24}>
       <Col span={12}>
@@ -53,7 +67,15 @@ const MyProjects = () => {
       <Col span={12}>
         <PanelWrapper>
           <PageTitle>My Proposals</PageTitle>
-          <UserProposals />
+          {myproposals.map((pro) => (
+            <UserProposals
+              key={pro.propId}
+              topic={pro.topic}
+              title={pro.title}
+              description={pro.description}
+              status={pro.status}
+            />
+          ))}
         </PanelWrapper>
       </Col>
     </Row>
