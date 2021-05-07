@@ -12,6 +12,7 @@ import NewProject from "./components/NewProject";
 import DevSettings from "./DevSettings";
 import NewEOI from "./components/NewEOI";
 import MyProjects from "./components/MyProjects";
+import CoordinatorDashboard from "./components/CoordinatorDashboard";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -54,6 +55,9 @@ function App() {
             </Route>
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
+            </Route>
+            <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
+              <CoordinatorDashboard />
             </Route>
             <ProposalProvider>
               <Route exact path={ROUTES.MY_PROJECTS}>

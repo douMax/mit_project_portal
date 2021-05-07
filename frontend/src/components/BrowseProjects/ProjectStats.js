@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Space, Switch } from "antd";
+import { Button, Space } from "antd";
 
 //import changeBorderRed from "./ProjectListDetails";
 

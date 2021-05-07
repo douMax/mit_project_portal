@@ -14,15 +14,6 @@ const PageTitle = styled.h1`
   font-weight: bold;
 `;
 
-const RightPanelWrapper = styled.div`
-  max-height: calc(100vh - 120px);
-  padding: 24px;
-  background-color: #fff;
-  border: 1px solid #f0f0f0;
-  border-radius: 2px;
-  overflow-y: scroll;
-`;
-
 const PanelWrapper = styled.div`
   max-height: calc(100vh - 120px);
   overflow-y: auto;

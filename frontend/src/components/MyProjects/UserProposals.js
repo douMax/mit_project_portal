@@ -19,7 +19,7 @@ const UserProposals = ({ topic, title, description, status }) => {
     setIsDrawerVisible(false);
   };
   return (
-    <Card style={{ marginTop: "15px" }} type="inner" hoverable="true">
+    <Card style={{ marginBottom: "15px" }} type="inner" hoverable="true">
       <Row gutter={16}>
         <Col span={24}>
           <TopicsHeader topic={topic} />
