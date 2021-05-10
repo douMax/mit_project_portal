@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { Row, Col, Button } from "antd";
+import { Row, Col } from "antd";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 
-import OpenProjects from "./OpenProjects";
+import ProjectsSummary from "./ProjectsSummary";
 
 const PageTitle = styled.h1`
   font-size: 36px;
@@ -15,14 +15,32 @@ const SectionTitle = styled.h1`
   font-weight: bold;
 `;
 
-const Wrapper = styled.div`
+const OpenWrapper = styled.div`
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  padding-top: 10px;
   padding-botton: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: 2px solid turquoise;
 `;
 
-const buttonStyle = { background: "DimGray", color: "white", marginLeft: 250 };
+const OngoingWrapper = styled.div`
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-botton: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: 2px solid cornflowerblue;
+`;
+
+const ClosedWrapper = styled.div`
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-botton: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: 2px solid salmon;
+`;
 
 const CoordinatorDashboard = () => {
   //Temporary code to retrieve open, ongoing, and closed projects from all projects.
@@ -48,22 +66,28 @@ const CoordinatorDashboard = () => {
       <PageTitle>Staff Dashboard - Unit Coordinator</PageTitle>
       <Row gutter={24}>
         <Col span={8}>
-          <Wrapper>
+          <OpenWrapper>
             <SectionTitle>Unallocated/Open Projects</SectionTitle>
             {openproject.map((p) => (
-              <OpenProjects key={p.projId} project={p} />
+              <ProjectsSummary key={p.projId} project={p} />
             ))}
-          </Wrapper>
+          </OpenWrapper>
         </Col>
         <Col span={8}>
-          <Wrapper>
+          <OngoingWrapper>
             <SectionTitle>Ongoing Projects</SectionTitle>
-          </Wrapper>
+            {ongoingproject.map((p) => (
+              <ProjectsSummary key={p.projId} project={p} />
+            ))}
+          </OngoingWrapper>
         </Col>
         <Col span={8}>
-          <Wrapper>
+          <ClosedWrapper>
             <SectionTitle>Closed Projects</SectionTitle>
-          </Wrapper>
+            {closedproject.map((p) => (
+              <ProjectsSummary key={p.projId} project={p} />
+            ))}
+          </ClosedWrapper>
         </Col>
       </Row>
     </div>

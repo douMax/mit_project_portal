@@ -1,12 +1,12 @@
 import React from "react";
-import { Card, Button, Space } from "antd";
+import { Card, Space } from "antd";
 
 import ProjectTitle from "../BrowseProjects/ProjectTitle";
 import ProjectDescription from "../BrowseProjects/ProjectDescription";
 import ViewProjectDetails from "./ViewProjectDetails";
 import AllocateResources from "./AllocateResources";
 
-const OpenProjects = ({ project }) => {
+const ProjectsSummary = ({ project }) => {
   //console.log(project);
 
   return (
@@ -15,10 +15,10 @@ const OpenProjects = ({ project }) => {
       <ProjectDescription description={project.description} />
       <Space>
         <ViewProjectDetails project={project} />
-        <AllocateResources />
+        <AllocateResources projId={project.projId} />
       </Space>
     </Card>
   );
 };
 
-export default OpenProjects;
+export default ProjectsSummary;

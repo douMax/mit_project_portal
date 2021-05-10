@@ -56,9 +56,6 @@ function App() {
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
             </Route>
-            <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
-              <CoordinatorDashboard />
-            </Route>
             <ProposalProvider>
               <Route exact path={ROUTES.MY_PROJECTS}>
                 <MyProjects />
@@ -67,6 +64,9 @@ function App() {
             <EOIProvider>
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />
+              </Route>
+              <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
+                <CoordinatorDashboard />
               </Route>
             </EOIProvider>
           </ProjectProvider>
