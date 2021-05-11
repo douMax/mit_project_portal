@@ -47,8 +47,9 @@ const clientRoutes = require("./backend/routes/client.route");
 const authRoutes = require("./backend/routes/auth.route");
 app.use(clientRoutes);
 
-const authRoutes =require("./localhost/api/login");
-const authRoutes = require("./backend/routes/auth.route");
+//const authRoutes =require("./localhost/api/login");
+//const authRoutes = require("./backend/routes/auth.route");
+//
 app.use(authRoutes);
 
 app.get("/api", (req, res) => {

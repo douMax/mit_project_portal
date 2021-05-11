@@ -22,8 +22,26 @@ exports.findCompanyClients = async (req, res) => {
 };
 
 exports.findOneById = async (req, res) => {
-  const {clientId} = req.params;
+  try {
+    let data = await Project.find();
+    res.status(201).send(data);
+  } catch (error) {
+    res.status(500).send("Error retriving Projects");
+  }
+};
+exports.findClientsProjects = async (req, res) => {
+  const {projectId} = req.params;
+  console.log(projectId);
+  
+  try {
+    const Project = await Project.findById(projectId);
+    res.status(201).send(data);
+  } catch (error) {
+    res.status(500).send("Error retriving group");
+  }
+};
 
+ 
   try {
     const client = await Client.findById(clientId);
       const projects = await projects.find(ClientId);
@@ -47,9 +65,8 @@ exports.findOneById = async (req, res) => {
     });
 
     
-  }
+  };
 
-};
 exports.update = async (req, res) => {
   const { clientId } = req.params;
 
@@ -98,4 +115,3 @@ exports.delete = async (req, res) => {
   }
 };
 
-exports.findClientsProjects
