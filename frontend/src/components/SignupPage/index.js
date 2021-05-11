@@ -11,13 +11,11 @@ import { UserContext } from "../../contexts/UserContext";
 
 const { Title, Paragraph } = Typography;
 
-const SignUpPage = props => {
+const SignUpPage = (props) => {
   const [user] = useContext(UserContext);
 
   let SignUpForm;
   let userRoleString = "";
-
-  console.log(user);
 
   switch (user.role) {
     case USERTYPES.STAFF:
