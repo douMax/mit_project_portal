@@ -24,7 +24,7 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
 
   return (
     <Card
-      style={{ marginTop: "15px", border: isSelected && "1px solid red" }}
+      style={{ marginBottom: "15px", border: isSelected && "1px solid red" }}
       key={projId}
       type="inner"
       hoverable="true"

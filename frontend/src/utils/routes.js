@@ -5,6 +5,8 @@ const ROUTES = {
   LOG_IN: "/login",
   DEV_SETTINGS: "/dev-settings",
   NEW_EOI: "/projects/:projId/new-eoi",
+  MY_PROJECTS: "/projects/my-projects",
+  COORDINATOR_DASHBOARD: "/dashboard/coordinator",
 };
 
 export default ROUTES;
