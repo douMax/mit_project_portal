@@ -31,7 +31,7 @@ const UserProjects = ({ proj }) => {
   //console.log(proj);
   return (
     <Card
-      style={{ marginTop: "15px" }}
+      style={{ marginBottom: "15px" }}
       key={projId}
       type="inner"
       hoverable="true"

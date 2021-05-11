@@ -12,6 +12,7 @@ import NewProject from "./components/NewProject";
 import DevSettings from "./DevSettings";
 import NewEOI from "./components/NewEOI";
 import MyProjects from "./components/MyProjects";
+import CoordinatorDashboard from "./components/CoordinatorDashboard";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -63,6 +64,9 @@ function App() {
             <EOIProvider>
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />
+              </Route>
+              <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
+                <CoordinatorDashboard />
               </Route>
             </EOIProvider>
           </ProjectProvider>
