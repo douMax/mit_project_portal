@@ -12,4 +12,8 @@ router
   .get(projectController.findProjects)
   .post(projectController.create);
 
+router
+  .route("/api/projects/:id/topics")
+  .get(projectController.findProjectTopics);
+
 module.exports = router;

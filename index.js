@@ -31,6 +31,9 @@ app.use(topicRoutes);
 const staffRoutes = require("./backend/routes/staff.route");
 app.use(staffRoutes);
 
+const projectRoutes = require("./backend/routes/project.route");
+app.use(projectRoutes);
+
 const studentRoutes = require("./backend/routes/student.route");
 app.use(studentRoutes);
 
