@@ -1,4 +1,5 @@
 const Client = require("../models/client.model");
+const Project = require("../models/project.model");
 
 exports.create = async (req, res) => {
   const newClient = new Client(req.body);
@@ -25,7 +26,7 @@ exports.findOneById = async (req, res) => {
 
   try {
     const client = await Client.findById(clientId);
-
+      const projects = await projects.find(ClientId);
     if (!client) {
       return res.status(404).send({
         message: 'Client not found with ID {clientId}',
@@ -44,6 +45,8 @@ exports.findOneById = async (req, res) => {
     return res.status(500).send({
       message :'internal server error.',
     });
+
+    
   }
 
 };
@@ -94,3 +97,5 @@ exports.delete = async (req, res) => {
     });
   }
 };
+
+exports.findClientsProjects

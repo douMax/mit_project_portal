@@ -35,7 +35,9 @@ const projectSchema = new Schema(
       type: Boolean,
     },
     client_id: {
-      type: String,
+
+      type: Schema.Types.ObjectId,
+      ref:"Client",
     },
     staff_id: {
       type: String,
