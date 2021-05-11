@@ -3,11 +3,11 @@ const { Schema } = mongoose;
 
 const ClientSchema = new Schema(
   {
-    company_name: {
+    companyName: {
       type: String,
       required: [true, "Company name is required"],
     },
-    company_profile: {
+    companyProfile: {
       type: String,
     },
     website: {
@@ -16,23 +16,26 @@ const ClientSchema = new Schema(
     address: {
       type: String,
     },
-    is_an_agent: {
+    isAnAgent: {
       type: Boolean,
-      required: [true, "Is agent or an information handler"],
+      required: [true, "Please specify if this client is an agent or not."],
     },
-    abn: {
+    companyAbn: {
       type: String,
     },
-    contact_name: {
+    contactPersonName: {
       type: String,
     },
-    contact_tittle: {
+    contactPersonTittle: {
       type: String,
     },
-    contact_mail_id: {
+    contactPersonEmail: {
       type: String,
     },
-    contact_person_profile: {
+    contactPersonProfile: {
+      type: String,
+    },
+    password: {
       type: String,
     },
   },
