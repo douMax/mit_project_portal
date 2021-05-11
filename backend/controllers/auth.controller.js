@@ -17,7 +17,7 @@ exports.signup = (req, res) => {
           res.status(500).send({ message: error });
           return;
         }
-        res. send ({"user registered successfully."});
+        res. send ({Message: "user registered successfully:"});
     });
 };
 
