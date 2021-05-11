@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, Space, Input, Button, Switch } from "antd";
 import styled from "styled-components";
+
+import { StudentContext } from "../../contexts/StudentContext";
 
 const { TextArea } = Input;
 
@@ -15,12 +17,23 @@ const SubsectionTitle = styled.p`
 `;
 
 const StudentEOIDetails = ({ eoi }) => {
-  //Need to query database to get student details based on studentId obtained from the EOI object.
+  //Need to query database to GET student details based on studentId obtained from the EOI object.
+  //Temporary code to simulate GETting student records for students who expressed interest in the project.
+  const [students, setStudents] = useContext(StudentContext);
+  const currentApplicant = [];
+  students.forEach((student) => {
+    if (student.userId === eoi.applicantId) {
+      currentApplicant.push(student);
+    }
+  });
+  //console.log(students);
+  //console.log(eoi);
+  //console.log(currentApplicant);
   return (
-    <Card>
+    <Card style={{ marginBottom: 20, borderColor: "red" }}>
       <Space>
-        <Card style={{ height: 385 }}>
-          <SubsectionTitle>Lingxiao Wang</SubsectionTitle>
+        <Card style={{ height: 385, borderColor: "DimGrey" }}>
+          <SectionTitle>{currentApplicant[0].userName}</SectionTitle>
           <Button type="text" style={{ background: "turquoise" }}>
             Allocate
           </Button>
@@ -28,21 +41,37 @@ const StudentEOIDetails = ({ eoi }) => {
             Remove
           </Button>
           <SubsectionTitle>Course Enrolment Status</SubsectionTitle>
-          <Switch
-            checkedChildren="Yes"
-            unCheckedChildren="No"
-            defaultChecked
-            disabled
-          />
+          {currentApplicant[0].course_enrolment ? (
+            <Switch
+              checkedChildren="Yes"
+              defaultChecked
+              disabled
+              style={{ background: "mediumspringgreen" }}
+            />
+          ) : (
+            <Switch
+              unCheckedChildren="No"
+              disabled
+              style={{ background: "red" }}
+            />
+          )}
           <SubsectionTitle>Module Enrolment Status</SubsectionTitle>
-          <Switch
-            checkedChildren="Yes"
-            unCheckedChildren="No"
-            defaultChecked
-            disabled
-          />
+          {currentApplicant[0].capstone_project_enrolment ? (
+            <Switch
+              checkedChildren="Yes"
+              defaultChecked
+              disabled
+              style={{ background: "mediumspringgreen" }}
+            />
+          ) : (
+            <Switch
+              unCheckedChildren="No"
+              disabled
+              style={{ background: "red" }}
+            />
+          )}
         </Card>
-        <Card>
+        <Card style={{ borderColor: "DimGrey" }}>
           <SectionTitle>Expression of Interest Details</SectionTitle>
           <SubsectionTitle>Interest in Project</SubsectionTitle>
           <TextArea
