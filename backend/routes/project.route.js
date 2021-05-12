@@ -13,13 +13,10 @@ router
   .get(projectController.findProjects)
   .post(projectController.create);
 
+router.route("/api/projects/:projectId").get(projectController.findById);
+
 router
-  .route("/api/projects/:projectsId")
-  .get(projectController.findOneById)
-  
-  .put(projectController.update)
-  .delete(projectController.delete);
-  //route.route ("api/projects/:projectsId").get(projectController.findOneById)
-  
+  .route("/api/projects/:id/topics")
+  .get(projectController.findProjectTopics);
 
 module.exports = router;

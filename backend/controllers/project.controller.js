@@ -1,8 +1,10 @@
 const { findByIdAndUpdate } = require("../models/project.model");
 const Project = require("../models/project.model");
+const Topic = require("../models/topic.model");
+const Group = require("../models/group.model");
 
 exports.create = async (req, res) => {
-  const newProject= new Project(req.body);
+  const newProject = new Project(req.body);
 
   try {
     const data = await newProject.save();
@@ -21,56 +23,84 @@ exports.findProjects = async (req, res) => {
   }
 };
 
-exports.findOneById = async (req, res) => {
+exports.findById = async (req, res) => {
   // retrive ID from the req
-  const id = req.params.id;
+  const { projectId } = req.params;
+  console.log(projectId);
   //
   try {
-    let data = await Project.findOne({ id: id });
+    const project = await Project.findById(projectId);
+    const groups = await Group.find({ projectId: projectId });
+    const data = {
+      ...project._doc,
+      groups: groups,
+    };
     res.status(201).send(data);
   } catch (error) {
-    res.status(500).send("Error retriving project");
+    res.status(500).send("Error retriving group");
   }
 };
 
-exports.update= async (req,res)  => {
-const {projectsId}=req.params
-try {
-  const updatedproject= await Project.findByIdAndUpdate(projectsId,req.body,{
-    new:true,
-  })
-  res.status(203).send(updatedproject);
-} catch (err) {
-  if(err.kind === "ObjectId") {
-    return res.status(404).send ({
-      message: 'Project not found with Id ${projectId}',
-    });
-  }
-  console.log(err);
-  return res.status(500).send({
-    message:'Internal server error',
-  });
-
-
-  
-}
-};
-
-exports.delete = async(req,res) => {
-  const {projectsId} =req.params
+exports.update = async (req, res) => {
+  const { projectsId } = req.params;
   try {
-    const project = await Project.findByIdAndRemove(projectsId)
-    return res.status(200).send("Project is deleted")
+    const updatedproject = await Project.findByIdAndUpdate(
+      projectsId,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.status(203).send(updatedproject);
   } catch (err) {
-    if(err.kind === "ObjectId") {
-      return res.status(404).send ({
-        message: 'Project not found with Id ${projectId}',
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: "Project not found with Id ${projectId}",
       });
     }
     console.log(err);
     return res.status(500).send({
-      message:'Internal server error',
+      message: "Internal server error",
     });
   }
-}
-//find one and update
+};
+
+exports.delete = async (req, res) => {
+  const { projectsId } = req.params;
+  try {
+    const project = await Project.findByIdAndRemove(projectsId);
+    return res.status(200).send("Project is deleted");
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: "Project not found with Id ${projectId}",
+      });
+    }
+  }
+};
+
+//find the associated topics
+exports.findProjectTopics = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const project = await Project.findById(id);
+    let topics = [];
+    if (project.topics) {
+      topics = await Topic.find().where("_id").in(project.topics).exec();
+      return res.status(200).send(topics);
+    } else {
+      return res.status(400).send("No topics found with the project.");
+    }
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: `Project not found with id ${id}`,
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: "Internal server error",
+    });
+  }
+};

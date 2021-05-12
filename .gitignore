@@ -2,6 +2,7 @@
 
 # keys and secrets
 /config
+/backend/config
 
 # dependencies
 /node_modules
@@ -25,3 +26,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.eslintcache
+<<<<<<< HEAD
+=======
+frontend/.eslintcache
+
+>>>>>>> 8adaedae99fdac2fa3efba2f7e82f12026e01e04
