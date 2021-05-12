@@ -1,5 +1,7 @@
 const { findByIdAndUpdate } = require("../models/application_records.model");
-const Project = require("../models/application_records.model");
+const application_records = require("../models/application_records.model");
+const Project = require("../models/project.model");
+const Student = require("../models/student.model");
 
 exports.create = async (req, res) => {
   const newapplication_records= new application_records(req.body);
@@ -21,15 +23,22 @@ exports.findapplication_records = async (req, res) => {
   }
 };
 
-exports.findOneById = async (req, res) => {
+exports.findById = async (req, res) => {
   // retrive ID from the req
-  const id = req.params.id;
+  const { applicationId } = req.params;
   //
   try {
-    let data = await application_records.findOne({ id: id });
+    const application_records = await ApplicationRecord.findById(applicationId);
+    const project = await Project.findById(application_records.projectId);
+    const student = await Student.findById(application_records.studentId);
+    const data = {
+      ...application_records._doc,
+      student: student,
+      project: project,
+    };
     res.status(201).send(data);
   } catch (error) {
-    res.status(500).send("Error retriving application");
+    res.status(500).send("Error retriving group");
   }
 };
 

@@ -3,27 +3,21 @@ const { Schema } = mongoose;
 
 const application_recordsSchema = new Schema(
     {
-      application_title: {
-        type: String,
-        required: [true, "Application title is required"],
-      },
+     
       project_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "Project",
       },
-      date_of_application:{
-          type:Boolean,
+      student_id: {
+        type: Schema.Types.ObjectId,
+        ref: "Project",
       },
-      group_id: {
-          type: String,
-        },
-        date_of_decision: {
-          type: Boolean,
-        },
-        status: {
-          type: String,
+      description: {
+        type:String,
+      }
         },
       
-    },
+    
     {
       timestamps: true,
     }

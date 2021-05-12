@@ -15,10 +15,9 @@ router
 
 router
   .route("/api/application_records/:application_recordsId")
-  .get(application_recordsController.findOneById)
+  .get(application_recordsController.findById)
   
-  .put(application_recordsController.update)
-  .delete(application_recordsController.delete);
+  
   
   
 
