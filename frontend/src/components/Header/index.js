@@ -9,6 +9,8 @@ import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { NotificationProvider } from "../../contexts/NotificationContext";
 import { UserContext } from "../../contexts/UserContext";
 
+import mockNotifications from "../../data/mockNotifications.json";
+
 const HeaderContainer = styled.header`
   width: 100%;
   height: 64px;
@@ -19,7 +21,7 @@ const HeaderContainer = styled.header`
   background-color: #fff;
 `;
 
-const Header = (/*{ userType, userName }*/) => {
+const Header = ({ useType }) => {
   const [user] = useContext(UserContext);
   const userType = user.role;
   return (
