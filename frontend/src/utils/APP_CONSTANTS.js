@@ -41,10 +41,8 @@ export const TEMP_TOPICS = [
   { label: "Data Visualisation", value: "Data Visualisation" },
 ];
 
-export const EOI_LIMIT = { value: 3 };
-
 export const LOCATIONS = [
-  { label: "Any", value: "Any" },
-  { label: "Melbourne Campus", value: "Melbourne Campus" },
-  { label: "Sydney Campus", value: "Sydney Campus" },
+  { label: "Sydney", value: "Sydney" },
+  { label: "Melbourne", value: "Melbourne" },
+  { label: "any", value: "any" },
 ];
