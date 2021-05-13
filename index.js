@@ -44,6 +44,7 @@ const applicationRecordRoutes = require("./backend/routes/application_record.rou
 app.use(applicationRecordRoutes);
 
 const clientRoutes = require("./backend/routes/client.route");
+//const authRoutes = require("./backend/routes/auth.routes");
 app.use(clientRoutes);
 
 // const authRoutes = require("./backend/routes/auth.route");
