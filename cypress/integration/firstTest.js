@@ -12,4 +12,6 @@ describe("First test", function () {
 
     cy.url().should("include", "/projects");
   });
+
+  it("Visit projects page and ");
 });

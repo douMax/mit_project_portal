@@ -8,6 +8,10 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
+import DevSettings from "./DevSettings";
+import NewEOI from "./components/NewEOI";
+import MyProjects from "./components/MyProjects";
+import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import NewProject from "./components/NewProject";
 import DevSettings from "./DevSettings";
 import NewEOI from "./components/NewEOI";
@@ -19,7 +23,8 @@ import ROUTES from "./utils/routes";
 //Contexts
 import { ProjectProvider } from "./contexts/ProjectContext";
 import { EOIProvider } from "./contexts/EOIContext";
-// import { ProposalProvider } from "./contexts/ProposalContext";
+import { ProposalProvider } from "./contexts/ProposalContext";
+import { StudentProvider } from "./contexts/StudentContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -31,6 +36,18 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
+  const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
+
+  const handleToggleSettings = (e) => {
+    dispatch({
+      type: "set_user_type",
+      payload: {
+        userType: e.target.value,
+        username: e.target.value.toUpperCase(),
+      },
+    });
+  };
+
   return (
     <BrowserRouter>
       {isLogged && (
@@ -55,15 +72,20 @@ function App() {
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
             </Route>
-            {/* <ProposalProvider>
+            <ProposalProvider>
               <Route exact path={ROUTES.MY_PROJECTS}>
                 <MyProjects />
               </Route>
-            </ProposalProvider> */}
+            </ProposalProvider>
             <EOIProvider>
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />
               </Route>
+              <StudentProvider>
+                <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
+                  <CoordinatorDashboard />
+                </Route>
+              </StudentProvider>
             </EOIProvider>
           </ProjectProvider>
         </Switch>

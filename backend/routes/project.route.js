@@ -12,7 +12,7 @@ router
   .get(projectController.findProjects)
   .post(projectController.create);
 
-router.route("/api/projects/:id").get(projectController.findOneById);
+router.route("/api/projects/:projectId").get(projectController.findById);
 
 router
   .route("/api/projects/:id/topics")

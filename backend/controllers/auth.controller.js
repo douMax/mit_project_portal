@@ -1,10 +1,7 @@
-const config = require("../controller/auth.controller");
-const databsase = require("../models");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-var jwt = require("json");
-var bcrypt = require("bcryptjs");
-
-exports.signup = (req, res) => {
+exports.clientSignup = (req, res) => {
   const user = new User({
     username: req.body.username,
     password: bcrypt.hashSync(req.body.password, 8),
@@ -15,11 +12,11 @@ exports.signup = (req, res) => {
       res.status(500).send({ message: error });
       return;
     }
-    res.send("user registered successfully.");
+    res.send("Your signup request has been sent.");
   });
 };
 
-exports.signin = (req, res) => {
+exports.clientSignIn = (req, res) => {
   User.findOne({
     username: req.body.username,
   }).exec((err, user) => {

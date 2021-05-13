@@ -1,5 +1,6 @@
 const Project = require("../models/project.model");
 const Topic = require("../models/topic.model");
+const Group = require("../models/group.model");
 
 exports.create = async (req, res) => {
   const newProject = new Project(req.body);
@@ -30,6 +31,24 @@ exports.findOneById = async (req, res) => {
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving project");
+  }
+};
+
+exports.findById = async (req, res) => {
+  // retrive ID from the req
+  const { projectId } = req.params;
+  console.log(projectId);
+  //
+  try {
+    const project = await Project.findById(projectId);
+    const groups = await Group.find({ projectId: projectId });
+    const data = {
+      ...project._doc,
+      groups: groups,
+    };
+    res.status(201).send(data);
+  } catch (error) {
+    res.status(500).send("Error retriving group");
   }
 };
 
