@@ -21,6 +21,7 @@ import ROUTES from "./utils/routes";
 import { ProjectProvider } from "./contexts/ProjectContext";
 import { EOIProvider } from "./contexts/EOIContext";
 import { ProposalProvider } from "./contexts/ProposalContext";
+import { StudentProvider } from "./contexts/StudentContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -100,9 +101,11 @@ function App() {
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />
               </Route>
-              <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
-                <CoordinatorDashboard />
-              </Route>
+              <StudentProvider>
+                <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
+                  <CoordinatorDashboard />
+                </Route>
+              </StudentProvider>
             </EOIProvider>
           </ProjectProvider>
         </Switch>

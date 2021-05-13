@@ -1,0 +1,37 @@
+[
+  {
+    "userId": "1",
+    "userName": "Atish Apajee",
+    "role": "student",
+    "course_enrolment": true,
+    "capstone_project_enrolment": true
+  },
+  {
+    "userId": "2",
+    "userName": "Lingxiao Wang",
+    "role": "student",
+    "course_enrolment": false,
+    "capstone_project_enrolment": false
+  },
+  {
+    "userId": "3",
+    "userName": "Qi Zhao",
+    "role": "student",
+    "course_enrolment": true,
+    "capstone_project_enrolment": true
+  },
+  {
+    "userId": "4",
+    "userName": "Charu Charu",
+    "role": "student",
+    "course_enrolment": false,
+    "capstone_project_enrolment": false
+  },
+  {
+    "userId": "5",
+    "userName": "Santosh Pandey",
+    "role": "student",
+    "course_enrolment": true,
+    "capstone_project_enrolment": true
+  }
+]
