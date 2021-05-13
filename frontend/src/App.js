@@ -13,6 +13,7 @@ import NewEOI from "./components/NewEOI";
 import MyProjects from "./components/MyProjects";
 import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import NewProject from "./components/NewProject";
+import ChairPRPDashboard from "./components/ChairPRPDashboard";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -59,7 +60,7 @@ const ContentContainer = styled.div`
 function App() {
   const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
 
-  const handleToggleSettings = e => {
+  const handleToggleSettings = (e) => {
     dispatch({
       type: "set_user_type",
       payload: {
@@ -95,6 +96,9 @@ function App() {
             <ProposalProvider>
               <Route exact path={ROUTES.MY_PROJECTS}>
                 <MyProjects />
+              </Route>
+              <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
+                <ChairPRPDashboard />
               </Route>
             </ProposalProvider>
             <EOIProvider>

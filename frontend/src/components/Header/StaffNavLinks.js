@@ -13,6 +13,8 @@ const StaffNavLinks = () => {
       <Link to={ROUTES.NEW_PROJECT}>
         <Button type="danger">+ New Project</Button>
       </Link>
+      <Link to={ROUTES.COORDINATOR_DASHBOARD}>Coordinator Dashboard</Link>
+      <Link to={ROUTES.CHAIR_PRP_DASHBOARD}>PRP Dashboard</Link>
     </NavContainer>
   );
 };

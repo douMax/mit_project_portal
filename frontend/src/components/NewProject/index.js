@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from "react";
+import React, { useImperativeHandle, useContext } from "react";
 import {
   Form,
   Select,
@@ -63,7 +63,7 @@ const NewProject = () => {
         span: 14,
       }}
       layout="horizontal"
-      onFinish={handleFinish}
+      //onFinish={handleFinish}
     >
       <h1>New Project Proposal</h1>
       <Row>
@@ -103,7 +103,10 @@ const NewProject = () => {
           </Form.Item>
           <Form.Item>
             <Space>
-              <Button type danger onClick={handleCancel}>
+              <Button
+                type
+                danger //onClick={handleCancel}
+              >
                 Cancel
               </Button>
               <Button type="danger" htmlType="submit">
