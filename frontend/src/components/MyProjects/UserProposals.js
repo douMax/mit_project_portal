@@ -5,6 +5,7 @@ import { CloseCircleFilled } from "@ant-design/icons";
 import ProjectTitle from "../BrowseProjects/ProjectTitle";
 import ProjectDescription from "../BrowseProjects/ProjectDescription";
 import TopicsHeader from "../BrowseProjects/TopicsHeader";
+import ProjectDetail from "../BrowseProjects/ProjectDetail";
 
 import ProposalStatusDetail from "./ProposalStatusDetail";
 
@@ -25,6 +26,26 @@ const UserProposals = ({ topic, title, description, status }) => {
           <ProjectTitle title={title} />
           <ProjectDescription description={description} />
           <ProposalStatusDetail status={status} />
+          <Button
+            type="primary"
+            danger
+            onClick={showDrawer}
+            style={{ marginLeft: 330 }}
+          >
+            View
+          </Button>
+          <Drawer
+            visible={isDrawerVisible}
+            maskClosable={false}
+            onClose={handleClose}
+            placement="left"
+            width={650}
+            closeIcon={
+              <CloseCircleFilled style={{ fontSize: 20, color: "red" }} />
+            }
+          >
+            <ProjectDetail />
+          </Drawer>
         </Col>
       </Row>
     </Card>

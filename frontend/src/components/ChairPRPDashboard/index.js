@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Row, Col, Form, Card } from "antd";
 
-import Proposals from "./Proposals";
+import UserProposals from "../MyProjects/UserProposals";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 
@@ -42,7 +42,13 @@ const ChairPRPDashboard = () => {
           <Wrapper>
             <SectionTitle>Project Proposal Requests</SectionTitle>
             {project.map((p) => (
-              <Proposals key={p.projId} proj={p} />
+              <UserProposals
+                key={p.projId}
+                topic={p.topic}
+                title={p.title}
+                description={p.description}
+                status={p.status}
+              />
             ))}
           </Wrapper>
         </Col>
