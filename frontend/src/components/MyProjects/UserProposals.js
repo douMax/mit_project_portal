@@ -7,7 +7,6 @@ import ProjectDescription from "../BrowseProjects/ProjectDescription";
 import TopicsHeader from "../BrowseProjects/TopicsHeader";
 
 import ProposalStatusDetail from "./ProposalStatusDetail";
-import ProposalDetails from "./ProposalDetails";
 
 const UserProposals = ({ topic, title, description, status }) => {
   //console.log(propId, title, description);
