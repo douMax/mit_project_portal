@@ -1,15 +1,41 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, Button } from "antd";
+import { Row, Col, Card, Button } from "antd";
 
-const Proposals = () => {
+import TopicsHeader from "../BrowseProjects/TopicsHeader";
+import ProjectTitle from "../BrowseProjects/ProjectTitle";
+import ProjectDescription from "../BrowseProjects/ProjectDescription";
+import ProjectDetail from "../BrowseProjects/ProjectDetail";
+
+const Proposals = ({ proj }) => {
+  const { projId, title, topic, description, status, year, trimester } = proj;
+  const showDrawer = () => {
+    //console.log(status);
+  };
   return (
-    <Card>
-      <h1>Proposal Title here</h1>
-      <p>Proposal Details here</p>
-      <Button type="primary" danger>
-        View
-      </Button>
+    <Card
+      style={{ marginBottom: "15px" }}
+      key={projId}
+      type="inner"
+      hoverable="true"
+    >
+      <Row gutter={16}>
+        <Col span={18}>
+          <TopicsHeader topic={topic} />
+          <ProjectTitle title={title} />
+          <ProjectDescription description={description} />
+        </Col>
+        <Col span={6}>
+          <Button
+            type="primary"
+            danger
+            onClick={showDrawer}
+            style={{ marginLeft: 50, marginTop: 105 }}
+          >
+            View
+          </Button>
+        </Col>
+      </Row>
     </Card>
   );
 };

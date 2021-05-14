@@ -41,7 +41,9 @@ const ChairPRPDashboard = () => {
         <Col span={12}>
           <Wrapper>
             <SectionTitle>Project Proposal Requests</SectionTitle>
-            <Proposals />
+            {project.map((p) => (
+              <Proposals key={p.projId} proj={p} />
+            ))}
           </Wrapper>
         </Col>
         <Col span={12}>

@@ -70,7 +70,7 @@ const MyProjects = () => {
           <PageTitle>My Proposals</PageTitle>
           {myproposals.map((pro) => (
             <UserProposals
-              key={pro.propId}
+              key={pro.projId}
               topic={pro.topic}
               title={pro.title}
               description={pro.description}
