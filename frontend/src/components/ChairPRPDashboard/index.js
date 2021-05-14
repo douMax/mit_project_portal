@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Row, Col, Form, Card } from "antd";
+
+import Proposals from "./Proposals";
+
+import { ProjectContext } from "../../contexts/ProjectContext";
 
 const PageTitle = styled.h1`
   font-size: 36px;
@@ -18,6 +22,18 @@ const Wrapper = styled.div`
 `;
 
 const ChairPRPDashboard = () => {
+  const [projects, setProject] = useContext(ProjectContext);
+  const project = [];
+  projects.forEach((proj) => {
+    if (
+      proj.status === "Waiting for Approval" ||
+      proj.status === "Changes Required"
+    ) {
+      //console.log(project);
+      project.push(proj);
+    }
+  });
+  //console.log(project);
   return (
     <Form>
       <PageTitle>Staff Dashboard - Chair Project Review Panel</PageTitle>
@@ -25,6 +41,7 @@ const ChairPRPDashboard = () => {
         <Col span={12}>
           <Wrapper>
             <SectionTitle>Project Proposal Requests</SectionTitle>
+            <Proposals />
           </Wrapper>
         </Col>
         <Col span={12}>
