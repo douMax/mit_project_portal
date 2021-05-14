@@ -4,7 +4,6 @@ import { Row, Col } from "antd";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { UserContext } from "../../contexts/UserContext";
-import { ProposalContext } from "../../contexts/ProposalContext";
 
 import UserProjects from "./UserProjects";
 import UserProposals from "./UserProposals";
@@ -21,13 +20,24 @@ const PanelWrapper = styled.div`
 
 const MyProjects = () => {
   const [user] = useContext(UserContext);
-  const [project, setProject] = useContext(ProjectContext);
-
-  const [proposal, setProposal] = useContext(ProposalContext);
+  const [projects, setProject] = useContext(ProjectContext);
+  const project = [];
+  const myprojects = [];
+  const proposal = [];
+  projects.forEach((proj) => {
+    if (
+      proj.status !== "waiting_for_approval" &&
+      proj.status !== "changes_required"
+    ) {
+      project.push(proj);
+    } else {
+      proposal.push(proj);
+    }
+  });
 
   //Temporary code to retrieve client's projects from all projects.
   //After frontend is connected to backed, we can have an API call to GET all projects for particular user.
-  const myprojects = [];
+
   project.forEach((p) => {
     if (p.client === user.userName) {
       //console.log(p);

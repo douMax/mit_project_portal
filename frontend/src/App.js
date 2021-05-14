@@ -21,7 +21,6 @@ import ROUTES from "./utils/routes";
 //Contexts
 import { ProjectProvider } from "./contexts/ProjectContext";
 import { EOIProvider } from "./contexts/EOIContext";
-import { ProposalProvider } from "./contexts/ProposalContext";
 import { StudentProvider } from "./contexts/StudentContext";
 
 let isLogged = true;
@@ -93,14 +92,12 @@ function App() {
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
             </Route>
-            <ProposalProvider>
-              <Route exact path={ROUTES.MY_PROJECTS}>
-                <MyProjects />
-              </Route>
-              <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
-                <ChairPRPDashboard />
-              </Route>
-            </ProposalProvider>
+            <Route exact path={ROUTES.MY_PROJECTS}>
+              <MyProjects />
+            </Route>
+            <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
+              <ChairPRPDashboard />
+            </Route>
             <EOIProvider>
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />

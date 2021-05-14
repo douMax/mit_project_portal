@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { Row, Col } from "antd";
+import { Row, Col, Form } from "antd";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 
@@ -62,7 +62,7 @@ const CoordinatorDashboard = () => {
     }
   });
   return (
-    <div>
+    <Form>
       <PageTitle>Staff Dashboard - Unit Coordinator</PageTitle>
       <Row gutter={24}>
         <Col span={8}>
@@ -90,7 +90,7 @@ const CoordinatorDashboard = () => {
           </ClosedWrapper>
         </Col>
       </Row>
-    </div>
+    </Form>
   );
 };
 
