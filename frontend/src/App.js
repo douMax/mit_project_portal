@@ -8,13 +8,13 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
-import DevSettings from "./DevSettings";
-import NewEOI from "./components/NewEOI";
 import MyProjects from "./components/MyProjects";
 import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import NewProject from "./components/NewProject";
-import DevSettings from "./DevSettings";
 import NewEOI from "./components/NewEOI";
+
+import DevSettings from "./DevSettings";
+
 // import MyProjects from "./components/MyProjects";
 
 // utils and constants
@@ -36,18 +36,6 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
-  const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
-
-  const handleToggleSettings = (e) => {
-    dispatch({
-      type: "set_user_type",
-      payload: {
-        userType: e.target.value,
-        username: e.target.value.toUpperCase(),
-      },
-    });
-  };
-
   return (
     <BrowserRouter>
       {isLogged && (

@@ -10,7 +10,7 @@ export const ProjectProvider = props => {
     fetchEOIsByStudent();
   }, [props]);
 
-  const [project, setProjects] = useState(mockProjects);
+  const [projects, setProjects] = useState(mockProjects);
   return (
     <ProjectContext.Provider value={[projects, setProjects]}>
       {props.children}
