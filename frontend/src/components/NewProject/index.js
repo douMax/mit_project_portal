@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from "react";
+import React, { useContext } from "react";
 import {
   Form,
   Select,
@@ -52,8 +52,16 @@ const NewProject = () => {
       isOpen: projOpen,
       location: projLocation,
     };
-    setProject((prevProjects) => [...prevProjects, newProject]);
+    setProject(prevProjects => [...prevProjects, newProject]);
   };
+
+  const handleFinish = values => {
+    // post data to create project endpoint
+    // and then redirect to /projects or /dashbaord
+  };
+
+  const handleCancel = () => {};
+
   return (
     <Form
       labelCol={{

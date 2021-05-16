@@ -18,7 +18,7 @@ const SectionTitle = styled.h1`
 const OpenWrapper = styled.div`
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  padding-botton: 10px;
+  padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   outline: 2px solid turquoise;
@@ -27,7 +27,7 @@ const OpenWrapper = styled.div`
 const OngoingWrapper = styled.div`
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  padding-botton: 10px;
+  padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   outline: 2px solid cornflowerblue;
@@ -36,7 +36,7 @@ const OngoingWrapper = styled.div`
 const ClosedWrapper = styled.div`
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  padding-botton: 10px;
+  padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   outline: 2px solid salmon;
@@ -50,7 +50,7 @@ const CoordinatorDashboard = () => {
   const closedproject = [];
   const [project, setProject] = useContext(ProjectContext);
   //console.log(project);
-  project.forEach((p) => {
+  project.forEach(p => {
     if (p.status === "Open") {
       openproject.push(p);
     }
@@ -68,7 +68,7 @@ const CoordinatorDashboard = () => {
         <Col span={8}>
           <OpenWrapper>
             <SectionTitle>Unallocated/Open Projects</SectionTitle>
-            {openproject.map((p) => (
+            {openproject.map(p => (
               <ProjectsSummary key={p.projId} project={p} />
             ))}
           </OpenWrapper>
@@ -76,7 +76,7 @@ const CoordinatorDashboard = () => {
         <Col span={8}>
           <OngoingWrapper>
             <SectionTitle>Ongoing Projects</SectionTitle>
-            {ongoingproject.map((p) => (
+            {ongoingproject.map(p => (
               <ProjectsSummary key={p.projId} project={p} />
             ))}
           </OngoingWrapper>
@@ -84,7 +84,7 @@ const CoordinatorDashboard = () => {
         <Col span={8}>
           <ClosedWrapper>
             <SectionTitle>Closed Projects</SectionTitle>
-            {closedproject.map((p) => (
+            {closedproject.map(p => (
               <ProjectsSummary key={p.projId} project={p} />
             ))}
           </ClosedWrapper>
