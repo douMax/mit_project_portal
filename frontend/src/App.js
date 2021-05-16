@@ -1,5 +1,5 @@
 // framework related
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
@@ -13,6 +13,9 @@ import NewEOI from "./components/NewEOI";
 import MyProjects from "./components/MyProjects";
 import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import NewProject from "./components/NewProject";
+import DevSettings from "./DevSettings";
+import NewEOI from "./components/NewEOI";
+// import MyProjects from "./components/MyProjects";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -26,30 +29,6 @@ import { StudentProvider } from "./contexts/StudentContext";
 let isLogged = true;
 let isSignedUp = true;
 
-const intialDevSettings = {
-  username: "Staff",
-  userType: "staff",
-  isLogged: true,
-  isSignedUp: true,
-};
-
-const devSettingsReducer = (state, action) => {
-  switch (action.type) {
-    case "set_user_type":
-      return {
-        ...state,
-        userType: action.payload.userType,
-        username: action.payload.username,
-      };
-    case "set_logged":
-      return { ...state, isLogged: action.payload };
-    case "set_sign_up":
-      return { ...state, isSignedUp: action.payload };
-    default:
-      throw new Error();
-  }
-};
-
 // camal case
 const ContentContainer = styled.div`
   width: 100vw;
@@ -59,7 +38,7 @@ const ContentContainer = styled.div`
 function App() {
   const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
 
-  const handleToggleSettings = e => {
+  const handleToggleSettings = (e) => {
     dispatch({
       type: "set_user_type",
       payload: {
@@ -72,7 +51,8 @@ function App() {
   return (
     <BrowserRouter>
       {isLogged && (
-        <Header userType={state.userType} username={state.username} />
+        /*<Header userType={state.userType} username={state.username} />*/
+        <Header />
       )}
       <ContentContainer>
         <Switch>

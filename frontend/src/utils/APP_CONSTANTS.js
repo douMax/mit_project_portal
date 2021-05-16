@@ -46,3 +46,5 @@ export const LOCATIONS = [
   { label: "Melbourne", value: "Melbourne" },
   { label: "any", value: "any" },
 ];
+
+export const EOI_LIMIT = 3;
