@@ -48,8 +48,10 @@ app.use(applicationRecordRoutes);
 const clientRoutes = require("./backend/routes/client.route");
 app.use(clientRoutes);
 
+
 //const authRoutes = require("./backend/routes/auth.routes");
 //app.use(authRoutes);
+
 
 app
 .get("/api", (req, res) => {

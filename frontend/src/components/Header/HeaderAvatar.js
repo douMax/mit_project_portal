@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { Avatar, Badge, Space } from "antd";
+import React, { useContext, useState } from "react";
+import { Avatar, Badge, Space, Button, Drawer } from "antd";
 import NotificationsDrawer from "./NotificationsDrawer";
 import { Link } from "react-router-dom";
 import ROUTES from "../../utils/routes";
-
 import { NotificationContext } from "../../contexts/NotificationContext";
 import { UserContext } from "../../contexts/UserContext";
 
 const HeaderAvatar = () => {
   //console.log(notifs.notifs.length);
+
   const [notifs, setNotifs] = useContext(NotificationContext);
   const [user] = useContext(UserContext);
   const userName = user.userName;
