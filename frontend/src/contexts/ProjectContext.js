@@ -12,7 +12,7 @@ export const ProjectProvider = props => {
 
   const [project, setProjects] = useState(mockProjects);
   return (
-    <ProjectContext.Provider value={[project, setProjects]}>
+    <ProjectContext.Provider value={[projects, setProjects]}>
       {props.children}
     </ProjectContext.Provider>
   );
