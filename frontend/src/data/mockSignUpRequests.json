@@ -1,0 +1,54 @@
+[
+  {
+    "key": "1",
+    "companyName": "ABC Computing Pty",
+    "companyProfile": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "website": "www.abccomputingpty.com",
+    "title": "Mr",
+    "fName": "Aavash",
+    "lName": "Bhattarai",
+    "email": "abhattarai@abccomputing.com",
+    "mobile": "0452160855",
+    "office": "0352160855",
+    "position": "Managing Director"
+  },
+  {
+    "key": "2",
+    "companyName": "XYZ Robotics Services",
+    "companyProfile": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "website": "www.xyzroboticsservices.com",
+    "title": "Mr",
+    "fName": "Aashish",
+    "lName": "Poudel",
+    "email": "apoudel@xyzrobotics.com",
+    "mobile": "0450701157",
+    "office": "0350701157",
+    "position": "Chief Technical Officer"
+  },
+  {
+    "key": "3",
+    "companyName": "PQR Systems",
+    "companyProfile": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "website": "www.pqrsystems.com",
+    "title": "Mr",
+    "fName": "Rudrmani",
+    "lName": "Rudrmani",
+    "email": "rrudrmani@pqrsystems.com",
+    "mobile": "0424205668",
+    "office": "0324205668",
+    "position": "Vice CEO"
+  },
+  {
+    "key": "4",
+    "companyName": "MNT Solutions Ltd",
+    "companyProfile": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "website": "www.mntsolutions.com",
+    "title": "Mr",
+    "fName": "Manpreet",
+    "lName": "Singh",
+    "email": "msingh@mntsolutions.com",
+    "mobile": "0434573555",
+    "office": "0334573555",
+    "position": "Lead AI Engineer"
+  }
+]

@@ -6,7 +6,6 @@ import ProjectTitle from "../BrowseProjects/ProjectTitle";
 import ProjectDescription from "../BrowseProjects/ProjectDescription";
 import TopicsHeader from "../BrowseProjects/TopicsHeader";
 import ProposalStatusDetail from "./ProposalStatusDetail";
-import ProposalDetails from "./ProposalDetails";
 import ProjectDetail from "../BrowseProjects/ProjectDetail";
 
 const UserProposals = ({ proposal }) => {

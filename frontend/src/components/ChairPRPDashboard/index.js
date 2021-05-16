@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Row, Col, Form, Card } from "antd";
+import { Row, Col, Form } from "antd";
 
 import UserProposals from "../MyProjects/UserProposals";
+import SignUpRequest from "./SignUpRequest";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 
@@ -41,6 +42,7 @@ const ChairPRPDashboard = () => {
         <Col span={12}>
           <Wrapper>
             <SectionTitle>User Signup Requests</SectionTitle>
+            <SignUpRequest />
           </Wrapper>
         </Col>
         <Col span={12}>
