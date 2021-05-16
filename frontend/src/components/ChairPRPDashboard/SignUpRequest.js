@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Table, Drawer, Card, Space } from "antd";
+import { Table, Drawer, Card, Space, Button } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 import styled from "styled-components";
 
@@ -106,14 +106,22 @@ const SignUpRequest = () => {
             <SectionContent>{currentProposal.fName}</SectionContent>
             <LastNameContent>{currentProposal.lName}</LastNameContent>
           </Space>
+          <SectionTitle>Position held at Company:</SectionTitle>
+          <SectionContent>{currentProposal.position}</SectionContent>
           <SectionTitle>Email Address:</SectionTitle>
           <SectionContent>{currentProposal.email}</SectionContent>
           <SectionTitle>Mobile Phone Number:</SectionTitle>
           <SectionContent>{currentProposal.mobile}</SectionContent>
           <SectionTitle>Office Phone Number:</SectionTitle>
           <SectionContent>{currentProposal.office}</SectionContent>
-          <SectionTitle>Position held at Company:</SectionTitle>
-          <SectionContent>{currentProposal.position}</SectionContent>
+          <Space style={{ marginTop: 20, marginLeft: 180 }}>
+            <Button type="primary" block>
+              Approve Sign Up Request
+            </Button>
+            <Button type="primary" danger block>
+              Reject Sign Up Request
+            </Button>
+          </Space>
         </Card>
       </Drawer>
     </div>

@@ -46,6 +46,19 @@ const ProjectDetButtons = ({ project }) => {
             </Button>
           )}
       </Link>
+      {user.role === "staff" &&
+        (project.status === "Waiting for Approval" ||
+          project.status === "Changes Required") && (
+          <Button
+            style={{
+              fontWeight: "bold",
+              borderColor: "red",
+            }}
+            type="danger"
+          >
+            Approve Project Proposal
+          </Button>
+        )}
     </Space>
   );
 };
