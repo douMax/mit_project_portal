@@ -69,13 +69,7 @@ const MyProjects = () => {
         <PanelWrapper>
           <PageTitle>My Proposals</PageTitle>
           {myproposals.map((pro) => (
-            <UserProposals
-              key={pro.projId}
-              topic={pro.topic}
-              title={pro.title}
-              description={pro.description}
-              status={pro.status}
-            />
+            <UserProposals key={pro.projId} proposal={pro} />
           ))}
         </PanelWrapper>
       </Col>

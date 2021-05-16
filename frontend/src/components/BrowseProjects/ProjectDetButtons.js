@@ -32,17 +32,19 @@ const ProjectDetButtons = ({ project }) => {
           state: project,
         }}
       >
-        {user.role !== "industry_client" && (
-          <Button
-            style={{
-              fontWeight: "bold",
-              borderColor: "red",
-            }}
-            type="danger"
-          >
-            Express Interest
-          </Button>
-        )}
+        {user.role !== "industry_client" &&
+          project.status !== "Waiting for Approval" &&
+          project.status !== "Changes Required" && (
+            <Button
+              style={{
+                fontWeight: "bold",
+                borderColor: "red",
+              }}
+              type="danger"
+            >
+              Express Interest
+            </Button>
+          )}
       </Link>
     </Space>
   );

@@ -23,38 +23,32 @@ const Wrapper = styled.div`
 
 const ChairPRPDashboard = () => {
   const [projects, setProject] = useContext(ProjectContext);
-  const project = [];
+  const projectProposal = [];
   projects.forEach((proj) => {
     if (
       proj.status === "Waiting for Approval" ||
       proj.status === "Changes Required"
     ) {
       //console.log(project);
-      project.push(proj);
+      projectProposal.push(proj);
     }
   });
-  //console.log(project);
+  //console.log(projectProposal);
   return (
     <Form>
       <PageTitle>Staff Dashboard - Chair Project Review Panel</PageTitle>
       <Row gutter={24}>
         <Col span={12}>
           <Wrapper>
-            <SectionTitle>Project Proposal Requests</SectionTitle>
-            {project.map((p) => (
-              <UserProposals
-                key={p.projId}
-                topic={p.topic}
-                title={p.title}
-                description={p.description}
-                status={p.status}
-              />
-            ))}
+            <SectionTitle>User Signup Requests</SectionTitle>
           </Wrapper>
         </Col>
         <Col span={12}>
           <Wrapper>
-            <SectionTitle>User Signup Requests</SectionTitle>
+            <SectionTitle>Project Proposal Requests</SectionTitle>
+            {projectProposal.map((p) => (
+              <UserProposals key={p.projId} proposal={p} />
+            ))}
           </Wrapper>
         </Col>
       </Row>

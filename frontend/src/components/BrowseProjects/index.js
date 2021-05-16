@@ -33,8 +33,8 @@ const BrowseProjects = () => {
   const project = [];
   projects.forEach((proj) => {
     if (
-      proj.status !== "waiting_for_approval" &&
-      proj.status !== "changes_required"
+      proj.status !== "Waiting for Approval" &&
+      proj.status !== "Changes Required"
     ) {
       project.push(proj);
     }

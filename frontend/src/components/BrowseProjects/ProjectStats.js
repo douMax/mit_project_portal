@@ -5,7 +5,7 @@ import { Button, Space } from "antd";
 //import changeBorderRed from "./ProjectListDetails";
 
 const ProjectStats = (projstats) => {
-  //console.log(projdets);
+  //console.log(projstats);
 
   return (
     <Space>
@@ -15,8 +15,15 @@ const ProjectStats = (projstats) => {
       <Button type="text">
         {projstats.year} - T{projstats.trimester}
       </Button>
-      <Button type="text">Group: {projstats.assigned_students}/5</Button>
-      <Button type="text">EOIs: {projstats.eoi}</Button>
+      <Button type="text">
+        Group:{" "}
+        {projstats.assigned_students !== "undefined" &&
+          projstats.assigned_students | "0"}
+        /5
+      </Button>
+      <Button type="text">
+        EOIs: {projstats.eoi !== "undefined" && projstats.eoi | "0"}
+      </Button>
     </Space>
   );
 };
