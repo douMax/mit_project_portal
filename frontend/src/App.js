@@ -60,12 +60,12 @@ function App() {
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
             </Route>
-            <ProposalProvider>
-              <Route exact path={ROUTES.MY_PROJECTS}>
-                <MyProjects />
-              </Route>
-            </ProposalProvider>
             <EOIProvider>
+              <ProposalProvider>
+                <Route exact path={ROUTES.MY_PROJECTS}>
+                  <MyProjects />
+                </Route>
+              </ProposalProvider>
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />
               </Route>
