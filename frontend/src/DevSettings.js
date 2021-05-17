@@ -13,6 +13,7 @@ const DevSettings = props => {
   };
   return (
     <div>
+      <h2>Set User Role</h2>
       <Radio.Group
         onChange={handleRadioChange}
         defaultValue={user.role || "staff"}

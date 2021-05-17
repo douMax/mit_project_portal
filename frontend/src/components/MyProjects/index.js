@@ -4,9 +4,13 @@ import { Row, Col } from "antd";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { UserContext } from "../../contexts/UserContext";
+import { EOIContext } from "../../contexts/EOIContext";
 
 import UserProjects from "./UserProjects";
 import UserProposals from "./UserProposals";
+import UserEOI from "./UserEOI";
+
+import { USERTYPES } from "../../utils/APP_CONSTANTS";
 
 const PageTitle = styled.h1`
   font-size: 20px;
@@ -21,6 +25,7 @@ const PanelWrapper = styled.div`
 const MyProjects = () => {
   const [user] = useContext(UserContext);
   const [projects, setProject] = useContext(ProjectContext);
+  const [eois, setEOIs] = useContext(EOIContext);
   const project = [];
   const myprojects = [];
   const proposal = [];
@@ -49,7 +54,6 @@ const MyProjects = () => {
   const myproposals = [];
   proposal.forEach((p) => {
     if (p.client === user.userName) {
-      //console.log(p);
       myproposals.push(p);
     }
   });
@@ -66,12 +70,21 @@ const MyProjects = () => {
         </PanelWrapper>
       </Col>
       <Col span={12}>
-        <PanelWrapper>
-          <PageTitle>My Proposals</PageTitle>
-          {myproposals.map((pro) => (
-            <UserProposals key={pro.projId} proposal={pro} />
-          ))}
-        </PanelWrapper>
+        {user.role === USERTYPES.INDUSTRY_CLIENT ? (
+          <PanelWrapper>
+            <PageTitle>My Proposals</PageTitle>
+            {myproposals.map((pro) => (
+              <UserProposals key={pro.projId} proposal={pro} />
+            ))}
+          </PanelWrapper>
+        ) : (
+          <PanelWrapper>
+            <PageTitle>My EOIs</PageTitle>
+            {eois.map((eoi) => (
+              <UserEOI eoi={eoi} />
+            ))}
+          </PanelWrapper>
+        )}
       </Col>
     </Row>
   );

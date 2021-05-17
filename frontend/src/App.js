@@ -1,5 +1,5 @@
 // framework related
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
@@ -8,12 +8,12 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
-import DevSettings from "./DevSettings";
-import NewEOI from "./components/NewEOI";
 import MyProjects from "./components/MyProjects";
 import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import NewProject from "./components/NewProject";
 import ChairPRPDashboard from "./components/ChairPRPDashboard";
+import NewEOI from "./components/NewEOI";
+import DevSettings from "./DevSettings";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -27,30 +27,6 @@ import { SignUpRequestProvider } from "./contexts/SignUpRequestContext";
 let isLogged = true;
 let isSignedUp = true;
 
-const intialDevSettings = {
-  username: "Staff",
-  userType: "staff",
-  isLogged: true,
-  isSignedUp: true,
-};
-
-const devSettingsReducer = (state, action) => {
-  switch (action.type) {
-    case "set_user_type":
-      return {
-        ...state,
-        userType: action.payload.userType,
-        username: action.payload.username,
-      };
-    case "set_logged":
-      return { ...state, isLogged: action.payload };
-    case "set_sign_up":
-      return { ...state, isSignedUp: action.payload };
-    default:
-      throw new Error();
-  }
-};
-
 // camal case
 const ContentContainer = styled.div`
   width: 100vw;
@@ -58,23 +34,9 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
-  const [state, dispatch] = useReducer(devSettingsReducer, intialDevSettings);
-
-  const handleToggleSettings = (e) => {
-    dispatch({
-      type: "set_user_type",
-      payload: {
-        userType: e.target.value,
-        username: e.target.value.toUpperCase(),
-      },
-    });
-  };
-
   return (
     <BrowserRouter>
-      {isLogged && (
-        <Header userType={state.userType} username={state.username} />
-      )}
+      {isLogged && <Header />}
       <ContentContainer>
         <Switch>
           <ProjectProvider>
@@ -102,6 +64,9 @@ function App() {
               </Route>
             </SignUpRequestProvider>
             <EOIProvider>
+              <Route exact path={ROUTES.MY_PROJECTS}>
+                <MyProjects />
+              </Route>
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />
               </Route>

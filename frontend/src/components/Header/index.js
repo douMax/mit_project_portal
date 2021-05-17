@@ -21,15 +21,14 @@ const HeaderContainer = styled.header`
   background-color: #fff;
 `;
 
-const Header = ({ useType }) => {
+const Header = () => {
   const [user] = useContext(UserContext);
-  const userType = user.role;
   return (
     <HeaderContainer>
       <Logo />
-      {userType === USERTYPES.STAFF && <StaffNavLinks />}
-      {userType === USERTYPES.STUDENT && <StudentNavLinks />}
-      {userType === USERTYPES.INDUSTRY_CLIENT && <IndustryClientNavLinks />}
+      {user.role === USERTYPES.STAFF && <StaffNavLinks />}
+      {user.role === USERTYPES.STUDENT && <StudentNavLinks />}
+      {user.role === USERTYPES.INDUSTRY_CLIENT && <IndustryClientNavLinks />}
       <NotificationProvider>
         <HeaderAvatar />
       </NotificationProvider>

@@ -1,3 +1,4 @@
+const { findByIdAndUpdate } = require("../models/project.model");
 const Project = require("../models/project.model");
 const Topic = require("../models/topic.model");
 const Group = require("../models/group.model");
@@ -22,18 +23,6 @@ exports.findProjects = async (req, res) => {
   }
 };
 
-exports.findOneById = async (req, res) => {
-  // retrive ID from the req
-  const id = req.params.id;
-  //
-  try {
-    let data = await Project.findById(id);
-    res.status(201).send(data);
-  } catch (error) {
-    res.status(500).send("Error retriving project");
-  }
-};
-
 exports.findById = async (req, res) => {
   // retrive ID from the req
   const { projectId } = req.params;
@@ -49,6 +38,44 @@ exports.findById = async (req, res) => {
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving group");
+  }
+};
+
+exports.update = async (req, res) => {
+  const { projectsId } = req.params;
+  try {
+    const updatedproject = await Project.findByIdAndUpdate(
+      projectsId,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.status(203).send(updatedproject);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: "Project not found with Id ${projectId}",
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: "Internal server error",
+    });
+  }
+};
+
+exports.delete = async (req, res) => {
+  const { projectsId } = req.params;
+  try {
+    const project = await Project.findByIdAndRemove(projectsId);
+    return res.status(200).send("Project is deleted");
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: "Project not found with Id ${projectId}",
+      });
+    }
   }
 };
 
@@ -73,7 +100,7 @@ exports.findProjectTopics = async (req, res) => {
     }
     console.log(err);
     return res.status(500).send({
-      message: `Internal server error.`,
+      message: "Internal server error",
     });
   }
 };

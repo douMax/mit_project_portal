@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const projectController = require("../controllers/project.controller");
+const { route } = require("./department.route");
 
 // checkAuth, router,
 
