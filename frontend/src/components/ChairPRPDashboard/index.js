@@ -26,15 +26,12 @@ const ChairPRPDashboard = () => {
   const [projects, setProject] = useContext(ProjectContext);
   const projectProposal = [];
   projects.forEach((proj) => {
-    if (
-      proj.status === "Waiting for Approval" ||
-      proj.status === "Changes Required"
-    ) {
+    if (proj.status === "wfa" || proj.status === "cr") {
       //console.log(project);
       projectProposal.push(proj);
     }
   });
-  //console.log(projectProposal);
+  console.log(projectProposal);
   return (
     <Form>
       <PageTitle>Staff Dashboard - Chair Project Review Panel</PageTitle>
@@ -49,7 +46,7 @@ const ChairPRPDashboard = () => {
           <Wrapper>
             <SectionTitle>Project Proposal Requests</SectionTitle>
             {projectProposal.map((p) => (
-              <UserProposals key={p.projId} proposal={p} />
+              <UserProposals key={p._id} proposal={p} />
             ))}
           </Wrapper>
         </Col>

@@ -28,7 +28,7 @@ const ProposalDecision = () => {
   return (
     <Form>
       <PageTitle>Project Proposal Decision Page</PageTitle>
-      <SectionTitle>{project.title}</SectionTitle>
+      <SectionTitle>{project.projectTitle}</SectionTitle>
       <Form.Item label="Decision" name="prp_decision" style={{ width: 300 }}>
         <Select options={PRP_DECISION} />
       </Form.Item>
