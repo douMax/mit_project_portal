@@ -23,6 +23,7 @@ exports.findProjects = async (req, res) => {
   }
 };
 
+//Finding only Active Projects
 exports.findActiveProjects = async (req, res) => {
   try {
     let activeProjects = await Project.find({ status: ["open", "ongoing"] });
@@ -32,7 +33,39 @@ exports.findActiveProjects = async (req, res) => {
         let topics = [];
         if (ap.topics) {
           topics = await Topic.find().where("_id").in(ap.topics).exec();
-          topics = topics.map(topic => topic.name);
+          topics = topics.map((topic) => topic.name);
+        }
+
+        let client = await Client.findById(ap.clientId);
+
+        return {
+          ...ap._doc,
+          topics: topics,
+          clientName: client?.companyName,
+          clientLogo: client?.companyLogoUrl,
+        };
+      })
+    );
+
+    res.status(201).send(data);
+  } catch (error) {
+    res.status(500).send("Error retriving projects");
+  }
+};
+
+//Finding only Inctive Projects
+exports.findInactiveProjects = async (req, res) => {
+  try {
+    let activeProjects = await Project.find({
+      status: ["wfa", "cr", "closed"],
+    });
+    //TODO: append eoisReceived, group etc.
+    const data = await Promise.all(
+      activeProjects.map(async function (ap) {
+        let topics = [];
+        if (ap.topics) {
+          topics = await Topic.find().where("_id").in(ap.topics).exec();
+          topics = topics.map((topic) => topic.name);
         }
 
         let client = await Client.findById(ap.clientId);

@@ -5,4 +5,7 @@ export const fetchActiveProjects = async () => {
   return res.data;
 };
 
-export const fetchInactiveProjects = async () => {};
+export const fetchInactiveProjects = async () => {
+  const res = await axios.get("/api/projects/inactive");
+  return res.data;
+};
