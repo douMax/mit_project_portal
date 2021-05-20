@@ -29,7 +29,16 @@ const LeftPanelWrapper = styled.div`
 `;
 
 const BrowseProjects = () => {
-  const [project, setProject] = useContext(ProjectContext);
+  const [projects, setProject] = useContext(ProjectContext);
+  const project = [];
+  projects.forEach((proj) => {
+    if (
+      proj.status !== "Waiting for Approval" &&
+      proj.status !== "Changes Required"
+    ) {
+      project.push(proj);
+    }
+  });
   const [selected, setSelected] = useState(null);
   const handleShowDetail = (selectedproject) => {
     setSelected(selectedproject);

@@ -70,7 +70,6 @@ const EOIDetails = () => {
   return (
     <Row>
       <Form style={formStyle}>
-        {console.log(eois)}
         <Space>
           <Form.Item style={formLeftStyle}>
             <SectionDescription>

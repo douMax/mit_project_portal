@@ -48,3 +48,9 @@ export const LOCATIONS = [
 ];
 
 export const EOI_LIMIT = 3;
+
+export const PRP_DECISION = [
+  { label: "Approve", value: "Approve" },
+  { label: "Reject", value: "Reject" },
+  { label: "Changes Required", value: "Changes Required" },
+];
