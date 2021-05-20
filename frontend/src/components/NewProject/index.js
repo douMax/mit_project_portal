@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useImperativeHandle, useContext } from "react";
 import {
   Form,
   Select,
@@ -59,7 +59,7 @@ const NewProject = () => {
   //     setProjects((prevProjects) => [...prevProjects, newProject]);
   //   };
 
-  const handleFinish = values => {
+  const handleFinish = (values) => {
     console.log(values);
     const projId = (projects.length + 1).toString();
     const newProject = { ...values, projId };
@@ -80,6 +80,8 @@ const NewProject = () => {
       wrapperCol={{
         span: 14,
       }}
+      layout="horizontal"
+      //onFinish={handleFinish}
       layout="vertical"
       onFinish={handleFinish}
     >
@@ -130,7 +132,10 @@ const NewProject = () => {
           </Form.Item>
           <Form.Item>
             <Space>
-              <Button type danger onClick={handleCancel}>
+              <Button
+                type
+                danger //onClick={handleCancel}
+              >
                 Cancel
               </Button>
               <Button type="danger" htmlType="submit">

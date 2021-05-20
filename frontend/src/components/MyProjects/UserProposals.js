@@ -5,12 +5,22 @@ import { CloseCircleFilled } from "@ant-design/icons";
 import ProjectTitle from "../BrowseProjects/ProjectTitle";
 import ProjectDescription from "../BrowseProjects/ProjectDescription";
 import TopicsHeader from "../BrowseProjects/TopicsHeader";
-
 import ProposalStatusDetail from "./ProposalStatusDetail";
-import ProposalDetails from "./ProposalDetails";
+import ProjectDetail from "../BrowseProjects/ProjectDetail";
 
-const UserProposals = ({ topic, title, description, status }) => {
+const UserProposals = ({ proposal }) => {
   //console.log(propId, title, description);
+  const {
+    projId,
+    title,
+    topic,
+    description,
+    status,
+    year,
+    trimester,
+    assigned_students,
+    eoi,
+  } = proposal;
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const showDrawer = () => {
     setIsDrawerVisible(true);
@@ -26,6 +36,26 @@ const UserProposals = ({ topic, title, description, status }) => {
           <ProjectTitle title={title} />
           <ProjectDescription description={description} />
           <ProposalStatusDetail status={status} />
+          <Button
+            type="primary"
+            danger
+            onClick={showDrawer}
+            style={{ marginLeft: 330 }}
+          >
+            View
+          </Button>
+          <Drawer
+            visible={isDrawerVisible}
+            maskClosable={false}
+            onClose={handleClose}
+            placement="right"
+            width={650}
+            closeIcon={
+              <CloseCircleFilled style={{ fontSize: 20, color: "red" }} />
+            }
+          >
+            <ProjectDetail selectedproject={proposal} />
+          </Drawer>
         </Col>
       </Row>
     </Card>

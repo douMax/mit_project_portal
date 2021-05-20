@@ -64,5 +64,49 @@
     "background_rationale": "Background and Rationale for Instawebworks - Python-based Data Scraping. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique auctor facilisis. Donec varius euismod nisl, at suscipit diam volutpat et. Cras hendrerit lorem nec elit ultricies finibus. Praesent diam mauris, pellentesque a volutpat sit amet, pellentesque eget purus. Nulla pellentesque dui felis, sit amet maximus purus lobortis eget. Donec sed lobortis tellus. Ut sit amet luctus elit. Donec ut ornare sem, id accumsan dolor. Pellentesque gravida orci tincidunt nibh lacinia tempor. Proin id elit non ex blandit porta. Suspendisse pretium blandit magna. Etiam congue id enim sit amet efficitur. Quisque fringilla maximus consequat.",
     "resources": "Project Resources for Instawebworks - Python-based Data Scraping. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique auctor facilisis. Donec varius euismod nisl, at suscipit diam volutpat et. Cras hendrerit lorem nec elit ultricies finibus. Praesent diam mauris, pellentesque a volutpat sit amet, pellentesque eget purus. Nulla pellentesque dui felis, sit amet maximus purus lobortis eget. Donec sed lobortis tellus. Ut sit amet luctus elit. Donec ut ornare sem, id accumsan dolor. Pellentesque gravida orci tincidunt nibh lacinia tempor. Proin id elit non ex blandit porta. Suspendisse pretium blandit magna. Etiam congue id enim sit amet efficitur. Quisque fringilla maximus consequat.",
     "goals_objectives": "Goals and Objectives for Instawebworks - Python-based Data Scraping. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique auctor facilisis. Donec varius euismod nisl, at suscipit diam volutpat et. Cras hendrerit lorem nec elit ultricies finibus. Praesent diam mauris, pellentesque a volutpat sit amet, pellentesque eget purus. Nulla pellentesque dui felis, sit amet maximus purus lobortis eget. Donec sed lobortis tellus. Ut sit amet luctus elit. Donec ut ornare sem, id accumsan dolor. Pellentesque gravida orci tincidunt nibh lacinia tempor. Proin id elit non ex blandit porta. Suspendisse pretium blandit magna. Etiam congue id enim sit amet efficitur. Quisque fringilla maximus consequat."
+  },
+  {
+    "projId": "5",
+    "title": "Website Pentesting Effectiveness",
+    "topic": "Web, Cybersecurity, Data Analytics",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "year": "2021",
+    "trimester": "1",
+    "client": "MIT",
+    "logo": "client_logo_mit.JPG",
+    "background_rationale": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "resources": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "goals_objectives": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "status": "Changes Required"
+  },
+
+  {
+    "projId": "6",
+    "title": "Lorem Ipsum 1",
+    "topic": "Data Science, Python, Data Analytics",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "year": "2021",
+    "trimester": "1",
+    "client": "Arif Systems",
+    "logo": "client_logo_arifsystems.JPG",
+    "background_rationale": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "resources": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "goals_objectives": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "status": "Waiting for Approval"
+  },
+
+  {
+    "projId": "7",
+    "title": "Lorem Ipsum Ipsum",
+    "topic": "Web Design, Python, Data Analytics",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "year": "2021",
+    "trimester": "1",
+    "client": "Atish",
+    "logo": "client_logo_mit.JPG",
+    "background_rationale": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "resources": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "goals_objectives": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Lectus quam id leo in. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Mauris vitae ultricies leo integer malesuada. Vitae purus faucibus ornare suspendisse sed. Lacus suspendisse faucibus interdum posuere lorem. Risus viverra adipiscing at in tellus integer. Sodales ut eu sem integer vitae justo. Suspendisse in est ante in. Eu volutpat odio facilisis mauris sit amet massa vitae. Sit amet luctus venenatis lectus magna fringilla. Fames ac turpis egestas integer eget aliquet nibh praesent tristique.",
+    "status": "Waiting for Approval"
   }
 ]

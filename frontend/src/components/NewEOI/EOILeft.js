@@ -12,10 +12,9 @@ const LimitDescription = styled.div`
   font-size: 18px;
 `;
 
-const EOILeft = (eoilen) => {
-  const eoi_limit = EOI_LIMIT.value;
-  const eoi_left = eoi_limit - eoilen.eoilen;
-  //console.log(eoilen.eoilen);
+const EOILeft = ({ eoilen }) => {
+  const eoi_limit = EOI_LIMIT;
+  const eoi_left = eoi_limit - eoilen;
   return (
     <Form>
       <PageTitle>Expression Of Interest</PageTitle>

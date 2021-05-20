@@ -4,7 +4,6 @@ import { Row, Col } from "antd";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { UserContext } from "../../contexts/UserContext";
-import { ProposalContext } from "../../contexts/ProposalContext";
 import { EOIContext } from "../../contexts/EOIContext";
 
 import UserProjects from "./UserProjects";
@@ -25,24 +24,37 @@ const PanelWrapper = styled.div`
 
 const MyProjects = () => {
   const [user] = useContext(UserContext);
-  const [projects, setProjects] = useContext(ProjectContext);
-  const [proposals, setProposals] = useContext(ProposalContext);
+  const [projects, setProject] = useContext(ProjectContext);
   const [eois, setEOIs] = useContext(EOIContext);
+  const project = [];
+  const myprojects = [];
+  const proposal = [];
+  projects.forEach((proj) => {
+    if (
+      proj.status !== "Waiting for Approval" &&
+      proj.status !== "Changes Required"
+    ) {
+      project.push(proj);
+    } else {
+      proposal.push(proj);
+    }
+  });
 
   //Temporary code to retrieve client's projects from all projects.
   //After frontend is connected to backed, we can have an API call to GET all projects for particular user.
-  const myprojects = [];
-  projects.forEach(project => {
-    if (project.client === user.userName) {
-      myprojects.push(project);
+
+  project.forEach((p) => {
+    if (p.client === user.userName) {
+      //console.log(p);
+      myprojects.push(p);
     }
   });
   //console.log(myprojects);
 
   const myproposals = [];
-  proposals.forEach(proposal => {
-    if (proposal.client === user.userName) {
-      myproposals.push(proposal);
+  proposal.forEach((p) => {
+    if (p.client === user.userName) {
+      myproposals.push(p);
     }
   });
   //console.log(myproposals);
@@ -52,7 +64,7 @@ const MyProjects = () => {
       <Col span={12}>
         <PanelWrapper>
           <PageTitle>My Projects</PageTitle>
-          {myprojects.map(proj => (
+          {myprojects.map((proj) => (
             <UserProjects key={proj.projId} proj={proj} />
           ))}
         </PanelWrapper>
@@ -61,21 +73,15 @@ const MyProjects = () => {
         {user.role === USERTYPES.INDUSTRY_CLIENT ? (
           <PanelWrapper>
             <PageTitle>My Proposals</PageTitle>
-            {myproposals.map(pro => (
-              <UserProposals
-                key={pro.propId}
-                topic={pro.topic}
-                title={pro.title}
-                description={pro.description}
-                status={pro.status}
-              />
+            {myproposals.map((pro) => (
+              <UserProposals key={pro.projId} proposal={pro} />
             ))}
           </PanelWrapper>
         ) : (
           <PanelWrapper>
             <PageTitle>My EOIs</PageTitle>
-            {eois.map(eoi => (
-              <UserEOI eoi={eoi} />
+            {eois.map((eoi) => (
+              <UserEOI eoi={eoi} key={eoi.id} />
             ))}
           </PanelWrapper>
         )}
