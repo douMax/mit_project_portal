@@ -4,11 +4,11 @@ import fetchEOIsByStudent from "../actions/fetchEOIsByStudent";
 
 export const ProjectContext = createContext();
 
-export const ProjectProvider = props => {
+export const ProjectProvider = (props) => {
   // TODO: trigger the fetch at first render, then trigger the fetch again whenever needed
-  useEffect(() => {
-    fetchEOIsByStudent();
-  }, [props]);
+  // useEffect(() => {
+  //   fetchEOIsByStudent();
+  // }, [props]);
 
   const [projects, setProjects] = useState(mockProjects);
   return (

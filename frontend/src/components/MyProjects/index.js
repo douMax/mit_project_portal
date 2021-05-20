@@ -81,7 +81,7 @@ const MyProjects = () => {
           <PanelWrapper>
             <PageTitle>My EOIs</PageTitle>
             {eois.map((eoi) => (
-              <UserEOI eoi={eoi} />
+              <UserEOI eoi={eoi} key={eoi.id} />
             ))}
           </PanelWrapper>
         )}

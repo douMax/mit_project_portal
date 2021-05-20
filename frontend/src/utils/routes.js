@@ -8,6 +8,7 @@ const ROUTES = {
   MY_PROJECTS: "/projects/my-projects",
   COORDINATOR_DASHBOARD: "/dashboard/coordinator",
   CHAIR_PRP_DASHBOARD: "/dashboard/chair-prp",
+  PROPOSAL_DECISION: "/dashboard/chair-prp/:projId/decision",
 };
 
 export default ROUTES;

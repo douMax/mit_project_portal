@@ -39,7 +39,6 @@ const BrowseProjects = () => {
       project.push(proj);
     }
   });
-  console.log(project);
   const [selected, setSelected] = useState(null);
   const handleShowDetail = (selectedproject) => {
     setSelected(selectedproject);

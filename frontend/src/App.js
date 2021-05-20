@@ -14,6 +14,7 @@ import NewProject from "./components/NewProject";
 import ChairPRPDashboard from "./components/ChairPRPDashboard";
 import NewEOI from "./components/NewEOI";
 import DevSettings from "./DevSettings";
+import ProposalDecision from "./components/ChairPRPDashboard/ProposalDecision";
 
 // utils and constants
 import ROUTES from "./utils/routes";
@@ -61,6 +62,9 @@ function App() {
             <SignUpRequestProvider>
               <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
                 <ChairPRPDashboard />
+              </Route>
+              <Route exact path={ROUTES.PROPOSAL_DECISION}>
+                <ProposalDecision />
               </Route>
             </SignUpRequestProvider>
             <EOIProvider>
