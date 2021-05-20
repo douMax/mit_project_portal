@@ -3,43 +3,54 @@ const { Schema } = mongoose;
 
 const projectSchema = new Schema(
   {
-    project_title: {
+    projectTitle: {
       type: String,
       required: [true, "project title is required"],
     },
     abstract: {
       type: String,
+      required: [true, "project title is required"],
     },
     background: {
       type: String,
+      required: [true, "project title is required"],
     },
     objectives: {
       type: String,
+      required: [true, "project title is required"],
     },
     resources: {
       type: String,
+      required: [true, "project title is required"],
     },
-    term_info: {
+    yearInfo: {
       type: String,
     },
-    is_open: {
-      type: Boolean,
+    termInfo: {
+      type: String,
     },
-    is_approved: {
-      type: Boolean,
+    status: {
+      type: String,
+      enum: ["wfa", "cr", "open", "ongoing", "closed"],
     },
     topics: {
       type: [String],
+      // storing the topic IDs in this field
     },
-    is_internship: {
+    eoisReceived: {
+      type: [String],
+      // storing the EOI/Application IDs in this field
+    },
+    isInternship: {
       type: Boolean,
     },
     clientId: {
       type: Schema.Types.ObjectId,
       ref: "Client",
     },
-    staff_id: {
-      type: String,
+    staffId: {
+      type: Schema.Types.ObjectId,
+      ref: "Staff",
     },
   },
   {

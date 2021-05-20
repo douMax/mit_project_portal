@@ -22,43 +22,43 @@ const sectionCardStyle = {
 
 const ProjectDetail = ({ selectedproject }) => {
   const {
-    background_rationale,
+    projectTitle,
+    topics,
+    background,
     resources,
-    goals_objectives,
-    title,
-    topic,
+    objectives,
     status,
-    year,
-    trimester,
-    assigned_students,
-    eoi,
-    client,
-    logo,
+    yearInfo,
+    termInfo,
+    assignedStudents,
+    eoisReceived,
+    clientName,
+    clientLogo,
   } = selectedproject;
   return (
     <Row>
       <Row gutter={16}>
         <Col span={18}>
-          <TopicsHeader topic={topic} />
-          <ProjectTitle title={title} />
+          <TopicsHeader topic={topics?.join(",")} />
+          <ProjectTitle title={projectTitle} />
           <ProjectStats
             status={status}
-            year={year}
-            trimester={trimester}
-            assigned_students={assigned_students}
-            eoi={eoi}
+            year={yearInfo}
+            trimester={termInfo}
+            assigned_students={assignedStudents}
+            eoi={eoisReceived}
           />
         </Col>
         <Col span={6}>
-          <ClientInfo clientName={client} logo={logo} />
+          <ClientInfo clientName={clientName} logo={clientLogo} />
         </Col>
       </Row>
       <SectionTitleWrapper>Background and Rationale</SectionTitleWrapper>
-      <Card style={sectionCardStyle}>{background_rationale}</Card>
+      <Card style={sectionCardStyle}>{background}</Card>
       <SectionTitleWrapper>Project Resources</SectionTitleWrapper>
       <Card style={sectionCardStyle}>{resources}</Card>
       <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
-      <Card style={sectionCardStyle}>{goals_objectives}</Card>
+      <Card style={sectionCardStyle}>{objectives}</Card>
       <ProjectDetButtons project={selectedproject} />
     </Row>
   );

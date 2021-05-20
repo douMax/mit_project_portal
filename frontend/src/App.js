@@ -56,9 +56,6 @@ function App() {
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
             </Route>
-            <Route exact path={ROUTES.MY_PROJECTS}>
-              <MyProjects />
-            </Route>
             <SignUpRequestProvider>
               <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
                 <ChairPRPDashboard />

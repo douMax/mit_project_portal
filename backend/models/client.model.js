@@ -16,6 +16,9 @@ const ClientSchema = new Schema(
     address: {
       type: String,
     },
+    companyLogoUrl: {
+      type: String,
+    },
     isAnAgent: {
       type: Boolean,
       required: [true, "Please specify if this client is an agent or not."],

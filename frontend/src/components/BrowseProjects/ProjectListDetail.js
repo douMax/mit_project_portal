@@ -9,42 +9,42 @@ import ClientInfo from "./ClientInfo";
 
 const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
   const {
-    projId,
-    title,
-    topic,
-    description,
+    _id,
+    projectTitle,
+    topics,
+    abstract,
     status,
-    year,
-    trimester,
-    assigned_students,
-    eoi,
-    client,
-    logo,
+    yearInfo,
+    termInfo,
+    assignedStudents,
+    eoisReceived,
+    clientName,
+    clientLogo,
   } = project;
 
   return (
     <Card
       style={{ marginBottom: "15px", border: isSelected && "1px solid red" }}
-      key={projId}
+      key={_id}
       type="inner"
       hoverable="true"
     >
       <Row gutter={16}>
         <Col span={18}>
-          <TopicsHeader topic={topic} />
-          <ProjectTitle title={title} />
-          <ProjectDescription description={description} />
+          <TopicsHeader topic={topics?.join(",")} />
+          <ProjectTitle title={projectTitle} />
+          <ProjectDescription description={abstract} />
           <ProjectStats
             status={status}
-            year={year}
-            trimester={trimester}
-            assigned_students={assigned_students}
-            eoi={eoi}
+            year={yearInfo}
+            trimester={termInfo}
+            assigned_students={assignedStudents}
+            eoi={eoisReceived}
           />
           <Button onClick={handleShowDetail}>+</Button>
         </Col>
         <Col span={6}>
-          <ClientInfo clientName={client} logo={logo} />
+          <ClientInfo clientName={clientName} logo={clientLogo} />
         </Col>
       </Row>
     </Card>

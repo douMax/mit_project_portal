@@ -29,7 +29,9 @@ const MyProjects = () => {
   const project = [];
   const myprojects = [];
   const proposal = [];
-  projects.forEach((proj) => {
+
+  console.log(eois);
+  projects.forEach(proj => {
     if (
       proj.status !== "Waiting for Approval" &&
       proj.status !== "Changes Required"
@@ -43,7 +45,7 @@ const MyProjects = () => {
   //Temporary code to retrieve client's projects from all projects.
   //After frontend is connected to backed, we can have an API call to GET all projects for particular user.
 
-  project.forEach((p) => {
+  project.forEach(p => {
     if (p.client === user.userName) {
       //console.log(p);
       myprojects.push(p);
@@ -52,7 +54,7 @@ const MyProjects = () => {
   //console.log(myprojects);
 
   const myproposals = [];
-  proposal.forEach((p) => {
+  proposal.forEach(p => {
     if (p.client === user.userName) {
       myproposals.push(p);
     }
@@ -64,7 +66,7 @@ const MyProjects = () => {
       <Col span={12}>
         <PanelWrapper>
           <PageTitle>My Projects</PageTitle>
-          {myprojects.map((proj) => (
+          {myprojects.map(proj => (
             <UserProjects key={proj.projId} proj={proj} />
           ))}
         </PanelWrapper>
@@ -73,14 +75,14 @@ const MyProjects = () => {
         {user.role === USERTYPES.INDUSTRY_CLIENT ? (
           <PanelWrapper>
             <PageTitle>My Proposals</PageTitle>
-            {myproposals.map((pro) => (
+            {myproposals.map(pro => (
               <UserProposals key={pro.projId} proposal={pro} />
             ))}
           </PanelWrapper>
         ) : (
           <PanelWrapper>
             <PageTitle>My EOIs</PageTitle>
-            {eois.map((eoi) => (
+            {eois.map(eoi => (
               <UserEOI eoi={eoi} key={eoi.id} />
             ))}
           </PanelWrapper>

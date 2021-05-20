@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const projectController = require("../controllers/project.controller");
-const { route } = require("./department.route");
 
 // checkAuth, router,
 
@@ -13,7 +12,12 @@ router
   .get(projectController.findProjects)
   .post(projectController.create);
 
-router.route("/api/projects/:projectId").get(projectController.findById);
+router.route("/api/projects/active").get(projectController.findActiveProjects);
+
+router
+  .route("/api/projects/:projectId")
+  .get(projectController.findById)
+  .put(projectController.update);
 
 router
   .route("/api/projects/:id/topics")
