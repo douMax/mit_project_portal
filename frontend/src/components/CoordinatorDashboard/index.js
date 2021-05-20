@@ -50,14 +50,14 @@ const CoordinatorDashboard = () => {
   const closedproject = [];
   const [project, setProject] = useContext(ProjectContext);
   //console.log(project);
-  project.forEach(p => {
-    if (p.status === "Open") {
+  project.forEach((p) => {
+    if (p.status === "open") {
       openproject.push(p);
     }
-    if (p.status === "Ongoing") {
+    if (p.status === "ongoing") {
       ongoingproject.push(p);
     }
-    if (p.status === "Closed") {
+    if (p.status === "closed") {
       closedproject.push(p);
     }
   });
@@ -68,24 +68,24 @@ const CoordinatorDashboard = () => {
         <Col span={8}>
           <OpenWrapper>
             <SectionTitle>Unallocated/Open Projects</SectionTitle>
-            {openproject.map(p => (
-              <ProjectsSummary key={p.projId} project={p} />
+            {openproject.map((p) => (
+              <ProjectsSummary key={p._id} project={p} />
             ))}
           </OpenWrapper>
         </Col>
         <Col span={8}>
           <OngoingWrapper>
             <SectionTitle>Ongoing Projects</SectionTitle>
-            {ongoingproject.map(p => (
-              <ProjectsSummary key={p.projId} project={p} />
+            {ongoingproject.map((p) => (
+              <ProjectsSummary key={p._id} project={p} />
             ))}
           </OngoingWrapper>
         </Col>
         <Col span={8}>
           <ClosedWrapper>
             <SectionTitle>Closed Projects</SectionTitle>
-            {closedproject.map(p => (
-              <ProjectsSummary key={p.projId} project={p} />
+            {closedproject.map((p) => (
+              <ProjectsSummary key={p._id} project={p} />
             ))}
           </ClosedWrapper>
         </Col>

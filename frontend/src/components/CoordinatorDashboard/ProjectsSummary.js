@@ -11,11 +11,11 @@ const ProjectsSummary = ({ project }) => {
 
   return (
     <Card style={{ marginBottom: "15px" }} type="inner" hoverable="true">
-      <ProjectTitle title={project.title} />
-      <ProjectDescription description={project.description} />
+      <ProjectTitle title={project.projectTitle} />
+      <ProjectDescription description={project.abstract} />
       <Space>
         <ViewProjectDetails project={project} />
-        <AllocateResources projId={project.projId} />
+        <AllocateResources projId={project._id} />
       </Space>
     </Card>
   );

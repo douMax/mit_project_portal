@@ -26,9 +26,9 @@ const StudentEOIDetails = ({ eoi }) => {
       currentApplicant.push(student);
     }
   });
-  //console.log(students);
-  //console.log(eoi);
-  //console.log(currentApplicant);
+  console.log(students);
+  console.log(eoi);
+  console.log(currentApplicant);
   return (
     <Card style={{ marginBottom: 20, borderColor: "red" }}>
       <Space>
