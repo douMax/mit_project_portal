@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "antd";
 
 const ProposalStatusDetail = ({ status }) => {
-  console.log(status);
+  //console.log(status);
   if (status === "wfa") {
     return (
       <Button

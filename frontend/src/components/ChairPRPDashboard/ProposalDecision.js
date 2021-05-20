@@ -1,8 +1,10 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import { Form, Select, Input, Button } from "antd";
 import { PRP_DECISION } from "../../utils/APP_CONSTANTS";
+
+import { InactiveProjectContext } from "../../contexts/InactiveProjectContext";
 
 const { TextArea } = Input;
 
@@ -25,6 +27,17 @@ const SectionContent = styled.div`
 const ProposalDecision = () => {
   const location = useLocation();
   const project = location.state;
+  const [projects, setProjects] = useContext(InactiveProjectContext);
+  const handleDecision = () => {
+    //Change only the status of the selected project/proposal
+    setProjects(
+      projects.map((p) => {
+        if (p._id !== project._id) return p;
+        return { ...p, status: "open" };
+      })
+    );
+  };
+  //console.log(projects);
   return (
     <Form>
       <PageTitle>Project Proposal Decision Page</PageTitle>
@@ -36,10 +49,16 @@ const ProposalDecision = () => {
       <Form.Item name="feedback_comments">
         <TextArea rows={11} showCount minLength={20} maxLength={500} />
       </Form.Item>
-      <Form.Item name="feedback_comments" style={{ marginLeft: 1202 }}>
-        <Button type="primary" danger>
-          Send
-        </Button>
+      <Form.Item name="feedback_comments">
+        <Link
+          to={{
+            pathname: `/dashboard/chair-prp`,
+          }}
+        >
+          <Button type="primary" danger onClick={handleDecision}>
+            Send
+          </Button>
+        </Link>
       </Form.Item>
     </Form>
   );

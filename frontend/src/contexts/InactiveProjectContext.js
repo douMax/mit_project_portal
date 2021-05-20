@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, createContext } from "react";
 import { fetchInactiveProjects } from "../actions/projects";
+import { putProject } from "../actions/projects";
 
 export const InactiveProjectContext = createContext();
 
@@ -12,6 +13,10 @@ export const InactiveProjectProvider = (props) => {
     const data = await fetchInactiveProjects();
     setProjects(data);
   }, []);
+
+  // useEffect(async (data) => {
+  //   putProject(setProjects(data));
+  // }, []);
 
   return (
     <InactiveProjectContext.Provider value={[projects, setProjects]}>

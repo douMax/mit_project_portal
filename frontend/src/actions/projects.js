@@ -10,7 +10,7 @@ export const fetchInactiveProjects = async () => {
   return res.data;
 };
 
-export const updateProject = async () => {
+export const putProject = async () => {
   const res = await axios.put("/api/projects/:projectId");
   return res.data;
 };
