@@ -27,15 +27,16 @@ const SectionContent = styled.div`
 const ProposalDecision = () => {
   const location = useLocation();
   const project = location.state;
-  const [projects, setProjects] = useContext(InactiveProjectContext);
+  //const [projects, setProjects] = useContext(InactiveProjectContext);
   const handleDecision = () => {
     //Change only the status of the selected project/proposal
-    setProjects(
-      projects.map((p) => {
-        if (p._id !== project._id) return p;
-        return { ...p, status: "open" };
-      })
-    );
+    // setProjects(
+    //   projects.map((p) => {
+    //     if (p._id !== project._id) return p;
+    //     return { ...p, status: "open" };
+    //   })
+    // );
+    //putProject(project._id);
   };
   //console.log(projects);
   return (

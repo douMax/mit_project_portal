@@ -30,7 +30,7 @@ const LeftPanelWrapper = styled.div`
 
 const BrowseProjects = () => {
   const [projects, setProject] = useContext(ProjectContext);
-  console.log(projects);
+  //console.log(projects);
 
   const [selected, setSelected] = useState(null);
   const handleShowDetail = (selectedproject) => {

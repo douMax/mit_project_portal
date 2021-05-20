@@ -10,7 +10,8 @@ export const fetchInactiveProjects = async () => {
   return res.data;
 };
 
-export const putProject = async () => {
-  const res = await axios.put("/api/projects/:projectId");
-  return res.data;
+export const putProject = async (projectId) => {
+  //console.log(projectId);
+  const res = await axios.put(`/api/projects/${projectId}`, { status: "open" });
+  console.log(res.data.json);
 };
