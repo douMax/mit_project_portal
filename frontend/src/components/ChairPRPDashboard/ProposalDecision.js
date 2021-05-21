@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import { Form, Select, Input, Button } from "antd";
 import { PRP_DECISION } from "../../utils/APP_CONSTANTS";
 
-import { InactiveProjectContext } from "../../contexts/InactiveProjectContext";
+import { UpdateInactiveProject } from "../../contexts/InactiveProjectContext";
 
 const { TextArea } = Input;
 
@@ -27,24 +27,24 @@ const SectionContent = styled.div`
 const ProposalDecision = () => {
   const location = useLocation();
   const project = location.state;
-  //const [projects, setProjects] = useContext(InactiveProjectContext);
-  const handleDecision = () => {
-    //Change only the status of the selected project/proposal
-    // setProjects(
-    //   projects.map((p) => {
-    //     if (p._id !== project._id) return p;
-    //     return { ...p, status: "open" };
-    //   })
-    // );
-    //putProject(project._id);
+  let selectedStatus = "";
+  //console.log(project);
+  const handleSelectedStatus = (value) => {
+    //console.log(value);
+    selectedStatus = value;
   };
-  //console.log(projects);
+  const handleDecision = () => {
+    //project.status = selectedStatus;
+    //console.log(project);
+    UpdateInactiveProject(project._id, { status: selectedStatus });
+    //console.log(selectedStatus);
+  };
   return (
     <Form>
       <PageTitle>Project Proposal Decision Page</PageTitle>
       <SectionTitle>{project.projectTitle}</SectionTitle>
       <Form.Item label="Decision" name="prp_decision" style={{ width: 300 }}>
-        <Select options={PRP_DECISION} />
+        <Select onChange={handleSelectedStatus} options={PRP_DECISION} />
       </Form.Item>
       <SectionContent>Feedback Comments:</SectionContent>
       <Form.Item name="feedback_comments">

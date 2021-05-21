@@ -57,16 +57,16 @@ function App() {
             <Route exact path={ROUTES.NEW_PROJECT}>
               <NewProject />
             </Route>
-            <InactiveProjectProvider>
-              <SignUpRequestProvider>
+            <SignUpRequestProvider>
+              <InactiveProjectProvider>
                 <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
                   <ChairPRPDashboard />
                 </Route>
-                <Route exact path={ROUTES.PROPOSAL_DECISION}>
-                  <ProposalDecision />
-                </Route>
-              </SignUpRequestProvider>
-            </InactiveProjectProvider>
+              </InactiveProjectProvider>
+              <Route exact path={ROUTES.PROPOSAL_DECISION}>
+                <ProposalDecision />
+              </Route>
+            </SignUpRequestProvider>
             <EOIProvider>
               <Route exact path={ROUTES.MY_PROJECTS}>
                 <MyProjects />
