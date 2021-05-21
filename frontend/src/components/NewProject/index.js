@@ -41,10 +41,6 @@ const NewProject = () => {
     localStorage.removeItem("isInternship"); //Remove the item from local storage since we don't need it anymore.
 
     AddNewProjectProposal(values);
-    // const projId = (projects.length + 1).toString();
-    // const newProject = { ...values, projId };
-    // setProjects([...projects, newProject]);
-    // send POST request with new project data to backend
   };
 
   const handleCancel = () => {

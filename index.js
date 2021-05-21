@@ -47,6 +47,9 @@ app.use(applicationRecordRoutes);
 const clientRoutes = require("./backend/routes/client.route");
 app.use(clientRoutes);
 
+const eoiRoutes = require("./backend/routes/eoi.route");
+app.use(eoiRoutes);
+
 //const authRoutes = require("./backend/routes/auth.routes");
 //app.use(authRoutes);
 
