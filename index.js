@@ -41,20 +41,18 @@ app.use(groupRoutes);
 const projectRoutes = require("./backend/routes/project.route");
 app.use(projectRoutes);
 
-
 const applicationRecordRoutes = require("./backend/routes/application_record.route");
 app.use(applicationRecordRoutes);
 
 const clientRoutes = require("./backend/routes/client.route");
 app.use(clientRoutes);
 
-
 //const authRoutes = require("./backend/routes/auth.routes");
 //app.use(authRoutes);
 
+//CORS Headers
 
-app
-.get("/api", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Welcome to ProjectPortal API");
 });
 
