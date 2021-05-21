@@ -23,10 +23,10 @@ const AllocateResources = ({ projId }) => {
   const [project, setProject] = useContext(ProjectContext);
   const currentproject = [];
   project.forEach((p) => {
-    if (p.projId === projId) {
+    if (p._id === projId) {
       currentproject.push(p);
       eois.forEach((e) => {
-        if (e.projId === p.projId) {
+        if (e.projId === p._id) {
           projEOIS.push(e);
         }
       });
@@ -63,12 +63,12 @@ const AllocateResources = ({ projId }) => {
         <Space>
           <SectionTitle>Allocate Project</SectionTitle>
           <SectionTitle style={{ marginLeft: 500 }}>
-            T{currentproject[0].trimester} {currentproject[0].year}
+            {currentproject[0].termInfo} {currentproject[0].yearInfo}
           </SectionTitle>
         </Space>
         <Card>
-          <TopicsHeader topic={currentproject[0].topic} />
-          <ProjectTitle title={currentproject[0].title} />
+          <TopicsHeader topic={currentproject[0].topics} />
+          <ProjectTitle title={currentproject[0].projectTitle} />
           {projEOIS.map((eoi) => (
             <StudentEOIDetail key={eoi.id} eoi={eoi} />
           ))}

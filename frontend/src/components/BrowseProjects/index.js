@@ -30,10 +30,10 @@ const LeftPanelWrapper = styled.div`
 
 const BrowseProjects = () => {
   const [projects, setProject] = useContext(ProjectContext);
-  console.log(projects);
+  //console.log(projects);
 
   const [selected, setSelected] = useState(null);
-  const handleShowDetail = selectedproject => {
+  const handleShowDetail = (selectedproject) => {
     setSelected(selectedproject);
   };
   return (
@@ -42,10 +42,10 @@ const BrowseProjects = () => {
         <LeftPanelWrapper>
           <PageTitle>Browse Projects</PageTitle>
           <SearchNSort />
-          {projects.map(project => (
+          {projects.map((project) => (
             <ProjectListDetail
-              key={project.projId}
-              isSelected={project.projId === (selected && selected.projId)}
+              key={project._id}
+              isSelected={project._id === (selected && selected._id)}
               project={project}
               handleShowDetail={() => {
                 handleShowDetail(project);

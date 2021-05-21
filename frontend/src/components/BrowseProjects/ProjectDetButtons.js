@@ -27,11 +27,11 @@ const ProjectDetButtons = ({ project }) => {
         Save Project
       </Button>
       {user.role !== "industry_client" &&
-        project.status !== "Waiting for Approval" &&
-        project.status !== "Changes Required" && (
+        project.status !== "wfa" &&
+        project.status !== "cr" && (
           <Link
             to={{
-              pathname: `/projects/${project.projId}/new-eoi`,
+              pathname: `/projects/${project._id}/new-eoi`,
               state: project,
             }}
           >
@@ -47,11 +47,10 @@ const ProjectDetButtons = ({ project }) => {
           </Link>
         )}
       {user.role === "staff" &&
-        (project.status === "Waiting for Approval" ||
-          project.status === "Changes Required") && (
+        (project.status === "wfa" || project.status === "cr") && (
           <Link
             to={{
-              pathname: `/dashboard/chair-prp/${project.projId}/decision`,
+              pathname: `/dashboard/chair-prp/${project._id}/decision`,
               state: project,
             }}
           >
