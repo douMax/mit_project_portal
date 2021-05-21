@@ -2,7 +2,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import { fetchInactiveProjects } from "../actions/projects";
 
-import { putProject } from "../actions/projects";
+import { putProject, addProject } from "../actions/projects";
 
 export const InactiveProjectContext = createContext();
 
@@ -22,6 +22,14 @@ export const InactiveProjectProvider = (props) => {
   );
 };
 
+//Update Inactive Projects. E.g., by PRP Chair to approve, reject, or request changes to project proposal.
+//Project is inactive unless it is approved by PRP.
 export const UpdateInactiveProject = (projectId = String, change = Object) => {
   putProject(projectId, change);
+};
+
+//Add new project. New project is only a proposal.
+//New projects will be inactive untill they are approved by PRP.
+export const AddNewProjectProposal = (newProject) => {
+  addProject(newProject);
 };

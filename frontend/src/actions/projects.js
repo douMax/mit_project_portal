@@ -11,8 +11,12 @@ export const fetchInactiveProjects = async () => {
 };
 
 export const putProject = async (projectId, change) => {
-  // console.log(projectId);
-  // console.log(change);
   const res = await axios.put(`/api/projects/${projectId}`, change);
-  //console.log(res.data.json);
+  return res.data;
+};
+
+export const addProject = async (newProject) => {
+  //console.log(newProject);
+  const res = axios.post("http://localhost:5000/api/projects", newProject);
+  return res.data;
 };
