@@ -6,9 +6,7 @@ router
   .post(eoiController.createEOI)
   .get(eoiController.findProjectEOIs);
 
-router
-  .route("/api/projects/:projectId/eois/:applicantId")
-  .get(eoiController.findUserEOIs);
+router.route("/api/projects/eois/:applicantId").get(eoiController.findUserEOIs);
 
 router
   .route("/api/projects/:projectId/eois/:eoiId/eoi")

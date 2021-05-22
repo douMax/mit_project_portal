@@ -18,7 +18,7 @@ const SectionTitle = styled.h1`
 
 const AllocateResources = ({ projId }) => {
   //console.log(projId);
-  const [eois, setEOIs, FindProjectEOIs] = useContext(EOIContext);
+  const [eois, setEOIs, FindProjectEOIs, FindUserEOIs] = useContext(EOIContext);
   useEffect(() => {
     FindProjectEOIs(projId);
   }, []);

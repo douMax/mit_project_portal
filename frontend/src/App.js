@@ -74,11 +74,6 @@ function App() {
               <Route exact path={ROUTES.NEW_EOI}>
                 <NewEOI />
               </Route>
-              {/* <StudentProvider>
-                <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
-                  <CoordinatorDashboard />
-                </Route>
-              </StudentProvider> */}
             </EOIProvider>
             <StudentProvider>
               <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
