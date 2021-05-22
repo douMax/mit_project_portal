@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, createContext } from "react";
 import { fetchActiveProjects } from "../actions/projects";
-
 import { putProject } from "../actions/projects";
 
 export const ProjectContext = createContext();

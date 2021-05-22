@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Row, Col, Form } from "antd";
 
+import { EOIProvider } from "../../contexts/EOIContext";
 import { ProjectContext } from "../../contexts/ProjectContext";
 
 import ProjectsSummary from "./ProjectsSummary";
@@ -69,7 +70,9 @@ const CoordinatorDashboard = () => {
           <OpenWrapper>
             <SectionTitle>Unallocated/Open Projects</SectionTitle>
             {openproject.map((p) => (
-              <ProjectsSummary key={p._id} project={p} />
+              <EOIProvider key={p._id}>
+                <ProjectsSummary project={p} />
+              </EOIProvider>
             ))}
           </OpenWrapper>
         </Col>
@@ -77,7 +80,9 @@ const CoordinatorDashboard = () => {
           <OngoingWrapper>
             <SectionTitle>Ongoing Projects</SectionTitle>
             {ongoingproject.map((p) => (
-              <ProjectsSummary key={p._id} project={p} />
+              <EOIProvider key={p._id}>
+                <ProjectsSummary project={p} />
+              </EOIProvider>
             ))}
           </OngoingWrapper>
         </Col>
@@ -85,7 +90,9 @@ const CoordinatorDashboard = () => {
           <ClosedWrapper>
             <SectionTitle>Closed Projects</SectionTitle>
             {closedproject.map((p) => (
-              <ProjectsSummary key={p._id} project={p} />
+              <EOIProvider key={p._id}>
+                <ProjectsSummary project={p} />
+              </EOIProvider>
             ))}
           </ClosedWrapper>
         </Col>

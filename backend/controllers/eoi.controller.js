@@ -49,4 +49,21 @@ exports.findOneEOIs = async (req, res) => {
 };
 
 //Update EOI based on project and user. Used by Coordinator to allocate Students and Supervisors to projects.
-exports.updateEOI = async (req, res) => {};
+exports.updateEOI = async (req, res) => {
+  try {
+    const updatedEOI = await EOI.findByIdAndUpdate(req.params.eoiId, req.body, {
+      new: true,
+    });
+    res.status(203).send(updatedEOI);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: "EOI with Id ${eoiId} was not found!",
+      });
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: "Internal server error",
+    });
+  }
+};

@@ -12,6 +12,7 @@ router
 
 router
   .route("/api/projects/:projectId/eois/:eoiId/eoi")
-  .get(eoiController.findOneEOIs);
+  .get(eoiController.findOneEOIs)
+  .put(eoiController.updateEOI);
 
 module.exports = router;
