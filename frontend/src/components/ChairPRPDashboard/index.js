@@ -19,13 +19,13 @@ const SectionTitle = styled.h1`
 const Wrapper = styled.div`
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  padding-botton: 10px;
+  padding-bottom: 10px;
 `;
 
 const ChairPRPDashboard = () => {
   const [projects, setProject] = useContext(InactiveProjectContext);
   const projectProposal = [];
-  projects.forEach((proj) => {
+  projects.forEach(proj => {
     if (proj.status === "wfa" || proj.status === "cr") {
       //console.log(project);
       projectProposal.push(proj);
@@ -44,7 +44,7 @@ const ChairPRPDashboard = () => {
         <Col span={12}>
           <Wrapper>
             <SectionTitle>Project Proposal Requests</SectionTitle>
-            {projectProposal.map((p) => (
+            {projectProposal.map(p => (
               <UserProposals key={p._id} proposal={p} />
             ))}
           </Wrapper>
