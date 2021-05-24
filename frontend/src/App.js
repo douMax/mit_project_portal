@@ -24,6 +24,7 @@ import { ProjectProvider } from "./contexts/ProjectContext";
 import { EOIProvider } from "./contexts/EOIContext";
 import { StudentProvider } from "./contexts/StudentContext";
 import { SignUpRequestProvider } from "./contexts/SignUpRequestContext";
+import { InactiveProjectProvider } from "./contexts/InactiveProjectContext";
 
 let isLogged = true;
 let isSignedUp = true;
@@ -57,9 +58,11 @@ function App() {
               <NewProject />
             </Route>
             <SignUpRequestProvider>
-              <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
-                <ChairPRPDashboard />
-              </Route>
+              <InactiveProjectProvider>
+                <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
+                  <ChairPRPDashboard />
+                </Route>
+              </InactiveProjectProvider>
               <Route exact path={ROUTES.PROPOSAL_DECISION}>
                 <ProposalDecision />
               </Route>

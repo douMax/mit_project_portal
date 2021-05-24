@@ -10,17 +10,8 @@ import ProjectDetail from "../BrowseProjects/ProjectDetail";
 
 const UserProposals = ({ proposal }) => {
   //console.log(propId, title, description);
-  const {
-    projId,
-    title,
-    topic,
-    description,
-    status,
-    year,
-    trimester,
-    assigned_students,
-    eoi,
-  } = proposal;
+  const { _id, projectTitle, topics, abstract, status, yearInfo, termInfo } =
+    proposal;
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const showDrawer = () => {
     setIsDrawerVisible(true);
@@ -32,9 +23,9 @@ const UserProposals = ({ proposal }) => {
     <Card style={{ marginBottom: "15px" }} type="inner" hoverable="true">
       <Row gutter={16}>
         <Col span={24}>
-          <TopicsHeader topic={topic} />
-          <ProjectTitle title={title} />
-          <ProjectDescription description={description} />
+          <TopicsHeader topic={topics} />
+          <ProjectTitle title={projectTitle} />
+          <ProjectDescription description={abstract} />
           <ProposalStatusDetail status={status} />
           <Button
             type="primary"

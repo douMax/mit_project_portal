@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, createContext } from "react";
-import mockProjects from "../data/mockProjects.json";
 import { fetchActiveProjects } from "../actions/projects";
 
 export const ProjectContext = createContext();
 
-export const ProjectProvider = props => {
+export const ProjectProvider = (props) => {
   // TODO: trigger the fetch at first render, then trigger the fetch again whenever needed
   const [projects, setProjects] = useState([]);
 

@@ -1,8 +1,10 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import { Form, Select, Input, Button } from "antd";
 import { PRP_DECISION } from "../../utils/APP_CONSTANTS";
+
+import { UpdateInactiveProject } from "../../contexts/InactiveProjectContext";
 
 const { TextArea } = Input;
 
@@ -25,21 +27,39 @@ const SectionContent = styled.div`
 const ProposalDecision = () => {
   const location = useLocation();
   const project = location.state;
+  let selectedStatus = "";
+  //console.log(project);
+  const handleSelectedStatus = (value) => {
+    //console.log(value);
+    selectedStatus = value;
+  };
+  const handleDecision = () => {
+    //project.status = selectedStatus;
+    //console.log(project);
+    UpdateInactiveProject(project._id, { status: selectedStatus });
+    //console.log(selectedStatus);
+  };
   return (
     <Form>
       <PageTitle>Project Proposal Decision Page</PageTitle>
-      <SectionTitle>{project.title}</SectionTitle>
+      <SectionTitle>{project.projectTitle}</SectionTitle>
       <Form.Item label="Decision" name="prp_decision" style={{ width: 300 }}>
-        <Select options={PRP_DECISION} />
+        <Select onChange={handleSelectedStatus} options={PRP_DECISION} />
       </Form.Item>
       <SectionContent>Feedback Comments:</SectionContent>
       <Form.Item name="feedback_comments">
         <TextArea rows={11} showCount minLength={20} maxLength={500} />
       </Form.Item>
-      <Form.Item name="feedback_comments" style={{ marginLeft: 1202 }}>
-        <Button type="primary" danger>
-          Send
-        </Button>
+      <Form.Item name="feedback_comments">
+        <Link
+          to={{
+            pathname: `/dashboard/chair-prp`,
+          }}
+        >
+          <Button type="primary" danger onClick={handleDecision}>
+            Send
+          </Button>
+        </Link>
       </Form.Item>
     </Form>
   );

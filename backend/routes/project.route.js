@@ -13,6 +13,9 @@ router
   .post(projectController.create);
 
 router.route("/api/projects/active").get(projectController.findActiveProjects);
+router
+  .route("/api/projects/inactive")
+  .get(projectController.findInactiveProjects);
 
 router
   .route("/api/projects/:projectId")
