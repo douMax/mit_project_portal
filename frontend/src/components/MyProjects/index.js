@@ -27,11 +27,11 @@ const PanelWrapper = styled.div`
 const MyProjects = () => {
   const [user] = useContext(UserContext);
   let applicantId = user.userId;
-  const [projects, setProject] = useContext(ProjectContext);
   const [eois, setEOIs, FindProjectEOIs, FindUserEOIs] = useContext(EOIContext);
   useEffect(() => {
     FindUserEOIs(applicantId);
   }, []);
+  const [projects, setProject] = useContext(ProjectContext);
   const project = [];
   const myprojects = [];
   const proposal = [];

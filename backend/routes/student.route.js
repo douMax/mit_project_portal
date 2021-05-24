@@ -9,8 +9,12 @@ const studentController = require("../controllers/student.controller");
 
 router
   .route("/api/students")
-  .get(studentController.findEnrolledStudents)
+  .get(studentController.findAllStudents)
   .post(studentController.create);
+
+router
+  .route("/api/students/enrolled")
+  .get(studentController.findEnrolledStudents);
 
 router
   .route("/api/students/:studentid")

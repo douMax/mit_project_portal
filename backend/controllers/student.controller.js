@@ -11,6 +11,15 @@ exports.create = async (req, res) => {
   }
 };
 
+exports.findAllStudents = async (req, res) => {
+  try {
+    let data = await Student.find({});
+    res.status(201).send(data);
+  } catch (error) {
+    res.status(500).send("Error retriving student");
+  }
+};
+
 exports.findEnrolledStudents = async (req, res) => {
   try {
     let data = await Student.find({ is_enrolled_in_capstone_projects: true });
