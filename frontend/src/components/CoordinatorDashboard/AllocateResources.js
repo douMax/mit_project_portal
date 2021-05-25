@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useContext, useEffect } from "react";
 import { Button, Drawer, Space, Card } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 import styled from "styled-components";
@@ -16,20 +17,16 @@ const SectionTitle = styled.h1`
 `;
 
 const AllocateResources = ({ projId }) => {
-  const [eois, setEOIs] = useContext(EOIContext);
-  const projEOIS = [];
-  //Temporary code to retrieve specific project from all projects.
-  //After frontend is connected to backed, we can have an API call to GET only the specific project.
+  //console.log(projId);
+  const [eois, setEOIs, FindProjectEOIs, FindUserEOIs] = useContext(EOIContext);
+  useEffect(() => {
+    FindProjectEOIs(projId);
+  }, []);
   const [project, setProject] = useContext(ProjectContext);
   const currentproject = [];
   project.forEach((p) => {
     if (p._id === projId) {
       currentproject.push(p);
-      eois.forEach((e) => {
-        if (e.projId === p._id) {
-          projEOIS.push(e);
-        }
-      });
     }
   });
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
@@ -38,7 +35,6 @@ const AllocateResources = ({ projId }) => {
     setIsDrawerVisible(true);
     //console.log(currentproject);
     //console.log(eois);
-    //console.log(projEOIS);
   };
   const handleClose = () => {
     setIsDrawerVisible(false);
@@ -69,8 +65,8 @@ const AllocateResources = ({ projId }) => {
         <Card>
           <TopicsHeader topic={currentproject[0].topics} />
           <ProjectTitle title={currentproject[0].projectTitle} />
-          {projEOIS.map((eoi) => (
-            <StudentEOIDetail key={eoi.id} eoi={eoi} />
+          {eois.map((eoi) => (
+            <StudentEOIDetail key={eoi._id} eoi={eoi} />
           ))}
         </Card>
       </Drawer>

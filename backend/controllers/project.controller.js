@@ -166,3 +166,5 @@ exports.findProjectTopics = async (req, res) => {
     });
   }
 };
+
+//Find all projects for a particular user based on his/her ID.
