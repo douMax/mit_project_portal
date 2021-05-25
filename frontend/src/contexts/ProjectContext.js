@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, createContext } from "react";
 import { fetchActiveProjects } from "../actions/projects";
+import { putProject } from "../actions/projects";
 
 export const ProjectContext = createContext();
 
@@ -18,4 +19,8 @@ export const ProjectProvider = (props) => {
       {props.children}
     </ProjectContext.Provider>
   );
+};
+
+export const UpdateActiveProject = (projectId = String, change = Object) => {
+  putProject(projectId, change);
 };

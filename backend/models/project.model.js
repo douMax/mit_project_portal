@@ -52,6 +52,10 @@ const projectSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Staff",
     },
+    groupId: {
+      type: Schema.Types.ObjectId,
+      ref: "Group",
+    },
   },
   {
     timestamps: true,
