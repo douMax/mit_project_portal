@@ -14,7 +14,8 @@ exports.create = async (req, res) => {
 
 exports.findCompanyClients = async (req, res) => {
   try {
-    let data = await Client.find({ is_an_agent: true });
+    let data = await Client.find();
+    console.log(data);
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving clients");
