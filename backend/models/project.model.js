@@ -34,8 +34,7 @@ const projectSchema = new Schema(
     is_internship: {
       type: Boolean,
     },
-    client_id: {
-
+    clientId: {
       type: Schema.Types.ObjectId,
       ref:"Client",
     },

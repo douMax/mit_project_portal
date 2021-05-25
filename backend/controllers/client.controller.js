@@ -35,7 +35,7 @@ exports.findClientsProjects = async (req, res) => {
   const {clientId} = req.params;
   
   try {
-    let projects = await Project.find({client_id: clientId })
+    let projects = await Project.find({clientId: clientId })
 
 
     res.status(201).send(projects);
