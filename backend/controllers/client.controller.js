@@ -29,43 +29,21 @@ exports.findOneById = async (req, res) => {
     res.status(500).send("Error retriving Projects");
   }
 };
+
+
 exports.findClientsProjects = async (req, res) => {
-  const {projectId} = req.params;
-  console.log(projectId);
+  const {clientId} = req.params;
   
   try {
-    const Project = await Project.findById(projectId);
-    res.status(201).send(data);
+    let projects = await Project.find({client_id: clientId })
+
+
+    res.status(201).send(projects);
   } catch (error) {
-    res.status(500).send("Error retriving group");
+    res.status(500).send("Error retriving projects based on the clientId");
   }
-};
 
- 
-  try {
-    const client = await Client.findById(clientId);
-      const projects = await projects.find(ClientId);
-    if (!client) {
-      return res.status(404).send({
-        message: 'Client not found with ID {clientId}',
-      });
-    }
-    res.status(200).send (client);
-
-    
-  }catch (err) {
-    if (err.kind ==="ObjectId"){
-      return res.status(404).send({
-        message: 'client not found with ID(clientId)',
-      });
-    }
-    console.log(err);
-    return res.status(500).send({
-      message :'internal server error.',
-    });
-
-    
-  };
+}
 
 exports.update = async (req, res) => {
   const { clientId } = req.params;

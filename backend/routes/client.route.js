@@ -19,4 +19,7 @@ router
 .delete(clientController.delete);
 
 
+router.route("/api/clients/:clientId/projects").get(clientController.findClientsProjects)
+
+
 module.exports = router;
