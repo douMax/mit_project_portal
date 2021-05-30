@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Card, Space, Input, Button, Switch } from "antd";
 import styled from "styled-components";
-
-import { StudentContext } from "../../contexts/StudentContext";
 
 const { TextArea } = Input;
 
@@ -18,24 +16,11 @@ const SubsectionTitle = styled.p`
 
 const StudentEOIDetails = ({ eoi }) => {
   // console.log(eoi);
-  //Need to query database to GET student details based on studentId obtained from the EOI object.
-  //Temporary code to simulate GETting student records for students who expressed interest in the project.
-  const [students, setStudents] = useContext(StudentContext);
-  const currentApplicant = [];
-  students.forEach((student) => {
-    if (student.userId === eoi.applicantId) {
-      currentApplicant.push(student);
-      return currentApplicant;
-    }
-  });
-  // console.log(students);
-  // console.log(eoi);
-  // console.log(currentApplicant);
   return (
     <Card style={{ marginBottom: 20, borderColor: "red" }}>
       <Space>
         <Card style={{ height: 385, borderColor: "DimGrey" }}>
-          <SectionTitle>{currentApplicant[0].userName}</SectionTitle>
+          <SectionTitle>{eoi.userName}</SectionTitle>
           <Button type="text" style={{ background: "turquoise" }}>
             Allocate
           </Button>
@@ -43,7 +28,7 @@ const StudentEOIDetails = ({ eoi }) => {
             Remove
           </Button>
           <SubsectionTitle>Course Enrolment Status</SubsectionTitle>
-          {currentApplicant[0].course_enrolment ? (
+          {eoi.course_enrolment ? (
             <Switch
               checkedChildren="Yes"
               defaultChecked
@@ -58,7 +43,7 @@ const StudentEOIDetails = ({ eoi }) => {
             />
           )}
           <SubsectionTitle>Module Enrolment Status</SubsectionTitle>
-          {currentApplicant[0].capstone_project_enrolment ? (
+          {eoi.capstone_project_enrolment ? (
             <Switch
               checkedChildren="Yes"
               defaultChecked
@@ -80,21 +65,21 @@ const StudentEOIDetails = ({ eoi }) => {
             cols={60}
             style={{ background: "white", color: "black" }}
             disabled
-            defaultValue={eoi.interest}
+            defaultValue={eoi.interestInProject}
           ></TextArea>
           <SubsectionTitle>Achievement Goals</SubsectionTitle>
           <TextArea
             cols={60}
             style={{ background: "white", color: "black" }}
             disabled
-            defaultValue={eoi.achieve}
+            defaultValue={eoi.achievementGoals}
           ></TextArea>
           <SubsectionTitle>Previous Experience</SubsectionTitle>
           <TextArea
             cols={60}
             style={{ background: "white", color: "black" }}
             disabled
-            defaultValue={eoi.experience}
+            defaultValue={eoi.previousExperience}
           ></TextArea>
         </Card>
       </Space>
