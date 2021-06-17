@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { EOIContext } from "../../contexts/EOIContext";
+import { StudentContext } from "../../contexts/StudentContext";
 
 import TopicsHeader from "../BrowseProjects/TopicsHeader";
 import ProjectTitle from "../BrowseProjects/ProjectTitle";
@@ -28,6 +29,16 @@ const AllocateResources = ({ projId }) => {
     if (p._id === projId) {
       currentproject.push(p);
     }
+  });
+  const [students, setStudents] = useContext(StudentContext);
+  students.forEach((student) => {
+    eois.forEach((eoi) => {
+      if (student.userId === eoi.applicantId) {
+        eoi["userName"] = student.userName;
+        eoi["course_enrolment"] = student.course_enrolment;
+        eoi["capstone_project_enrolment"] = student.capstone_project_enrolment;
+      }
+    });
   });
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const showDrawer = () => {
