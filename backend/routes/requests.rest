@@ -1,0 +1,36 @@
+POST http://localhost:5000/api/students
+Content-Type: "application/json"
+
+{
+    "email": "MIT129r@a45tr.com",
+    "first_name": "Pranay",
+    "last_name": "Kumar"
+}
+
+###
+GET http://localhost:5000/api/students
+
+###
+GET http://localhost:5000/api/login
+Content-Type: 'application/json'
+
+{
+    "username":"MIT129r@a45tr.,com",
+    "password":"12345678a"
+}
+
+###
+POST http://localhost:5000/auth/register
+Content-Type: 'application/json'
+
+{
+    "username":"Atish Apajee",
+    "password" : "atishapajee@123",
+    "role":"student"
+}
+
+###
+GET http://localhost:5000/api/students/6014f036a2e32dd3815778e3
+
+###
+DELETE http://localhost:5000/api/students/61054194b274b33290ffe56a

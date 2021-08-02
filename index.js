@@ -11,6 +11,8 @@ mongoose
   .connect(keys.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify:true
   })
   .then(() => {
     console.log("mongodb connected....");
@@ -50,8 +52,11 @@ app.use(clientRoutes);
 const eoiRoutes = require("./backend/routes/eoi.route");
 app.use(eoiRoutes);
 
-//const authRoutes = require("./backend/routes/auth.routes");
-//app.use(authRoutes);
+// const authRoutes = require("./backend/routes/auth.route");
+// app.use(authRoutes);
+
+const userAuthRoutes = require("./backend/controllers/user_auth/user.route");
+app.use(userAuthRoutes);
 
 //CORS Headers
 

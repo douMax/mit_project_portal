@@ -1,2 +1,0 @@
-// jwt.sign
-// jwt.verify

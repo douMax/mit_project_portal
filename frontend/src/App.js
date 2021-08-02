@@ -33,12 +33,12 @@ let isSignedUp = true;
 const ContentContainer = styled.div`
   width: 100vw;
   padding: 25px 50px;
+  background-color: #fff;
 `;
 
 function App() {
   return (
     <BrowserRouter>
-      {isLogged && <Header />}
       <ContentContainer>
         <Switch>
           <ProjectProvider>
@@ -48,6 +48,7 @@ function App() {
             <Route exact path={ROUTES.LOG_IN}>
               <LandingPage />
             </Route>
+            <Route exact path="/" component={LandingPage}/>
             <Route exact path={ROUTES.DEV_SETTINGS}>
               <DevSettings />
             </Route>
