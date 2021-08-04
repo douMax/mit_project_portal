@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Logo from "./Logo";
 import StaffNavLinks from "./StaffNavLinks";
 import StudentNavLinks from "./StudentNavLinks";
@@ -9,7 +9,6 @@ import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { NotificationProvider } from "../../contexts/NotificationContext";
 import { UserContext } from "../../contexts/UserContext";
 
-import mockNotifications from "../../data/mockNotifications.json";
 
 const HeaderContainer = styled.header`
   width: 100%;

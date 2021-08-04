@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import { COLORS } from "../../utils/APP_CONSTANTS";
 import logo from "../../assets/mit_logo.png";
 
 // const LogoText = styled.div`

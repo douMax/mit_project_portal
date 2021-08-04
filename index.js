@@ -12,7 +12,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify:true
+    useFindAndModify: true
   })
   .then(() => {
     console.log("mongodb connected....");
@@ -55,8 +55,8 @@ app.use(eoiRoutes);
 // const authRoutes = require("./backend/routes/auth.route");
 // app.use(authRoutes);
 
-const userAuthRoutes = require("./backend/controllers/user_auth/user.route");
-app.use(userAuthRoutes);
+// const userAuthRoutes = require("./backend/controllers/user_auth/user.route");
+// app.use(userAuthRoutes);
 
 //CORS Headers
 

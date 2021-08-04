@@ -1,10 +1,9 @@
 // framework related
-import React, { useContext, useReducer } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
 // components
-import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
 import BrowseProjects from "./components/BrowseProjects";
@@ -26,8 +25,8 @@ import { StudentProvider } from "./contexts/StudentContext";
 import { SignUpRequestProvider } from "./contexts/SignUpRequestContext";
 import { InactiveProjectProvider } from "./contexts/InactiveProjectContext";
 
-let isLogged = true;
-let isSignedUp = true;
+// let isLogged = true;
+// let isSignedUp = true;
 
 // camal case
 const ContentContainer = styled.div`
@@ -48,7 +47,7 @@ function App() {
             <Route exact path={ROUTES.LOG_IN}>
               <LandingPage />
             </Route>
-            <Route exact path="/" component={LandingPage}/>
+            <Route exact path="/" component={LandingPage} />
             <Route exact path={ROUTES.DEV_SETTINGS}>
               <DevSettings />
             </Route>
