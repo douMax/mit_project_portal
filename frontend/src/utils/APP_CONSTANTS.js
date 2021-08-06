@@ -1,6 +1,6 @@
-export const STUDENT = "student";
-export const STAFF = "staff";
-export const INDUSTRY_CLIENT = "industry_client";
+export const STUDENT = "Student";
+export const STAFF = "Staff";
+export const INDUSTRY_CLIENT = "Client";
 
 export const USERTYPES = {
   STUDENT: "student",
