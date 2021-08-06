@@ -37,7 +37,7 @@ const LoginForm = props => {
         </Form.Item>
         <Form.Item>
           <Button type="danger" htmlType="submit">
-            Submit
+            Login
           </Button>
         </Form.Item>
       </Form>
