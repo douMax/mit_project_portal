@@ -20,10 +20,19 @@ const LoginTab = () => (
         <LoginForm userType={INDUSTRY_CLIENT} />
       </TabPane>
     </Tabs>
-    <div style={{maxWidth:"300px"}}>
+    <div style={{maxWidth:"350px"}}>
       {"For account related enquiries, Melbourne students and staff please contact IT Service Desk at "}
       <a href="mailto:servicedesk@mit.edu.au">servicedesk@mit.edu.au</a>  {"and Sydney students and staff at "}
       <a href="mailto:tech-syd@academic.mit.edu.au">tech-syd@academic.mit.edu.au</a>
+    </div>
+    <div style={{maxWidth:"300px"}}>
+    <h3>Quick Links</h3>
+      <li>
+      <a href="http://moodle.mit.edu.au/login/index.php" target="_blank">Moodle</a>
+     </li>
+      <li>
+     <a href="http://www.mit.edu.au" target="_blank">MIT website</a>
+      </li>
     </div>
   </Card>
     </>
