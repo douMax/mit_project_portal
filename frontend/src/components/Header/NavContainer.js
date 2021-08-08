@@ -8,6 +8,9 @@ const NavContainer = styled.nav`
   color: rgb(0, 0, 0, 0.85);
   text-align: left;
   outline: none;
+  display:flex;
+  justify-content:flex-start;
+  align-items:flex-start;
 
   a {
     color: inherit;
@@ -15,6 +18,7 @@ const NavContainer = styled.nav`
 
     :hover {
       color: ${COLORS.PrimaryRed};
+      border-bottom: 2px solid ${COLORS.PrimaryRed};
     }
   }
 `;

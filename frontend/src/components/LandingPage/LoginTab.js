@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, Card } from "antd";
 import LoginForm from "./LoginForm";
-import { STUDENT, STAFF, INDUSTRY_CLIENT } from "../../utils/APP_CONSTANTS";
+import { STUDENT, STAFF, CLIENT } from "../../utils/APP_CONSTANTS";
 
 const { TabPane } = Tabs;
 
@@ -16,7 +16,7 @@ const LoginTab = () => (
           <LoginForm userType={STAFF} />
         </TabPane>
         <TabPane tab="MIT Industry Client" key="3">
-          <LoginForm userType={INDUSTRY_CLIENT} />
+          <LoginForm userType={CLIENT} />
         </TabPane>
       </Tabs>
       <div style={{ maxWidth: "300px" }}>
@@ -28,13 +28,13 @@ const LoginTab = () => (
       <div>
         <h4>Quick Links</h4>
         <ul style={{ listStyleType: "none", display: "flex", flexDirection: "column" }}>
-          <li style={{ margin: "5px" }}>
+          <li style={{ margin: "2 px" }}>
             <a href="http://moodle.mit.edu.au/login/index.php" target="_blank">Moodle</a>
           </li>
-          <li style={{ margin: "5px" }}>
+          <li style={{ margin: "2px" }}>
             <a href="http://print.mit.edu.au/" target="_blank">MIT website</a>
           </li>
-          <li style={{ margin: "5px" }}>
+          <li style={{ margin: "2px" }}>
             <a href="http://print.mit.edu.au/" target="_blank">Print Account Balance - Lecturers and students</a>
           </li>
         </ul>

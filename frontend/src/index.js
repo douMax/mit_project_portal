@@ -3,15 +3,16 @@ import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-//Contexts
-import { UserProvider } from "../src/contexts/UserContext";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { store } from "./redux/store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <UserProvider>
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </UserProvider>
-  </React.StrictMode>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

@@ -24,6 +24,8 @@ import { EOIProvider } from "./contexts/EOIContext";
 import { StudentProvider } from "./contexts/StudentContext";
 import { SignUpRequestProvider } from "./contexts/SignUpRequestContext";
 import { InactiveProjectProvider } from "./contexts/InactiveProjectContext";
+import { Routes } from "./routes/routes";
+import { useSelector } from "react-redux";
 
 // let isLogged = true;
 // let isSignedUp = true;
@@ -36,54 +38,58 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
+  const { is_auth } = useSelector(state => state.auth)
   return (
-    <BrowserRouter>
-      <ContentContainer>
-        <Switch>
-          <ProjectProvider>
-            <Route exact path={ROUTES.SIGN_UP}>
-              <SignUpPage />
-            </Route>
-            <Route exact path={ROUTES.LOG_IN}>
-              <LandingPage />
-            </Route>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path={ROUTES.DEV_SETTINGS}>
-              <DevSettings />
-            </Route>
-            <Route exact path={ROUTES.PROJECTS}>
-              <BrowseProjects />
-            </Route>
-            <Route exact path={ROUTES.NEW_PROJECT}>
-              <NewProject />
-            </Route>
-            <SignUpRequestProvider>
-              <InactiveProjectProvider>
-                <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
-                  <ChairPRPDashboard />
-                </Route>
-              </InactiveProjectProvider>
-              <Route exact path={ROUTES.PROPOSAL_DECISION}>
-                <ProposalDecision />
-              </Route>
-            </SignUpRequestProvider>
-            <EOIProvider>
-              <Route exact path={ROUTES.MY_PROJECTS}>
-                <MyProjects />
-              </Route>
-              <Route exact path={ROUTES.NEW_EOI}>
-                <NewEOI />
-              </Route>
-            </EOIProvider>
-            <StudentProvider>
-              <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
-                <CoordinatorDashboard />
-              </Route>
-            </StudentProvider>
-          </ProjectProvider>
-        </Switch>
-      </ContentContainer>
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <ContentContainer>
+    //     <Switch>
+    //       <ProjectProvider>
+    //         <Route exact path={ROUTES.SIGN_UP}>
+    //           <SignUpPage />
+    //         </Route>
+    //         <Route exact path={ROUTES.LOG_IN}>
+    //           <LandingPage />
+    //         </Route>
+    //         <Route exact path="/" component={LandingPage} />
+    //         <Route exact path={ROUTES.DEV_SETTINGS}>
+    //           <DevSettings />
+    //         </Route>
+    //         <Route exact path={ROUTES.PROJECTS}>
+    //           <BrowseProjects />
+    //         </Route>
+    //         <Route exact path={ROUTES.NEW_PROJECT}>
+    //           <NewProject />
+    //         </Route>
+    //         <SignUpRequestProvider>
+    //           <InactiveProjectProvider>
+    //             <Route exact path={ROUTES.CHAIR_PRP_DASHBOARD}>
+    //               <ChairPRPDashboard />
+    //             </Route>
+    //           </InactiveProjectProvider>
+    //           <Route exact path={ROUTES.PROPOSAL_DECISION}>
+    //             <ProposalDecision />
+    //           </Route>
+    //         </SignUpRequestProvider>
+    //         <EOIProvider>
+    //           <Route exact path={ROUTES.MY_PROJECTS}>
+    //             <MyProjects />
+    //           </Route>
+    //           <Route exact path={ROUTES.NEW_EOI}>
+    //             <NewEOI />
+    //           </Route>
+    //         </EOIProvider>
+    //         <StudentProvider>
+    //           <Route exact path={ROUTES.COORDINATOR_DASHBOARD}>
+    //             <CoordinatorDashboard />
+    //           </Route>
+    //         </StudentProvider>
+    //       </ProjectProvider>
+    //     </Switch>
+    //   </ContentContainer>
+    // </BrowserRouter>
+    <ContentContainer>
+      <Routes />
+    </ContentContainer>
   );
 }
 

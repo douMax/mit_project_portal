@@ -20,6 +20,8 @@ mongoose
 
 // intialise our app using express()
 const app = express();
+var cors = require('cors');
+app.use(cors());
 // app.use() is asking app to use a middleware. bodyParser is to parse the request's body different formats
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -52,11 +54,8 @@ app.use(clientRoutes);
 const eoiRoutes = require("./backend/routes/eoi.route");
 app.use(eoiRoutes);
 
-// const authRoutes = require("./backend/routes/auth.route");
-// app.use(authRoutes);
-
-// const userAuthRoutes = require("./backend/controllers/user_auth/user.route");
-// app.use(userAuthRoutes);
+const userAuthRoutes = require("./backend/user_auth/user.routes");
+app.use(userAuthRoutes);
 
 //CORS Headers
 

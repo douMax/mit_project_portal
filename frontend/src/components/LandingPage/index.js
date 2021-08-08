@@ -19,7 +19,6 @@ const LandingPage = () => {
       <Logo />
       <LandingContainer>
         <Space direction="vertical">
-          <h1>MIT Project Portal</h1>
           <LoginTab />
         </Space>
         <Image height="110vh" src="mit.png" preview={false} style={{ marginTop: "-100px" }} />
