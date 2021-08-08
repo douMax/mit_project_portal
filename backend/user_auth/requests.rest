@@ -24,8 +24,8 @@ POST http://localhost:5000/auth/register
 Content-Type: 'application/json'
 
 {
-    "username":"Atish Apajee",
-    "password" : "atishapajee@123",
+    "username":"MIT192088",
+    "password" : "123456",
     "role":"student"
 }
 
@@ -34,3 +34,6 @@ GET http://localhost:5000/api/students/6014f036a2e32dd3815778e3
 
 ###
 DELETE http://localhost:5000/api/students/61054194b274b33290ffe56a
+
+###
+GET http://localhost:5000/auth/allUsers

@@ -1,12 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button } from "antd";
-import { INDUSTRY_CLIENT } from "../../utils/APP_CONSTANTS";
+import { CLIENT } from "../../utils/APP_CONSTANTS";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../redux/authRedux/actions";
+import { useHistory } from "react-router-dom";
 
-const LoginForm = props => {
-  const onFinish = values => {
+const LoginForm = (props) => {
+
+  const { auth_user, is_auth, is_error } = useSelector(state => state.auth);
+  const { is_first_time_visited, _id, username } = auth_user;
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  console.log(is_error, "error")
+  const onFinish = ({ username, password }) => {
     // send the request to backend
-    console.log(values);
+    const payload = {
+      username,
+      password,
+      role: props.userType
+    };
+
+    dispatch(loginUser(payload));
   };
+
+  useEffect(() => {
+    if (is_auth) {
+      console.log(is_first_time_visited)
+      if (props.userType === "student") {
+        if (!is_first_time_visited) {
+          history.push("/dashboard/student-dashboard");
+        }
+        else history.push("/signup");
+      }
+      if (props.userType === "staff") {
+        if (!is_first_time_visited) {
+          history.push("/dashboard/staff-supervisor-dashboard");
+        }
+        else history.push("/signup");
+      }
+      if (props.userType === "client" && is_first_time_visited) history.push("/dashboard/client-dashboard");
+    }
+
+  }, [is_auth, is_first_time_visited, history])
+
+
   return (
     <div>
       <h3>Login as {props.userType}</h3>
@@ -40,9 +79,12 @@ const LoginForm = props => {
             Login
           </Button>
         </Form.Item>
+        {is_error && (<div style={{ color: "#dd042a", fontSize: "18px", margin: "5px" }}>{`Invalid credentials for MIT ${props.userType} user !`}</div>)}
       </Form>
-      {props.userType === INDUSTRY_CLIENT && (
-        <Button type="default">Register</Button>
+      {props.userType === CLIENT && (
+        <Button type="default" onClick={event => {
+          history.push("/signup")
+        }}>Register</Button>
       )}
     </div>
   );

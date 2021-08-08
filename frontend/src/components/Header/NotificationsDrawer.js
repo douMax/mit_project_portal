@@ -3,7 +3,7 @@ import { Space, Button, Drawer, Card } from "antd";
 import { NotificationFilled } from "@ant-design/icons";
 import styled from "styled-components";
 
-import { NotificationContext } from "../../contexts/NotificationContext";
+// import { NotificationContext } from "../../contexts/NotificationContext";
 import { hoverOver } from "../../utils/APP_FUNCTIONS";
 import { hoverOut } from "../../utils/APP_FUNCTIONS";
 
@@ -17,7 +17,7 @@ const NOTIF_DESCRIPTION = styled.div`
 `;
 
 const NotificationsDrawer = () => {
-  const [notifs, setNotifs] = useContext(NotificationContext);
+  const [notifs, setNotifs] = useState([]);
 
   const delNotif = (ev) => {
     //console.log(ev.currentTarget.id);

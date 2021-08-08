@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, Button, Tag, Row, Col } from "antd";
+import { Card, Button, Tag } from "antd";
 
 const UserEOI = ({ eoi }) => {
   return (
