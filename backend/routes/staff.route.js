@@ -16,6 +16,10 @@ router
   .post(staffController.create);
 
 router
+  .route("/api/auth/staff")
+  .post(staffController.getStaff);
+
+router
   .route("/api/staffs/:id")
   .get(staffController.findOneById)
   .put(staffController.update)

@@ -14,8 +14,9 @@ const IndustryClientSignUp = () => {
   const handleFinish = (payload) => {
     const { email } = payload;
     console.log(payload);
+    const userPayload = { ...payload, username: email };
     dispatch(registerUser({ username: email, role: "client", is_first_time_visited: false }));
-    dispatch(signupUser(payload, "client"));
+    dispatch(signupUser(userPayload, "client"));
     setIsRegister(true);
   };
 

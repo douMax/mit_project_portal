@@ -104,3 +104,18 @@ exports.findStaffTopics = async (req, res) => {
     });
   }
 };
+
+exports.getStaff = async (req, res) => {
+  const { username } = req.body;
+  console.log(username)
+  try {
+    const user = await Staff.findOne({ "username": username }).exec();
+    if (!user) {
+      res.status(401).json({ status: 'failed', message: 'Invalid User' });
+    }
+    else res.status(200).json({ status: "success", user });
+  }
+  catch (err) {
+    res.status(400).json({ status: "failed", message: "User not found" })
+  }
+};

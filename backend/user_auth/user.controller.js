@@ -16,7 +16,8 @@ const register = async (req, res) => {
         }
 
         else {
-            const user = await User.create(req.body);
+            const payload = { ...req.body, password: "123456" };
+            const user = await User.create(payload);
 
             return res.status(201).json({ status: 'success', message: 'Registration successful' });
         }

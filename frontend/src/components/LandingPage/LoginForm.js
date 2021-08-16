@@ -40,9 +40,7 @@ const LoginForm = (props) => {
         else history.push("/staff-signup");
       }
       if (props.userType === "client") {
-        if (is_first_time_visited) {
-          history.push("/dashboard/client-dashboard");
-        }
+        history.push("/dashboard/client-dashboard");
       }
     }
 

@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router";
 import { Client_Dashboard } from "../components/client/Client_Dashboard";
 import LandingPage from "../components/LandingPage";
 import SignUpPage from "../components/SignupPage";
-import IndustryClientSignUp from "../components/SignupPage/IndustryClientSignUp";
 import { Staff_Dashboard } from "../components/staff/Staff_Dashboard";
 import StudentDashboard from "../components/Student/StudentDashboard";
 
