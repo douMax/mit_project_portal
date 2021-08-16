@@ -9,11 +9,11 @@ const staffController = require("../controllers/staff.controller");
 
 router
   .route("/api/staff")
-  .get(staffController.findStaff)
-  .post(staffController.create);
+  .get(staffController.findStaff);
 
-module.exports = router;
-// /api/staff/:id
+router
+  .route("/api/auth/staff/signup")
+  .post(staffController.create);
 
 router
   .route("/api/staffs/:id")

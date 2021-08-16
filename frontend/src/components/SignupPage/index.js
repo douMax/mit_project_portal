@@ -8,6 +8,7 @@ import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { Typography } from "antd";
 import { useSelector } from "react-redux";
 import Logo from "../Header/Logo";
+import { useHistory } from "react-router-dom";
 
 // import { UserContext } from "../../contexts/UserContext";
 
@@ -15,13 +16,11 @@ const { Title, Paragraph } = Typography;
 
 const SignUpPage = (props) => {
   // const [user] = useContext(UserContext);
+  const history = useHistory();
 
   const user = useSelector(state => state.auth.auth_user)
-  let role;
-  if (user.role) {
-    role = user.role;
-  }
-  else role = "client"
+  console.log(props)
+  let role = props.user || user.role;
 
   let SignUpForm;
   let userRoleString = "";

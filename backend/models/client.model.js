@@ -3,44 +3,62 @@ const { Schema } = mongoose;
 
 const ClientSchema = new Schema(
   {
-    companyName: {
+    company_name: {
       type: String,
       required: [true, "Company name is required"],
     },
-    companyProfile: {
+    company_profile: {
       type: String,
     },
     website: {
       type: String,
     },
-    address: {
+    first_name: {
       type: String,
     },
-    companyLogoUrl: {
+    last_name: {
       type: String,
     },
-    isAnAgent: {
-      type: Boolean,
-      required: [true, "Please specify if this client is an agent or not."],
+    email: {
+      type: String
     },
-    companyAbn: {
-      type: String,
+    Phone: {
+      type: Number
     },
-    contactPersonName: {
-      type: String,
+    office_phone: {
+      type: Number
     },
-    contactPersonTittle: {
-      type: String,
-    },
-    contactPersonEmail: {
-      type: String,
-    },
-    contactPersonProfile: {
-      type: String,
-    },
-    password: {
-      type: String,
-    },
+    job_position: {
+      type: String
+    }
+    // address: {
+    //   type: String,
+    // },
+    // companyLogoUrl: {
+    //   type: String,
+    // },
+    // isAnAgent: {
+    //   type: Boolean,
+    //   required: [true, "Please specify if this client is an agent or not."],
+    // },
+    // companyAbn: {
+    //   type: String,
+    // },
+    // contactPersonName: {
+    //   type: String,
+    // },
+    // contactPersonTittle: {
+    //   type: String,
+    // },
+    // contactPersonEmail: {
+    //   type: String,
+    // },
+    // contactPersonProfile: {
+    //   type: String,
+    // },
+    // password: {
+    //   type: String,
+    // },
   },
   {
     timestamps: true,
