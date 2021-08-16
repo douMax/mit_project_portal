@@ -6,9 +6,9 @@ exports.create = async (req, res) => {
 
   try {
     const data = await newClient.save();
-    res.status(201).send(data);
+    res.status(201).send({ status: "success", message: 'Client Registration Successful', user: data });
   } catch (err) {
-    res.status(500).json(err.message);
+    res.status(500).json({ status: "failed", message: err.message });
   }
 };
 

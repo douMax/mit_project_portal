@@ -3,9 +3,17 @@ const { Schema } = mongoose;
 
 const StudentSchema = new Schema(
   {
+    mit_email: {
+      type: String,
+      required: [true, "email is required"],
+    },
     email: {
       type: String,
       required: [true, "email is required"],
+    },
+    username: {
+      type: String,
+      required: true
     },
     first_name: {
       type: String,
@@ -15,6 +23,13 @@ const StudentSchema = new Schema(
     },
     password: {
       type: String,
+    },
+    mit_student_id: {
+      type: String,
+      required: true
+    },
+    phone: {
+      type: Number
     },
     groupId: {
       type: Schema.Types.ObjectId,

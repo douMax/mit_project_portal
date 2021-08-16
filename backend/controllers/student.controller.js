@@ -6,9 +6,9 @@ exports.create = async (req, res) => {
 
   try {
     const data = await newStudent.save();
-    res.status(201).send(data);
+    res.status(201).send({ status: "success", message: 'Student Registration Successful', user: data });
   } catch (err) {
-    res.status(500).json(err.message);
+    res.status(500).json({ status: "failed", message: err.message });
   }
 };
 
@@ -78,5 +78,20 @@ exports.delete = async (req, res) => {
     return res.status(500).send({
       message: "Internal server error.",
     });
+  }
+};
+
+exports.getStudent = async (req, res) => {
+  const { username } = req.body;
+  console.log(username)
+  try {
+    const user = await Student.findOne({ "username": username }).exec();
+    if (!user) {
+      res.status(401).json({ status: 'failed', message: 'Invalid User' });
+    }
+    else res.status(200).json({ status: "success", user });
+  }
+  catch (err) {
+    res.status(400).json({ status: "failed", message: "User not found" })
   }
 };

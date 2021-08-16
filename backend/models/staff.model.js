@@ -3,15 +3,22 @@ const { Schema } = mongoose;
 
 const StaffSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: [true, "Staff Name is required"],
-    },
-    Frist_name: {
+    first_name: {
       type: String,
     },
-    Last_name: {
+    last_name: {
       type: String,
+    },
+    username: {
+      type: String,
+      required: true
+    },
+    mit_email: {
+      type: String,
+      required: [true, "email is required"],
+    },
+    phone: {
+      type: Number
     },
     staff_position: {
       type: String,

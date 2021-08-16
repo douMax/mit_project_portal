@@ -74,6 +74,26 @@ const getAllUsers = async (req, res) => {
     catch (err) {
         res.status(500).json({ status: 'failed', message: err });
     }
-}
+};
 
-module.exports = { register, login, getAllUsers }
+const updateUser = async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+
+    try {
+        const user = await User.findByIdAndUpdate(
+            id,
+            req.body,
+            {
+                new: true,
+            }
+        );
+        res.status(200).send({ status: "success", message: "User Record Updated", user });
+    }
+
+    catch (err) {
+        res.status(500).json({ status: "failed", message: err });
+    }
+};
+
+module.exports = { register, login, getAllUsers, updateUser }

@@ -10,7 +10,14 @@ const studentController = require("../controllers/student.controller");
 router
   .route("/api/students")
   .get(studentController.findAllStudents)
+
+router
+  .route("/api/auth/student/signup")
   .post(studentController.create);
+
+router
+  .route("/api/auth/student")
+  .post(studentController.getStudent);
 
 router
   .route("/api/students/enrolled")

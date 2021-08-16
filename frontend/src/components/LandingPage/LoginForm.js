@@ -13,7 +13,7 @@ const LoginForm = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(is_error, "error")
+  // console.log(is_error, "error")
   const onFinish = ({ username, password }) => {
     // send the request to backend
     const payload = {
@@ -21,7 +21,6 @@ const LoginForm = (props) => {
       password,
       role: props.userType
     };
-
     dispatch(loginUser(payload));
   };
 
@@ -32,18 +31,22 @@ const LoginForm = (props) => {
         if (!is_first_time_visited) {
           history.push("/dashboard/student-dashboard");
         }
-        else history.push("/signup");
+        else history.push("/student-signup");
       }
       if (props.userType === "staff") {
         if (!is_first_time_visited) {
           history.push("/dashboard/staff-supervisor-dashboard");
         }
-        else history.push("/signup");
+        else history.push("/staff-signup");
       }
-      if (props.userType === "client" && is_first_time_visited) history.push("/dashboard/client-dashboard");
+      if (props.userType === "client") {
+        if (is_first_time_visited) {
+          history.push("/dashboard/client-dashboard");
+        }
+      }
     }
 
-  }, [is_auth, is_first_time_visited, history])
+  }, [is_auth, is_first_time_visited, history]);
 
 
   return (
@@ -83,7 +86,7 @@ const LoginForm = (props) => {
       </Form>
       {props.userType === CLIENT && (
         <Button type="default" onClick={event => {
-          history.push("/signup")
+          history.push("/client-signup")
         }}>Register</Button>
       )}
     </div>

@@ -5,6 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router-dom";
+import Title from "antd/lib/typography/Title";
 
 // import { Link } from "react-router-dom";
 // import ROUTES from "../../utils/routes";
@@ -19,7 +20,9 @@ const HeaderAvatar = () => {
 
   const dispatch = useDispatch();
 
-  const { is_auth } = useSelector(state => state.auth)
+  const { user, auth_user } = useSelector(state => state.auth);
+  console.log("USER------------", user);
+  // const { first_name, last_name } = user;
   const history = useHistory();
 
   const menu = (
@@ -28,7 +31,6 @@ const HeaderAvatar = () => {
         <div onClick={event => {
           dispatch(logoutUser())
           history.push("/")
-          // console.log("logout", is_auth)
         }}>Logout</div>
       </Menu.Item>
       {/* <Menu.Item>
@@ -51,9 +53,11 @@ const HeaderAvatar = () => {
           {/* <Link to={ROUTES.SIGN_UP}>Signup</Link>
           <Link to={ROUTES.LOG_IN}>Login</Link>
           <Link to={ROUTES.DEV_SETTINGS}>Dev</Link> */}
+
           <Dropdown overlay={menu} placement="bottomRight">
             <Avatar style={{ backgroundColor: "#87d068", cursor: "pointer" }} icon={<UserOutlined />} />
           </Dropdown>
+          <Title level={5}>{`${user?.first_name}  ${user?.last_name} `}</Title>
           <Badge overflowCount={9} count={5}>
             <NotificationsDrawer />
           </Badge>
