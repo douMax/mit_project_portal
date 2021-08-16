@@ -22,7 +22,6 @@ const HeaderAvatar = () => {
 
   const { user, auth_user } = useSelector(state => state.auth);
   console.log("USER------------", user);
-  // const { first_name, last_name } = user;
   const history = useHistory();
 
   const menu = (
@@ -57,7 +56,7 @@ const HeaderAvatar = () => {
           <Dropdown overlay={menu} placement="bottomRight">
             <Avatar style={{ backgroundColor: "#87d068", cursor: "pointer" }} icon={<UserOutlined />} />
           </Dropdown>
-          <Title level={5}>{`${user?.first_name}  ${user?.last_name} `}</Title>
+          {user && (<Title level={5}>{` ${user?.first_name} ${user?.last_name} `}</Title>)}
           <Badge overflowCount={9} count={5}>
             <NotificationsDrawer />
           </Badge>

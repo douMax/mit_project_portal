@@ -4,7 +4,7 @@ import { Button } from "antd";
 import ROUTES from "../../utils/routes";
 import NavContainer from "./NavContainer";
 
-const StudentNavLinks = () => {
+const IndustryClientNavLinks = () => {
   return (
     <NavContainer>
       <Link to={ROUTES.MY_PROJECTS}>My Projects</Link>
@@ -16,4 +16,4 @@ const StudentNavLinks = () => {
   );
 };
 
-export default StudentNavLinks;
+export default IndustryClientNavLinks;

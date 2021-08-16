@@ -22,6 +22,9 @@ const ClientSchema = new Schema(
     email: {
       type: String
     },
+    username: {
+      type: String
+    },
     Phone: {
       type: Number
     },

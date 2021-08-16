@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import Logo from "./Logo";
 import StaffNavLinks from "./StaffNavLinks";
 import StudentNavLinks from "./StudentNavLinks";
-import HeaderAvatar from "./HeaderAvatar";
 import IndustryClientNavLinks from "./IndustryClientNavLinks";
+import HeaderAvatar from "./HeaderAvatar";
 import styled from "styled-components";
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { useSelector } from "react-redux";
@@ -20,15 +20,16 @@ const HeaderContainer = styled.header`
   background-color: #fff;
 `;
 
-const Header = () => {
+const Header = (props) => {
   const user = useSelector(state => state.auth.auth_user)
   console.log(user)
+  const role = props.user || user.role;
   return (
     <HeaderContainer>
       <Logo />
-      {user.role === USERTYPES.STAFF && <StaffNavLinks />}
-      {user.role === USERTYPES.STUDENT && <StudentNavLinks />}
-      {user.role === USERTYPES.CLIENT && <IndustryClientNavLinks />}
+      {role === USERTYPES.STAFF && <StaffNavLinks />}
+      {role === USERTYPES.STUDENT && <StudentNavLinks />}
+      {role === USERTYPES.CLIENT && <IndustryClientNavLinks />}
       <HeaderAvatar />
     </HeaderContainer>
   );

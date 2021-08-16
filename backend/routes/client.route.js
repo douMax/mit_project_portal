@@ -16,6 +16,10 @@ router
   .post(clientController.create);
 
 router
+  .route("/api/auth/client")
+  .post(clientController.getClient);
+
+router
   .route("/api/clients/:clientId")
   .get(clientController.findOneById)
   .put(clientController.update)

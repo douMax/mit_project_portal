@@ -6,7 +6,7 @@ const initialState = {
     is_auth: false,
     is_registration: false,
     auth_user: [],
-    user: []
+    user: null
 }
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -24,7 +24,10 @@ const reducer = (state = initialState, { type, payload }) => {
         case LOGOUT_USER:
             return {
                 ...state,
-                is_auth: false
+                is_auth: false,
+                user: null,
+                is_error: false,
+                auth_user: []
             };
         case SIGNUP_USER_SUCCESS:
             return {

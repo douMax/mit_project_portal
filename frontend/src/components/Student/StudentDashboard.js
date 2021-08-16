@@ -3,7 +3,7 @@ import Header from "../Header";
 
 const StudentDashboard = () => {
     return (<>
-        <Header />
+        <Header user={"student"} />
     </>)
 }
 
