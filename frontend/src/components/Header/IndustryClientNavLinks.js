@@ -7,9 +7,9 @@ import NavContainer from "./NavContainer";
 const IndustryClientNavLinks = () => {
   return (
     <NavContainer>
-      <Link to={ROUTES.MY_PROJECTS}>My Projects</Link>
-      <Link to={ROUTES.PROJECTS}>Browse Projects</Link>
-      <Link to={ROUTES.NEW_PROJECT}>
+      <Link to={'/my-projects'}>My Projects</Link>
+      <Link to={'/browse-projects'}>Browse Projects</Link>
+      <Link to={"/new-project"}>
         <Button type="danger">+ New Project</Button>
       </Link>
     </NavContainer>

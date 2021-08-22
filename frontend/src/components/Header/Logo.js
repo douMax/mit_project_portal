@@ -19,9 +19,9 @@ const LogoText = styled.div`
 const Logo = () => {
   return (
     <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
-      <Link to="/">
-        <img width="200" src={logo} alt="" />
-      </Link>
+      <div>
+        <img width="200" src={logo && logo} alt="" />
+      </div>
       <LogoText>PROJECT PORTAL</LogoText>
     </div>
   );

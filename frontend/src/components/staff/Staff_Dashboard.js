@@ -5,7 +5,6 @@ import Header from "../Header";
 export const Staff_Dashboard = () => {
     return (
         <div>
-            <Header user={"staff"} />
         </div>
     )
 }

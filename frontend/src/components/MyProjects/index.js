@@ -1,18 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-
-import { ProjectContext } from "../../contexts/ProjectContext";
-import { UserContext } from "../../contexts/UserContext";
-import { EOIContext } from "../../contexts/EOIContext";
 
 import UserProjects from "./UserProjects";
 import UserProposals from "./UserProposals";
 import UserEOI from "./UserEOI";
 
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
+import { useSelector } from "react-redux";
 
 const PageTitle = styled.h1`
   font-size: 20px;
@@ -25,55 +22,34 @@ const PanelWrapper = styled.div`
 `;
 
 const MyProjects = () => {
-  const [user] = useContext(UserContext);
-  let applicantId = user.userId;
-  const [eois, setEOIs, FindProjectEOIs, FindUserEOIs] = useContext(EOIContext);
+  const { user, isLoading } = useSelector(state => state.auth);
+
+  const [myProjects, setMyProjects] = useState(null);
+  const [myProposals, setMyProposals] = useState(null);
+
+  const { projects } = user;
+  console.log(projects);
+
+  const projectsFilter = useCallback(() => {
+    if (projects) {
+      const filteredProjects = projects.filter(item => item.status === "open");
+      setMyProjects(filteredProjects);
+      const filteredProposals = projects.filter(item => item.status === "pending" || item.status === "rejected");
+      setMyProposals(filteredProposals);
+    }
+  }, [projects]);
+
   useEffect(() => {
-    FindUserEOIs(applicantId);
+    projectsFilter();
   }, []);
-  const [projects, setProject] = useContext(ProjectContext);
-  const project = [];
-  const myprojects = [];
-  const proposal = [];
-
-  console.log(eois);
-  projects.forEach((proj) => {
-    if (
-      proj.status !== "Waiting for Approval" &&
-      proj.status !== "Changes Required"
-    ) {
-      project.push(proj);
-    } else {
-      proposal.push(proj);
-    }
-  });
-
-  //Temporary code to retrieve client's projects from all projects.
-  //After frontend is connected to backed, we can have an API call to GET all projects for particular user.
-
-  project.forEach((p) => {
-    if (p.client === user.userName) {
-      //console.log(p);
-      myprojects.push(p);
-    }
-  });
-  //console.log(myprojects);
-
-  const myproposals = [];
-  proposal.forEach((p) => {
-    if (p.client === user.userName) {
-      myproposals.push(p);
-    }
-  });
-  //console.log(myproposals);
 
   return (
     <Row gutter={24}>
       <Col span={12}>
         <PanelWrapper>
           <PageTitle>My Projects</PageTitle>
-          {myprojects.map((proj) => (
-            <UserProjects key={proj.projId} proj={proj} />
+          {myProjects?.map((project, index) => (
+            <UserProjects key={index} project={project} />
           ))}
         </PanelWrapper>
       </Col>
@@ -81,16 +57,16 @@ const MyProjects = () => {
         {user.role === USERTYPES.INDUSTRY_CLIENT ? (
           <PanelWrapper>
             <PageTitle>My Proposals</PageTitle>
-            {myproposals.map((pro) => (
-              <UserProposals key={pro.projId} proposal={pro} />
+            {myProposals?.map((project, index) => (
+              <UserProposals key={index} proposal={project} />
             ))}
           </PanelWrapper>
         ) : (
           <PanelWrapper>
             <PageTitle>My EOIs</PageTitle>
-            {eois.map((eoi) => (
+            {/* {eois?.map((eoi) => (
               <UserEOI eoi={eoi} key={eoi._id} />
-            ))}
+            ))} */}
           </PanelWrapper>
         )}
       </Col>

@@ -13,13 +13,14 @@ const ProjectStats = (projstats) => {
         {projstats.status}
       </Button>
       <Button type="text">
-        {projstats.year} - T{projstats.trimester}
+        {projstats.year} - {projstats.trimester}
       </Button>
       <Button type="text">
-        Group:{" "}
+        {/* Group:{" "}
         {projstats.assigned_students !== "undefined" &&
           projstats.assigned_students | "0"}
-        /5
+        /5 */}
+        {"Group: " + projstats.assigned_students}
       </Button>
       <Button type="text">
         EOIs: {projstats.eoi !== "undefined" && projstats.eoi | "0"}

@@ -3,7 +3,7 @@ import { Button } from "antd";
 
 const ProposalStatusDetail = ({ status }) => {
   //console.log(status);
-  if (status === "wfa") {
+  if (status === "pending") {
     return (
       <Button
         type="text"
@@ -13,7 +13,7 @@ const ProposalStatusDetail = ({ status }) => {
           color: "white",
         }}
       >
-        Waiting For Approval
+        Pending
       </Button>
     );
   }
@@ -42,7 +42,7 @@ const ProposalStatusDetail = ({ status }) => {
       </Button>
     );
   }
-  if (status === "open") {
+  if (status === "approved") {
     return (
       <Button
         type="text"

@@ -1,12 +1,6 @@
 const router = require("express").Router();
 const clientController = require("../controllers/client.controller");
 
-// checkAuth, router,
-
-// router.use(checkAccessLevel, (req, res) => {
-
-// })
-
 router
   .route("/api/clients")
   .get(clientController.findCompanyClients)

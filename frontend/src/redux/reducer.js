@@ -1,10 +1,12 @@
-import { LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, SIGNUP_USER_FAILURE, SIGNUP_USER_SUCCESS } from "./actions"
+import { LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, SIGNUP_USER_FAILURE, SIGNUP_USER_SUCCESS } from "./authRedux/actions"
+import { ADD_NEW_PROJECT } from "./clientRedux/actions";
 
 
 const initialState = {
     is_error: false,
     is_auth: false,
     is_registration: false,
+    isloading: true,
     auth_user: [],
     user: null
 }
@@ -40,6 +42,12 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 is_registration: false,
                 is_error: true
+            }
+        case ADD_NEW_PROJECT:
+            return {
+                ...state,
+                isloading: false,
+                user: payload
             }
         default:
             return state;

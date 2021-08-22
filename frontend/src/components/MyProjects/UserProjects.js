@@ -8,8 +8,10 @@ import ProjectDescription from "../BrowseProjects/ProjectDescription";
 import ProjectStats from "../BrowseProjects/ProjectStats";
 import ProjectDetail from "../BrowseProjects/ProjectDetail";
 
-const UserProjects = ({ proj }) => {
+const UserProjects = ({ project }) => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const { title, status, resources, topics, background, eoi, group, location, objectives, other } = project;
+
   const showDrawer = () => {
     setIsDrawerVisible(true);
   };
@@ -17,35 +19,24 @@ const UserProjects = ({ proj }) => {
     setIsDrawerVisible(false);
   };
 
-  const {
-    projId,
-    title,
-    topic,
-    description,
-    status,
-    year,
-    trimester,
-    assigned_students,
-    eoi,
-  } = proj;
-  //console.log(proj);
+  console.log(project, "hello");
   return (
     <Card
       style={{ marginBottom: "15px" }}
-      key={projId}
+      key={"project"}
       type="inner"
       hoverable="true"
     >
       <Row gutter={16}>
         <Col span={18}>
-          <TopicsHeader topic={topic} />
+          <TopicsHeader topic={topics} />
           <ProjectTitle title={title} />
-          <ProjectDescription description={description} />
+          <ProjectDescription description={background} />
           <ProjectStats
             status={status}
-            year={year}
-            trimester={trimester}
-            assigned_students={assigned_students}
+            year={"2021"}
+            trimester={"T2"}
+            assigned_students={group}
             eoi={eoi}
           />
         </Col>
@@ -68,7 +59,7 @@ const UserProjects = ({ proj }) => {
               <CloseCircleFilled style={{ fontSize: 20, color: "red" }} />
             }
           >
-            <ProjectDetail selectedproject={proj} />
+            <ProjectDetail selectedproject={project} />
           </Drawer>
         </Col>
       </Row>

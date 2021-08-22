@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Form,
   Select,
@@ -14,33 +14,30 @@ import {
 import { LOCATIONS, TEMP_TOPICS } from "../../utils/APP_CONSTANTS";
 
 // contexts
-import { ProjectContext } from "../../contexts/ProjectContext";
-import { UserContext } from "../../contexts/UserContext";
 import { AddNewProjectProposal } from "../../contexts/InactiveProjectContext";
 
 //components
 import ProjectOption from "./Option";
 import InternshipOption from "./InternshipOption";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewProject } from "../../redux/clientRedux/actions";
+import { useHistory } from "react-router-dom";
 
 const NewProject = () => {
-  const [projects, setProjects] = useContext(ProjectContext);
-  const [user] = useContext(UserContext);
   //console.log(projects);
+  const { user, isLoading } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  console.log(user);
 
   const handleFinish = (values) => {
-    //Convert to Boolean using JSON.parse to match Boolean field in database.
-    let isInternshipValue = JSON.parse(localStorage.getItem("isInternship"));
-    values.topics = ["60149ed90d34d7302c045317"];
-    values.isInternship = isInternshipValue;
-    values.eoisReceived = [];
-    values.status = "wfa";
-    values.termInfo = "";
-    values.yearInfo = new Date().getFullYear().toString();
-    values.clientId = user.userId;
-    localStorage.removeItem("isInternship"); //Remove the item from local storage since we don't need it anymore.
-
-    AddNewProjectProposal(values);
+    const { _id, username } = user;
+    const newPayload = { ...values, status: "pending", eoi: 0, group: "N/A" };
+    const payload = [...user.projects, newPayload];
+    console.log(payload)
+    dispatch(addNewProject(_id, payload, username, "client"));
   };
 
   const handleCancel = () => {
@@ -48,67 +45,67 @@ const NewProject = () => {
   };
 
   return (
-    <Form
-      labelCol={{
-        span: 10,
-      }}
-      wrapperCol={{
-        span: 14,
-      }}
-      layout="vertical"
-      onFinish={handleFinish}
-    >
-      <h1>New Project Proposal</h1>
-      <Row>
-        <Col span={12}>
-          <Form.Item label="Project Title" name="projectTitle">
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Background and Rational for Project:"
-            name="background"
-          >
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item label="Abstract:" name="abstract">
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item label="Project Topics" name="topics">
-            <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />
-          </Form.Item>
-          <Form.Item label="Is this project an internship?" name="isInternship">
-            <InternshipOption />
-          </Form.Item>
-        </Col>
-        <Col span={12}>
-          <Form.Item label="Project Goals and Objectives:" name="objectives">
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item label="Project Resources" name="resources">
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item label="Is this an open project?">
-            <ProjectOption />
-          </Form.Item>
-          <Form.Item label="Preferred location">
-            <Select options={LOCATIONS} id="location" />
-          </Form.Item>
-          <Form.Item>
-            <Space>
-              <Button
-                type
-                danger //onClick={handleCancel}
-              >
-                Cancel
-              </Button>
-              <Button type="danger" htmlType="submit">
-                Submit
-              </Button>
-            </Space>
-          </Form.Item>
-        </Col>
-      </Row>
-    </Form>
+    <div style={{ height: "80vh" }}>
+      <Form
+        labelCol={{
+          span: 10,
+        }}
+        wrapperCol={{
+          span: 20,
+        }}
+        layout="vertical"
+        labelAlign='left'
+        onFinish={handleFinish}
+      >
+        <h1>New Project Proposal</h1>
+        <Row style={{ fontWeight: "bold" }}>
+          <Col span={12}>
+            <Form.Item label="Project Title" name="title" >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Background and Rationale for Project"
+              name="background"
+            >
+              <Input.TextArea rows={10} />
+            </Form.Item>
+            <Form.Item label="Project Resources" name="resources">
+              <Input.TextArea rows={3} />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item label="Project Topics" name="topics">
+              <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />
+            </Form.Item>
+            <Form.Item label="Project Goals and Objectives" name="objectives">
+              <Input.TextArea rows={4} />
+            </Form.Item>
+            <Form.Item label="Other Related Information" name="other">
+              <Input.TextArea rows={4} />
+            </Form.Item>
+            {/* <Form.Item label="Is this an open project?" name="assigned">
+              <ProjectOption />
+            </Form.Item> */}
+            <Form.Item label="Preferred location" name="location">
+              <Select options={LOCATIONS} id="location" />
+            </Form.Item>
+            <Form.Item>
+              <Space>
+                <Button
+                  type
+                  danger //onClick={handleCancel}
+                >
+                  Cancel
+                </Button>
+                <Button type="danger" htmlType="submit">
+                  Submit
+                </Button>
+              </Space>
+            </Form.Item>
+          </Col>
+        </Row>
+      </Form>
+    </div>
   );
 };
 

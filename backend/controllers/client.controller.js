@@ -56,13 +56,13 @@ exports.findOneById = async (req, res) => {
 
 exports.update = async (req, res) => {
   const { clientId } = req.params;
-
+  // console.log(req.body)
   try {
     const updatedClient = await Client.findByIdAndUpdate(clientId, req.body, {
       new: true,
     });
 
-    res.status(203).send(updatedClient);
+    res.status(203).send({ status: true, message: "record updated" });
   } catch (err) {
     if (err.kind === "ObjectId") {
       return res.status(404).send({
@@ -71,6 +71,7 @@ exports.update = async (req, res) => {
     }
     console.log(err);
     return res.status(500).send({
+      status: false,
       message: `Internal server error.`,
     });
   }

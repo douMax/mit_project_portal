@@ -16,7 +16,6 @@ const LandingContainer = styled.div`
 const LandingPage = () => {
   return (
     <div style={{ overflow: "hidden", position: "sticky" }}>
-      <Logo />
       <LandingContainer>
         <Space direction="vertical">
           <LoginTab />

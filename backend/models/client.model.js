@@ -25,7 +25,7 @@ const ClientSchema = new Schema(
     username: {
       type: String
     },
-    Phone: {
+    phone: {
       type: Number
     },
     office_phone: {
@@ -33,35 +33,10 @@ const ClientSchema = new Schema(
     },
     job_position: {
       type: String
+    },
+    projects: {
+      type: Array,
     }
-    // address: {
-    //   type: String,
-    // },
-    // companyLogoUrl: {
-    //   type: String,
-    // },
-    // isAnAgent: {
-    //   type: Boolean,
-    //   required: [true, "Please specify if this client is an agent or not."],
-    // },
-    // companyAbn: {
-    //   type: String,
-    // },
-    // contactPersonName: {
-    //   type: String,
-    // },
-    // contactPersonTittle: {
-    //   type: String,
-    // },
-    // contactPersonEmail: {
-    //   type: String,
-    // },
-    // contactPersonProfile: {
-    //   type: String,
-    // },
-    // password: {
-    //   type: String,
-    // },
   },
   {
     timestamps: true,
