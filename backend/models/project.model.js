@@ -3,11 +3,7 @@ const { Schema } = mongoose;
 
 const projectSchema = new Schema(
   {
-    projectTitle: {
-      type: String,
-      required: [true, "project title is required"],
-    },
-    abstract: {
+    title: {
       type: String,
       required: [true, "project title is required"],
     },
@@ -31,7 +27,7 @@ const projectSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["wfa", "cr", "open", "ongoing", "closed"],
+      enum: ["open", "rejected", "pending", "closed"],
     },
     topics: {
       type: [String],

@@ -15,9 +15,9 @@ const HeaderContainer = styled.header`
   display: flex;
   flex-direction:row;
   justify-content: space-between;
-  // padding: 0 50px;
   align-items: center;
   background-color: #fff;
+  margin-bottom:20px;
 `;
 
 const Header = (props) => {
@@ -30,7 +30,7 @@ const Header = (props) => {
       {role === USERTYPES.STAFF && <StaffNavLinks />}
       {role === USERTYPES.STUDENT && <StudentNavLinks />}
       {role === USERTYPES.CLIENT && <IndustryClientNavLinks />}
-      <HeaderAvatar />
+      {role && (<HeaderAvatar />)}
     </HeaderContainer>
   );
 };

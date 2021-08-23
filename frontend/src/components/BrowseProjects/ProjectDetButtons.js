@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Space, Button } from "antd";
-import { UserContext } from "../../contexts/UserContext";
+import { useSelector } from "react-redux";
 
 const ProjectDetButtons = ({ project }) => {
-  const [user] = useContext(UserContext);
   //console.log(user.role);
+  const { auth_user } = useSelector(state => state.auth);
+  const user = auth_user;
+  console.log(user)
   return (
     <Space style={{ paddingTop: 20 }}>
       <Button

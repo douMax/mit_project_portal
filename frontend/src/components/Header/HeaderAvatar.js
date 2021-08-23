@@ -49,10 +49,6 @@ const HeaderAvatar = () => {
     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
       <span className="avatar-item">
         <Space>
-          {/* <Link to={ROUTES.SIGN_UP}>Signup</Link>
-          <Link to={ROUTES.LOG_IN}>Login</Link>
-          <Link to={ROUTES.DEV_SETTINGS}>Dev</Link> */}
-
           <Dropdown overlay={menu} placement="bottomRight">
             <Avatar style={{ backgroundColor: "#87d068", cursor: "pointer" }} icon={<UserOutlined />} />
           </Dropdown>

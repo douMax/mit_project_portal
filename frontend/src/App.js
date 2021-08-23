@@ -25,7 +25,7 @@ import { StudentProvider } from "./contexts/StudentContext";
 import { SignUpRequestProvider } from "./contexts/SignUpRequestContext";
 import { InactiveProjectProvider } from "./contexts/InactiveProjectContext";
 import { Routes } from "./routes/routes";
-import { useSelector } from "react-redux";
+import Header from "./components/Header";
 
 // let isLogged = true;
 // let isSignedUp = true;
@@ -38,7 +38,6 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
-  const { is_auth } = useSelector(state => state.auth)
   return (
     // <BrowserRouter>
     //   <ContentContainer>
@@ -88,6 +87,7 @@ function App() {
     //   </ContentContainer>
     // </BrowserRouter>
     <ContentContainer>
+      <Header />
       <Routes />
     </ContentContainer>
   );

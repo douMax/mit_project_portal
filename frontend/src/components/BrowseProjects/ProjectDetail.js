@@ -22,44 +22,44 @@ const sectionCardStyle = {
 
 const ProjectDetail = ({ selectedproject }) => {
   const {
-    projectTitle,
+    title,
     topics,
     background,
     resources,
     objectives,
     status,
-    yearInfo,
-    termInfo,
-    assignedStudents,
-    eoisReceived,
-    clientName,
-    clientLogo,
+    other,
+    location,
+    group,
+    eoi
   } = selectedproject;
   return (
     <Row>
       <Row gutter={16}>
-        <Col span={18}>
+        <Col span={24}>
           <TopicsHeader topic={topics?.join(",")} />
-          <ProjectTitle title={projectTitle} />
+          <ProjectTitle title={title} />
           <ProjectStats
             status={status}
-            year={yearInfo}
-            trimester={termInfo}
-            assigned_students={assignedStudents}
-            eoi={eoisReceived}
+            year={"2021"}
+            trimester={"T1"}
+            assigned_students={group}
+            eoi={eoi}
           />
         </Col>
-        <Col span={6}>
-          <ClientInfo clientName={clientName} logo={clientLogo} />
+        {/* <Col span={6}>
+          <ClientInfo clientName={"MIT"} logo={""} />
+        </Col> */}
+        <Col>
+          <SectionTitleWrapper>Background and Rationale</SectionTitleWrapper>
+          <Card style={sectionCardStyle}>{background}</Card>
+          <SectionTitleWrapper>Project Resources</SectionTitleWrapper>
+          <Card style={sectionCardStyle}>{resources}</Card>
+          <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
+          <Card style={sectionCardStyle}>{objectives}</Card>
+          {/* <ProjectDetButtons project={selectedproject} /> */}
         </Col>
       </Row>
-      <SectionTitleWrapper>Background and Rationale</SectionTitleWrapper>
-      <Card style={sectionCardStyle}>{background}</Card>
-      <SectionTitleWrapper>Project Resources</SectionTitleWrapper>
-      <Card style={sectionCardStyle}>{resources}</Card>
-      <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
-      <Card style={sectionCardStyle}>{objectives}</Card>
-      <ProjectDetButtons project={selectedproject} />
     </Row>
   );
 };

@@ -3,7 +3,7 @@ import { Radio, Input } from "antd";
 
 const ProjectOption = () => {
   const [value, setValue] = useState("all");
-  const [notSpecific, setNotSpecific] = useState(true);
+  const [specific, setSpecific] = useState(true);
 
   const handleChange = (e) => {
     //console.log("radio checked", e.target.value);
@@ -11,19 +11,19 @@ const ProjectOption = () => {
   };
 
   const handleSpecific = () => {
-    setNotSpecific(false);
+    setSpecific(false);
   };
 
   const handleNotSpecific = () => {
-    setNotSpecific(true);
+    setSpecific(true);
   };
 
   return (
     <Radio.Group onChange={handleChange} value={value}>
       <Radio value={"specificStudents"} onChange={handleSpecific}>
-        Add specific students'IDs (Min1,Max5).
+        Add specific students'IDs (Min1,Max5)
       </Radio>
-      <Input disabled={notSpecific} />
+      <Input disabled={specific} />
       <Radio value={"all"} onChange={handleNotSpecific}>
         Open to all students
       </Radio>
