@@ -39,7 +39,7 @@ const StudentSignUp = () => {
   useEffect(() => {
     if (isRegister) {
       var timer = setTimeout(() => {
-        history.push("/dashboard/student-dashboard");
+        history.push("/my-projects");
       }, 3000);
     }
 

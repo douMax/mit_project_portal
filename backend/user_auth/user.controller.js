@@ -33,7 +33,7 @@ const login = async (req, res) => {
     let user;
 
     try {
-        user = await User.findOne({ username: req.body.username }).exec();
+        user = await User.findOne({ username: req.body.username, password: req.body.password }).exec();
 
         // console.log(user.role)
 
@@ -42,20 +42,21 @@ const login = async (req, res) => {
         }
     }
     catch (err) {
-        res.status(500).json({ status: 'failed', message: 'Something went wrong' });
+        res.status(500).json({ status: 'failed', message: 'Invalid credentials' });
     }
 
 
-    try {
-        const match = await user.checkPassword(req.body.password);
+    // try {
+    //     const match = await user.checkPassword(req.body.password);
 
-        if (!match) {
-            res.status(401).json({ status: 'failed', message: 'Invalid Password' });
-        }
-    }
-    catch (err) {
-        res.status(500).json({ status: 'failed', message: 'Something went wrong' });
-    }
+    //     if (!match) {
+    //         res.status(401).json({ status: 'failed', message: 'Invalid Password' });
+    //     }
+    //     else res.status(200).json({ status: "success", user });
+    // }
+    // catch (err) {
+    //     res.status(500).json({ status: 'failed', message: 'Something went wrong' });
+    // }
 
     if (req.body.role === user.role) {
 

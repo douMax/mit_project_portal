@@ -28,6 +28,11 @@ const HeaderAvatar = () => {
     <Menu>
       <Menu.Item>
         <div onClick={event => {
+          history.push("/change-password");
+        }}>Change Password</div>
+      </Menu.Item>
+      <Menu.Item>
+        <div onClick={event => {
           dispatch(logoutUser())
           history.push("/")
         }}>Logout</div>

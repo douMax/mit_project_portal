@@ -29,18 +29,18 @@ const LoginForm = (props) => {
       console.log(is_first_time_visited)
       if (props.userType === "student") {
         if (!is_first_time_visited) {
-          history.push("/dashboard/student-dashboard");
+          history.push("/my-projects");
         }
         else history.push("/student-signup");
       }
       if (props.userType === "staff") {
         if (!is_first_time_visited) {
-          history.push("/dashboard/staff-supervisor-dashboard");
+          history.push("/my-projects");
         }
         else history.push("/staff-signup");
       }
       if (props.userType === "client") {
-        history.push("/dashboard/client-dashboard");
+        history.push("/my-projects");
       }
     }
 

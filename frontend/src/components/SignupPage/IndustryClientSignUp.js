@@ -28,7 +28,7 @@ const IndustryClientSignUp = () => {
   useEffect(() => {
     if (isRegister) {
       var timer = setTimeout(() => {
-        history.push("/dashboard/client-dashboard");
+        history.push("/my-projects");
       }, 3000);
     }
 

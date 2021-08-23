@@ -24,41 +24,41 @@ const userSchema = new mongoose.Schema({
     }
 }, { timestamps: true }, { versionKey: false });
 
-userSchema.pre('save', function (next) {
+// userSchema.pre('save', function (next) {
 
-    if (!this.isModified('password')) {
-        return next();
-    }
+//     if (!this.isModified('password')) {
+//         return next();
+//     }
 
-    else {
-        bcrypt.hash(this.password, 8, (err, hash) => {
+//     else {
+//         bcrypt.hash(this.password, 8, (err, hash) => {
 
-            if (err) {
-                return next(err);
-            }
+//             if (err) {
+//                 return next(err);
+//             }
 
-            this.password = hash;
-            next();
-        });
-    }
-});
+//             this.password = hash;
+//             next();
+//         });
+//     }
+// });
 
-userSchema.methods.checkPassword = function (password) {
+// userSchema.methods.checkPassword = function (password) {
 
-    const passwordHash = this.password;
+//     const passwordHash = this.password;
 
-    return new Promise((resolve, reject) => {
+//     return new Promise((resolve, reject) => {
 
-        bcrypt.compare(password, passwordHash, (err, same) => {
+//         bcrypt.compare(password, passwordHash, (err, same) => {
 
-            if (err) {
-                return reject(err);
-            }
+//             if (err) {
+//                 return reject(err);
+//             }
 
-            else resolve(same);
-        })
-    })
-};
+//             else resolve(same);
+//         })
+//     })
+// };
 
 
 module.exports = mongoose.model('user', userSchema);

@@ -30,7 +30,7 @@ const StaffSignUp = () => {
   useEffect(() => {
     if (isRegister) {
       var timer = setTimeout(() => {
-        history.push("/dashboard/staff-supervisor-dashboard");
+        history.push("/my-projects");
       }, 3000);
     }
 
