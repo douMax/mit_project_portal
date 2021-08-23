@@ -9,6 +9,8 @@ import {
   Button,
   Space,
 } from "antd";
+import { CheckCircleTwoTone } from '@ant-design/icons';
+
 
 // app contatns
 import { LOCATIONS, TEMP_TOPICS } from "../../utils/APP_CONSTANTS";
@@ -26,6 +28,7 @@ import { useHistory } from "react-router-dom";
 
 const NewProject = () => {
   //console.log(projects);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { user, isLoading } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,6 +41,10 @@ const NewProject = () => {
     const payload = [...user.projects, newPayload];
     console.log(payload)
     dispatch(addNewProject(_id, payload, username, "client"));
+    setIsSubmitted(true);
+    setTimeout(() => {
+      history.push("/my-projects")
+    }, 2000);
   };
 
   const handleCancel = () => {
@@ -46,65 +53,116 @@ const NewProject = () => {
 
   return (
     <div style={{ height: "80vh" }}>
-      <Form
-        labelCol={{
-          span: 10,
-        }}
-        wrapperCol={{
-          span: 20,
-        }}
-        layout="vertical"
-        labelAlign='left'
-        onFinish={handleFinish}
-      >
-        <h1>New Project Proposal</h1>
-        <Row style={{ fontWeight: "bold" }}>
-          <Col span={12}>
-            <Form.Item label="Project Title" name="title" >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Background and Rationale for Project"
-              name="background"
-            >
-              <Input.TextArea rows={10} />
-            </Form.Item>
-            <Form.Item label="Project Resources" name="resources">
-              <Input.TextArea rows={3} />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item label="Project Topics" name="topics">
-              <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />
-            </Form.Item>
-            <Form.Item label="Project Goals and Objectives" name="objectives">
-              <Input.TextArea rows={4} />
-            </Form.Item>
-            <Form.Item label="Other Related Information" name="other">
-              <Input.TextArea rows={4} />
-            </Form.Item>
-            {/* <Form.Item label="Is this an open project?" name="assigned">
+      {!isSubmitted ? (<>
+        <Form
+          labelCol={{
+            span: 10,
+          }}
+          wrapperCol={{
+            span: 20,
+          }}
+          layout="vertical"
+          labelAlign='left'
+          onFinish={handleFinish}
+        >
+          <h1>New Project Proposal</h1>
+          <Row style={{ fontWeight: "bold" }}>
+            <Col span={12}>
+              <Form.Item label="Project Title" name="title"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]} >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Background and Rationale for Project"
+                name="background"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]}
+              >
+                <Input.TextArea rows={10} />
+              </Form.Item>
+              <Form.Item label="Project Resources" name="resources"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]}>
+                <Input.TextArea rows={3} />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Project Topics" name="topics"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]}>
+                <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />
+              </Form.Item>
+              <Form.Item label="Project Goals and Objectives" name="objectives"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]}>
+                <Input.TextArea rows={4} />
+              </Form.Item>
+              <Form.Item label="Other Related Information" name="other"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]}>
+                <Input.TextArea rows={4} />
+              </Form.Item>
+              {/* <Form.Item label="Is this an open project?" name="assigned">
               <ProjectOption />
             </Form.Item> */}
-            <Form.Item label="Preferred location" name="location">
-              <Select options={LOCATIONS} id="location" />
-            </Form.Item>
-            <Form.Item>
-              <Space>
-                <Button
-                  type
-                  danger //onClick={handleCancel}
-                >
-                  Cancel
-                </Button>
-                <Button type="danger" htmlType="submit">
-                  Submit
-                </Button>
-              </Space>
-            </Form.Item>
-          </Col>
-        </Row>
-      </Form>
+              <Form.Item label="Preferred location" name="location"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]}>
+                <Select options={LOCATIONS} id="location" />
+              </Form.Item>
+              <Form.Item>
+                <Space>
+                  <Button
+                    type
+                    danger
+                    onClick={event => history.goBack()}
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="danger" htmlType="submit">
+                    Submit
+                  </Button>
+                </Space>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+      </>) : (
+        <div style={{ display: 'flex', alignItems: "center", justifyContent: "center", lineHeight: "80vh" }}>
+          <h1>New project proposal submitted successfully <span>
+            <CheckCircleTwoTone twoToneColor="#52c41a" />
+          </span></h1>
+        </div>
+      )}
     </div>
   );
 };
