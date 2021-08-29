@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "../../assets/mit_logo.png";
 
 const ClientInfoContainer = styled.div`
   display: flex;
@@ -14,8 +15,8 @@ const ClientInfo = (props) => {
   let alternative = "Logo of " + clientName;
   return (
     <ClientInfoContainer>
-      <img src={props.logo} alt={alternative} />
-      {props.clientName}
+      <img width="150" src={logo} alt={alternative} />
+      {"MIT"}
     </ClientInfoContainer>
   );
 };

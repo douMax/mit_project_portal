@@ -6,7 +6,6 @@ import styled from "styled-components";
 // components
 import LandingPage from "./components/LandingPage";
 import SignUpPage from "./components/SignupPage/";
-import BrowseProjects from "./components/BrowseProjects";
 import MyProjects from "./components/MyProjects";
 import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import NewProject from "./components/NewProject";

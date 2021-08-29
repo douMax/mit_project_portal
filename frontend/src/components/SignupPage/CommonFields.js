@@ -8,25 +8,67 @@ const CommonFields = () => {
       <Form.Item label="Title" name="Title">
         <Select options={NAME_TITLES} />
       </Form.Item>
-      <Form.Item label="First Name" name="first_name">
+      <Form.Item label="First Name" name="first_name"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
         <Input />
       </Form.Item>
-      <Form.Item label="Last Name" name="last_name">
+      <Form.Item label="Last Name" name="last_name"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
         <Input />
       </Form.Item>
-      <Form.Item label="User Name" name="username">
+      <Form.Item label="User Name" name="username"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
         <Input />
       </Form.Item>
-      <Form.Item label="MIT Student Id" name="mit_student_id">
+      <Form.Item label="MIT Student Id" name="mit_student_id"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
         <Input />
       </Form.Item>
-      <Form.Item label="MIT Email Address" name="mit_email">
+      <Form.Item label="MIT Email Address" name="mit_email"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
         <Input />
       </Form.Item>
-      <Form.Item label="Personal Email Address" name="email">
+      <Form.Item label="Personal Email Address" name="email"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
         <Input />
       </Form.Item>
-      <Form.Item label="Mobile Phone Number" name="phone">
+      <Form.Item label="Mobile Phone Number" name="phone"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
         <Input />
       </Form.Item>
     </>

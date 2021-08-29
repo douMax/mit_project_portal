@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Row, Col, Card, Button, Drawer } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 
-import TopicsHeader from "../BrowseProjects/TopicsHeader";
-import ProjectTitle from "../BrowseProjects/ProjectTitle";
-import ProjectDescription from "../BrowseProjects/ProjectDescription";
-import ProjectStats from "../BrowseProjects/ProjectStats";
-import ProjectDetail from "../BrowseProjects/ProjectDetail";
+import TopicsHeader from "../Browse_Projects/TopicsHeader";
+import ProjectTitle from "../Browse_Projects/ProjectTitle";
+import ProjectDescription from "../Browse_Projects/ProjectDescription";
+import ProjectStats from "../Browse_Projects/ProjectStats";
+import ProjectDetail from "../Browse_Projects/ProjectDetail";
 
 const UserProjects = ({ project }) => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);

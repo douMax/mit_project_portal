@@ -45,12 +45,11 @@ const SignUpPage = (props) => {
 
   return (
     <div>
-      <Logo />
       <Title style={{ fontSize: "26px", marginTop: "20px" }}>{`${userRoleString} Registration`}</Title>
       <Paragraph>
         Double check your information and complete the registration
       </Paragraph>
-      <SignUpForm />
+      <SignUpForm user={role} />
     </div>
   );
 };

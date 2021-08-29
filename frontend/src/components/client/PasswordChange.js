@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, Input, Button, Card, Space } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../redux/authRedux/actions";
+import { updatePassword } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router-dom";
 
 const LandingContainer = styled.div`
@@ -12,6 +12,13 @@ const LandingContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+const checkPasswords = (password, confirm) => {
+    if (password === confirm) {
+        return true;
+    }
+    else return false;
+}
 
 const PasswordChange = () => {
 
@@ -23,21 +30,22 @@ const PasswordChange = () => {
     console.log(auth_user);
     const { _id } = auth_user
 
-    const onFinish = ({ password, confirm }) => {
-        console.log(password)
+    const onFinish = async ({ password, confirm }) => {
+        console.log(password, confirm)
 
-        if (password !== confirm) {
-            setError(true);
-        }
-        else setError(false);
+        const is_Equal = await checkPasswords(password, confirm);
+        console.log(is_Equal)
 
-        setTimeout(() => {
-            if (!error) {
-                const payload = { password: password };
-                dispatch(updateUser(payload, _id));
+        if (is_Equal) {
+            setError(false);
+            setTimeout(() => {
+                const payload = { password };
+                console.log(payload);
+                dispatch(updatePassword(payload, _id));
                 history.goBack();
-            }
-        }, 1000);
+            }, 2000);
+        }
+        else setError(true)
     }
 
     return (
@@ -56,7 +64,7 @@ const PasswordChange = () => {
                                     },
                                 ]}
                             >
-                                <Input.Password />
+                                <Input.Password placeholder="Please enter your new password here" />
                             </Form.Item>
                             <Form.Item
                                 label="Confirm Password"
@@ -68,7 +76,7 @@ const PasswordChange = () => {
                                     },
                                 ]}
                             >
-                                <Input.Password />
+                                <Input.Password placeholder="Please enter confirm new password" />
                             </Form.Item>
                             <Form.Item>
                                 <Button type="danger" htmlType="submit">

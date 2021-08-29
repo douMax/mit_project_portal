@@ -10,4 +10,6 @@ router.route("/auth/allUsers").get(userAuthController.getAllUsers);
 
 router.route("/auth/update/:id").put(userAuthController.updateUser);
 
+router.route("/auth/update-password/:id").put(userAuthController.updatePassword);
+
 module.exports = router;

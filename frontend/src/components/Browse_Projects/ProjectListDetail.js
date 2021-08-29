@@ -8,6 +8,7 @@ import ProjectStats from "./ProjectStats";
 import ClientInfo from "./ClientInfo";
 
 const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
+  console.log(project)
   const {
     _id,
     projectTitle,
@@ -16,7 +17,6 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
     status,
     yearInfo,
     termInfo,
-    assignedStudents,
     eoisReceived,
     clientName,
     clientLogo,
@@ -38,10 +38,10 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
             status={status}
             year={yearInfo}
             trimester={termInfo}
-            assigned_students={assignedStudents}
+            assigned_students={"0/5"}
             eoi={eoisReceived}
           />
-          <Button onClick={handleShowDetail}>+</Button>
+          <Button onClick={handleShowDetail}>view</Button>
         </Col>
         <Col span={6}>
           <ClientInfo clientName={clientName} logo={clientLogo} />

@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Row } from "antd";
 
-import TopicsHeader from "../BrowseProjects/TopicsHeader";
-import ProjectTitle from "../BrowseProjects/ProjectTitle";
-import ProjectStats from "../BrowseProjects/ProjectStats";
-import ClientInfo from "../BrowseProjects/ClientInfo";
+import TopicsHeader from "../Browse_Projects/TopicsHeader";
+import ProjectTitle from "../Browse_Projects/ProjectTitle";
+import ProjectStats from "../Browse_Projects/ProjectStats";
+import ClientInfo from "../Browse_Projects/ClientInfo";
 
 const sectionStyle = {
   background: "white",

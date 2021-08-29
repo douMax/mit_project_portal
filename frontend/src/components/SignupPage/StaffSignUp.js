@@ -18,12 +18,12 @@ const StaffSignUp = () => {
   const history = useHistory();
   const [isRegister, setIsRegister] = useState(false);
 
-  const handleFinish = (payload) => {
+  const handleFinish = async (payload) => {
     console.log(payload);
 
-    dispatch(updateUser({ is_first_time_visited: false }, _id));
-    dispatch(signupUser(payload, "staff"));
-    setIsRegister(true);
+    await dispatch(updateUser({ is_first_time_visited: false }, _id));
+    await dispatch(signupUser(payload, "staff"));
+    await setIsRegister(true);
 
   };
 
@@ -51,25 +51,67 @@ const StaffSignUp = () => {
           <Form.Item label="Title">
             <Select options={NAME_TITLES} />
           </Form.Item>
-          <Form.Item label="First Name" name="first_name">
+          <Form.Item label="First Name" name="first_name"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <Input />
           </Form.Item>
-          <Form.Item label="Last Name" name="last_name">
+          <Form.Item label="Last Name" name="last_name"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <Input />
           </Form.Item>
-          <Form.Item label="User Name" name="username">
+          <Form.Item label="User Name" name="username"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <Input />
           </Form.Item>
-          <Form.Item label="Job Position" name="staff_position">
+          <Form.Item label="Job Position" name="staff_position"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <Select options={STAFF_JOB_POSITIONS} />
           </Form.Item>
-          <Form.Item label="MIT Email Address" name="mit_email">
+          <Form.Item label="MIT Email Address" name="mit_email"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <Input />
           </Form.Item>
-          <Form.Item label="Mobile Phone Number" name="phone">
+          <Form.Item label="Mobile Phone Number" name="phone"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <Input />
           </Form.Item>
-          <Form.Item label="Interested Topics" name="topics">
+          <Form.Item label="Interested Topics" name="topics"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <MultipleSelectWithLimit max={3} options={TEMP_TOPICS} />
           </Form.Item>
         </Col>

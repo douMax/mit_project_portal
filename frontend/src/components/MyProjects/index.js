@@ -13,6 +13,7 @@ import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData, logoutUser } from "../../redux/authRedux/actions";
 import { Redirect, useHistory } from "react-router-dom";
+import { Header } from "antd/lib/layout/layout";
 
 const PageTitle = styled.h1`
   font-size: 20px;
@@ -25,17 +26,17 @@ const PanelWrapper = styled.div`
 `;
 
 const MyProjects = () => {
-  const { user, isLoading } = useSelector(state => state.auth);
+  const { user, isLoading, auth_user } = useSelector(state => state.auth);
   const history = useHistory();
 
-  console.log(user, "---------------user")
+  console.log(user, "---------------user", auth_user)
 
   useEffect(() => {
     if (user === null) {
       dispatch(logoutUser());
       history.push("/")
     }
-  }, [user]);
+  }, []);
 
   const [myProjects, setMyProjects] = useState(null);
   const [myProposals, setMyProposals] = useState(null);
@@ -44,18 +45,18 @@ const MyProjects = () => {
   const projectsFilter = useCallback(() => {
     if (user) {
       const { projects } = user;
-      const filteredProjects = projects.filter(item => item.status === "open");
+      const filteredProjects = projects?.filter(item => item.status === "open");
       setMyProjects(filteredProjects);
-      const filteredProposals = projects.filter(item => item.status === "pending" || item.status === "rejected");
+      const filteredProposals = projects?.filter(item => item.status === "pending" || item.status === "rejected");
       setMyProposals(filteredProposals);
     }
   }, [user]);
 
   const getNewData = useCallback(() => {
     if (user) {
-      dispatch(getUserData(user.username, "client"));
+      dispatch(getUserData(user.username, auth_user?.role));
     }
-  }, [user]);
+  }, [user, auth_user]);
 
   useEffect(() => {
     projectsFilter();

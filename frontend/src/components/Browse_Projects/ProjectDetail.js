@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { Card, Row, Col } from "antd";
+import { COLORS } from "../../utils/APP_CONSTANTS";
 import TopicsHeader from "./TopicsHeader";
 import ProjectTitle from "./ProjectTitle";
 import ProjectStats from "./ProjectStats";
-import ClientInfo from "./ClientInfo";
-import ProjectDetButtons from "./ProjectDetButtons";
-import { Card, Row, Col } from "antd";
-import { COLORS } from "../../utils/APP_CONSTANTS";
 
 const SectionTitleWrapper = styled.div`
   font-size: 14px;
@@ -43,7 +41,7 @@ const ProjectDetail = ({ selectedproject }) => {
             status={status}
             year={"2021"}
             trimester={"T1"}
-            assigned_students={group}
+            assigned_students={"0/5"}
             eoi={eoi}
           />
         </Col>

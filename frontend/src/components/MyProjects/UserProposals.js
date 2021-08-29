@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Row, Col, Card, Button, Drawer } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 
-import ProjectTitle from "../BrowseProjects/ProjectTitle";
-import ProjectDescription from "../BrowseProjects/ProjectDescription";
-import TopicsHeader from "../BrowseProjects/TopicsHeader";
+import ProjectTitle from "../Browse_Projects/ProjectTitle";
+import ProjectDescription from "../Browse_Projects/ProjectDescription";
+import TopicsHeader from "../Browse_Projects/TopicsHeader";
 import ProposalStatusDetail from "./ProposalStatusDetail";
-import ProjectDetail from "../BrowseProjects/ProjectDetail";
+import ProjectDetail from "../Browse_Projects/ProjectDetail";
 
 const UserProposals = ({ proposal }) => {
   console.log(proposal);

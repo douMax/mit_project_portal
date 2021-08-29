@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import BrowseProjects from "../components/BrowseProjects";
+import BrowseProjects from "../components/Browse_Projects";
 import PasswordChange from "../components/client/PasswordChange";
 import LandingPage from "../components/LandingPage";
 import MyProjects from "../components/MyProjects";
@@ -32,7 +32,7 @@ export const Routes = () => {
             <Route exact path="/new-project" component={NewProject} />
             <Route exact path="/my-projects" component={MyProjects} />
             <Route exact path="/change-password" component={PasswordChange} />
-            {/* <Route exact path="/browse-projects" component={BrowseProjects} /> */}
+            <Route exact path="/browse-projects" component={BrowseProjects} />
         </Switch>
     )
 }
