@@ -36,15 +36,18 @@ const NewProject = () => {
   console.log(user);
 
   const handleFinish = (values) => {
+
     const { _id, username } = user;
     const newPayload = { ...values, status: "pending", eoi: 0, group: "N/A" };
     const payload = [...user.projects, newPayload];
     console.log(payload)
     dispatch(addNewProject(_id, payload, username, "client"));
     setIsSubmitted(true);
+
     setTimeout(() => {
       history.push("/my-projects")
     }, 2000);
+
   };
 
   const handleCancel = () => {
@@ -75,7 +78,7 @@ const NewProject = () => {
                     message: "Field Required"
                   },
                 ]} >
-                <Input />
+                <Input placeholder="Enter your project title here..." />
               </Form.Item>
               <Form.Item
                 label="Background and Rationale for Project"
@@ -87,7 +90,7 @@ const NewProject = () => {
                   },
                 ]}
               >
-                <Input.TextArea rows={10} />
+                <Input.TextArea rows={10} placeholder="Briefly describe about your project" />
               </Form.Item>
               <Form.Item label="Project Resources" name="resources"
                 rules={[
@@ -96,7 +99,7 @@ const NewProject = () => {
                     message: "Field Required"
                   },
                 ]}>
-                <Input.TextArea rows={3} />
+                <Input.TextArea rows={3} placeholder="Enter the required resources" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -116,7 +119,7 @@ const NewProject = () => {
                     message: "Field Required"
                   },
                 ]}>
-                <Input.TextArea rows={4} />
+                <Input.TextArea rows={4} placeholder="Project Goals and Objectives" />
               </Form.Item>
               <Form.Item label="Other Related Information" name="other"
                 rules={[
@@ -125,7 +128,7 @@ const NewProject = () => {
                     message: "Field Required"
                   },
                 ]}>
-                <Input.TextArea rows={4} />
+                <Input.TextArea rows={4} placeholder="More information related to your project" />
               </Form.Item>
               {/* <Form.Item label="Is this an open project?" name="assigned">
               <ProjectOption />

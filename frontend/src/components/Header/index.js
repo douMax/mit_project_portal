@@ -21,9 +21,9 @@ const HeaderContainer = styled.header`
 `;
 
 const Header = (props) => {
-  const user = useSelector(state => state.auth.auth_user)
-  console.log(user)
-  const role = props.user || user.role;
+  const { auth_user, user } = useSelector(state => state.auth)
+  console.log(props, auth_user, user)
+  const role = props.user || (auth_user?.role || user?.job_position);
   return (
     <HeaderContainer>
       <Logo />

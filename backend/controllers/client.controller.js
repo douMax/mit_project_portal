@@ -103,7 +103,7 @@ exports.getClient = async (req, res) => {
   const { username } = req.body;
   console.log(username)
   try {
-    const user = await Client.findOne({ "username": username }).exec();
+    const user = await Client.findOne({ username }).exec();
     if (!user) {
       res.status(401).json({ status: 'failed', message: 'Invalid User' });
     }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Drawer } from "antd";
 import { CloseCircleFilled } from "@ant-design/icons";
 
-import ProjectDetail from "../BrowseProjects/ProjectDetail";
+import ProjectDetail from "../Browse_Projects/ProjectDetail";
 
 const ViewProjectDetails = ({ project }) => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);

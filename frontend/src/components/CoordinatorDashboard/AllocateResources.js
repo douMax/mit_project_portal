@@ -7,8 +7,8 @@ import styled from "styled-components";
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { EOIContext } from "../../contexts/EOIContext";
 
-import TopicsHeader from "../BrowseProjects/TopicsHeader";
-import ProjectTitle from "../BrowseProjects/ProjectTitle";
+import TopicsHeader from "../Browse_Projects/TopicsHeader";
+import ProjectTitle from "../Browse_Projects/ProjectTitle";
 import StudentEOIDetail from "./StudentEOIDetail";
 
 const SectionTitle = styled.h1`

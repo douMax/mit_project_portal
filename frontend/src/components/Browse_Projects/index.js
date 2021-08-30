@@ -1,14 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Row, Col, Empty } from "antd";
 
-import ProjectListDetail from "./ProjectListDetail";
-import SearchNSort from "./SearchNSort";
 import ProjectDetail from "./ProjectDetail";
+// import SearchNSort from "./SearchNSort";
 
-//import mockProjects from "../../data/mockProjects.json";
-
-import { ProjectContext } from "../../contexts/ProjectContext";
+import { fetchActiveProjects } from "../../actions/projects";
+import ProjectListDetail from "./ProjectListDetail";
 
 const PageTitle = styled.h1`
   font-size: 36px;
@@ -29,19 +27,25 @@ const LeftPanelWrapper = styled.div`
 `;
 
 const BrowseProjects = () => {
-  const [projects, setProject] = useContext(ProjectContext);
   //console.log(projects);
+  const [projects, setProjects] = useState([]);
 
   const [selected, setSelected] = useState(null);
   const handleShowDetail = (selectedproject) => {
     setSelected(selectedproject);
   };
+
+  useEffect(async () => {
+    const data = await fetchActiveProjects();
+    setProjects(data);
+  }, []);
+
   return (
     <Row gutter={24}>
       <Col span={12}>
         <LeftPanelWrapper>
           <PageTitle>Browse Projects</PageTitle>
-          <SearchNSort />
+          {/* <SearchNSort /> */}
           {projects.map((project) => (
             <ProjectListDetail
               key={project._id}

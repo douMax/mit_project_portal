@@ -17,7 +17,7 @@ const StudentSignUp = () => {
 
   // console.log(is_registration, 'registration')
 
-  const handleFinish = (values) => {
+  const handleFinish = async (values) => {
 
     const { first_name, last_name, email, mit_email, mit_student_id, phone, username, is_enrolled_in_course, is_enrolled_in_capstone_projects } = values;
     const payload = {
@@ -31,9 +31,9 @@ const StudentSignUp = () => {
       is_enrolled_in_capstone_projects,
       is_enrolled_in_course
     };
-    dispatch(updateUser({ is_first_time_visited: false }, _id));
-    dispatch(signupUser(payload, "student"));
-    setIsRegister(true);
+    await dispatch(updateUser({ is_first_time_visited: false }, _id));
+    await dispatch(signupUser(payload, "student"));
+    await setIsRegister(true);
   };
 
   useEffect(() => {
@@ -58,7 +58,13 @@ const StudentSignUp = () => {
       <Row gutter={36}>
         <Col span={12}>
           <CommonFields />
-          <Form.Item label="Course Enrolment" name="is_enrolled_in_course">
+          <Form.Item label="Course Enrolment" name="is_enrolled_in_course"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
             <Radio.Group
               options={[
                 { label: "Yes", value: true },
@@ -67,8 +73,14 @@ const StudentSignUp = () => {
             />
           </Form.Item>
           <Form.Item
-            label="Capstone Projects Enrolment"
+            label="Capstone Proj. Enrolment"
             name="is_enrolled_in_capstone_projects"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}
           >
             <Radio.Group
               options={[

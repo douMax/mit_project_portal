@@ -33,7 +33,7 @@ export const signupUserFailure = (payload) => ({
 });
 
 export const getUserData = (username, role) => (dispatch) => {
-    // console.log(username)
+    console.log(username, role, "api")
     return axios({
         method: 'POST',
         url: `http://localhost:5000/api/auth/${role}`,
@@ -43,16 +43,15 @@ export const getUserData = (username, role) => (dispatch) => {
         data: { username: username }
     })
         .then((resp) => {
-            // console.log(resp.data.user)
+            // console.log(resp.data.user, "getUserData")
             dispatch(signupUserSuccess(resp.data));
         })
         .catch((err) => {
-            console.log(err)
+            console.log("student not found in the list")
         })
 }
 
 export const loginUser = ({ username, password, role }) => (dispatch) => {
-    dispatch(getUserData(username, role))
     return axios({
         method: "POST",
         url: "http://localhost:5000/auth/login",
@@ -65,9 +64,10 @@ export const loginUser = ({ username, password, role }) => (dispatch) => {
             role
         }
     })
-        .then((resp) => {
+        .then(async (resp) => {
             // console.log("data", resp.data.data);
-            dispatch(loginUserSuccess(resp.data.data.user));
+            await dispatch(getUserData(username, role));
+            await dispatch(loginUserSuccess(resp.data.data.user));
         })
         .catch((err) => {
             console.log(err);
@@ -76,6 +76,7 @@ export const loginUser = ({ username, password, role }) => (dispatch) => {
 };
 
 export const updateUser = (payload, id) => (dispatch) => {
+    console.log(payload, id, "update-user-actions")
     return axios({
         method: "PUT",
         url: `http://localhost:5000/auth/update/${id}`,
@@ -92,8 +93,27 @@ export const updateUser = (payload, id) => (dispatch) => {
         })
 };
 
+export const updatePassword = (payload, id) => (dispatch) => {
+    console.log(payload, id, "update-user-actions")
+    return axios({
+        method: "PUT",
+        url: `http://localhost:5000/auth/update-password/${id}`,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: payload
+    })
+        .then((resp) => {
+            console.log(resp);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+};
+
 
 export const signupUser = (payload, role) => (dispatch) => {
+    console.log(payload, role, "signup-user-actions")
     return axios({
         method: "POST",
         url: `http://localhost:5000/api/auth/${role}/signup`,
@@ -103,7 +123,7 @@ export const signupUser = (payload, role) => (dispatch) => {
         data: payload
     })
         .then((resp) => {
-            // console.log("signup", resp);
+            console.log("signup", resp);
             dispatch(signupUserSuccess(resp.data));
         })
         .catch((err) => {

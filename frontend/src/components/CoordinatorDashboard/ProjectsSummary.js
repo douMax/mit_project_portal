@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, Space } from "antd";
 
-import ProjectTitle from "../BrowseProjects/ProjectTitle";
-import ProjectDescription from "../BrowseProjects/ProjectDescription";
+import ProjectTitle from "../Browse_Projects/ProjectTitle";
+import ProjectDescription from "../Browse_Projects/ProjectDescription";
 import ViewProjectDetails from "./ViewProjectDetails";
 import AllocateResources from "./AllocateResources";
 
