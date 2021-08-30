@@ -5,6 +5,8 @@ import { COLORS } from "../../utils/APP_CONSTANTS";
 import TopicsHeader from "./TopicsHeader";
 import ProjectTitle from "./ProjectTitle";
 import ProjectStats from "./ProjectStats";
+import ProjectDetButtons from "./ProjectDetButtons"
+import { useSelector } from "react-redux";
 
 const SectionTitleWrapper = styled.div`
   font-size: 14px;
@@ -19,6 +21,9 @@ const sectionCardStyle = {
 };
 
 const ProjectDetail = ({ selectedproject }) => {
+
+  const { auth_user } = useSelector(state => state.auth);
+  console.log(auth_user);
   const {
     title,
     topics,
@@ -31,6 +36,7 @@ const ProjectDetail = ({ selectedproject }) => {
     group,
     eoi
   } = selectedproject;
+  console.log(topics)
   return (
     <Row>
       <Row gutter={16}>
@@ -55,7 +61,7 @@ const ProjectDetail = ({ selectedproject }) => {
           <Card style={sectionCardStyle}>{resources}</Card>
           <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
           <Card style={sectionCardStyle}>{objectives}</Card>
-          {/* <ProjectDetButtons project={selectedproject} /> */}
+          {(auth_user?.role === "student") && (<ProjectDetButtons project={selectedproject} />)}
         </Col>
       </Row>
     </Row>

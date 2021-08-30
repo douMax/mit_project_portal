@@ -10,7 +10,7 @@ const ProjectDetButtons = ({ project }) => {
   console.log(user)
   return (
     <Space style={{ paddingTop: 20 }}>
-      <Button
+      {/* <Button
         style={{
           background: "#f0f0f0",
           fontWeight: "bold",
@@ -27,7 +27,7 @@ const ProjectDetButtons = ({ project }) => {
         }}
       >
         Save Project
-      </Button>
+      </Button> */}
       {user.role !== "industry_client" &&
         project.status !== "wfa" &&
         project.status !== "cr" && (

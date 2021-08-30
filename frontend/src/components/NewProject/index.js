@@ -13,7 +13,7 @@ import { CheckCircleTwoTone } from '@ant-design/icons';
 
 
 // app contatns
-import { LOCATIONS, TEMP_TOPICS } from "../../utils/APP_CONSTANTS";
+import { LOCATIONS, TEMP_TOPICS, TRIMESTER } from "../../utils/APP_CONSTANTS";
 
 // contexts
 import { AddNewProjectProposal } from "../../contexts/InactiveProjectContext";
@@ -25,6 +25,7 @@ import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit
 import { useDispatch, useSelector } from "react-redux";
 import { addNewProject } from "../../redux/clientRedux/actions";
 import { useHistory } from "react-router-dom";
+import { addProject } from "../../actions/projects";
 
 const NewProject = () => {
   //console.log(projects);
@@ -35,23 +36,20 @@ const NewProject = () => {
 
   console.log(user);
 
-  const handleFinish = (values) => {
+  const handleFinish = async (values) => {
 
     const { _id, username } = user;
-    const newPayload = { ...values, status: "pending", eoi: 0, group: "N/A" };
+    const newPayload = { ...values, status: "pending", clientId: _id, year: "2011", assigned: [], eoi: [] };
     const payload = [...user.projects, newPayload];
-    console.log(payload)
-    dispatch(addNewProject(_id, payload, username, "client"));
+    // console.log(payload, newPayload);
+    await addProject(newPayload);
+    await dispatch(addNewProject(_id, payload, username, "client"));
     setIsSubmitted(true);
 
     setTimeout(() => {
       history.push("/my-projects")
     }, 2000);
 
-  };
-
-  const handleCancel = () => {
-    console.log("cancelled");
   };
 
   return (
@@ -80,6 +78,15 @@ const NewProject = () => {
                 ]} >
                 <Input placeholder="Enter your project title here..." />
               </Form.Item>
+              <Form.Item label="Select Trimester" name="trimester"
+                rules={[
+                  {
+                    required: true,
+                    message: "Field Required"
+                  },
+                ]}>
+                <Select options={TRIMESTER} id="trimester" />
+              </Form.Item>
               <Form.Item
                 label="Background and Rationale for Project"
                 name="background"
@@ -90,7 +97,7 @@ const NewProject = () => {
                   },
                 ]}
               >
-                <Input.TextArea rows={10} placeholder="Briefly describe about your project" />
+                <Input.TextArea rows={8} placeholder="Briefly describe about your project" />
               </Form.Item>
               <Form.Item label="Project Resources" name="resources"
                 rules={[
@@ -121,14 +128,14 @@ const NewProject = () => {
                 ]}>
                 <Input.TextArea rows={4} placeholder="Project Goals and Objectives" />
               </Form.Item>
-              <Form.Item label="Other Related Information" name="other"
+              <Form.Item label="Abstract information" name="abstract"
                 rules={[
                   {
                     required: true,
                     message: "Field Required"
                   },
                 ]}>
-                <Input.TextArea rows={4} placeholder="More information related to your project" />
+                <Input.TextArea rows={4} placeholder="More information related to your project in brief" />
               </Form.Item>
               {/* <Form.Item label="Is this an open project?" name="assigned">
               <ProjectOption />

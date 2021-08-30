@@ -47,6 +47,12 @@ export const LOCATIONS = [
   { label: "any", value: "any" },
 ];
 
+export const TRIMESTER = [
+  { label: "T1", value: "T1" },
+  { label: "T2", value: "T2" },
+  { label: "T3", value: "T3" },
+]
+
 export const EOI_LIMIT = 3;
 
 export const PRP_DECISION = [
