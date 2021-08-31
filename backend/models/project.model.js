@@ -9,36 +9,41 @@ const projectSchema = new Schema(
     },
     background: {
       type: String,
-      required: [true, "project title is required"],
+      required: [true, "project background is required"],
+    },
+    abstract: {
+      type: String,
+      required: [true, "project abstract is required"],
     },
     objectives: {
       type: String,
-      required: [true, "project title is required"],
+      required: [true, "project objectives is required"],
     },
     resources: {
       type: String,
-      required: [true, "project title is required"],
+      required: [true, "project resources is required"],
     },
-    yearInfo: {
+    year: {
       type: String,
+      default: "2021"
     },
-    termInfo: {
+    trimester: {
       type: String,
     },
     status: {
       type: String,
-      enum: ["open", "rejected", "pending", "closed"],
+      enum: ["open", "rejected", "pending", "closed", "assigned"],
     },
     topics: {
       type: [String],
-      // storing the topic IDs in this field
     },
-    eoisReceived: {
+    assigned: {
       type: [String],
-      // storing the EOI/Application IDs in this field
+      default: []
     },
-    isInternship: {
-      type: Boolean,
+    eoi: {
+      type: [String],
+      default: []
     },
     clientId: {
       type: Schema.Types.ObjectId,

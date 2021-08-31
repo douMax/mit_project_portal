@@ -5,10 +5,10 @@ const Client = require("../models/client.model");
 
 exports.create = async (req, res) => {
   const newProject = new Project(req.body);
-
+  console.log(newProject)
   try {
     const data = await newProject.save();
-    res.status(201).send(data);
+    res.status(201).json({ status: "success", data });
   } catch (err) {
     res.status(500).json(err.message);
   }
@@ -26,20 +26,20 @@ exports.findProjects = async (req, res) => {
 //Finding only Active Projects
 exports.findActiveProjects = async (req, res) => {
   try {
-    let activeProjects = await Project.find({ status: ["open", "ongoing"] });
+    let activeProjects = await Project.find({ status: ["open"] });
     //TODO: append eoisReceived, group etc.
     const data = await Promise.all(
-      activeProjects.map(async function (ap) {
+      activeProjects.map(async function (project) {
         let topics = [];
-        if (ap.topics) {
-          topics = await Topic.find().where("_id").in(ap.topics).exec();
+        if (project.topics) {
+          topics = await Topic.find().where("_id").in(project.topics).exec();
           topics = topics.map((topic) => topic.name);
         }
 
-        let client = await Client.findById(ap.clientId);
+        let client = await Client.findById(project.clientId);
 
         return {
-          ...ap._doc,
+          ...project._doc,
           topics: topics,
           clientName: client?.companyName,
           clientLogo: client?.companyLogoUrl,
@@ -57,21 +57,21 @@ exports.findActiveProjects = async (req, res) => {
 exports.findInactiveProjects = async (req, res) => {
   try {
     let activeProjects = await Project.find({
-      status: ["wfa", "cr", "closed"],
+      status: ["assigned", "closed", "pending"],
     });
     //TODO: append eoisReceived, group etc.
     const data = await Promise.all(
-      activeProjects.map(async function (ap) {
+      activeProjects.map(async function (project) {
         let topics = [];
-        if (ap.topics) {
-          topics = await Topic.find().where("_id").in(ap.topics).exec();
+        if (project.topics) {
+          topics = await Topic.find().where("_id").in(project.topics).exec();
           topics = topics.map((topic) => topic.name);
         }
 
-        let client = await Client.findById(ap.clientId);
+        let client = await Client.findById(project.clientId);
 
         return {
-          ...ap._doc,
+          ...project._doc,
           topics: topics,
           clientName: client?.companyName,
           clientLogo: client?.companyLogoUrl,

@@ -3,7 +3,7 @@ import { getUserData } from "../authRedux/actions";
 
 export const ADD_NEW_PROJECT = "ADD_NEW_PROJECT";
 
-export const addProject = (payload) => ({
+export const addProjectData = (payload) => ({
     type: ADD_NEW_PROJECT,
     payload
 });
@@ -20,7 +20,7 @@ export const addNewProject = (_id, payload, username, role) => (dispatch) => {
     })
         .then((resp) => {
             console.log(resp);
-            dispatch(addProject(resp));
+            dispatch(addProjectData(resp));
             dispatch(getUserData(username, role))
         })
         .catch((err) => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Form, Input, Button, Card, Space } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePassword } from "../../redux/authRedux/actions";
+import { logoutUser, updatePassword } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router-dom";
 
 const LandingContainer = styled.div`
@@ -42,7 +42,8 @@ const PasswordChange = () => {
                 const payload = { password };
                 console.log(payload);
                 dispatch(updatePassword(payload, _id));
-                history.goBack();
+                dispatch(logoutUser());
+                history.push("/")
             }, 2000);
         }
         else setError(true)
