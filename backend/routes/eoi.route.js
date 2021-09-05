@@ -2,14 +2,17 @@ const router = require("express").Router();
 const eoiController = require("../controllers/eoi.controller");
 
 router
-  .route("/api/projects/:projectId/eois")
-  .post(eoiController.createEOI)
+  .route("/api/eoi/:project_id")
   .get(eoiController.findProjectEOIs);
 
-router.route("/api/projects/eois/:applicantId").get(eoiController.findUserEOIs);
+router
+  .route("/api/eoi")
+  .post(eoiController.createEOI)
+
+router.route("/api/eois/:id").get(eoiController.findUserEOIs);
 
 router
-  .route("/api/projects/:projectId/eois/:eoiId/eoi")
+  .route("/api/eoi/:eoi_id")
   .get(eoiController.findOneEOIs)
   .put(eoiController.updateEOI);
 

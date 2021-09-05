@@ -27,7 +27,7 @@ const ProjectSummary = ({ project }) => {
   } = project;
   return (
     <Row style={sectionStyle}>
-      <Col span={18}>
+      <Col span={12}>
         <TopicsHeader topic={topic} />
         <ProjectTitle title={title} />
         <ProjectStats

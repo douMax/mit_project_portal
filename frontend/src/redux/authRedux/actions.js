@@ -149,3 +149,41 @@ export const registerUser = (payload) => (dispatch) => {
             console.log(err);
         })
 }
+
+export const updateStudentData = (payload, id, username) => (dispatch) => {
+    console.log(payload, username, id)
+    return axios({
+        method: "PUT",
+        url: `http://localhost:5000/api/students/${id}`,
+        headers: {
+            'Content-Type': "application/json"
+        },
+        data: payload
+    })
+        .then((resp) => {
+            if (resp.status) {
+                dispatch(getUserData(username, "student"));
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+export const createEOI = (payload) => (dispatch) => {
+    return axios({
+        method: "POST",
+        url: "http://localhost:5000/api/eoi",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        data: payload
+    })
+        .then((resp) => {
+            console.log(resp);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+

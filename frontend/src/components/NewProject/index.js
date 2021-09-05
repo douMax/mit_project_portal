@@ -39,7 +39,7 @@ const NewProject = () => {
   const handleFinish = async (values) => {
 
     const { _id, username } = user;
-    const newPayload = { ...values, status: "pending", clientId: _id, year: "2011", assigned: [], eoi: [] };
+    const newPayload = { ...values, status: "pending", clientId: _id, year: "2021", assigned: [], eoi: [] };
     const payload = [...user.projects, newPayload];
     // console.log(payload, newPayload);
     await addProject(newPayload);

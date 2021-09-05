@@ -3,28 +3,27 @@ const { Schema } = mongoose;
 
 const eoiSchema = new Schema(
   {
-    projectId: {
+    project_id: {
       type: Schema.Types.ObjectId,
       ref: "Project",
       required: true,
     },
-    applicantId: {
+    user_id: {
       type: Schema.Types.ObjectId,
       ref: "Student or Staff",
       required: true,
     },
-    eoiStatus: {
+    status: {
       type: String,
-      required: true,
-      enum: ["wfa", "approved", "rejected"],
+      default: "pending"
     },
-    interestInProject: {
-      type: String,
-    },
-    achievementGoals: {
+    interest: {
       type: String,
     },
-    previousExperience: {
+    achievement: {
+      type: String,
+    },
+    experience: {
       type: String,
     },
   },

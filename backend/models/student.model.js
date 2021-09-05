@@ -35,6 +35,14 @@ const StudentSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Group",
     },
+    projects: {
+      type: Array,
+      default: []
+    },
+    eoi: {
+      type: Array,
+      default: []
+    },
     is_enrolled_in_course: {
       type: Boolean,
       default: true,

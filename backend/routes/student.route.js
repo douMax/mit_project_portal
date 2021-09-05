@@ -25,7 +25,7 @@ router
 
 router
   .route("/api/students/:studentid")
-  .get(studentController.findOnById)
+  .get(studentController.findOneById)
   .put(studentController.update)
   .delete(studentController.delete);
 module.exports = router;

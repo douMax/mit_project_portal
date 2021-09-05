@@ -35,6 +35,15 @@ const CommonFields = () => {
         ]}>
         <Input />
       </Form.Item>
+      <Form.Item label="Create your own password" name="password"
+        rules={[
+          {
+            required: true,
+            message: "Field Required",
+          },
+        ]}>
+        <Input.Password />
+      </Form.Item>
       <Form.Item label="MIT Student Id" name="mit_student_id"
         rules={[
           {

@@ -1,25 +1,24 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Space, Button } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateStudentData } from "../../redux/authRedux/actions";
 
 const ProjectDetButtons = ({ project }) => {
-  //console.log(user.role);
-  const { auth_user } = useSelector(state => state.auth);
-  const user = auth_user;
-  console.log(user)
+  const { auth_user, user } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  console.log(auth_user, project, user)
+  const { username, _id } = user;
+
+  const saveProject = () => {
+    const payload = { projects: [...user.projects, project] };
+    dispatch(updateStudentData(payload, _id, username))
+  };
+
   return (
     <Space style={{ paddingTop: 20 }}>
-      {/* <Button
-        style={{
-          background: "#f0f0f0",
-          fontWeight: "bold",
-          borderColor: "black",
-        }}
-      >
-        Print Project
-      </Button>
       <Button
+        onClick={saveProject}
         style={{
           background: "#f0f0f0",
           fontWeight: "bold",
@@ -27,13 +26,13 @@ const ProjectDetButtons = ({ project }) => {
         }}
       >
         Save Project
-      </Button> */}
-      {user.role !== "industry_client" &&
-        project.status !== "wfa" &&
+      </Button>
+      {auth_user?.role !== "industry_client" &&
+        project.status !== "pending" &&
         project.status !== "cr" && (
           <Link
             to={{
-              pathname: `/projects/${project._id}/new-eoi`,
+              pathname: `/projects/eoi/${project._id}/`,
               state: project,
             }}
           >
@@ -48,8 +47,8 @@ const ProjectDetButtons = ({ project }) => {
             </Button>
           </Link>
         )}
-      {user.role === "staff" &&
-        (project.status === "wfa" || project.status === "cr") && (
+      {auth_user?.role === "staff" &&
+        (project.status === "pending" || project.status === "cr") && (
           <Link
             to={{
               pathname: `/dashboard/chair-prp/${project._id}/decision`,
