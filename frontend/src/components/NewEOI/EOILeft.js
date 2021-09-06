@@ -15,6 +15,7 @@ const LimitDescription = styled.div`
 const EOILeft = ({ eoilen }) => {
   const eoi_limit = EOI_LIMIT;
   const eoi_left = eoi_limit - eoilen;
+  console.log(eoilen)
   return (
     <Form>
       <PageTitle>Expression Of Interest</PageTitle>

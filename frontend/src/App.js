@@ -34,6 +34,7 @@ const ContentContainer = styled.div`
   width: 100vw;
   padding: 25px 50px;
   background-color: #fff;
+  height:100vh;
 `;
 
 function App() {

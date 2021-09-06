@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Row, Form, Input, Space, Button } from "antd";
 import { COLORS } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
 import { createEOI, updateStudentData } from "../../redux/authRedux/actions";
+import { useHistory } from "react-router";
+import { CheckCircleTwoTone } from '@ant-design/icons';
 
 const { TextArea } = Input;
 
@@ -35,11 +37,13 @@ const SectionDescription = styled.h1`
 `;
 
 const EOIDetails = ({ project }) => {
+
   const { user } = useSelector(state => state.auth);
   const { _id, username } = user;
-  const dispatch = useDispatch();
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const eoi_sub_date = new Date();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = async () => {
 
@@ -57,55 +61,70 @@ const EOIDetails = ({ project }) => {
 
     console.log("eoi submitted", EOI)
     const payload = { eoi: [...user.eoi, { ...project, interest, achievement, experience }] };
+    setIsSubmitted(true);
     await dispatch(updateStudentData(payload, _id, username));
     await dispatch(createEOI(EOI));
+
+    setTimeout(() => {
+      history.push("/student/my-projects");
+    }, 2000);
   }
 
   return (
-    <Row>
-      <Form style={formStyle}>
-        <Space>
-          <Form.Item>
-            <SectionDescription>
-              Write between 300 and 500 words why you are interested in this
-              project.
-            </SectionDescription>
-            <TextArea
-              id="interest"
-              style={textAreaStyle}
-              maxLength={500}
-              showCount
-              rows={16}
-            />
-          </Form.Item>
-          <Form.Item style={formRightStyle}>
-            <SectionDescription>
-              What do you hope to achieve with this project?
-            </SectionDescription>
-            <TextArea
-              id="achieve"
-              style={textAreaStyle}
-              maxLength={300}
-              showCount
-              rows={6}
-            ></TextArea>
-            <SectionDescription>
-              Do you have any previous experience relevant to the project?
-            </SectionDescription>
-            <TextArea
-              id="experience"
-              style={textAreaStyle}
-              maxLength={300}
-              showCount
-              rows={6}
-            ></TextArea>
-          </Form.Item>
-        </Space>
-        <Button style={buttonStyle} type="primary" danger onClick={handleSubmit}>
-          Submit EOI
-        </Button>
-      </Form>
-    </Row>
+    <>
+      {!isSubmitted ? (<>
+        <Row>
+          <Form style={formStyle}>
+            <Space>
+              <Form.Item>
+                <SectionDescription>
+                  Write between 300 and 500 words why you are interested in this
+                  project.
+                </SectionDescription>
+                <TextArea
+                  id="interest"
+                  style={textAreaStyle}
+                  maxLength={500}
+                  showCount
+                  rows={16}
+                />
+              </Form.Item>
+              <Form.Item style={formRightStyle}>
+                <SectionDescription>
+                  What do you hope to achieve with this project?
+                </SectionDescription>
+                <TextArea
+                  id="achieve"
+                  style={textAreaStyle}
+                  maxLength={300}
+                  showCount
+                  rows={6}
+                ></TextArea>
+                <SectionDescription>
+                  Do you have any previous experience relevant to the project?
+                </SectionDescription>
+                <TextArea
+                  id="experience"
+                  style={textAreaStyle}
+                  maxLength={300}
+                  showCount
+                  rows={6}
+                ></TextArea>
+              </Form.Item>
+            </Space>
+            <Button style={buttonStyle} type="primary" danger onClick={handleSubmit} disabled={user?.eoi.length >= 3}>
+              Submit EOI
+            </Button>
+          </Form>
+        </Row>
+      </>) : (<>
+        <div style={{ display: 'flex', alignItems: "center", justifyContent: "center", margin: "200px 450px" }}>
+          <h1>EOI submitted and saved successfully <span>
+            <CheckCircleTwoTone twoToneColor="#52c41a" />
+          </span></h1>
+        </div>
+      </>)}
+    </>
   );
 };
 

@@ -20,7 +20,7 @@ const ProjectSummary = ({ project }) => {
     status,
     year,
     trimester,
-    assigned_students,
+    assigned,
     eoi,
     client,
     logo,
@@ -34,11 +34,11 @@ const ProjectSummary = ({ project }) => {
           status={status}
           year={year}
           trimester={trimester}
-          assigned_students={assigned_students}
-          eoi={eoi}
+          assigned_students={assigned.length}
+          eoi={eoi.length}
         />
       </Col>
-      <Col span={6}>
+      <Col span={12}>
         <ClientInfo clientName={client} logo={logo} />
       </Col>
     </Row>

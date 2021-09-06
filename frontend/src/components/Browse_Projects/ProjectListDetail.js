@@ -15,9 +15,10 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
     topics,
     abstract,
     status,
-    yearInfo,
-    termInfo,
-    eoisReceived,
+    assigned,
+    year,
+    trimester,
+    eoi,
     clientName,
     clientLogo,
   } = project;
@@ -36,10 +37,10 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
           <ProjectDescription description={abstract} />
           <ProjectStats
             status={status}
-            year={yearInfo}
-            trimester={termInfo}
-            assigned_students={"0/5"}
-            eoi={eoisReceived}
+            year={year}
+            trimester={trimester}
+            assigned_students={assigned.length}
+            eoi={eoi.length}
           />
           <Button onClick={handleShowDetail}>view</Button>
         </Col>

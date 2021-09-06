@@ -23,7 +23,7 @@ const sectionCardStyle = {
 const ProjectDetail = ({ selectedproject, controls }) => {
 
   const { auth_user } = useSelector(state => state.auth);
-  console.log(auth_user, controls);
+  console.log(selectedproject);
   const {
     title,
     topics,
@@ -31,12 +31,12 @@ const ProjectDetail = ({ selectedproject, controls }) => {
     resources,
     objectives,
     status,
-    other,
-    location,
-    group,
+    assigned,
+    abstract,
+    trimester,
+    year,
     eoi
   } = selectedproject;
-  console.log(topics)
   return (
     <Row>
       <Row gutter={16}>
@@ -45,10 +45,10 @@ const ProjectDetail = ({ selectedproject, controls }) => {
           <ProjectTitle title={title} />
           <ProjectStats
             status={status}
-            year={"2021"}
-            trimester={"T1"}
-            assigned_students={"0/5"}
-            eoi={eoi}
+            year={year}
+            trimester={trimester}
+            assigned_students={assigned.length}
+            eoi={eoi.length}
           />
         </Col>
         {/* <Col span={6}>
