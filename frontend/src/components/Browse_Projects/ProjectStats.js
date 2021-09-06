@@ -5,8 +5,7 @@ import { Button, Space } from "antd";
 //import changeBorderRed from "./ProjectListDetails";
 
 const ProjectStats = (projstats) => {
-  //console.log(projstats);
-
+  console.log(projstats)
   return (
     <Space>
       <Button type="text" style={{ background: "turquoise", color: "white" }}>
@@ -23,7 +22,7 @@ const ProjectStats = (projstats) => {
         {"Group: " + projstats.assigned_students}
       </Button>
       <Button type="text">
-        EOIs: {projstats.eoi !== "undefined" && projstats.eoi | "0"}
+        EOIs: {projstats.eoi?.length || "0"}
       </Button>
     </Space>
   );

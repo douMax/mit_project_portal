@@ -1,18 +1,26 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Space, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { updateStudentData } from "../../redux/authRedux/actions";
 
 const ProjectDetButtons = ({ project }) => {
+
   const { auth_user, user } = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  const history = useHistory();
+
   console.log(auth_user, project, user)
   const { username, _id } = user;
 
-  const saveProject = () => {
+  const saveProject = async () => {
     const payload = { projects: [...user.projects, project] };
-    dispatch(updateStudentData(payload, _id, username))
+    await dispatch(updateStudentData(payload, _id, username));
+    await alert("Saved Project Successfully");
+
+    setTimeout(() => {
+      history.goBack();
+    }, 2000);
   };
 
   return (
@@ -28,7 +36,7 @@ const ProjectDetButtons = ({ project }) => {
         Save Project
       </Button>
       {auth_user?.role !== "industry_client" &&
-        project.status !== "pending" &&
+        // project.status !== "pending" &&
         project.status !== "cr" && (
           <Link
             to={{

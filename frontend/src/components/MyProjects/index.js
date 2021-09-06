@@ -43,6 +43,7 @@ const MyProjects = () => {
   const projectsFilter = useCallback(() => {
     if (user) {
       const { projects } = user;
+      console.log(projects)
       const filteredProjects = projects?.filter(item => item.status === "open");
       setMyProjects(filteredProjects);
       const filteredProposals = projects?.filter(item => item.status === "pending" || item.status === "rejected");
@@ -73,7 +74,7 @@ const MyProjects = () => {
           </PanelWrapper>
         </Col>
         <Col span={12}>
-          {auth_user?.role === USERTYPES.INDUSTRY_CLIENT ? (
+          {auth_user?.role === USERTYPES.CLIENT ? (
             <PanelWrapper>
               <PageTitle>My Proposals</PageTitle>
               {myProposals?.map((project, index) => (

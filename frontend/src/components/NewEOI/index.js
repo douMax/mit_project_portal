@@ -4,15 +4,17 @@ import { Row, Col } from "antd";
 import EOILeft from "./EOILeft";
 import ProjectSummary from "./ProjectSummary";
 import EOIDetails from "./EOIDetails";
+import { useSelector } from "react-redux";
 
 const NewEOI = () => {
   const location = useLocation();
   const project = location.state;
-  console.log(location)
+  const { user } = useSelector(state => state.auth);
+  console.log(user)
   return (
     <Row>
       <Col span={12}>
-        <EOILeft eoilen={"0"} />
+        <EOILeft eoilen={user?.eoi.length} />
       </Col>
       <Col span={12}>
         <ProjectSummary project={project} />
