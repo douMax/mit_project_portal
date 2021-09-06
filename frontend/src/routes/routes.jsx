@@ -4,6 +4,7 @@ import BrowseProjects from "../components/Browse_Projects";
 import PasswordChange from "../components/client/PasswordChange";
 import LandingPage from "../components/LandingPage";
 import MyProjects from "../components/MyProjects";
+import NewEOI from "../components/NewEOI";
 import NewProject from "../components/NewProject";
 import SignUpPage from "../components/SignupPage";
 import { Staff_Dashboard } from "../components/staff/Staff_Dashboard";
@@ -31,8 +32,10 @@ export const Routes = () => {
             <Route exact path="/dashboard/client-dashboard" component={MyProjects} />
             <Route exact path="/new-project" component={NewProject} />
             <Route exact path="/my-projects" component={MyProjects} />
+            <Route exact path="/student/my-projects" component={StudentDashboard} />
             <Route exact path="/change-password" component={PasswordChange} />
             <Route exact path="/browse-projects" component={BrowseProjects} />
+            <Route exact path="/projects/eoi/:id" component={NewEOI} />
         </Switch>
     )
 }

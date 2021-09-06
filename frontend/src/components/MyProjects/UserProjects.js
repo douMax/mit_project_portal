@@ -59,7 +59,7 @@ const UserProjects = ({ project }) => {
               <CloseCircleFilled style={{ fontSize: 20, color: "red" }} />
             }
           >
-            <ProjectDetail selectedproject={project} />
+            <ProjectDetail selectedproject={project} controls={false} />
           </Drawer>
         </Col>
       </Row>

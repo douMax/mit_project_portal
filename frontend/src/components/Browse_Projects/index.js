@@ -13,16 +13,18 @@ const PageTitle = styled.h1`
 `;
 
 const RightPanelWrapper = styled.div`
-  max-height: calc(100vh - 120px);
+  max-height: 80vh;
   padding: 24px;
   background-color: #fff;
-  border: 1px solid #f0f0f0;
+  border: 2px solid #f0f0f0;
   border-radius: 2px;
   overflow-y: scroll;
+  overflow-X: none;
 `;
 
 const LeftPanelWrapper = styled.div`
-  max-height: calc(100vh - 120px);
+  max-height: 80vh;
+  overflow-X: none;
   overflow-y: auto;
 `;
 
@@ -31,6 +33,7 @@ const BrowseProjects = () => {
   const [projects, setProjects] = useState([]);
 
   const [selected, setSelected] = useState(null);
+
   const handleShowDetail = (selectedproject) => {
     setSelected(selectedproject);
   };
@@ -61,7 +64,7 @@ const BrowseProjects = () => {
       <Col span={12}>
         <RightPanelWrapper>
           {selected ? (
-            <ProjectDetail selectedproject={selected} />
+            <ProjectDetail selectedproject={selected} controls={true} />
           ) : (
             <Empty description="No project selected" />
           )}

@@ -5,24 +5,21 @@ import EOILeft from "./EOILeft";
 import ProjectSummary from "./ProjectSummary";
 import EOIDetails from "./EOIDetails";
 
-// import mockEOIs from "../../data/mockEOIs.json";
-import { UserContext } from "../../contexts/UserContext";
-
 const NewEOI = () => {
   const location = useLocation();
   const project = location.state;
-  const [user, setUser] = useContext(UserContext);
+  console.log(location)
   return (
     <Row>
       <Col span={12}>
-        <EOILeft eoilen={user.eoi} />
+        <EOILeft eoilen={"0"} />
       </Col>
       <Col span={12}>
         <ProjectSummary project={project} />
       </Col>
       <Row>
         <Col>
-          <EOIDetails />
+          <EOIDetails project={project} />
         </Col>
       </Row>
     </Row>

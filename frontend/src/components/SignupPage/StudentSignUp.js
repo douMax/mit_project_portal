@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Form, Radio, Button, Col, Row } from "antd";
+import { Form, Radio, Button, Col, Row, Space } from "antd";
 import CommonFields from "./CommonFields";
 import ProfilePicUploader from "./ProfilePicUploader";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser, signupUser, updateUser } from "../../redux/authRedux/actions";
+import { logoutUser, registerUser, signupUser, updateUser } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router-dom";
 
 const StudentSignUp = () => {
@@ -19,7 +19,7 @@ const StudentSignUp = () => {
 
   const handleFinish = async (values) => {
 
-    const { first_name, last_name, email, mit_email, mit_student_id, phone, username, is_enrolled_in_course, is_enrolled_in_capstone_projects } = values;
+    const { first_name, last_name, email, mit_email, mit_student_id, phone, username, password, is_enrolled_in_course, is_enrolled_in_capstone_projects } = values;
     const payload = {
       first_name,
       last_name,
@@ -31,7 +31,8 @@ const StudentSignUp = () => {
       is_enrolled_in_capstone_projects,
       is_enrolled_in_course
     };
-    await dispatch(updateUser({ is_first_time_visited: false }, _id));
+    // await dispatch(updateUser({ is_first_time_visited: false }, _id));
+    await dispatch(registerUser({ username: username, role: "student", is_first_time_visited: false, password: password }));
     await dispatch(signupUser(payload, "student"));
     await setIsRegister(true);
   };
@@ -39,7 +40,7 @@ const StudentSignUp = () => {
   useEffect(() => {
     if (isRegister) {
       var timer = setTimeout(() => {
-        history.push("/my-projects");
+        history.push("/student/my-projects");
       }, 3000);
     }
 
@@ -96,10 +97,15 @@ const StudentSignUp = () => {
           </Form.Item>
         </Col> */}
       </Row>
-      <Form.Item wrapperCol={{ offset: 5, span: 7 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+      <Form.Item label=" " colon={false}>
+        <Space>
+          <Button danger onClick={event => history.goBack()}>
+            Cancel
+          </Button>
+          <Button type="danger" htmlType="Submit">
+            Submit
+          </Button>
+        </Space>
       </Form.Item>
     </Form>
   );

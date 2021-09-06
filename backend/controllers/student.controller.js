@@ -2,8 +2,6 @@ const Student = require("../models/student.model");
 
 exports.create = async (req, res) => {
   const newStudent = new Student(req.body);
-  // console.log(newStudent);
-
   try {
     const data = await newStudent.save();
     res.status(201).send({ status: "success", message: 'Student Registration Successful', user: data });
@@ -30,7 +28,7 @@ exports.findEnrolledStudents = async (req, res) => {
   }
 };
 
-exports.findOnById = async (req, res) => {
+exports.findOneById = async (req, res) => {
   const { studentid } = req.params;
 
   try {
@@ -46,7 +44,6 @@ exports.findOnById = async (req, res) => {
 
 exports.update = async (req, res) => {
   const { studentid } = req.params;
-
   try {
     const updatedStudent = await Student.findByIdAndUpdate(
       studentid,
@@ -55,8 +52,7 @@ exports.update = async (req, res) => {
         new: true,
       }
     );
-
-    res.status(203).send(updatedStudent);
+    res.status(203).send({ status: true, message: "student record updated", updatedStudent });
   } catch (error) {
     res.status(500).send("Error retriving student");
   }
@@ -74,7 +70,6 @@ exports.delete = async (req, res) => {
         message: "student not found with id ${studentid}",
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: "Internal server error.",
     });
@@ -83,7 +78,6 @@ exports.delete = async (req, res) => {
 
 exports.getStudent = async (req, res) => {
   const { username } = req.body;
-  console.log(username)
   try {
     const user = await Student.findOne({ "username": username }).exec();
     if (!user) {

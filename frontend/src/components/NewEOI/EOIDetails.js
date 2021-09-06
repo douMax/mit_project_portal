@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
 import { Row, Form, Input, Space, Button } from "antd";
 import { COLORS } from "../../utils/APP_CONSTANTS";
-
-import { EOIContext } from "../../contexts/EOIContext";
-import { UserContext } from "../../contexts/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+import { createEOI, updateStudentData } from "../../redux/authRedux/actions";
 
 const { TextArea } = Input;
 
@@ -16,21 +14,14 @@ const formStyle = {
   paddingBottom: 10,
 };
 
-const formLeftStyle = {
-  width: 628,
-  paddingLeft: 10,
-  paddingRight: 10,
-};
-
 const formRightStyle = {
-  width: 629,
-  paddingLeft: 10,
-  paddingRight: 10,
+  marginLeft: 100,
+  width: "100%"
 };
 
 const textAreaStyle = {
   border: `0.5px ${COLORS.PrimaryRed} solid`,
-  borderRadius: "5px",
+  margin: '10px'
 };
 
 const buttonStyle = {
@@ -43,35 +34,38 @@ const SectionDescription = styled.h1`
   padding-right: 5px;
 `;
 
-const EOIDetails = () => {
-  const location = useLocation();
-  const project = location.state;
-  const [eois, setEOIs] = useContext(EOIContext);
-  const [user] = useContext(UserContext);
-  const newEOI = () => {
-    const id = (eois.length + 1).toString();
-    const projId = project.projId;
-    const userId = user.userId;
-    const eoi_sub_date = new Date();
+const EOIDetails = ({ project }) => {
+  const { user } = useSelector(state => state.auth);
+  const { _id, username } = user;
+  const dispatch = useDispatch();
+
+  const eoi_sub_date = new Date();
+
+  const handleSubmit = async () => {
+
     const interest = document.getElementById("interest").value;
-    const achieve = document.getElementById("achieve").value;
+    const achievement = document.getElementById("achieve").value;
     const experience = document.getElementById("experience").value;
-    const neweoi = {
-      id: id,
-      projId: projId,
-      userId: userId,
-      eoi_sub_date: eoi_sub_date,
+
+    const EOI = {
+      project_id: project?._id,
+      user_id: _id,
       interest: interest,
-      achieve: achieve,
+      achievement: achievement,
       experience: experience,
     };
-    setEOIs((prevEOIs) => [...prevEOIs, neweoi]);
-  };
+
+    console.log("eoi submitted", EOI)
+    const payload = { eoi: [...user.eoi, { ...project, interest, achievement, experience }] };
+    await dispatch(updateStudentData(payload, _id, username));
+    await dispatch(createEOI(EOI));
+  }
+
   return (
     <Row>
       <Form style={formStyle}>
         <Space>
-          <Form.Item style={formLeftStyle}>
+          <Form.Item>
             <SectionDescription>
               Write between 300 and 500 words why you are interested in this
               project.
@@ -79,11 +73,10 @@ const EOIDetails = () => {
             <TextArea
               id="interest"
               style={textAreaStyle}
-              minLength={300}
               maxLength={500}
               showCount
-              rows={11}
-            ></TextArea>
+              rows={16}
+            />
           </Form.Item>
           <Form.Item style={formRightStyle}>
             <SectionDescription>
@@ -94,7 +87,7 @@ const EOIDetails = () => {
               style={textAreaStyle}
               maxLength={300}
               showCount
-              rows={4}
+              rows={6}
             ></TextArea>
             <SectionDescription>
               Do you have any previous experience relevant to the project?
@@ -104,11 +97,11 @@ const EOIDetails = () => {
               style={textAreaStyle}
               maxLength={300}
               showCount
-              rows={4}
+              rows={6}
             ></TextArea>
           </Form.Item>
         </Space>
-        <Button style={buttonStyle} type="primary" danger onClick={newEOI}>
+        <Button style={buttonStyle} type="primary" danger onClick={handleSubmit}>
           Submit EOI
         </Button>
       </Form>

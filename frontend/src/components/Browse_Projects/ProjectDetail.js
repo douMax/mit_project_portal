@@ -20,10 +20,10 @@ const sectionCardStyle = {
   borderRadius: "5px",
 };
 
-const ProjectDetail = ({ selectedproject }) => {
+const ProjectDetail = ({ selectedproject, controls }) => {
 
   const { auth_user } = useSelector(state => state.auth);
-  console.log(auth_user);
+  console.log(auth_user, controls);
   const {
     title,
     topics,
@@ -61,7 +61,7 @@ const ProjectDetail = ({ selectedproject }) => {
           <Card style={sectionCardStyle}>{resources}</Card>
           <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
           <Card style={sectionCardStyle}>{objectives}</Card>
-          {(auth_user?.role === "student") && (<ProjectDetButtons project={selectedproject} />)}
+          {(auth_user?.role === "student" && controls) && (<ProjectDetButtons project={selectedproject} />)}
         </Col>
       </Row>
     </Row>

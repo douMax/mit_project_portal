@@ -28,6 +28,7 @@ exports.findActiveProjects = async (req, res) => {
   try {
     let activeProjects = await Project.find({ status: ["open"] });
     //TODO: append eoisReceived, group etc.
+    console.log(activeProjects)
     const data = await Promise.all(
       activeProjects.map(async function (project) {
         let topics = [];

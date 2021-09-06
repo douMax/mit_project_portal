@@ -25,7 +25,6 @@ const projectSchema = new Schema(
     },
     year: {
       type: String,
-      default: "2021"
     },
     trimester: {
       type: String,

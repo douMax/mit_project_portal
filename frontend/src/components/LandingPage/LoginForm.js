@@ -29,7 +29,7 @@ const LoginForm = (props) => {
       console.log(is_first_time_visited)
       if (props.userType === "student") {
         if (!is_first_time_visited) {
-          history.push("/my-projects");
+          history.push("/student/my-projects");
         }
         else history.push("/student-signup");
       }

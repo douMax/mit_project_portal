@@ -3,11 +3,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-import { history } from "react-router";
 
 import UserProjects from "./UserProjects";
 import UserProposals from "./UserProposals";
-import UserEOI from "./UserEOI";
 
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +26,7 @@ const PanelWrapper = styled.div`
 const MyProjects = () => {
   const { user, isLoading, auth_user } = useSelector(state => state.auth);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   console.log(user, "---------------user", auth_user)
 
@@ -40,7 +39,6 @@ const MyProjects = () => {
 
   const [myProjects, setMyProjects] = useState(null);
   const [myProposals, setMyProposals] = useState(null);
-  const dispatch = useDispatch();
 
   const projectsFilter = useCallback(() => {
     if (user) {
@@ -75,7 +73,7 @@ const MyProjects = () => {
           </PanelWrapper>
         </Col>
         <Col span={12}>
-          {user?.role === USERTYPES.INDUSTRY_CLIENT ? (
+          {auth_user?.role === USERTYPES.INDUSTRY_CLIENT ? (
             <PanelWrapper>
               <PageTitle>My Proposals</PageTitle>
               {myProposals?.map((project, index) => (
@@ -83,12 +81,8 @@ const MyProjects = () => {
               ))}
             </PanelWrapper>
           ) : (
-            <PanelWrapper>
-              <PageTitle>My EOIs</PageTitle>
-              {/* {eois?.map((eoi) => (
-              <UserEOI eoi={eoi} key={eoi._id} />
-            ))} */}
-            </PanelWrapper>
+            <>
+            </>
           )}
         </Col>
       </Row>)}
