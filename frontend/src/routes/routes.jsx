@@ -7,7 +7,8 @@ import MyProjects from "../components/MyProjects";
 import NewEOI from "../components/NewEOI";
 import NewProject from "../components/NewProject";
 import SignUpPage from "../components/SignupPage";
-import { Staff_Dashboard } from "../components/staff/Staff_Dashboard";
+import PrpDecision from "../components/staff/PrpDecision";
+import Staff_Dashboard from "../components/staff/Staff_Dashboard";
 import StudentDashboard from "../components/Student/StudentDashboard";
 
 
@@ -26,9 +27,7 @@ export const Routes = () => {
             <Route exact path="/client-signup">
                 <SignUpPage user={"client"} />
             </Route>
-            <Route exact path="/dashboard/staff-supervisor-dashboard" component={Staff_Dashboard} />
-            <Route exact path="/dashboard/staff-coordinator-dashboard" />
-            <Route exact path="/dashboard/staff-chair-prp-dashboard" />
+            <Route exact path="/dashboard/staff-dashboard" component={Staff_Dashboard} />
             <Route exact path="/dashboard/client-dashboard" component={MyProjects} />
             <Route exact path="/new-project" component={NewProject} />
             <Route exact path="/my-projects" component={MyProjects} />
@@ -36,6 +35,8 @@ export const Routes = () => {
             <Route exact path="/change-password" component={PasswordChange} />
             <Route exact path="/browse-projects" component={BrowseProjects} />
             <Route exact path="/projects/eoi/:id" component={NewEOI} />
+            <Route exact path="/prp-decision/:id" component={PrpDecision} />
+
         </Switch>
     )
 }

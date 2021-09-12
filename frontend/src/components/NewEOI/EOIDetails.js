@@ -38,7 +38,7 @@ const SectionDescription = styled.h1`
 
 const EOIDetails = ({ project }) => {
 
-  const { user } = useSelector(state => state.auth);
+  const { user, auth_user } = useSelector(state => state.auth);
   const { _id, username } = user;
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -59,14 +59,14 @@ const EOIDetails = ({ project }) => {
       experience: experience,
     };
 
-    console.log("eoi submitted", EOI)
+    console.log("eoi submitted", EOI, user)
     const payload = { eoi: [...user.eoi, { ...project, interest, achievement, experience }] };
     setIsSubmitted(true);
-    await dispatch(updateStudentData(payload, _id, username));
+    await dispatch(updateStudentData(payload, _id, username, auth_user?.role));
     await dispatch(createEOI(EOI));
 
     setTimeout(() => {
-      history.push("/student/my-projects");
+      auth_user?.role === "staff" ? history.push("/dashboard/staff-dashboard") : history.push("/student/my-projects");
     }, 2000);
   }
 

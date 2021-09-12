@@ -35,7 +35,7 @@ const LoginForm = (props) => {
       }
       if (props.userType === "staff") {
         if (!is_first_time_visited) {
-          history.push("/my-projects");
+          history.push("/dashboard/staff-dashboard");
         }
         else history.push("/staff-signup");
       }

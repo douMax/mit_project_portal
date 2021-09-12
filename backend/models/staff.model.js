@@ -13,14 +13,22 @@ const StaffSchema = new Schema(
       type: String,
       required: true
     },
-    mit_email: {
+    email: {
       type: String,
       required: [true, "email is required"],
     },
     phone: {
       type: Number
     },
-    staff_position: {
+    projects: {
+      type: Array,
+      default: []
+    },
+    eoi: {
+      type: Array,
+      default: []
+    },
+    position: {
       type: String,
       required: [true, "Staff position is required"],
     },

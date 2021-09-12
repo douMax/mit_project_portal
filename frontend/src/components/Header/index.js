@@ -22,12 +22,12 @@ const HeaderContainer = styled.header`
 
 const Header = (props) => {
   const { auth_user, user } = useSelector(state => state.auth)
-  console.log(props, auth_user, user)
+  // console.log(props, auth_user, user)
   const role = props.user || (auth_user?.role || user?.job_position);
   return (
     <HeaderContainer>
       <Logo />
-      {role === USERTYPES.STAFF && <StaffNavLinks />}
+      {role === USERTYPES.STAFF && <StaffNavLinks user={user} />}
       {role === USERTYPES.STUDENT && <StudentNavLinks />}
       {role === USERTYPES.CLIENT && <IndustryClientNavLinks />}
       {role && (<HeaderAvatar />)}

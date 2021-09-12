@@ -150,11 +150,11 @@ export const registerUser = (payload) => (dispatch) => {
         })
 }
 
-export const updateStudentData = (payload, id, username) => (dispatch) => {
-    console.log(payload, username, id)
+export const updateStudentData = (payload, id, username, role) => (dispatch) => {
+    console.log(payload, username, id, role, `http://localhost:5000/api/${role}s/${id}`);
     return axios({
         method: "PUT",
-        url: `http://localhost:5000/api/students/${id}`,
+        url: `http://localhost:5000/api/${role}s/${id}`,
         headers: {
             'Content-Type': "application/json"
         },
@@ -162,7 +162,7 @@ export const updateStudentData = (payload, id, username) => (dispatch) => {
     })
         .then((resp) => {
             if (resp.status) {
-                dispatch(getUserData(username, "student"));
+                dispatch(getUserData(username, role));
             }
         })
         .catch((err) => {
