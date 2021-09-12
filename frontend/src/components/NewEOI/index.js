@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 const NewEOI = () => {
   const location = useLocation();
   const project = location.state;
-  const { user } = useSelector(state => state.auth);
-  console.log(user)
+  const { user, auth_user } = useSelector(state => state.auth);
+  console.log(auth_user)
   return (
     <Row>
       <Col span={12}>

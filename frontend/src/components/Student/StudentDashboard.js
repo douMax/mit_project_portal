@@ -9,7 +9,7 @@ import ProjectDetail from "../Browse_Projects/ProjectDetail";
 import UserEOI from "../MyProjects/UserEOI";
 
 const PageTitle = styled.h1`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   width:100%;
 `;
@@ -35,7 +35,7 @@ const StudentDashboard = () => {
     const dispatch = useDispatch();
     const [selected, setSelected] = useState(null);
 
-    console.log(user)
+    console.log(user, auth_user)
     useEffect(() => {
         if (user === null) {
             dispatch(logoutUser());
@@ -50,6 +50,7 @@ const StudentDashboard = () => {
     return (
         <Row gutter={24}>
             <Col span={12}>
+                {(auth_user?.role === "staff") && (<><h1>Staff Dashboard  - {user?.position || ""}</h1></>)}
                 <PageTitle>My Projects</PageTitle>
                 <LeftPanelWrapper>
                     <Row>

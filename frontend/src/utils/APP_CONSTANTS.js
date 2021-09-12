@@ -13,11 +13,9 @@ export const COLORS = {
 };
 
 export const STAFF_JOB_POSITIONS = [
-  { label: "Professor", value: "Professor" },
-  { label: "Associate Prof", value: "Associate Prof" },
-  { label: "Lecturer", value: "Lecturer" },
-  { label: "Assistant Lecturer", value: "Assistant Lecturer" },
-  { label: "Tutor", value: "Tutor" },
+  { label: "Supervisor", value: "Supervisor" },
+  { label: "Unit Coordinator", value: "Unit Coordinator" },
+  { label: "CPRP", value: "Chair Project Review Panel" },
 ];
 
 export const NAME_TITLES = [

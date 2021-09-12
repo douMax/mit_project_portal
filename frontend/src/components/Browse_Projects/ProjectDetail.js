@@ -22,7 +22,7 @@ const sectionCardStyle = {
 
 const ProjectDetail = ({ selectedproject, controls }) => {
 
-  const { auth_user } = useSelector(state => state.auth);
+  const { auth_user, user } = useSelector(state => state.auth);
   console.log(selectedproject);
   const {
     title,
@@ -62,6 +62,7 @@ const ProjectDetail = ({ selectedproject, controls }) => {
           <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
           <Card style={sectionCardStyle}>{objectives}</Card>
           {(auth_user?.role === "student" && controls) && (<ProjectDetButtons project={selectedproject} />)}
+          {(auth_user?.role === "staff" && (<ProjectDetButtons project={selectedproject} />))}
         </Col>
       </Row>
     </Row>

@@ -6,7 +6,7 @@ import ProfilePicUploader from "./ProfilePicUploader";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
 import { STAFF_JOB_POSITIONS, TEMP_TOPICS } from "../../utils/APP_CONSTANTS";
 import { NAME_TITLES } from "../../utils/APP_CONSTANTS";
-import { signupUser, updateUser } from "../../redux/authRedux/actions";
+import { registerUser, signupUser } from "../../redux/authRedux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -20,8 +20,9 @@ const StaffSignUp = () => {
 
   const handleFinish = async (payload) => {
     console.log(payload);
+    const { username, password } = payload;
 
-    await dispatch(updateUser({ is_first_time_visited: false }, _id));
+    await dispatch(registerUser({ username, role: "staff", is_first_time_visited: false, password: password }));
     await dispatch(signupUser(payload, "staff"));
     await setIsRegister(true);
 
@@ -30,7 +31,7 @@ const StaffSignUp = () => {
   useEffect(() => {
     if (isRegister) {
       var timer = setTimeout(() => {
-        history.push("/my-projects");
+        history.push("/");
       }, 3000);
     }
 
@@ -78,7 +79,7 @@ const StaffSignUp = () => {
             ]}>
             <Input />
           </Form.Item>
-          <Form.Item label="Job Position" name="staff_position"
+          <Form.Item label="Job Position" name="position"
             rules={[
               {
                 required: true,
@@ -87,7 +88,7 @@ const StaffSignUp = () => {
             ]}>
             <Select options={STAFF_JOB_POSITIONS} />
           </Form.Item>
-          <Form.Item label="MIT Email Address" name="mit_email"
+          <Form.Item label="MIT Email Address" name="email"
             rules={[
               {
                 required: true,
@@ -95,6 +96,15 @@ const StaffSignUp = () => {
               },
             ]}>
             <Input />
+          </Form.Item>
+          <Form.Item label="Create your own password" name="password"
+            rules={[
+              {
+                required: true,
+                message: "Field Required",
+              },
+            ]}>
+            <Input.Password />
           </Form.Item>
           <Form.Item label="Mobile Phone Number" name="phone"
             rules={[
