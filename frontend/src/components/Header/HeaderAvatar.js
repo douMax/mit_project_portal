@@ -58,9 +58,9 @@ const HeaderAvatar = () => {
             <Avatar style={{ backgroundColor: "#87d068", cursor: "pointer" }} icon={<UserOutlined />} />
           </Dropdown>
           {user && (<Title level={5}>{` ${user?.first_name} ${user?.last_name} `}</Title>)}
-          <Badge overflowCount={9} count={5}>
+          {/* <Badge overflowCount={9} count={5}>
             <NotificationsDrawer />
-          </Badge>
+          </Badge> */}
         </Space>
       </span>
     </div>

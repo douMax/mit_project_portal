@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row, Col, Empty } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { logoutUser } from "../../redux/authRedux/actions";
+import { getUserProjectsData, logoutUser, getUserEOIData } from "../../redux/authRedux/actions";
 import ProjectListDetail from "../Browse_Projects/ProjectListDetail";
 import ProjectDetail from "../Browse_Projects/ProjectDetail";
 import UserEOI from "../MyProjects/UserEOI";
@@ -30,17 +30,30 @@ const LeftPanelWrapper = styled.div`
 `;
 
 const StudentDashboard = () => {
-    const { user, auth_user } = useSelector(state => state.auth);
+    const { user, auth_user, projects, eoi } = useSelector(state => state.auth);
     const history = useHistory();
     const dispatch = useDispatch();
     const [selected, setSelected] = useState(null);
 
-    console.log(user, auth_user)
+    const { _id } = user;
+
+    console.log(projects)
     useEffect(() => {
         if (user === null) {
             dispatch(logoutUser());
             history.push("/")
         }
+    }, []);
+
+    const getNewData = useCallback(() => {
+        if (user) {
+            dispatch(getUserProjectsData({ "assigned": _id }));
+            dispatch(getUserEOIData({ "eoi.userId": _id }));
+        }
+    }, [user]);
+
+    useEffect(() => {
+        getNewData();
     }, []);
 
     const handleShowDetail = (selectedproject) => {
@@ -55,7 +68,7 @@ const StudentDashboard = () => {
                 <LeftPanelWrapper>
                     <Row>
                         {/* <SearchNSort /> */}
-                        {user?.projects.map((project) => (
+                        {projects?.map((project) => (
                             <ProjectListDetail
                                 key={project._id}
                                 isSelected={project._id === (selected && selected._id)}
@@ -70,7 +83,7 @@ const StudentDashboard = () => {
                 <PageTitle>My EOI</PageTitle>
                 <LeftPanelWrapper>
                     <Row>
-                        {user?.eoi.map((eoi) => (
+                        {eoi?.map((eoi) => (
                             <UserEOI key={eoi._id} eoi={eoi} />
                         ))}
                     </Row>

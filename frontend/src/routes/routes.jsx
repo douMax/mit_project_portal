@@ -10,7 +10,7 @@ import SignUpPage from "../components/SignupPage";
 import PrpDecision from "../components/staff/PrpDecision";
 import Staff_Dashboard from "../components/staff/Staff_Dashboard";
 import StudentDashboard from "../components/Student/StudentDashboard";
-
+import AllocationComponent from "../components/staff/AllocationComponent";
 
 export const Routes = () => {
     return (
@@ -36,7 +36,7 @@ export const Routes = () => {
             <Route exact path="/browse-projects" component={BrowseProjects} />
             <Route exact path="/projects/eoi/:id" component={NewEOI} />
             <Route exact path="/prp-decision/:id" component={PrpDecision} />
-
+            <Route exact path="/unit-coordinator/projects_allocation/:id" component={AllocationComponent} />
         </Switch>
     )
 }

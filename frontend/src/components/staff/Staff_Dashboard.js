@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { Row, Col, Empty } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { logoutUser } from "../../redux/authRedux/actions";
+import { getUserProjectsData, logoutUser, getUserEOIData, getApprovedProjectsData } from "../../redux/authRedux/actions";
 import ProjectListDetail from "../Browse_Projects/ProjectListDetail";
 import ProjectDetail from "../Browse_Projects/ProjectDetail";
 import UserEOI from "../MyProjects/UserEOI";
+import { fetchInactiveProjects } from "../../actions/projects";
+import AllocationComponent from "./AllocationComponent";
 
 const PageTitle = styled.h1`
   font-size: 18px;
@@ -30,12 +32,14 @@ const LeftPanelWrapper = styled.div`
 `;
 
 const Staff_Dashboard = () => {
-    const { user, auth_user } = useSelector(state => state.auth);
+    const { user, auth_user, projects, eoi, approved_projects } = useSelector(state => state.auth);
     const history = useHistory();
     const dispatch = useDispatch();
     const [selected, setSelected] = useState(null);
+    const { _id } = user;
+    const { role } = auth_user;
+    const [pendingProjects, setPendingProjects] = useState(null);
 
-    console.log(user, auth_user)
     useEffect(() => {
         if (user === null) {
             dispatch(logoutUser());
@@ -47,6 +51,34 @@ const Staff_Dashboard = () => {
         setSelected(selectedproject);
     };
 
+    const getNewData = useCallback(async () => {
+        if (user) {
+            if (role === "student") {
+                await dispatch(getUserProjectsData({ "assigned.userId": _id }));
+                await dispatch(getUserEOIData({ "eoi.userId": _id }));
+            }
+            else if (role === "staff") {
+                await dispatch(getUserProjectsData({ "supervisorId": _id }));
+                await dispatch(getUserEOIData({ "supervisorEOI.userId": _id }));
+            }
+        }
+    }, [user]);
+
+    useEffect(async () => {
+        await getNewData();
+        await getProjects();
+    }, []);
+
+    useEffect(async () => {
+        const data = await fetchInactiveProjects();
+        setPendingProjects(data.projects);
+    }, [user]);
+
+    const getProjects = useCallback(() => {
+        dispatch(getApprovedProjectsData());
+    }, [approved_projects])
+
+    console.log(approved_projects, "approved_projects")
     return (
         <>
             {(user?.position === "Supervisor") && (<>
@@ -57,7 +89,7 @@ const Staff_Dashboard = () => {
                         <LeftPanelWrapper>
                             <Row>
                                 {/* <SearchNSort /> */}
-                                {user?.projects.map((project) => (
+                                {projects?.map((project) => (
                                     <ProjectListDetail
                                         key={project._id}
                                         isSelected={project._id === (selected && selected._id)}
@@ -72,7 +104,7 @@ const Staff_Dashboard = () => {
                         <PageTitle>My EOI</PageTitle>
                         <LeftPanelWrapper>
                             <Row>
-                                {user?.eoi.map((eoi) => (
+                                {eoi?.map((eoi) => (
                                     <UserEOI key={eoi._id} eoi={eoi} />
                                 ))}
                             </Row>
@@ -91,47 +123,67 @@ const Staff_Dashboard = () => {
             </>)}
             {(user?.position === "Unit Coordinator") && (<>
                 <Row gutter={24}>
-                    <Col span={12}>
-                        <h1>Staff Dashboard  - {user?.position || ""}</h1>
-                        <PageTitle>Approved Project Proposals</PageTitle>
+                    <h1>Staff Dashboard  - {user?.position || ""}</h1>
+                    <PageTitle>Approved Project Proposals</PageTitle>
+                    <Col span={24} style={{ maxHeight: "80vh", overflowY: "auto" }}>
+                        {approved_projects && approved_projects?.map((project) => (
+                            <ProjectListDetail
+                                key={project._id}
+                                isSelected={project._id === (selected && selected._id)}
+                                project={project}
+                                handleShowDetail={() => {
+                                    handleShowDetail(project);
+                                }}
+                            />
+                        ))}
                     </Col>
-                    <Col span={12}>
+                    {/* <Col span={12}>
                         <PageTitle>Allocate groups</PageTitle>
-                    </Col>
-                </Row>
-            </>)}
-            {(user?.position === "Chair Project Review Panel") && (<>
-                <Row gutter={24}>
-                    <Col span={12}>
-                        <h1>Staff Dashboard  - {user?.position || ""}</h1>
-                        <PageTitle> Project Proposal Requests</PageTitle>
                         <>
-                            <Row>
-                                {/* <SearchNSort /> */}
-                                {user?.projects.map((project) => (
-                                    <ProjectListDetail
-                                        key={project._id}
-                                        isSelected={project._id === (selected && selected._id)}
-                                        project={project}
-                                        handleShowDetail={() => {
-                                            handleShowDetail(project);
-                                        }}
-                                    />
-                                ))}
-                            </Row>
-                        </>
-                    </Col>
-                    <Col span={12}>
-                        <RightPanelWrapper>
                             {selected ? (
-                                <ProjectDetail selectedproject={selected} controls={false} />
+                                <AllocationComponent selectedProject={selected} />
                             ) : (
                                 <Empty description="No project selected" />
                             )}
-                        </RightPanelWrapper>
-                    </Col>
+                        </>
+                    </Col> */}
                 </Row>
-            </>)}
+            </>)
+            }
+            {
+                (user?.position === "Chair Project Review Panel") && (<>
+                    <Row gutter={24}>
+                        <Col span={12}>
+                            <h1>Staff Dashboard  - {user?.position || ""}</h1>
+                            <PageTitle> Project Proposal Requests</PageTitle>
+                            <>
+                                <Row>
+                                    {/* <SearchNSort /> */}
+                                    {pendingProjects?.map((project) => (
+                                        <ProjectListDetail
+                                            key={project._id}
+                                            isSelected={project._id === (selected && selected._id)}
+                                            project={project}
+                                            handleShowDetail={() => {
+                                                handleShowDetail(project);
+                                            }}
+                                        />
+                                    ))}
+                                </Row>
+                            </>
+                        </Col>
+                        <Col span={12}>
+                            <RightPanelWrapper>
+                                {selected ? (
+                                    <ProjectDetail selectedproject={selected} controls={false} />
+                                ) : (
+                                    <Empty description="No project selected" />
+                                )}
+                            </RightPanelWrapper>
+                        </Col>
+                    </Row>
+                </>)
+            }
         </>
     );
 }

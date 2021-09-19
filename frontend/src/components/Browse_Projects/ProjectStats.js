@@ -6,23 +6,20 @@ import { Button, Space } from "antd";
 
 const ProjectStats = (projstats) => {
   console.log(projstats)
+  const { assigned_students, eoi, status, trimester, year } = projstats;
   return (
     <Space>
       <Button type="text" style={{ background: "turquoise", color: "white" }}>
-        {projstats.status}
+        {status || ""}
       </Button>
       <Button type="text">
-        {projstats.year} - {projstats.trimester}
+        {year || "2021"} - {trimester || ""}
       </Button>
       <Button type="text">
-        {/* Group:{" "}
-        {projstats.assigned_students !== "undefined" &&
-          projstats.assigned_students | "0"}
-        /5 */}
-        {"Group: " + projstats.assigned_students}
+        {"Group: " + (assigned_students || 0) + "/5"}
       </Button>
       <Button type="text">
-        EOIs: {projstats.eoi?.length || "0"}
+        EOIs: {eoi || 0}
       </Button>
     </Space>
   );

@@ -1,14 +1,14 @@
 import React from "react";
 import { Row, Col, Card, Button } from "antd";
-
+import { useSelector } from "react-redux";
 import TopicsHeader from "./TopicsHeader";
 import ProjectTitle from "./ProjectTitle";
 import ProjectDescription from "./ProjectDescription";
 import ProjectStats from "./ProjectStats";
 import ClientInfo from "./ClientInfo";
+import { Link } from "react-router-dom";
 
 const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
-  console.log(project)
   const {
     _id,
     projectTitle,
@@ -22,7 +22,7 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
     clientName,
     clientLogo,
   } = project;
-
+  const { user } = useSelector((state) => state.auth)
   return (
     <Card
       style={{ marginBottom: "15px", border: isSelected && "3px solid red", width: "100%" }}
@@ -42,13 +42,24 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
             assigned_students={assigned.length}
             eoi={eoi.length}
           />
-          <Button onClick={handleShowDetail}>view</Button>
+          {(user?.position === "Unit Coordinator") ? (
+            <Link
+              to={{
+                pathname: `/unit-coordinator/projects_allocation/${_id}`,
+                state: project,
+              }}>
+              <Button danger disabled={assigned.length === 5}>view</Button>
+            </Link>
+          ) : (
+            <Button onClick={handleShowDetail} type="danger">view</Button>
+
+          )}
         </Col>
         <Col span={6}>
           <ClientInfo clientName={clientName} logo={clientLogo} />
         </Col>
       </Row>
-    </Card>
+    </Card >
   );
 };
 

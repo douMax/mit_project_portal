@@ -9,7 +9,7 @@ import ProposalStatusDetail from "./ProposalStatusDetail";
 import ProjectDetail from "../Browse_Projects/ProjectDetail";
 
 const UserProposals = ({ proposal }) => {
-  console.log(proposal);
+  // console.log(proposal);
   const { title, status, resources, topics, background, eoi, group, location, objectives, other } = proposal;
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
 
