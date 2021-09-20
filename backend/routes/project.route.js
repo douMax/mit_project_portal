@@ -1,18 +1,20 @@
 const router = require("express").Router();
 const projectController = require("../controllers/project.controller");
 
-// checkAuth, router,
-
-// router.use(checkAccessLevel, (req, res) => {
-
-// })
-
 router
   .route("/api/projects")
   .get(projectController.findProjects)
   .post(projectController.create);
 
 router.route("/api/projects/active").get(projectController.findActiveProjects);
+
+router.route("/api/client/projects").post(projectController.findClientProjects);
+
+router.route("/api/user/projects").post(projectController.findUserProjects);
+
+router.route("/api/user/eoi/projects").post(projectController.findUserEOI);
+
+router.route("/api/update/projects/:id").put(projectController.update);
 
 router
   .route("/api/projects/inactive")
@@ -21,7 +23,6 @@ router
 router
   .route("/api/projects/:projectId")
   .get(projectController.findById)
-  .put(projectController.update);
 
 router
   .route("/api/projects/:id/topics")

@@ -23,7 +23,6 @@ const sectionCardStyle = {
 const ProjectDetail = ({ selectedproject, controls }) => {
 
   const { auth_user, user } = useSelector(state => state.auth);
-  console.log(selectedproject);
   const {
     title,
     topics,

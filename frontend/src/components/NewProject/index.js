@@ -23,7 +23,7 @@ import ProjectOption from "./Option";
 import InternshipOption from "./InternshipOption";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewProject } from "../../redux/clientRedux/actions";
+import { addNewProject, getClientProjectsData } from "../../redux/clientRedux/actions";
 import { useHistory } from "react-router-dom";
 import { addProject } from "../../actions/projects";
 
@@ -40,10 +40,10 @@ const NewProject = () => {
 
     const { _id, username } = user;
     const newPayload = { ...values, status: "pending", clientId: _id, year: "2021", assigned: [], eoi: [] };
-    const payload = [...user.projects, newPayload];
+    // const payload = [...user.projects, newPayload];
     // console.log(payload, newPayload);
     await addProject(newPayload);
-    await dispatch(addNewProject(_id, payload, username, "client"));
+    await dispatch(getClientProjectsData(_id));
     setIsSubmitted(true);
 
     setTimeout(() => {

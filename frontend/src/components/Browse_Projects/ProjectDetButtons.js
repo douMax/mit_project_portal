@@ -10,13 +10,13 @@ const ProjectDetButtons = ({ project }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(auth_user, project, user)
+  console.log(user, project)
   const { username, _id } = user;
 
   const saveProject = async () => {
     const payload = { projects: [...user.projects, project] };
-    await dispatch(updateStudentData(payload, _id, username));
-    await alert("Saved Project Successfully");
+    // await dispatch(updateStudentData(payload, _id, username));
+    // await alert("Saved Project Successfully");
 
     setTimeout(() => {
       history.goBack();
@@ -37,28 +37,24 @@ const ProjectDetButtons = ({ project }) => {
           Save Project
         </Button>
       )}
-      {auth_user?.role !== "industry_client" &&
-        // project.status !== "pending" &&
-        user?.position === "Supervisor" &&
-        auth_user?.role === "staff" || "student" &&
-        project.status === "open" && (
-          <Link
-            to={{
-              pathname: `/projects/eoi/${project._id}/`,
-              state: project,
+      {((auth_user?.role === "staff" && user?.position === "Supervisor" && project.supervisorId === null) || auth_user?.role === "student") && project.status === "open" && (
+        <Link
+          to={{
+            pathname: `/projects/eoi/${project._id}/`,
+            state: project,
+          }}
+        >
+          <Button
+            style={{
+              fontWeight: "bold",
+              borderColor: "red",
             }}
+            type="danger"
           >
-            <Button
-              style={{
-                fontWeight: "bold",
-                borderColor: "red",
-              }}
-              type="danger"
-            >
-              Express Interest
-            </Button>
-          </Link>
-        )}
+            Express Interest
+          </Button>
+        </Link>
+      )}
       {auth_user?.role === "staff" && user?.position === "Chair Project Review Panel" &&
         (project.status === "pending" || project.status === "cr") && (
           <Link

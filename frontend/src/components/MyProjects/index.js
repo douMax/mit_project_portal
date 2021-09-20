@@ -10,6 +10,7 @@ import UserProposals from "./UserProposals";
 import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData, logoutUser } from "../../redux/authRedux/actions";
+import { getClientProjectsData } from "../../redux/clientRedux/actions";
 import { Redirect, useHistory } from "react-router-dom";
 import { Header } from "antd/lib/layout/layout";
 
@@ -24,11 +25,12 @@ const PanelWrapper = styled.div`
 `;
 
 const MyProjects = () => {
-  const { user, isLoading, auth_user } = useSelector(state => state.auth);
+  const { user, isLoading, auth_user, projects } = useSelector(state => state.auth);
   const history = useHistory();
   const dispatch = useDispatch();
 
-  console.log(user, "---------------user", auth_user)
+  const { _id } = user;
+  console.log(projects);
 
   useEffect(() => {
     if (user === null) {
@@ -41,9 +43,8 @@ const MyProjects = () => {
   const [myProposals, setMyProposals] = useState(null);
 
   const projectsFilter = useCallback(() => {
-    if (user) {
-      const { projects } = user;
-      console.log(projects)
+    if (user && projects) {
+      // console.log(projects)
       const filteredProjects = projects?.filter(item => item.status === "open");
       setMyProjects(filteredProjects);
       const filteredProposals = projects?.filter(item => item.status === "pending" || item.status === "rejected");
@@ -53,15 +54,18 @@ const MyProjects = () => {
 
   const getNewData = useCallback(() => {
     if (user) {
-      dispatch(getUserData(user.username, auth_user?.role));
+      // dispatch(getUserData(user.username, auth_user?.role));
+      dispatch(getClientProjectsData(_id));
     }
-  }, [user, auth_user]);
+  }, [user]);
 
   useEffect(() => {
     projectsFilter();
     getNewData();
 
   }, []);
+
+  console.log(myProposals, myProjects)
   return (
     <div style={{ height: "80vh" }}>
       {(user && user.projects) && (<Row gutter={24}>

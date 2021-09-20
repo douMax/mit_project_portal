@@ -10,7 +10,7 @@ import ProjectDetail from "../Browse_Projects/ProjectDetail";
 
 const UserProjects = ({ project }) => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-  const { title, status, resources, topics, background, eoi, group, location, objectives, other } = project;
+  const { title, status, resources, topics, background, eoi, assigned, trimester, year, location, objectives, other } = project;
 
   const showDrawer = () => {
     setIsDrawerVisible(true);
@@ -19,7 +19,7 @@ const UserProjects = ({ project }) => {
     setIsDrawerVisible(false);
   };
 
-  console.log(project, "hello");
+  // console.log(project, "hello");
   return (
     <Card
       style={{ marginBottom: "15px" }}
@@ -34,10 +34,10 @@ const UserProjects = ({ project }) => {
           <ProjectDescription description={background} />
           <ProjectStats
             status={status}
-            year={"2021"}
-            trimester={"T2"}
-            assigned_students={group}
-            eoi={eoi}
+            year={year}
+            trimester={trimester}
+            assigned_students={assigned.length}
+            eoi={eoi.length}
           />
         </Col>
         <Col span={6}>

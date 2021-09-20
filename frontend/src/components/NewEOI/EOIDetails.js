@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row, Form, Input, Space, Button } from "antd";
 import { COLORS } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
-import { createEOI, updateStudentData } from "../../redux/authRedux/actions";
+import { createEOI, submitUserEOI, updateStudentData } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router";
 import { CheckCircleTwoTone } from '@ant-design/icons';
 
@@ -36,14 +36,19 @@ const SectionDescription = styled.h1`
   padding-right: 5px;
 `;
 
-const EOIDetails = ({ project }) => {
+const EOIDetails = ({ project, eoiItem }) => {
 
   const { user, auth_user } = useSelector(state => state.auth);
   const { _id, username } = user;
+  const { role } = auth_user;
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const { eoi, supervisorEOI } = project;
+
+  console.log(role)
 
   const handleSubmit = async () => {
 
@@ -59,11 +64,18 @@ const EOIDetails = ({ project }) => {
       experience: experience,
     };
 
-    console.log("eoi submitted", EOI, user)
-    const payload = { eoi: [...user.eoi, { ...project, interest, achievement, experience }] };
+    // const payload = { eoi: [...user.eoi, { ...project, interest, achievement, experience }] };
     setIsSubmitted(true);
-    await dispatch(updateStudentData(payload, _id, username, auth_user?.role));
-    await dispatch(createEOI(EOI));
+    // await dispatch(updateStudentData(payload, _id, username, auth_user?.role));
+    // await dispatch(createEOI(EOI));
+    if (role === "student") {
+      const payload = { eoi: [...eoi, { userId: _id, username }] };
+      await dispatch(submitUserEOI(payload, project?._id, _id, role))
+    }
+    else if (role === "staff") {
+      const payload = { supervisorEOI: [...supervisorEOI, { userId: _id, username }] };
+      await dispatch(submitUserEOI(payload, project?._id, _id, role))
+    }
 
     setTimeout(() => {
       auth_user?.role === "staff" ? history.push("/dashboard/staff-dashboard") : history.push("/student/my-projects");
@@ -112,7 +124,7 @@ const EOIDetails = ({ project }) => {
                 ></TextArea>
               </Form.Item>
             </Space>
-            <Button style={buttonStyle} type="primary" danger onClick={handleSubmit} disabled={user?.eoi.length >= 3}>
+            <Button style={buttonStyle} type="primary" danger onClick={handleSubmit} disabled={eoiItem?.length >= 3}>
               Submit EOI
             </Button>
           </Form>

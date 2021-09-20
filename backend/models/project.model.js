@@ -31,26 +31,29 @@ const projectSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["open", "rejected", "pending", "closed", "assigned"],
+      enum: ["open", "rejected", "pending", "ongoing", "completed"],
     },
     topics: {
       type: [String],
     },
     assigned: {
-      type: [String],
+      type: [Object],
       default: []
     },
     eoi: {
-      type: [String],
+      type: [Object],
+      default: []
+    },
+    supervisorEOI: {
+      type: [Object],
       default: []
     },
     clientId: {
       type: Schema.Types.ObjectId,
       ref: "Client",
     },
-    staffId: {
-      type: Schema.Types.ObjectId,
-      ref: "Staff",
+    supervisorId: {
+      type: String
     },
     groupId: {
       type: Schema.Types.ObjectId,

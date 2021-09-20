@@ -4,7 +4,7 @@ const Project = require("../models/project.model");
 const Student = require("../models/student.model");
 
 exports.create = async (req, res) => {
-  const newapplication_records= new application_records(req.body);
+  const newapplication_records = new application_records(req.body);
 
   try {
     const data = await newapplication_records.save();
@@ -42,43 +42,43 @@ exports.findById = async (req, res) => {
   }
 };
 
-exports.update= async (req,res)  => {
-const {application_recordsId}=req.params
-try {
-  const updatedapplication_records= await Project.findByIdAndUpdate(application_recordsId,req.body,{
-    new:true,
-  })
-  res.status(203).send(updatedapplication_records);
-} catch (err) {
-  if(err.kind === "ObjectId") {
-    return res.status(404).send ({
-      message: 'Application not found with Id ${application_recordsId}',
-    });ectI
+exports.update = async (req, res) => {
+  const { application_recordsId } = req.params
+  try {
+    const updatedapplication_records = await Project.findByIdAndUpdate(application_recordsId, req.body, {
+      new: true,
+    })
+    res.status(203).send(updatedapplication_records);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
+        message: 'Application not found with Id ${application_recordsId}',
+      }); ectI
+    }
+    console.log(err);
+    return res.status(500).send({
+      message: 'Internal server error',
+    });
+
+
+
   }
-  console.log(err);
-  return res.status(500).send({
-    message:'Internal server error',
-  });
-
-
-  
-}
 };
 
-exports.delete = async(req,res) => {
-  const {application_recordId} =req.params
+exports.delete = async (req, res) => {
+  const { application_recordId } = req.params
   try {
     const application_record = await Project.findByIdAndRemove(application_recordId)
     return res.status(200).send("Application_record is deleted")
   } catch (err) {
-    if(err.kind === "ObjectId") {
-      return res.status(404).send ({
+    if (err.kind === "ObjectId") {
+      return res.status(404).send({
         message: 'Application not found with Id ${application_recordId}',
       });
     }
     console.log(err);
     return res.status(500).send({
-      message:'Internal server error',
+      message: 'Internal server error',
     });
   }
 }

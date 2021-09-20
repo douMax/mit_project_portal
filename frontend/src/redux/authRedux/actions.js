@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getClientProjects } from "../clientRedux/actions";
 
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
@@ -6,7 +7,18 @@ export const LOGOUT_USER = "LOGOUT_USER";
 
 export const SIGNUP_USER_SUCCESS = "SIGNUP_USER_SUCCESS";
 export const SIGNUP_USER_FAILURE = "SIGNUP_USER_FAILURE";
+export const GET_USER_EOI = "GET_USER_EOI";
+export const GET_APPROVED_PROJECTS = "GET_APPROVED_PROJECTS";
 
+export const getApprovedProjects = (payload) => ({
+    type: GET_APPROVED_PROJECTS,
+    payload
+});
+
+export const getUserEOI = (payload) => ({
+    type: GET_USER_EOI,
+    payload
+});
 
 export const loginUserSuccess = (payload) => ({
     type: LOGIN_USER_SUCCESS,
@@ -187,3 +199,78 @@ export const createEOI = (payload) => (dispatch) => {
         })
 }
 
+export const getUserProjectsData = (payload) => (dispatch) => {
+    return axios({
+        method: "POST",
+        url: "http://localhost:5000/api/user/projects",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        data: payload
+    })
+        .then((resp) => {
+            dispatch(getClientProjects(resp.data.projects));
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+export const getUserEOIData = (payload) => (dispatch) => {
+    console.log(payload)
+    return axios({
+        method: "POST",
+        url: "http://localhost:5000/api/user/eoi/projects",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        data: payload
+    })
+        .then((resp) => {
+            dispatch(getUserEOI(resp.data.projects))
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+export const submitUserEOI = (payload, projectId, userId, role) => (dispatch) => {
+    console.log(payload, projectId, userId, role)
+    return axios({
+        method: "PUT",
+        url: `http://localhost:5000/api/update/projects/${projectId}`,
+        headers: {
+            'Content-Type': "application/json"
+        },
+        data: payload
+    })
+        .then(async (resp) => {
+            if (role && role === "staff") {
+                await dispatch(getUserEOIData({ "supervisorEOI.userId": userId }));
+            }
+            else if (role && role === "student") {
+                await dispatch(getUserEOIData({ "eoi.userId": userId }));
+            }
+            else await console.log(resp)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+export const getApprovedProjectsData = () => (dispatch) => {
+    return axios({
+        method: "GET",
+        url: "http://localhost:5000/api/projects/active",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    })
+        .then((resp) => {
+            console.log(resp.data)
+            dispatch(getApprovedProjects(resp.data))
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
