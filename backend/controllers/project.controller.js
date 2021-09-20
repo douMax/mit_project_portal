@@ -54,6 +54,16 @@ exports.findActiveProjects = async (req, res) => {
   }
 };
 
+exports.fetchAllActiveProjects = async (req, res) => {
+  try {
+    const projects = await Project.find({ status: ['open', 'ongoing', 'completed'] });
+    res.status(200).send(projects);
+  }
+  catch (err) {
+    res.status(500).send("Error retriving projects");
+  }
+}
+
 //Finding only Inctive Projects
 exports.findInactiveProjects = async (req, res) => {
   try {
@@ -166,8 +176,7 @@ exports.findProjectTopics = async (req, res) => {
 
 exports.findClientProjects = async (req, res) => {
   const { clientId } = req.body;
-  console.log(clientId);
-  const projects = await Project.find({ clientId });
+  const projects = await Project.find({ clientId: clientId });
   if (projects) {
     res.status(200).send({ status: "success", projects })
   }

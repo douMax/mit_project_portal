@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getClientProjects } from "../clientRedux/actions";
 
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
@@ -9,6 +8,12 @@ export const SIGNUP_USER_SUCCESS = "SIGNUP_USER_SUCCESS";
 export const SIGNUP_USER_FAILURE = "SIGNUP_USER_FAILURE";
 export const GET_USER_EOI = "GET_USER_EOI";
 export const GET_APPROVED_PROJECTS = "GET_APPROVED_PROJECTS";
+export const GET_CLIENT_PROJECTS = "GET_CLIENT_PROJECTS";
+
+export const getClientProjects = (payload) => ({
+    type: GET_CLIENT_PROJECTS,
+    payload
+});
 
 export const getApprovedProjects = (payload) => ({
     type: GET_APPROVED_PROJECTS,
@@ -261,7 +266,7 @@ export const submitUserEOI = (payload, projectId, userId, role) => (dispatch) =>
 export const getApprovedProjectsData = () => (dispatch) => {
     return axios({
         method: "GET",
-        url: "http://localhost:5000/api/projects/active",
+        url: "http://localhost:5000/api/projects/all-active",
         headers: {
             'Content-Type': "application/json"
         }
@@ -269,6 +274,24 @@ export const getApprovedProjectsData = () => (dispatch) => {
         .then((resp) => {
             console.log(resp.data)
             dispatch(getApprovedProjects(resp.data))
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+export const getClientProjectsData = (payload) => (dispatch) => {
+    console.log(payload);
+    return axios({
+        method: "POST",
+        url: "http://localhost:5000/api/client/projects",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        data: { clientId: payload }
+    })
+        .then((resp) => {
+            dispatch(getClientProjects(resp.data.projects));
         })
         .catch((err) => {
             console.log(err);

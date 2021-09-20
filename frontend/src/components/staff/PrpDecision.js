@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { Row, Col, Card, Typography, Space, Button } from "antd";
 import { COLORS } from "../../utils/APP_CONSTANTS";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { submitUserEOI } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router";
 import { CheckCircleTwoTone } from '@ant-design/icons';
@@ -28,9 +28,10 @@ const PrpDecision = () => {
     const dispatch = useDispatch();
     const [submitted, setSubmitted] = useState(false);
     const history = useHistory();
+    const { user } = useSelector(state => state.auth);
 
-    console.log(project)
-    const { background, resources, objectives, title, _id } = project;
+    console.log(project, user)
+    const { background, resources, objectives, title, _id, eoi } = project;
     const { Title } = Typography;
 
     const handleApprove = async () => {
@@ -53,6 +54,26 @@ const PrpDecision = () => {
         }, 2000);
     }
 
+    const handleOngoing = async () => {
+        const payload = { "status": "ongoing" };
+        await dispatch(submitUserEOI(payload, _id));
+        setSubmitted(true);
+
+        setTimeout(() => {
+            history.goBack();
+        }, 2000);
+    }
+
+    const handleCompleted = async () => {
+        const payload = { "status": "completed" };
+        await dispatch(submitUserEOI(payload, _id));
+        setSubmitted(true);
+
+        setTimeout(() => {
+            history.goBack();
+        }, 2000);
+    }
+
     return (<>
         {!submitted ? (<>
             <div>
@@ -66,10 +87,17 @@ const PrpDecision = () => {
                         <Card style={sectionCardStyle}>{resources}</Card>
                         <SectionTitleWrapper>Project Goals and Objectives</SectionTitleWrapper>
                         <Card style={sectionCardStyle}>{objectives}</Card>
-                        <Space direction="horizontal" size="large" style={{ margin: "20px" }}>
-                            <Button type="primary" onClick={handleApprove}>Approve</Button>
-                            <Button type="danger" onClick={handleReject}>Reject</Button>
-                        </Space>
+                        {user?.position === "Supervisor" ? (
+                            <Space direction="horizontal" size="large" style={{ margin: "20px" }}>
+                                <Button type="primary" onClick={handleOngoing} disabled={eoi.length <= 5}>change status to Ongoing</Button>
+                                <Button type="danger" onClick={handleCompleted}>Change status to Completed</Button>
+                            </Space>
+                        ) : (
+                            <Space direction="horizontal" size="large" style={{ margin: "20px" }}>
+                                <Button type="primary" onClick={handleApprove} >Approve</Button>
+                                <Button type="danger" onClick={handleReject}>Reject</Button>
+                            </Space>
+                        )}
                     </Col>
                 </Row>
             </div>

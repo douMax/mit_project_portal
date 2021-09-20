@@ -17,7 +17,10 @@ border:"2px solid black";
 function createOptions(arr) {
     let studentOptions = [];
     arr.forEach((element, i) => {
-        var obj = { label: element, value: element };
+        var obj = {
+            label: element.username,
+            value: element.userId
+        };
         studentOptions[i] = obj;
         obj = {};
     });
@@ -51,17 +54,25 @@ const AllocationComponent = () => {
 
     const { Title } = Typography;
 
-    let studentsEOI = eoi.map(e => e.userId);
-    let students = [...new Set(studentsEOI)];
-    let filteredStudents = students.filter(val => !assigned.includes(val));
-    // console.log(filteredStudents, students)
+    let students = Array.from(new Set(eoi.map(item => item.userId))).map(item2 => {
+        return {
+            userId: item2,
+            username: eoi.find(item3 => item3.userId === item2).username
+        };
+    });
 
-    let supervisorsEOI = supervisorEOI.map(e => e.userId);
-    let supervisors = [...new Set(supervisorsEOI)];
+    let supervisors = Array.from(new Set(supervisorEOI.map(item => item.userId))).map(item2 => {
+        return {
+            userId: item2,
+            username: supervisorEOI.find(item3 => item3.userId === item2).username
+        };
+    });
 
-    let student_options = createOptions(filteredStudents);
+    let uniqueStudents = students.filter(item => !assigned.includes(item.userId));
+
+    let student_options = createOptions(uniqueStudents);
     let supervisor_options = createOptions(supervisors);
-
+    console.log(student_options, supervisor_options)
 
     const handleFinish = async (values) => {
         const { students, supervisor } = values;
@@ -111,12 +122,12 @@ const AllocationComponent = () => {
                         />
                     </Form.Item>
 
-                    <h2>Allocate Counsellor</h2>
+                    <h2>Allocate a Supervisor</h2>
                     <Form.Item name="supervisor">
                         <Select
                             style={{ width: "100%" }}
                             size="large"
-                            placeholder="select a counsellor"
+                            placeholder="select a supervisor"
                             disabled={supervisorId}
                             options={supervisor_options}
                         />

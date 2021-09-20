@@ -71,10 +71,12 @@ const EOIDetails = ({ project, eoiItem }) => {
     if (role === "student") {
       const payload = { eoi: [...eoi, { userId: _id, username }] };
       await dispatch(submitUserEOI(payload, project?._id, _id, role))
+      // console.log(payload)
     }
     else if (role === "staff") {
       const payload = { supervisorEOI: [...supervisorEOI, { userId: _id, username }] };
       await dispatch(submitUserEOI(payload, project?._id, _id, role))
+      // console.log(payload)
     }
 
     setTimeout(() => {

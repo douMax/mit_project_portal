@@ -42,7 +42,7 @@ export const TEMP_TOPICS = [
 export const LOCATIONS = [
   { label: "Sydney", value: "Sydney" },
   { label: "Melbourne", value: "Melbourne" },
-  { label: "any", value: "any" },
+  { label: "Online", value: "Online" },
 ];
 
 export const TRIMESTER = [

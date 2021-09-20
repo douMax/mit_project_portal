@@ -21,7 +21,6 @@ const HeaderAvatar = () => {
   const dispatch = useDispatch();
 
   const { user, auth_user } = useSelector(state => state.auth);
-  console.log("USER------------", user);
   const history = useHistory();
 
   const menu = (

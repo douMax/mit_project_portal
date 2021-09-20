@@ -48,10 +48,10 @@ const ProjectListDetail = ({ project, isSelected, handleShowDetail }) => {
                 pathname: `/unit-coordinator/projects_allocation/${_id}`,
                 state: project,
               }}>
-              <Button danger disabled={assigned.length === 5}>view</Button>
+              <Button type="danger" disabled={assigned.length === 5 || status === "ongoing"}>View and Allocate</Button>
             </Link>
           ) : (
-            <Button onClick={handleShowDetail} type="danger">view</Button>
+            <Button onClick={handleShowDetail} danger>view</Button>
 
           )}
         </Col>
