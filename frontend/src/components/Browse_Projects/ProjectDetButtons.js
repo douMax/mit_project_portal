@@ -13,15 +13,15 @@ const ProjectDetButtons = ({ project }) => {
   console.log(user, project)
   const { username, _id } = user;
 
-  const saveProject = async () => {
-    const payload = { projects: [...user.projects, project] };
-    // await dispatch(updateStudentData(payload, _id, username));
-    // await alert("Saved Project Successfully");
+  // const saveProject = async () => {
+  //   const payload = { projects: [...user.projects, project] };
+  //   // await dispatch(updateStudentData(payload, _id, username));
+  //   // await alert("Saved Project Successfully");
 
-    setTimeout(() => {
-      history.goBack();
-    }, 2000);
-  };
+  //   setTimeout(() => {
+  //     history.goBack();
+  //   }, 2000);
+  // };
 
   return (
     <Space style={{ paddingTop: 20 }}>

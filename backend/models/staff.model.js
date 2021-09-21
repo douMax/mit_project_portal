@@ -20,14 +20,6 @@ const StaffSchema = new Schema(
     phone: {
       type: Number
     },
-    projects: {
-      type: Array,
-      default: []
-    },
-    eoi: {
-      type: Array,
-      default: []
-    },
     position: {
       type: String,
       required: [true, "Staff position is required"],

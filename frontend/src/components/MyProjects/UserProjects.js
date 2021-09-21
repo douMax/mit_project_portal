@@ -44,7 +44,7 @@ const UserProjects = ({ project }) => {
             type="primary"
             danger
             onClick={showDrawer}
-            style={{ marginLeft: 50, marginTop: 105 }}
+            style={{ marginLeft: 30, marginTop: 70 }}
           >
             View
           </Button>

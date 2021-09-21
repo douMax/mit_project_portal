@@ -54,7 +54,7 @@ const Staff_Dashboard = () => {
     const [selected, setSelected] = useState(null);
     const { _id } = user;
     const { role } = auth_user;
-    const [pendingProjects, setPendingProjects] = useState(null);
+    const [pendingProjects, setPendingProjects] = useState([]);
 
     useEffect(() => {
         if (user === null) {
@@ -105,37 +105,44 @@ const Staff_Dashboard = () => {
                         <h1>Staff Dashboard  - {user?.position || ""}</h1>
                         <PageTitle>My Projects</PageTitle>
                         <LeftPanelWrapper>
-                            <Row>
-                                {/* <SearchNSort /> */}
-                                {projects?.map((project) => (
-                                    <ProjectListDetail
-                                        key={project._id}
-                                        isSelected={project._id === (selected && selected._id)}
-                                        project={project}
-                                        handleShowDetail={() => {
-                                            handleShowDetail(project);
-                                        }}
-                                    />
-                                ))}
-                            </Row>
+                            {projects.length > 0 ? (
+                                <Row>
+                                    {projects?.map((project) => (
+                                        <ProjectListDetail
+                                            key={project._id}
+                                            isSelected={project._id === (selected && selected._id)}
+                                            project={project}
+                                            handleShowDetail={() => {
+                                                handleShowDetail(project);
+                                            }}
+                                        />
+                                    ))}
+                                </Row>
+                            ) : (
+                                <Empty description="No projects data available" />
+                            )}
                         </LeftPanelWrapper>
                         <PageTitle>My EOI</PageTitle>
                         <LeftPanelWrapper>
-                            <Row>
-                                {eoi?.map((eoi) => (
-                                    <Card hoverable="true" style={{ width: "100%", border: "2px solid aqua", margin: "5px" }} key={eoi._id}>
-                                        <Row span={12}>
-                                            <Col span={18}>
-                                                <ProjectTitle title={eoi.title} />
-                                                <ProjectDescription description={eoi.interest} />
-                                            </Col>
-                                            <Col span={6}>
-                                                <ProposalStatusDetail status={(commonProjects.some(item => item._id === eoi._id)) ? "approved" : "rejected"} />
-                                            </Col>
-                                        </Row>
-                                    </Card>
-                                ))}
-                            </Row>
+                            {eoi.length > 0 ? (
+                                <Row>
+                                    {eoi?.map((eoi) => (
+                                        <Card hoverable="true" style={{ width: "100%", border: "2px solid aqua", margin: "5px" }} key={eoi._id}>
+                                            <Row span={12}>
+                                                <Col span={18}>
+                                                    <ProjectTitle title={eoi.title} />
+                                                    <ProjectDescription description={eoi.interest} />
+                                                </Col>
+                                                <Col span={6}>
+                                                    <ProposalStatusDetail status={(commonProjects.some(item => item._id === eoi._id)) ? (eoi?.status === "open") ? "approved" : (eoi?.status === "ongoing" || "completed") ? eoi?.status : "pending" : "pending"} />
+                                                </Col>
+                                            </Row>
+                                        </Card>
+                                    ))}
+                                </Row>
+                            ) : (
+                                <Empty description="No EOI data available" />
+                            )}
                         </LeftPanelWrapper>
                     </Col>
                     <Col span={12}>
@@ -163,15 +170,15 @@ const Staff_Dashboard = () => {
                                             <Card style={sectionCardStyle}>{selected?.objectives}</Card>
 
                                         </Col>
-                                        <Col style={{ margin: "20px" }}>
-                                            <Link to={{
-                                                pathname: `/staff/projects/change-status/${selected._id}`,
-                                                state: selected,
-                                            }}>
-                                                <Button type="danger">change status</Button>
-                                            </Link>
-                                        </Col>
                                     </Row>
+                                    <Col style={{ position: "relative", top: 10, left: 0 }}>
+                                        <Link to={{
+                                            pathname: `/staff/projects/change-status/${selected._id}`,
+                                            state: selected,
+                                        }}>
+                                            <Button type="danger">change status</Button>
+                                        </Link>
+                                    </Col>
                                 </Row>) : (
                                 <Empty description="No project selected" />
                             )}
@@ -183,18 +190,23 @@ const Staff_Dashboard = () => {
                 <Row gutter={24}>
                     <h1>Staff Dashboard  - {user?.position || ""}</h1>
                     <PageTitle>Approved Project Proposals</PageTitle>
-                    <Col span={24} style={{ maxHeight: "80vh", overflowY: "auto" }}>
-                        {approved_projects && approved_projects?.map((project) => (
-                            <ProjectListDetail
-                                key={project._id}
-                                isSelected={project._id === (selected && selected._id)}
-                                project={project}
-                                handleShowDetail={() => {
-                                    handleShowDetail(project);
-                                }}
-                            />
-                        ))}
-                    </Col>
+                    {approved_projects.length > 0 ? (
+                        <Col span={24} style={{ maxHeight: "80vh", overflowY: "auto" }}>
+                            {approved_projects && approved_projects?.map((project) => (
+                                <ProjectListDetail
+                                    key={project._id}
+                                    isSelected={project._id === (selected && selected._id)}
+                                    project={project}
+                                    handleShowDetail={() => {
+                                        handleShowDetail(project);
+                                    }}
+                                />
+                            ))}
+                        </Col>
+                    ) : (
+                        <Empty description="No data available" />
+
+                    )}
                 </Row>
             </>)
             }
@@ -204,21 +216,26 @@ const Staff_Dashboard = () => {
                         <Col span={12}>
                             <h1>Staff Dashboard  - {user?.position || ""}</h1>
                             <PageTitle> Project Proposal Requests</PageTitle>
-                            <>
-                                <Row>
-                                    {/* <SearchNSort /> */}
-                                    {pendingProjects?.map((project) => (
-                                        <ProjectListDetail
-                                            key={project._id}
-                                            isSelected={project._id === (selected && selected._id)}
-                                            project={project}
-                                            handleShowDetail={() => {
-                                                handleShowDetail(project);
-                                            }}
-                                        />
-                                    ))}
-                                </Row>
-                            </>
+                            {
+                                pendingProjects.length > 0 ? (
+                                    <Row>
+                                        {/* <SearchNSort /> */}
+                                        {pendingProjects?.map((project) => (
+                                            <ProjectListDetail
+                                                key={project._id}
+                                                isSelected={project._id === (selected && selected._id)}
+                                                project={project}
+                                                handleShowDetail={() => {
+                                                    handleShowDetail(project);
+                                                }}
+                                            />
+                                        ))}
+                                    </Row>
+                                ) : (
+                                    <Empty description="No data available" />
+
+                                )
+                            }
                         </Col>
                         <Col span={12}>
                             <RightPanelWrapper>
