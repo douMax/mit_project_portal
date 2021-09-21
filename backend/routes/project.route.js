@@ -8,6 +8,8 @@ router
 
 router.route("/api/projects/active").get(projectController.findActiveProjects);
 
+router.route("/api/projects/all-active").get(projectController.fetchAllActiveProjects);
+
 router.route("/api/client/projects").post(projectController.findClientProjects);
 
 router.route("/api/user/projects").post(projectController.findUserProjects);

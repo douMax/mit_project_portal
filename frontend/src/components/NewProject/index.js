@@ -23,31 +23,40 @@ import ProjectOption from "./Option";
 import InternshipOption from "./InternshipOption";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewProject, getClientProjectsData } from "../../redux/clientRedux/actions";
 import { useHistory } from "react-router-dom";
 import { addProject } from "../../actions/projects";
+import { getClientProjectsData } from "../../redux/authRedux/actions";
 
 const NewProject = () => {
   //console.log(projects);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { user, isLoading } = useSelector(state => state.auth);
+  const { user, auth_user } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(user);
+  console.log(auth_user, "user");
 
   const handleFinish = async (values) => {
 
     const { _id, username } = user;
-    const newPayload = { ...values, status: "pending", clientId: _id, year: "2021", assigned: [], eoi: [] };
-    // const payload = [...user.projects, newPayload];
-    // console.log(payload, newPayload);
-    await addProject(newPayload);
-    await dispatch(getClientProjectsData(_id));
+    const { role } = auth_user;
+
+    if (role === 'client') {
+      const newPayload = { ...values, status: "pending", clientId: _id, year: "2021", assigned: [], eoi: [] };
+      // const payload = [...user.projects, newPayload];
+      // console.log(payload, newPayload);
+      await addProject(newPayload);
+      await dispatch(getClientProjectsData(_id));
+    }
+    else if (role === 'staff') {
+      const newPayload = { ...values, status: "open", year: "2021", assigned: [], eoi: [] };
+      await addProject(newPayload);
+    }
+
     setIsSubmitted(true);
 
     setTimeout(() => {
-      history.push("/my-projects")
+      history.goBack();
     }, 2000);
 
   };

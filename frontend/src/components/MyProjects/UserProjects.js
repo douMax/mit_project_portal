@@ -19,7 +19,6 @@ const UserProjects = ({ project }) => {
     setIsDrawerVisible(false);
   };
 
-  // console.log(project, "hello");
   return (
     <Card
       style={{ marginBottom: "15px" }}

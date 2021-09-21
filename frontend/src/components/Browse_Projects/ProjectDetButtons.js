@@ -25,7 +25,7 @@ const ProjectDetButtons = ({ project }) => {
 
   return (
     <Space style={{ paddingTop: 20 }}>
-      {auth_user?.role !== "staff" && (
+      {/* {auth_user?.role !== "staff" && (
         <Button
           onClick={saveProject}
           style={{
@@ -36,8 +36,8 @@ const ProjectDetButtons = ({ project }) => {
         >
           Save Project
         </Button>
-      )}
-      {((auth_user?.role === "staff" && user?.position === "Supervisor" && project.supervisorId === null) || auth_user?.role === "student") && project.status === "open" && (
+      )} */}
+      {((auth_user?.role === "staff" && user?.position === "Supervisor") || auth_user?.role === "student") && project.status === "open" && (
         <Link
           to={{
             pathname: `/projects/eoi/${project._id}/`,
@@ -56,7 +56,7 @@ const ProjectDetButtons = ({ project }) => {
         </Link>
       )}
       {auth_user?.role === "staff" && user?.position === "Chair Project Review Panel" &&
-        (project.status === "pending" || project.status === "cr") && (
+        (project.status === "pending") && (
           <Link
             to={{
               pathname: `/prp-decision/${project._id}`,

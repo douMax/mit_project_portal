@@ -1,5 +1,4 @@
-import { GET_USER_EOI, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, SIGNUP_USER_FAILURE, SIGNUP_USER_SUCCESS, GET_APPROVED_PROJECTS } from "./authRedux/actions"
-import { GET_CLIENT_PROJECTS } from "./clientRedux/actions";
+import { GET_USER_EOI, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, SIGNUP_USER_FAILURE, SIGNUP_USER_SUCCESS, GET_APPROVED_PROJECTS, GET_CLIENT_PROJECTS } from "./authRedux/actions"
 
 
 const initialState = {
@@ -46,16 +45,9 @@ const reducer = (state = initialState, { type, payload }) => {
                 is_registration: false,
                 is_error: true
             }
-        // case ADD_NEW_PROJECT:
-        //     return {
-        //         ...state,
-        //         isloading: false,
-        //         user: payload
-        //     }
         case GET_CLIENT_PROJECTS:
             return {
                 ...state,
-                isloading: false,
                 projects: payload
             }
         case GET_USER_EOI:

@@ -5,7 +5,7 @@ import { Button, Space } from "antd";
 //import changeBorderRed from "./ProjectListDetails";
 
 const ProjectStats = (projstats) => {
-  console.log(projstats)
+  // console.log(projstats)
   const { assigned_students, eoi, status, trimester, year } = projstats;
   return (
     <Space>

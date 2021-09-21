@@ -13,7 +13,7 @@ const UserEOI = ({ eoi }) => {
           <ProjectDescription description={eoi.interest} />
         </Col>
         <Col span={6}>
-          <ProposalStatusDetail status={"pending"} />
+          <ProposalStatusDetail status={eoi?.status} />
         </Col>
       </Row>
     </Card>

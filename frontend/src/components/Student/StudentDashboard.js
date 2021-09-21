@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
-import { Row, Col, Empty } from "antd";
+import { Row, Col, Empty, Card } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUserProjectsData, logoutUser, getUserEOIData } from "../../redux/authRedux/actions";
 import ProjectListDetail from "../Browse_Projects/ProjectListDetail";
 import ProjectDetail from "../Browse_Projects/ProjectDetail";
-import UserEOI from "../MyProjects/UserEOI";
+import ProjectDescription from "../Browse_Projects/ProjectDescription";
+import ProjectTitle from "../Browse_Projects/ProjectTitle";
+import ProposalStatusDetail from "../MyProjects/ProposalStatusDetail";
 
 const PageTitle = styled.h1`
   font-size: 18px;
@@ -37,7 +39,9 @@ const StudentDashboard = () => {
 
     const { _id } = user;
 
-    console.log(projects)
+    const commonProjects = eoi.filter(item => projects.some(item2 => item2._id === item._id));
+    const projectId = commonProjects[0]?._id;
+
     useEffect(() => {
         if (user === null) {
             dispatch(logoutUser());
@@ -63,11 +67,9 @@ const StudentDashboard = () => {
     return (
         <Row gutter={24}>
             <Col span={12}>
-                {(auth_user?.role === "staff") && (<><h1>Staff Dashboard  - {user?.position || ""}</h1></>)}
                 <PageTitle>My Projects</PageTitle>
                 <LeftPanelWrapper>
                     <Row>
-                        {/* <SearchNSort /> */}
                         {projects?.map((project) => (
                             <ProjectListDetail
                                 key={project._id}
@@ -84,7 +86,17 @@ const StudentDashboard = () => {
                 <LeftPanelWrapper>
                     <Row>
                         {eoi?.map((eoi) => (
-                            <UserEOI key={eoi._id} eoi={eoi} />
+                            <Card hoverable="true" style={{ width: "100%", border: "2px solid aqua", margin: "5px" }} key={eoi._id}>
+                                <Row span={12}>
+                                    <Col span={18}>
+                                        <ProjectTitle title={eoi.title} />
+                                        <ProjectDescription description={eoi.interest} />
+                                    </Col>
+                                    <Col span={6}>
+                                        <ProposalStatusDetail status={(projectId === eoi._id) ? "approved" : "rejected"} />
+                                    </Col>
+                                </Row>
+                            </Card>
                         ))}
                     </Row>
                 </LeftPanelWrapper>

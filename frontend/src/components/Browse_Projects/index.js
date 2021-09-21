@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Row, Col, Empty } from "antd";
 
 import ProjectDetail from "./ProjectDetail";
-// import SearchNSort from "./SearchNSort";
-
+import { useSelector } from "react-redux";
 import { fetchActiveProjects } from "../../actions/projects";
 import ProjectListDetail from "./ProjectListDetail";
 
@@ -29,8 +28,16 @@ const LeftPanelWrapper = styled.div`
 `;
 
 const BrowseProjects = () => {
-  //console.log(projects);
-  const [projects, setProjects] = useState([]);
+  const { projects, user, auth_user } = useSelector(state => state.auth);
+  const { _id } = user;
+
+  const { assigned } = projects && projects[0];
+
+
+  const isPresent = assigned.some(item => item === _id);
+  console.log(assigned, isPresent)
+
+  const [allProjects, setProjects] = useState([]);
 
   const [selected, setSelected] = useState(null);
 
@@ -49,7 +56,7 @@ const BrowseProjects = () => {
         <LeftPanelWrapper>
           <PageTitle>Browse Projects</PageTitle>
           {/* <SearchNSort /> */}
-          {projects.map((project) => (
+          {allProjects.map((project) => (
             <ProjectListDetail
               key={project._id}
               isSelected={project._id === (selected && selected._id)}
@@ -64,7 +71,7 @@ const BrowseProjects = () => {
       <Col span={12}>
         <RightPanelWrapper>
           {selected ? (
-            <ProjectDetail selectedproject={selected} controls={true} />
+            <ProjectDetail selectedproject={selected} controls={(isPresent) ? false : true} />
           ) : (
             <Empty description="No project selected" />
           )}
