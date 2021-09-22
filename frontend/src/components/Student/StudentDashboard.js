@@ -38,9 +38,10 @@ const StudentDashboard = () => {
     const [selected, setSelected] = useState(null);
 
     const { _id } = user;
+    console.log(projects)
 
     const commonProjects = eoi.filter(item => projects.some(item2 => item2._id === item._id));
-    const projectId = commonProjects[0]?._id;
+    const projectId = commonProjects[0]?._id || null;
 
     useEffect(() => {
         if (user === null) {
@@ -69,36 +70,44 @@ const StudentDashboard = () => {
             <Col span={12}>
                 <PageTitle>My Projects</PageTitle>
                 <LeftPanelWrapper>
-                    <Row>
-                        {projects?.map((project) => (
-                            <ProjectListDetail
-                                key={project._id}
-                                isSelected={project._id === (selected && selected._id)}
-                                project={project}
-                                handleShowDetail={() => {
-                                    handleShowDetail(project);
-                                }}
-                            />
-                        ))}
-                    </Row>
+                    {projects.length > 0 ? (
+                        <Row>
+                            {projects?.map((project) => (
+                                <ProjectListDetail
+                                    key={project._id}
+                                    isSelected={project._id === (selected && selected._id)}
+                                    project={project}
+                                    handleShowDetail={() => {
+                                        handleShowDetail(project);
+                                    }}
+                                />
+                            ))}
+                        </Row>
+                    ) : (
+                        <Empty description="No projects data available" />
+                    )}
                 </LeftPanelWrapper>
                 <PageTitle>My EOI</PageTitle>
                 <LeftPanelWrapper>
-                    <Row>
-                        {eoi?.map((eoi) => (
-                            <Card hoverable="true" style={{ width: "100%", border: "2px solid aqua", margin: "5px" }} key={eoi._id}>
-                                <Row span={12}>
-                                    <Col span={18}>
-                                        <ProjectTitle title={eoi.title} />
-                                        <ProjectDescription description={eoi.interest} />
-                                    </Col>
-                                    <Col span={6}>
-                                        <ProposalStatusDetail status={(projectId === eoi._id) ? "approved" : "rejected"} />
-                                    </Col>
-                                </Row>
-                            </Card>
-                        ))}
-                    </Row>
+                    {eoi.length > 0 ? (
+                        <Row>
+                            {eoi?.map((eoi) => (
+                                <Card hoverable="true" style={{ width: "100%", border: "2px solid aqua", margin: "5px" }} key={eoi._id}>
+                                    <Row span={12}>
+                                        <Col span={18}>
+                                            <ProjectTitle title={eoi.title} />
+                                            <ProjectDescription description={eoi.interest} />
+                                        </Col>
+                                        <Col span={6}>
+                                            <ProposalStatusDetail status={(projectId === eoi._id) ? "approved" : !projectId ? eoi?.status === "open" ? "pending" : eoi?.status : "rejected"} />
+                                        </Col>
+                                    </Row>
+                                </Card>
+                            ))}
+                        </Row>
+                    ) : (
+                        <Empty description="No EOI data available" />
+                    )}
                 </LeftPanelWrapper>
             </Col>
             <Col span={12}>

@@ -83,6 +83,9 @@ const AllocationComponent = () => {
         else if (supervisor === undefined && students.length > 0) {
             payload = { "assigned": [...assigned, ...students] };
         }
+        else if (supervisor && students) {
+            payload = { "supervisorId": supervisor, "assigned": [...assigned, ...students] }
+        }
         else payload = {};
 
         await console.log(payload)

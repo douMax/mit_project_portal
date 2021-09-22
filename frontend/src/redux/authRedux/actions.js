@@ -272,7 +272,7 @@ export const getApprovedProjectsData = () => (dispatch) => {
         }
     })
         .then((resp) => {
-            console.log(resp.data)
+            console.log(resp.data, "all approved projects")
             dispatch(getApprovedProjects(resp.data))
         })
         .catch((err) => {

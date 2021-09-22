@@ -31,11 +31,11 @@ const BrowseProjects = () => {
   const { projects, user, auth_user } = useSelector(state => state.auth);
   const { _id } = user;
 
-  const { assigned } = projects && projects[0];
+  // const { assigned } = projects && projects[0];
 
 
-  const isPresent = assigned.some(item => item === _id);
-  console.log(assigned, isPresent)
+  // const isPresent = assigned.some(item => item === _id);
+  // console.log(assigned, isPresent)
 
   const [allProjects, setProjects] = useState([]);
 
@@ -55,23 +55,29 @@ const BrowseProjects = () => {
       <Col span={12}>
         <LeftPanelWrapper>
           <PageTitle>Browse Projects</PageTitle>
-          {/* <SearchNSort /> */}
-          {allProjects.map((project) => (
-            <ProjectListDetail
-              key={project._id}
-              isSelected={project._id === (selected && selected._id)}
-              project={project}
-              handleShowDetail={() => {
-                handleShowDetail(project);
-              }}
-            />
-          ))}
+          {allProjects.length > 0 ? (
+            <>
+              {allProjects.map((project) => (
+                <ProjectListDetail
+                  key={project._id}
+                  isSelected={project._id === (selected && selected._id)}
+                  project={project}
+                  handleShowDetail={() => {
+                    handleShowDetail(project);
+                  }}
+                />
+              ))}
+            </>
+          ) : (
+            <Empty description="No data available" />
+
+          )}
         </LeftPanelWrapper>
       </Col>
       <Col span={12}>
         <RightPanelWrapper>
           {selected ? (
-            <ProjectDetail selectedproject={selected} controls={(isPresent) ? false : true} />
+            <ProjectDetail selectedproject={selected} controls={true} />
           ) : (
             <Empty description="No project selected" />
           )}

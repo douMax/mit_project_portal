@@ -5,7 +5,7 @@ import { COLORS } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
 import { createEOI, submitUserEOI, updateStudentData } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router";
-import { CheckCircleTwoTone } from '@ant-design/icons';
+import { CheckCircleTwoTone, WarningTwoTone } from '@ant-design/icons';
 
 const { TextArea } = Input;
 
@@ -42,6 +42,7 @@ const EOIDetails = ({ project, eoiItem }) => {
   const { _id, username } = user;
   const { role } = auth_user;
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -63,14 +64,16 @@ const EOIDetails = ({ project, eoiItem }) => {
       achievement: achievement,
       experience: experience,
     };
-
-    // const payload = { eoi: [...user.eoi, { ...project, interest, achievement, experience }] };
     setIsSubmitted(true);
-    // await dispatch(updateStudentData(payload, _id, username, auth_user?.role));
+    // const payload = { eoi: [...user.eoi, { ...project, interest, achievement, experience }] };
     // await dispatch(createEOI(EOI));
     if (role === "student") {
-      const payload = { eoi: [...eoi, { userId: _id, username }] };
-      await dispatch(submitUserEOI(payload, project?._id, _id, role))
+      if (!user.isAssigned) {
+        const payload = { eoi: [...eoi, { userId: _id, username }] };
+        await dispatch(submitUserEOI(payload, project?._id, _id, role));
+        await dispatch(updateStudentData({ isAssigned: true }, _id, username, auth_user?.role));
+      }
+      else setError(true);
       // console.log(payload)
     }
     else if (role === "staff") {
@@ -86,14 +89,13 @@ const EOIDetails = ({ project, eoiItem }) => {
 
   return (
     <>
-      {!isSubmitted ? (<>
+      {(!isSubmitted) ? (<>
         <Row>
           <Form style={formStyle}>
             <Space>
               <Form.Item>
                 <SectionDescription>
-                  Write between 300 and 500 words why you are interested in this
-                  project.
+                  Write between 300 and 500 words why you are interested in this project.
                 </SectionDescription>
                 <TextArea
                   id="interest"
@@ -133,9 +135,15 @@ const EOIDetails = ({ project, eoiItem }) => {
         </Row>
       </>) : (<>
         <div style={{ display: 'flex', alignItems: "center", justifyContent: "center", margin: "200px 450px" }}>
-          <h1>EOI submitted and saved successfully <span>
-            <CheckCircleTwoTone twoToneColor="#52c41a" />
-          </span></h1>
+          {!error ? (
+            <h1>EOI submitted and saved successfully <span>
+              <CheckCircleTwoTone twoToneColor="#52c41a" />
+            </span></h1>
+          ) : (
+            <h1>Error occured while submitting the EOI, kindly please check your projects <span>
+              <WarningTwoTone twoToneColor="#FF0000" />
+            </span></h1>
+          )}
         </div>
       </>)}
     </>

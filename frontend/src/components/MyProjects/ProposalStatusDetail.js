@@ -2,12 +2,11 @@ import React from "react";
 import { Button } from "antd";
 
 const ProposalStatusDetail = ({ status }) => {
-  //console.log(status);
+  // console.log(status);
   if (status === "pending") {
     return (
       <Button
         type="text"
-        //onClick={showDrawer}
         style={{
           background: "#87CEFA",
           color: "white",
@@ -21,24 +20,45 @@ const ProposalStatusDetail = ({ status }) => {
     return (
       <Button
         type="primary"
-        //onClick={showDrawer}
         danger
       >
         Rejected
       </Button>
     );
   }
-  if (status === "cr") {
+  if (status === "completed") {
+    return (
+      <Button
+        type="primary"
+        danger
+      >
+        Completed
+      </Button>
+    );
+  }
+  if (status === "ongoing") {
     return (
       <Button
         type="text"
-        //onClick={showDrawer}
         style={{
           background: "#F0E68C",
           color: "DimGray",
         }}
       >
-        Changes Required
+        Ongoing
+      </Button>
+    );
+  }
+  if (status === "open") {
+    return (
+      <Button
+        type="text"
+        style={{
+          background: "turquoise",
+          color: "white",
+        }}
+      >
+        Open
       </Button>
     );
   }
@@ -46,13 +66,12 @@ const ProposalStatusDetail = ({ status }) => {
     return (
       <Button
         type="text"
-        //onClick={showDrawer}
         style={{
-          background: "turquoise",
+          background: "teal",
           color: "white",
         }}
       >
-        Approved
+        approved
       </Button>
     );
   }

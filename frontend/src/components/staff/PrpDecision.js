@@ -89,7 +89,7 @@ const PrpDecision = () => {
                         <Card style={sectionCardStyle}>{objectives}</Card>
                         {user?.position === "Supervisor" ? (
                             <Space direction="horizontal" size="large" style={{ margin: "20px" }}>
-                                <Button type="primary" onClick={handleOngoing} disabled={eoi.length <= 5}>change status to Ongoing</Button>
+                                <Button type="primary" onClick={handleOngoing}>change status to Ongoing</Button>
                                 <Button type="danger" onClick={handleCompleted}>Change status to Completed</Button>
                             </Space>
                         ) : (

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
-import { Row, Col } from "antd";
+import { Row, Col, Empty } from "antd";
 
 import UserProjects from "./UserProjects";
 import UserProposals from "./UserProposals";
@@ -39,7 +39,7 @@ const MyProjects = () => {
 
   // const projectsFilter = useCallback(async () => {
   // if (user && projects) {
-  const filteredProjects = projects?.filter(item => item.status === "open");
+  const filteredProjects = projects?.filter(item => item.status === "open" || item.status === "ongoing" || item.status === "completed");
   // await setMyProjects(filteredProjects);
   const filteredProposals = projects?.filter(item => item.status === "pending" || item.status === "rejected");
   // await setMyProposals(filteredProposals);
@@ -64,18 +64,26 @@ const MyProjects = () => {
         <Col span={12}>
           <PanelWrapper>
             <PageTitle>My Projects</PageTitle>
-            {filteredProjects?.map((project, index) => (
-              <UserProjects key={index} project={project} />
-            ))}
+            {filteredProjects.length > 0 ? (<>
+              {filteredProjects?.map((project, index) => (
+                <UserProjects key={index} project={project} />
+              ))}
+            </>) : (
+              <Empty description="No data available" />
+            )}
           </PanelWrapper>
         </Col>
         <Col span={12}>
           {auth_user?.role === USERTYPES.CLIENT ? (
             <PanelWrapper>
               <PageTitle>My Proposals</PageTitle>
-              {filteredProposals?.map((project, index) => (
-                <UserProposals key={index} proposal={project} />
-              ))}
+              {filteredProposals.length > 0 ? (<>
+                {filteredProposals?.map((project, index) => (
+                  <UserProposals key={index} proposal={project} />
+                ))}
+              </>) : (
+                <Empty description="No data available" />
+              )}
             </PanelWrapper>
           ) : (
             <>

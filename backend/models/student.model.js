@@ -31,17 +31,13 @@ const StudentSchema = new Schema(
     phone: {
       type: Number
     },
+    isAssigned: {
+      type: Boolean,
+      default: false
+    },
     groupId: {
       type: Schema.Types.ObjectId,
       ref: "Group",
-    },
-    projects: {
-      type: Array,
-      default: []
-    },
-    eoi: {
-      type: Array,
-      default: []
     },
     is_enrolled_in_course: {
       type: Boolean,

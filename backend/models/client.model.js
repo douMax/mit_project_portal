@@ -33,9 +33,6 @@ const ClientSchema = new Schema(
     },
     job_position: {
       type: String
-    },
-    projects: {
-      type: Array,
     }
   },
   {
