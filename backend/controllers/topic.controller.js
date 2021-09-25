@@ -21,9 +21,7 @@ exports.findTopic = async (req, res) => {
 };
 
 exports.findOneById = async (req, res) => {
-  // retrive ID from the req
   const id = req.params.id;
-  //
   try {
     let data = await Topic.findById(id);
     res.status(201).send(data);
@@ -32,17 +30,13 @@ exports.findOneById = async (req, res) => {
   }
 };
 
-//find one and update
-// update - PUT request
-// find the record by id first and update it.
 exports.update = async (req, res) => {
   const { id } = req.params;
 
   try {
     const updatedTopic = await Topic.findByIdAndUpdate(id, req.body, {
       new: true,
-    }); // req.body = { TopicName: sdfsdf  }
-
+    });
     res.status(203).send(updatedTopic);
   } catch (err) {
     if (err.kind === "ObjectId") {
@@ -50,15 +44,12 @@ exports.update = async (req, res) => {
         message: `Topic not found with id ${id}`,
       });
     }
-    console.log(err);
+    (err);
     return res.status(500).send({
       message: `Internal server error.`,
     });
   }
 };
-
-// delete
-// find it first and delete.
 
 exports.delete = async (req, res) => {
   const { id } = req.params;
@@ -72,7 +63,6 @@ exports.delete = async (req, res) => {
         message: `Topic not found with id ${id}`,
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: `Internal server error.`,
     });

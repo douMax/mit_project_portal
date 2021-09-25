@@ -28,16 +28,16 @@ const ProposalDecision = () => {
   const location = useLocation();
   const project = location.state;
   let selectedStatus = "";
-  //console.log(project);
+  //(project);
   const handleSelectedStatus = (value) => {
-    //console.log(value);
+    //(value);
     selectedStatus = value;
   };
   const handleDecision = () => {
     //project.status = selectedStatus;
-    //console.log(project);
+    //(project);
     UpdateInactiveProject(project._id, { status: selectedStatus });
-    //console.log(selectedStatus);
+    //(selectedStatus);
   };
   return (
     <Form>

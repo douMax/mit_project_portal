@@ -5,7 +5,7 @@ const InternshipOption = () => {
   const [value, setValue] = useState("all");
 
   const handleChange = (e) => {
-    //console.log("radio checked", e.target.value);
+    //("radio checked", e.target.value);
     setValue(e.target.value);
     localStorage.setItem("isInternship", e.target.value);
   };

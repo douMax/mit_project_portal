@@ -9,7 +9,6 @@ import { USERTYPES } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
 import { getClientProjectsData, logoutUser } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router-dom";
-import { Header } from "antd/lib/layout/layout";
 
 const PageTitle = styled.h1`
   font-size: 20px;
@@ -56,7 +55,6 @@ const MyProjects = () => {
       history.push("/")
     }
   }, []);
-  console.log(projects);
 
   return (
     <div style={{ height: "80vh" }}>

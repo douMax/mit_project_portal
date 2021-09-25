@@ -1,17 +1,15 @@
-import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { Space, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { updateStudentData } from "../../redux/authRedux/actions";
 
 const ProjectDetButtons = ({ project }) => {
 
   const { auth_user, user } = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
-  console.log(user, project)
-  const { username, _id } = user;
+  // const { username, _id } = user;
 
   // const saveProject = async () => {
   //   const payload = { projects: [...user.projects, project] };

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
-import { Row, Col, Empty, Card, Space, Button } from "antd";
+import { Row, Col, Empty, Card, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getUserProjectsData, logoutUser, getUserEOIData, getApprovedProjectsData } from "../../redux/authRedux/actions";
@@ -95,7 +95,6 @@ const Staff_Dashboard = () => {
     }, [approved_projects])
 
     const commonProjects = eoi?.filter(item => projects.some(item2 => item2._id === item._id));
-    console.log(commonProjects)
 
     return (
         <>

@@ -1,40 +1,37 @@
 // framework related
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
-// components
-import LandingPage from "./components/LandingPage";
-import SignUpPage from "./components/SignupPage/";
-import MyProjects from "./components/MyProjects";
-import CoordinatorDashboard from "./components/CoordinatorDashboard";
-import NewProject from "./components/NewProject";
-import ChairPRPDashboard from "./components/ChairPRPDashboard";
-import NewEOI from "./components/NewEOI";
-import DevSettings from "./DevSettings";
-import ProposalDecision from "./components/ChairPRPDashboard/ProposalDecision";
+// // components
+// import LandingPage from "./components/LandingPage";
+// import SignUpPage from "./components/SignupPage/";
+// import MyProjects from "./components/MyProjects";
+// import CoordinatorDashboard from "./components/CoordinatorDashboard";
+// import NewProject from "./components/NewProject";
+// import ChairPRPDashboard from "./components/ChairPRPDashboard";
+// import NewEOI from "./components/NewEOI";
+// import DevSettings from "./DevSettings";
+// import ProposalDecision from "./components/ChairPRPDashboard/ProposalDecision";
 
-// utils and constants
-import ROUTES from "./utils/routes";
+// // utils and constants
+// import ROUTES from "./utils/routes";
 
-//Contexts
-import { ProjectProvider } from "./contexts/ProjectContext";
-import { EOIProvider } from "./contexts/EOIContext";
-import { StudentProvider } from "./contexts/StudentContext";
-import { SignUpRequestProvider } from "./contexts/SignUpRequestContext";
-import { InactiveProjectProvider } from "./contexts/InactiveProjectContext";
+// //Contexts
+// import { ProjectProvider } from "./contexts/ProjectContext";
+// import { EOIProvider } from "./contexts/EOIContext";
+// import { StudentProvider } from "./contexts/StudentContext";
+// import { SignUpRequestProvider } from "./contexts/SignUpRequestContext";
+// import { InactiveProjectProvider } from "./contexts/InactiveProjectContext";
 import { Routes } from "./routes/routes";
 import Header from "./components/Header";
-
-// let isLogged = true;
-// let isSignedUp = true;
 
 // camal case
 const ContentContainer = styled.div`
   width: 100vw;
   padding: 25px 50px;
   background-color: #fff;
-  height:100vh;
+  min-height:100vh;
 `;
 
 function App() {

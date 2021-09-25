@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../../assets/mit_logo.png";
 import styled from "styled-components";
 import { COLORS } from "../../utils/APP_CONSTANTS";
-import { Link } from "react-router-dom";
 
 const LogoText = styled.div`
   font-size: 16px;

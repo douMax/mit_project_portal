@@ -6,6 +6,7 @@ export const USERTYPES = {
   STUDENT: "student",
   STAFF: "staff",
   CLIENT: "client",
+  ADMIN: "admin"
 };
 
 export const COLORS = {

@@ -30,8 +30,7 @@ const PrpDecision = () => {
     const history = useHistory();
     const { user } = useSelector(state => state.auth);
 
-    console.log(project, user)
-    const { background, resources, objectives, title, _id, eoi } = project;
+    const { background, resources, objectives, title, _id } = project;
     const { Title } = Typography;
 
     const handleApprove = async () => {

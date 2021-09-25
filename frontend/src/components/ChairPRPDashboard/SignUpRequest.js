@@ -36,7 +36,7 @@ const SignUpRequest = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const [currentProposal, setCurrentProposal] = useState({});
   const showDrawer = (record) => {
-    //console.log(record);
+    //(record);
     setCurrentProposal(record);
     setIsDrawerVisible(true);
   };

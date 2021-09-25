@@ -24,7 +24,6 @@ exports.findapplication_records = async (req, res) => {
 };
 
 exports.findById = async (req, res) => {
-  // retrive ID from the req
   const { applicationId } = req.params;
   //
   try {
@@ -55,7 +54,7 @@ exports.update = async (req, res) => {
         message: 'Application not found with Id ${application_recordsId}',
       }); ectI
     }
-    console.log(err);
+    (err);
     return res.status(500).send({
       message: 'Internal server error',
     });
@@ -76,10 +75,9 @@ exports.delete = async (req, res) => {
         message: 'Application not found with Id ${application_recordId}',
       });
     }
-    console.log(err);
+    (err);
     return res.status(500).send({
       message: 'Internal server error',
     });
   }
 }
-//find one and update

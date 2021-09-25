@@ -39,9 +39,6 @@ exports.findOneById = async (req, res) => {
   }
 };
 
-//update - PUT Request
-//find the record by id first and update it.
-
 exports.update = async (req, res) => {
   const { studentid } = req.params;
   try {

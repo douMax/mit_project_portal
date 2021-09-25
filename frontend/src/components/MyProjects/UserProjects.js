@@ -10,7 +10,7 @@ import ProjectDetail from "../Browse_Projects/ProjectDetail";
 
 const UserProjects = ({ project }) => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-  const { title, status, resources, topics, background, eoi, assigned, trimester, year, location, objectives, other } = project;
+  const { title, status, topics, background, eoi, assigned, trimester, year } = project;
 
   const showDrawer = () => {
     setIsDrawerVisible(true);

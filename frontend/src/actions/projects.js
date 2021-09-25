@@ -16,8 +16,8 @@ export const putProject = async (projectId, change) => {
 };
 
 export const addProject = async (newProject) => {
-  //console.log(newProject);
-  //console.log(JSON.stringify(newProject));
+  //(newProject);
+  //(JSON.stringify(newProject));
   const res = await axios.post("/api/projects", newProject);
   return res.data;
 };

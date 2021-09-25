@@ -7,7 +7,7 @@ import ViewProjectDetails from "./ViewProjectDetails";
 import AllocateResources from "./AllocateResources";
 
 const ProjectsSummary = ({ project }) => {
-  //console.log(project);
+  //(project);
   return (
     <Card style={{ marginBottom: "15px" }} type="inner" hoverable="true">
       <ProjectTitle title={project.projectTitle} />

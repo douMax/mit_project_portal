@@ -27,7 +27,7 @@ const ChairPRPDashboard = () => {
   const projectProposal = [];
   projects.forEach(proj => {
     if (proj.status === "wfa" || proj.status === "cr") {
-      //console.log(project);
+      //(project);
       projectProposal.push(proj);
     }
   });

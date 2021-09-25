@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Row, Col, Empty } from "antd";
 
@@ -35,7 +35,7 @@ const BrowseProjects = () => {
 
 
   // const isPresent = assigned.some(item => item === _id);
-  // console.log(assigned, isPresent)
+  // (assigned, isPresent)
 
   const [allProjects, setProjects] = useState([]);
 

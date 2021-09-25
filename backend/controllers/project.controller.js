@@ -5,7 +5,6 @@ const Client = require("../models/client.model");
 
 exports.create = async (req, res) => {
   const newProject = new Project(req.body);
-  console.log(newProject)
   try {
     const data = await newProject.save();
     res.status(201).json({ status: "success", data });
@@ -23,31 +22,9 @@ exports.findProjects = async (req, res) => {
   }
 };
 
-//Finding only Active Projects
 exports.findActiveProjects = async (req, res) => {
   try {
     let activeProjects = await Project.find({ status: ["open"] });
-    //TODO: append eoisReceived, group etc.
-    console.log("activeProjects")
-    // const data = await Promise.all(
-    //   activeProjects.map(async function (project) {
-    //     let topics = [];
-    //     if (project.topics) {
-    //       topics = await Topic.find().where("_id").in(project.topics).exec();
-    //       topics = topics.map((topic) => topic.name);
-    //     }
-
-    //     let client = await Client.findById(project.clientId);
-
-    //     return {
-    //       ...project._doc,
-    //       topics: topics,
-    //       clientName: client?.companyName,
-    //       clientLogo: client?.companyLogoUrl,
-    //     };
-    //   })
-    // );
-
     res.status(200).send(activeProjects);
   } catch (error) {
     res.status(500).send("Error retriving projects");
@@ -64,32 +41,11 @@ exports.fetchAllActiveProjects = async (req, res) => {
   }
 }
 
-//Finding only Inctive Projects
 exports.findInactiveProjects = async (req, res) => {
   try {
     let projects = await Project.find({
       status: ["pending"],
     });
-    //TODO: append eoisReceived, group etc.
-    // const data = await Promise.all(
-    //   activeProjects.map(async function (project) {
-    //     let topics = [];
-    //     if (project.topics) {
-    //       topics = await Topic.find().where("_id").in(project.topics).exec();
-    //       topics = topics.map((topic) => topic.name);
-    //     }
-
-    //     let client = await Client.findById(project.clientId);
-
-    //     return {
-    //       ...project._doc,
-    //       topics: topics,
-    //       clientName: client?.companyName,
-    //       clientLogo: client?.companyLogoUrl,
-    //     };
-    //   })
-    // );
-
     res.status(200).send({ status: "success", projects });
   } catch (error) {
     res.status(500).send("Error retriving projects " + error);
@@ -97,10 +53,7 @@ exports.findInactiveProjects = async (req, res) => {
 };
 
 exports.findById = async (req, res) => {
-  // retrive ID from the req
   const { projectId } = req.params;
-  console.log(projectId);
-  //
   try {
     const project = await Project.findById(projectId);
     const groups = await Group.find({ projectId: projectId });
@@ -116,7 +69,6 @@ exports.findById = async (req, res) => {
 
 exports.update = async (req, res) => {
   const { id } = req.params;
-  console.log(id, req.body);
   try {
     const updatedproject = await Project.findByIdAndUpdate(
       id,
@@ -146,7 +98,6 @@ exports.delete = async (req, res) => {
   }
 };
 
-//find the associated topics
 exports.findProjectTopics = async (req, res) => {
   const { id } = req.params;
 
@@ -165,14 +116,13 @@ exports.findProjectTopics = async (req, res) => {
         message: `Project not found with id ${id}`,
       });
     }
-    console.log(err);
+    (err);
     return res.status(500).send({
       message: "Internal server error",
     });
   }
 };
 
-//Find all projects for a particular user based on his/her ID.
 
 exports.findClientProjects = async (req, res) => {
   const { clientId } = req.body;
@@ -184,7 +134,6 @@ exports.findClientProjects = async (req, res) => {
 }
 
 exports.findUserProjects = async (req, res) => {
-  console.log(req.body);
   const projects = await Project.find(req.body);
   if (projects) {
     res.status(200).send({ status: "success", projects })
@@ -193,7 +142,6 @@ exports.findUserProjects = async (req, res) => {
 }
 
 exports.findUserEOI = async (req, res) => {
-  console.log(req.body)
   const projects = await Project.find(req.body);
   if (projects) {
     res.status(200).send({ status: "success", projects })

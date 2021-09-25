@@ -6,7 +6,7 @@ const ProjectOption = () => {
   const [specific, setSpecific] = useState(true);
 
   const handleChange = (e) => {
-    //console.log("radio checked", e.target.value);
+    //("radio checked", e.target.value);
     setValue(e.target.value);
   };
 

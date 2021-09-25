@@ -1,24 +1,20 @@
-import React, { useState } from "react";
-import { Row, Col, Card, Button, Drawer } from "antd";
-import { CloseCircleFilled } from "@ant-design/icons";
-
+import React from "react";
+import { Row, Col, Card } from "antd";
 import ProjectTitle from "../Browse_Projects/ProjectTitle";
 import ProjectDescription from "../Browse_Projects/ProjectDescription";
-import TopicsHeader from "../Browse_Projects/TopicsHeader";
 import ProposalStatusDetail from "./ProposalStatusDetail";
-import ProjectDetail from "../Browse_Projects/ProjectDetail";
 
 const UserProposals = ({ proposal }) => {
-  // console.log(proposal);
-  const { title, status, resources, topics, background, eoi, group, location, objectives, other } = proposal;
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  // (proposal);
+  const { title, status, background } = proposal;
+  // const [isDrawerVisible, setIsDrawerVisible] = useState(false);
 
-  const showDrawer = () => {
-    setIsDrawerVisible(true);
-  };
-  const handleClose = () => {
-    setIsDrawerVisible(false);
-  };
+  // const showDrawer = () => {
+  //   setIsDrawerVisible(true);
+  // };
+  // const handleClose = () => {
+  //   setIsDrawerVisible(false);
+  // };
   return (
     <Card style={{ marginBottom: "15px" }} type="inner" hoverable="true">
       <Row gutter={16}>

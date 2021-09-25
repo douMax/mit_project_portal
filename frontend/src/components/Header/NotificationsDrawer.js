@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Space, Button, Drawer, Card } from "antd";
 import { NotificationFilled } from "@ant-design/icons";
 import styled from "styled-components";
@@ -20,7 +20,7 @@ const NotificationsDrawer = () => {
   const [notifs, setNotifs] = useState([]);
 
   const delNotif = (ev) => {
-    //console.log(ev.currentTarget.id);
+    //(ev.currentTarget.id);
     const id = ev.currentTarget.id;
     setNotifs(notifs.filter((notif) => notif.id !== id));
   };
@@ -29,7 +29,7 @@ const NotificationsDrawer = () => {
 
   const showNotifs = () => {
     setVisible(true);
-    //console.log(notifs);
+    //(notifs);
   };
 
   const closeNotifs = () => {

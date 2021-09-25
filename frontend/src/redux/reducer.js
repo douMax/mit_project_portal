@@ -1,4 +1,4 @@
-import { GET_USER_EOI, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, SIGNUP_USER_FAILURE, SIGNUP_USER_SUCCESS, GET_APPROVED_PROJECTS, GET_CLIENT_PROJECTS } from "./authRedux/actions"
+import { GET_USER_EOI, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, SIGNUP_USER_FAILURE, SIGNUP_USER_SUCCESS, GET_APPROVED_PROJECTS, GET_CLIENT_PROJECTS, GET_ALL_USERS } from "./authRedux/actions"
 
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
     user: null,
     projects: [],
     eoi: [],
-    approved_projects: []
+    approved_projects: [],
+    all_users: []
 }
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -59,6 +60,11 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 approved_projects: payload
+            }
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                all_users: payload
             }
         default:
             return state;

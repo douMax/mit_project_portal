@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext } from "react";
 import { fetchProjectEOIs, fetchUserEOIs } from "../actions/eoi";
 
-import mockEOIs from "../data/mockEOIs.json";
+// import mockEOIs from "../data/mockEOIs.json";
 
 export const EOIContext = createContext();
 

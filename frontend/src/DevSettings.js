@@ -3,8 +3,8 @@ import { Radio } from "antd";
 import { UserContext } from "./contexts/UserContext";
 
 const DevSettings = props => {
-  //console.log(props.userType);
-  //console.log(user);
+  //(props.userType);
+  //(user);
   const [user, setUser] = useContext(UserContext);
 
   const handleRadioChange = e => {

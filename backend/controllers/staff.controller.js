@@ -22,9 +22,7 @@ exports.findStaff = async (req, res) => {
 };
 
 exports.findOneById = async (req, res) => {
-  // retrive ID from the req
   const id = req.params.id;
-  //
   try {
     let data = await Staff.findById(id);
     res.status(201).send(data);
@@ -32,17 +30,13 @@ exports.findOneById = async (req, res) => {
     res.status(500).send("Error retriving staff");
   }
 };
-//find one and update
-// update - PUT request
-// find the record by id first and update it.
 exports.update = async (req, res) => {
   const { id } = req.params;
 
   try {
     const updatedstaff = await Staff.findByIdAndUpdate(id, req.body, {
       new: true,
-    }); // req.body = { departmentName: sdfsdf  }
-
+    });
     res.status(203).send(updatedstaff);
   } catch (err) {
     if (err.kind === "ObjectId") {
@@ -50,15 +44,11 @@ exports.update = async (req, res) => {
         message: `Department not found with id ${id}`,
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: `Internal server error.`,
     });
   }
 };
-
-// delete
-// find it first and delete.
 
 exports.delete = async (req, res) => {
   const { id } = req.params;
@@ -72,14 +62,12 @@ exports.delete = async (req, res) => {
         message: `Staff not found with id ${id}`,
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: `Internal server error.`,
     });
   }
 };
 
-//find the associated topics
 exports.findStaffTopics = async (req, res) => {
   const { id } = req.params;
 
@@ -98,7 +86,6 @@ exports.findStaffTopics = async (req, res) => {
         message: `Staff not found with id ${id}`,
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: `Internal server error.`,
     });
@@ -107,7 +94,7 @@ exports.findStaffTopics = async (req, res) => {
 
 exports.getStaff = async (req, res) => {
   const { username } = req.body;
-  console.log(username)
+  (username)
   try {
     const user = await Staff.findOne({ "username": username }).exec();
     if (!user) {

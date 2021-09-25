@@ -8,7 +8,6 @@ const newToken = (user) => {
 
 const register = async (req, res) => {
     const userExists = await User.findOne({ username: req.body.username });
-    console.log(req.body)
     try {
         if (userExists) {
             return res.status(400).json({ status: 'failed', message: 'Registration failed, User already exists' });
@@ -25,7 +24,6 @@ const register = async (req, res) => {
                 role: req.body.role,
                 is_first_time_visited: req.body.is_first_time_visited
             };
-            console.log(payload)
             const user = await User.create(payload);
 
             return res.status(201).json({ status: 'success', message: 'Registration successful', user });
@@ -33,7 +31,6 @@ const register = async (req, res) => {
     }
 
     catch (err) {
-        console.log(err)
         res.status(500).json({ status: 'failed', message: 'Registration failed, Something went wrong' });
     }
 }
@@ -78,8 +75,6 @@ const getAllUsers = async (req, res) => {
 
 const updatePassword = async (req, res) => {
     const { id } = req.params;
-    console.log(id, req.body);
-
     try {
         const hashedPassword = await bcrypt.hash(
             req.body.password,
@@ -102,8 +97,6 @@ const updatePassword = async (req, res) => {
 
 const updateUser = async (req, res) => {
     const { id } = req.params;
-    console.log(id, req.body);
-
     try {
         const user = await User.findByIdAndUpdate(
             id,

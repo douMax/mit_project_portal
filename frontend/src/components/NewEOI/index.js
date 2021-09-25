@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { Row, Col } from "antd";
 import EOILeft from "./EOILeft";
@@ -10,7 +10,7 @@ const NewEOI = () => {
   const location = useLocation();
   const project = location.state;
   const { user, auth_user, eoi } = useSelector(state => state.auth);
-  console.log(auth_user)
+
   return (
     <Row>
       <Col span={12}>

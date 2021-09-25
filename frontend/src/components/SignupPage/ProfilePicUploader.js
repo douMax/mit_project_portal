@@ -31,7 +31,7 @@ const ProfilePicUploader = () => {
 
   const handleChange = info => {
     if (info.file.status === "uploading") {
-      console.log("uploading");
+      ("uploading");
       setIsLoading(true);
     }
 

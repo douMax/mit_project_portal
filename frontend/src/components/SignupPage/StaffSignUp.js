@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from "react";
-
 import { Form, Select, Input, Button, Col, Row } from "antd";
-import CommonFields from "./CommonFields";
-import ProfilePicUploader from "./ProfilePicUploader";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
 import { STAFF_JOB_POSITIONS, TEMP_TOPICS } from "../../utils/APP_CONSTANTS";
 import { NAME_TITLES } from "../../utils/APP_CONSTANTS";
-import { registerUser, signupUser } from "../../redux/authRedux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { getAllUsersData, registerUser, signupUser } from "../../redux/authRedux/actions";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const StaffSignUp = () => {
 
   const dispatch = useDispatch();
-  const { auth_user, is_registration } = useSelector(state => state.auth);
-  const { _id } = auth_user;
   const history = useHistory();
   const [isRegister, setIsRegister] = useState(false);
 
   const handleFinish = async (payload) => {
-    console.log(payload);
     const { username, password } = payload;
 
     await dispatch(registerUser({ username, role: "staff", is_first_time_visited: false, password: password }));
     await dispatch(signupUser(payload, "staff"));
+    await dispatch(getAllUsersData());
     await setIsRegister(true);
 
   };
@@ -31,7 +26,7 @@ const StaffSignUp = () => {
   useEffect(() => {
     if (isRegister) {
       var timer = setTimeout(() => {
-        history.push("/");
+        history.push("/dashboard/admin-dashboard");
       }, 3000);
     }
 
@@ -97,7 +92,7 @@ const StaffSignUp = () => {
             ]}>
             <Input />
           </Form.Item>
-          <Form.Item label="Create your own password" name="password"
+          <Form.Item label="Create a password" name="password"
             rules={[
               {
                 required: true,

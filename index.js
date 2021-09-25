@@ -15,7 +15,7 @@ mongoose
     useFindAndModify: true
   })
   .then(() => {
-    console.log("mongodb connected....");
+    ("mongodb connected....");
   });
 
 // intialise our app using express()
@@ -66,5 +66,5 @@ app.get("/api", (req, res) => {
 // start the server and listen on port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server listen on port ${PORT}.....`);
+  console.log(`Server listening on port ${PORT}.....`);
 });

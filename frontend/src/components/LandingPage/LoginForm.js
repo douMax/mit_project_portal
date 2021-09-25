@@ -8,12 +8,12 @@ import { useHistory } from "react-router-dom";
 const LoginForm = (props) => {
 
   const { auth_user, is_auth, is_error } = useSelector(state => state.auth);
-  const { is_first_time_visited, _id, username } = auth_user;
+  const { is_first_time_visited } = auth_user;
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // console.log(is_error, "error")
+  // (is_error, "error")
   const onFinish = ({ username, password }) => {
     // send the request to backend
     const payload = {
@@ -26,7 +26,6 @@ const LoginForm = (props) => {
 
   useEffect(() => {
     if (is_auth) {
-      console.log(is_first_time_visited)
       if (props.userType === "student") {
         if (!is_first_time_visited) {
           history.push("/student/my-projects");

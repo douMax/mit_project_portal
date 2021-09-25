@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
-import { Card, Space, Input, Button, Switch } from "antd";
+import React from "react";
+import { Card, Space, Input, Button } from "antd";
 import styled from "styled-components";
 
 import mockEoi from "../../data/mockEOIs.json";
-import { StudentContext } from "../../contexts/StudentContext";
 
 const { TextArea } = Input;
 
@@ -19,20 +18,7 @@ const SubsectionTitle = styled.p`
 
 const StudentEOIDetails = () => {
   const eoi = mockEoi;
-  // console.log(eoi);
-  //Need to query database to GET student details based on studentId obtained from the EOI object.
-  //Temporary code to simulate GETting student records for students who expressed interest in the project.
-  // const [students, setStudents] = useState(mockStudents);
-  // const currentApplicant = [];
-  // students.forEach((student) => {
-  //   if (student.userId === eoi.applicantId) {
-  //     currentApplicant.push(student);
-  //     return currentApplicant;
-  //   }
-  // });
-  // console.log(students);
-  // console.log(eoi);
-  // console.log(currentApplicant);
+
   return (
     <Card style={{ marginBottom: 20, borderColor: "red" }}>
       <Space>
