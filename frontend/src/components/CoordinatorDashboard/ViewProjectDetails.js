@@ -7,7 +7,7 @@ import ProjectDetail from "../Browse_Projects/ProjectDetail";
 const ViewProjectDetails = ({ project }) => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const showDrawer = () => {
-    //console.log(project);
+    //(project);
     setIsDrawerVisible(true);
   };
   const handleClose = () => {

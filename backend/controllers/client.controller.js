@@ -15,7 +15,6 @@ exports.create = async (req, res) => {
 exports.findCompanyClients = async (req, res) => {
   try {
     let data = await Client.find();
-    console.log(data);
     res.status(201).send(data);
   } catch (error) {
     res.status(500).send("Error retriving clients");
@@ -47,7 +46,6 @@ exports.findOneById = async (req, res) => {
         message: "client not found with ID(clientId)",
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: "internal server error.",
     });
@@ -56,7 +54,6 @@ exports.findOneById = async (req, res) => {
 
 exports.update = async (req, res) => {
   const { clientId } = req.params;
-  // console.log(req.body)
   try {
     const updatedClient = await Client.findByIdAndUpdate(clientId, req.body, {
       new: true,
@@ -69,16 +66,12 @@ exports.update = async (req, res) => {
         message: `Client not found with id ${clientId}`,
       });
     }
-    console.log(err);
     return res.status(500).send({
       status: false,
       message: `Internal server error.`,
     });
   }
 };
-
-// delete
-// find it first and delete.
 
 exports.delete = async (req, res) => {
   const { clientId } = req.params;
@@ -92,7 +85,7 @@ exports.delete = async (req, res) => {
         message: `Client not found with id ${clientId}`,
       });
     }
-    console.log(err);
+    (err);
     return res.status(500).send({
       message: `Internal server error.`,
     });
@@ -101,7 +94,6 @@ exports.delete = async (req, res) => {
 
 exports.getClient = async (req, res) => {
   const { username } = req.body;
-  console.log(username)
   try {
     const user = await Client.findOne({ username }).exec();
     if (!user) {

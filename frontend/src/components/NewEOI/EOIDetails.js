@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row, Form, Input, Space, Button } from "antd";
 import { COLORS } from "../../utils/APP_CONSTANTS";
 import { useDispatch, useSelector } from "react-redux";
-import { createEOI, submitUserEOI, updateStudentData } from "../../redux/authRedux/actions";
+import { submitUserEOI, updateStudentData } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router";
 import { CheckCircleTwoTone, WarningTwoTone } from '@ant-design/icons';
 
@@ -49,8 +49,6 @@ const EOIDetails = ({ project, eoiItem }) => {
 
   const { eoi, supervisorEOI } = project;
 
-  console.log(role)
-
   const handleSubmit = async () => {
 
     const interest = document.getElementById("interest").value;
@@ -74,12 +72,12 @@ const EOIDetails = ({ project, eoiItem }) => {
         await dispatch(updateStudentData({ isAssigned: true }, _id, username, auth_user?.role));
       }
       else setError(true);
-      // console.log(payload)
+      // (payload)
     }
     else if (role === "staff") {
       const payload = { supervisorEOI: [...supervisorEOI, { userId: _id, username }] };
       await dispatch(submitUserEOI(payload, project?._id, _id, role))
-      // console.log(payload)
+      // (payload)
     }
 
     setTimeout(() => {

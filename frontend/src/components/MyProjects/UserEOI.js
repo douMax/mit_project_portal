@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Card, Button } from "antd";
+import { Row, Col, Card } from "antd";
 import ProjectDescription from "../Browse_Projects/ProjectDescription";
 import ProjectTitle from "../Browse_Projects/ProjectTitle";
 import ProposalStatusDetail from "./ProposalStatusDetail";

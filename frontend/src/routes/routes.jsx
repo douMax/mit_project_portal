@@ -11,12 +11,17 @@ import PrpDecision from "../components/staff/PrpDecision";
 import Staff_Dashboard from "../components/staff/Staff_Dashboard";
 import StudentDashboard from "../components/Student/StudentDashboard";
 import AllocationComponent from "../components/staff/AllocationComponent";
+import Admin_Login from "../components/Admin/Admin_Login";
+import Admin_Dashboard from "../components/Admin/Admin_Dashboard";
+import Create_Student from "../components/Admin/Create_Student";
+import Create_Staff from "../components/Admin/Create_Staff";
 
 export const Routes = () => {
     return (
         <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/login" component={LandingPage} />
+            <Route exact path="/admin" component={Admin_Login} />
             <Route exact path="/book-appointment" component={() => (<h1>Page under construction</h1>)} />
             <Route exact path="/student-signup">
                 <SignUpPage user={"student"} />
@@ -27,6 +32,7 @@ export const Routes = () => {
             <Route exact path="/client-signup">
                 <SignUpPage user={"client"} />
             </Route>
+            <Route exact path="/dashboard/admin-dashboard" component={Admin_Dashboard} />
             <Route exact path="/dashboard/staff-dashboard" component={Staff_Dashboard} />
             <Route exact path="/dashboard/client-dashboard" component={MyProjects} />
             <Route exact path="/new-project" component={NewProject} />
@@ -38,6 +44,9 @@ export const Routes = () => {
             <Route exact path="/prp-decision/:id" component={PrpDecision} />
             <Route exact path="/unit-coordinator/projects_allocation/:id" component={AllocationComponent} />
             <Route exact path="/staff/projects/change-status/:id" component={PrpDecision} />
+            <Route exact path="/admin/create-student" component={Create_Student} />
+            <Route exact path="/admin/create-staff" component={Create_Staff} />
+
         </Switch>
     )
 }

@@ -27,20 +27,15 @@ const PasswordChange = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log(auth_user);
     const { _id } = auth_user
 
     const onFinish = async ({ password, confirm }) => {
-        console.log(password, confirm)
-
         const is_Equal = await checkPasswords(password, confirm);
-        console.log(is_Equal)
 
         if (is_Equal) {
             setError(false);
             setTimeout(() => {
                 const payload = { password };
-                console.log(payload);
                 dispatch(updatePassword(payload, _id));
                 dispatch(logoutUser());
                 history.push("/")

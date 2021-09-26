@@ -1,4 +1,3 @@
-//Test Authentication Controllers
 const testUser = require("./testusers.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");

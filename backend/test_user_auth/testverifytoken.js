@@ -10,7 +10,7 @@ module.exports = function (req, res, next) {
         //Verify the AUTH_TOKEN in the header, using the secret.
         const verifiedtoken = jwt.verify(authtoken, "S0m3R@1d0M6aR8AgE789abc");
         req.user = verifiedtoken;
-        //console.log(req.user);
+        //(req.user);
         next();
     } catch (err) {
         res.status(400).send("Invalid Token");

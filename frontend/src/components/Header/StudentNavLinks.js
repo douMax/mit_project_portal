@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import ROUTES from "../../utils/routes";
 import NavContainer from "./NavContainer";
 
 const StudentNavLinks = () => {

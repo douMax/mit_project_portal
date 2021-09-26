@@ -1,22 +1,12 @@
-import React, { useContext } from "react";
-import { Avatar, Badge, Dropdown, Menu, Space } from "antd";
-import NotificationsDrawer from "./NotificationsDrawer";
+import React from "react";
+import { Avatar, Dropdown, Menu, Space } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/authRedux/actions";
 import { useHistory } from "react-router-dom";
 import Title from "antd/lib/typography/Title";
 
-// import { Link } from "react-router-dom";
-// import ROUTES from "../../utils/routes";
-// import { NotificationContext } from "../../contexts/NotificationContext";
-// import { UserContext } from "../../contexts/UserContext";
 const HeaderAvatar = () => {
-  //console.log(notifs.notifs.length);
-
-  // const [notifs, setNotifs] = useContext(NotificationContext);
-  // const [user] = useContext(UserContext);
-  // const userName = user.userName;
 
   const dispatch = useDispatch();
 
@@ -56,7 +46,8 @@ const HeaderAvatar = () => {
           <Dropdown overlay={menu} placement="bottomRight">
             <Avatar style={{ backgroundColor: "#87d068", cursor: "pointer" }} icon={<UserOutlined />} />
           </Dropdown>
-          {user && (<Title level={5}>{` ${user?.first_name} ${user?.last_name} `}</Title>)}
+          {user && (<Title level={5}> {auth_user?.role === "admin" ? "admin" : (` ${user?.first_name} ${user?.last_name} `)}</Title>)}
+          {!user && auth_user && (<Title level={5}> {auth_user?.role === "admin" && "admin"}</Title>)}
           {/* <Badge overflowCount={9} count={5}>
             <NotificationsDrawer />
           </Badge> */}

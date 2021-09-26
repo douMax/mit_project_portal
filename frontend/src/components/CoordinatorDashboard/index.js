@@ -50,7 +50,7 @@ const CoordinatorDashboard = () => {
   const ongoingproject = [];
   const closedproject = [];
   const [projects, setProjects] = useContext(ProjectContext);
-  //console.log(project);
+  //(project);
   projects.forEach((p) => {
     if (p.status === "open") {
       openproject.push(p);

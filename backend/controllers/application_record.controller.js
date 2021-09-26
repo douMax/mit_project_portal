@@ -23,7 +23,6 @@ exports.findApplicationRecords = async (req, res) => {
 };
 
 exports.findById = async (req, res) => {
-  // retrive ID from the req
   const { applicationId } = req.params;
 
   try {

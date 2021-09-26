@@ -1,26 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   Select,
   Input,
   Row,
   Col,
-  InputNumber,
   Button,
   Space,
 } from "antd";
 import { CheckCircleTwoTone } from '@ant-design/icons';
-
-
-// app contatns
 import { LOCATIONS, TEMP_TOPICS, TRIMESTER } from "../../utils/APP_CONSTANTS";
-
-// contexts
-import { AddNewProjectProposal } from "../../contexts/InactiveProjectContext";
-
-//components
-import ProjectOption from "./Option";
-import InternshipOption from "./InternshipOption";
 import MultipleSelectWithLimit from "../SharedComponents/MultipleSelectWithLimit";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -28,23 +17,21 @@ import { addProject } from "../../actions/projects";
 import { getClientProjectsData } from "../../redux/authRedux/actions";
 
 const NewProject = () => {
-  //console.log(projects);
+  //(projects);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { user, auth_user } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(auth_user, "user");
-
   const handleFinish = async (values) => {
 
-    const { _id, username } = user;
+    const { _id } = user;
     const { role } = auth_user;
 
     if (role === 'client') {
       const newPayload = { ...values, status: "pending", clientId: _id, year: "2021", assigned: [], eoi: [] };
       // const payload = [...user.projects, newPayload];
-      // console.log(payload, newPayload);
+      // (payload, newPayload);
       await addProject(newPayload);
       await dispatch(getClientProjectsData(_id));
     }

@@ -32,14 +32,12 @@ const LeftPanelWrapper = styled.div`
 `;
 
 const StudentDashboard = () => {
-    const { user, auth_user, projects, eoi } = useSelector(state => state.auth);
+    const { user, projects, eoi } = useSelector(state => state.auth);
     const history = useHistory();
     const dispatch = useDispatch();
     const [selected, setSelected] = useState(null);
 
     const { _id } = user;
-    console.log(projects)
-
     const commonProjects = eoi.filter(item => projects.some(item2 => item2._id === item._id));
     const projectId = commonProjects[0]?._id || null;
 

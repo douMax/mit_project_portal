@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Col, Row, Button, Space } from "antd";
-import ProfilePicuploader from "./ProfilePicUploader";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { registerUser, signupUser } from "../../redux/authRedux/actions";
 
 const IndustryClientSignUp = (props) => {
@@ -15,7 +14,6 @@ const IndustryClientSignUp = (props) => {
 
     const { email, password } = payload;
     const userPayload = await Object.fromEntries(Object.entries(payload).filter(([key, value]) => key !== "password"));
-    console.log(userPayload)
     await dispatch(registerUser({ username: email, role: "client", is_first_time_visited: false, password: password }));
     await dispatch(signupUser({ ...userPayload, username: email }, "client"));
     await setIsRegister(true);

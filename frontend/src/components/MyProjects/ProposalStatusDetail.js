@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "antd";
 
 const ProposalStatusDetail = ({ status }) => {
-  // console.log(status);
+  // (status);
   if (status === "pending") {
     return (
       <Button

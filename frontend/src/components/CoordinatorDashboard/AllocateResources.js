@@ -17,7 +17,7 @@ const SectionTitle = styled.h1`
 `;
 
 const AllocateResources = ({ projId }) => {
-  //console.log(projId);
+  //(projId);
   const [eois, setEOIs, FindProjectEOIs, FindUserEOIs] = useContext(EOIContext);
   useEffect(() => {
     FindProjectEOIs(projId);
@@ -31,10 +31,10 @@ const AllocateResources = ({ projId }) => {
   });
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const showDrawer = () => {
-    //console.log(projId);
+    //(projId);
     setIsDrawerVisible(true);
-    //console.log(currentproject);
-    //console.log(eois);
+    //(currentproject);
+    //(eois);
   };
   const handleClose = () => {
     setIsDrawerVisible(false);

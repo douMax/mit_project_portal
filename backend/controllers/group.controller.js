@@ -25,8 +25,6 @@ exports.findGroups = async (req, res) => {
 exports.findById = async (req, res) => {
   // retrive ID from the req
   const { groupId } = req.params;
-  console.log(groupId);
-  //
   try {
     const group = await Group.findById(groupId);
     const students = await Student.find({ groupId: groupId });
@@ -70,7 +68,6 @@ exports.delete = async (req, res) => {
         message: "group not found with id ${groupId}",
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: "Internal server error.",
     });
@@ -98,7 +95,6 @@ exports.findSupervisor = async (req, res) => {
         message: "group not found with id ${groupId}",
       });
     }
-    console.log(err);
     return res.status(500).send({
       message: "Internal server error.",
     });

@@ -22,7 +22,7 @@ const sectionCardStyle = {
 
 const ProjectDetail = ({ selectedproject, controls }) => {
 
-  const { auth_user, user } = useSelector(state => state.auth);
+  const { auth_user } = useSelector(state => state.auth);
   const {
     title,
     topics,
@@ -31,7 +31,6 @@ const ProjectDetail = ({ selectedproject, controls }) => {
     objectives,
     status,
     assigned,
-    abstract,
     trimester,
     year,
     eoi
@@ -50,9 +49,6 @@ const ProjectDetail = ({ selectedproject, controls }) => {
             eoi={eoi.length}
           />
         </Col>
-        {/* <Col span={6}>
-          <ClientInfo clientName={"MIT"} logo={""} />
-        </Col> */}
         <Col>
           <SectionTitleWrapper>Background and Rationale</SectionTitleWrapper>
           <Card style={sectionCardStyle}>{background}</Card>

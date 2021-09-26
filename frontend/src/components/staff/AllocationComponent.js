@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Typography, Select, Button, Form } from "antd";
+import { Typography, Select, Button, Form } from "antd";
 import ProjectStats from "../Browse_Projects/ProjectStats";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -42,7 +42,6 @@ const AllocationComponent = () => {
         trimester,
         year,
         eoi,
-        clientId,
         supervisorEOI,
         supervisorId,
         _id
@@ -72,7 +71,6 @@ const AllocationComponent = () => {
 
     let student_options = createOptions(uniqueStudents);
     let supervisor_options = createOptions(supervisors);
-    console.log(student_options, supervisor_options)
 
     const handleFinish = async (values) => {
         const { students, supervisor } = values;
@@ -88,7 +86,7 @@ const AllocationComponent = () => {
         }
         else payload = {};
 
-        await console.log(payload)
+        await (payload)
         await dispatch(submitUserEOI(payload, _id));
 
         setSubmitted(true);

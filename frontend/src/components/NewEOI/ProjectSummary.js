@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row } from "antd";
-
 import TopicsHeader from "../Browse_Projects/TopicsHeader";
 import ProjectTitle from "../Browse_Projects/ProjectTitle";
 import ProjectStats from "../Browse_Projects/ProjectStats";
